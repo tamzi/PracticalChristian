@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>LongMethod:ScheduleScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun PracticalChristianDatePicker( isDialogOpen: Boolean, onValueChangeCompletedAt: (LocalDateTime?) -&gt; Unit, )</ID>
+    <ID>LongMethod:ScheduleScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun ScheduleScreenContent( state: ScheduleScreenUiState, onNavigateBackClicked: () -&gt; Unit, onValueChangeCompletedAt: (LocalDateTime?) -&gt; Unit, onClickToggleDatePicker: () -&gt; Unit, )</ID>
+    <ID>LongMethod:SchedulesScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun ScheduleScreenContent( state: SchedulesScreenUiState, onNavigateToSettings: () -&gt; Unit, onNavigateToProfile: () -&gt; Unit, onNavigateToSetup: () -&gt; Unit, onNavigateToScheduleDetails: (Int) -&gt; Unit, onItemSwiped: (ScheduleDomain) -&gt; Unit, onRemoveAlertMessage: () -&gt; Unit, )</ID>
+    <ID>LongParameterList:SchedulesScreen.kt$( item: ScheduleDomain, isFirst: Boolean, isLast: Boolean, modifier: Modifier = Modifier, onItemClick: () -&gt; Unit = {}, onItemSwipeClicked: () -&gt; Unit, )</ID>
+    <ID>LongParameterList:SchedulesScreen.kt$( state: SchedulesScreenUiState, onNavigateToSettings: () -&gt; Unit, onNavigateToProfile: () -&gt; Unit, onNavigateToSetup: () -&gt; Unit, onNavigateToScheduleDetails: (Int) -&gt; Unit, onItemSwiped: (ScheduleDomain) -&gt; Unit, onRemoveAlertMessage: () -&gt; Unit, )</ID>
+    <ID>TooManyFunctions:ScheduleScreen.kt$com.practicalchristian.app.feature.schedules.ScheduleScreen.kt</ID>
+    <ID>UnusedPrivateMember:ScheduleScreen.kt$@Preview(showBackground = true, name = "PracticalChristianDatePicker - Date and Time Selection") @Composable private fun PracticalChristianDatePickerWithTimePreview()</ID>
+    <ID>UnusedPrivateMember:ScheduleScreen.kt$@Preview(showBackground = true, name = "ScheduleScreen - Completed Schedule") @Composable private fun ScheduleScreenCompletedPreview()</ID>
+    <ID>UnusedPrivateMember:ScheduleScreen.kt$@Preview(showBackground = true, name = "ScheduleScreen - Error State") @Composable private fun ScheduleScreenErrorPreview()</ID>
+    <ID>UnusedPrivateMember:ScheduleScreen.kt$@Preview(showBackground = true, name = "ScheduleScreen - Future Schedule") @Composable private fun ScheduleScreenFuturePreview()</ID>
+    <ID>UnusedPrivateMember:ScheduleScreen.kt$@Preview(showBackground = true, name = "ScheduleScreen - Loading") @Composable private fun ScheduleScreenLoadingPreview()</ID>
+    <ID>UnusedPrivateMember:ScheduleScreen.kt$@Preview(showBackground = true, name = "ScheduleScreen - Pending Schedule") @Composable private fun ScheduleScreenPendingPreview()</ID>
+    <ID>UnusedPrivateMember:ScheduleScreen.kt$@Preview(showBackground = true, name = "ScheduleScreen - With Date Picker Open") @Composable private fun ScheduleScreenWithDatePickerPreview()</ID>
+    <ID>UnusedPrivateMember:ScheduleScreen.kt$@Preview(showBackground = true, name = "TimeInput - Keyboard Style") @Composable @OptIn(ExperimentalMaterial3Api::class) private fun TimeInputKeyboardPreview()</ID>
+    <ID>UnusedPrivateMember:ScheduleScreen.kt$@Preview(showBackground = true, name = "TimePicker - 24 Hour Format") @Composable @OptIn(ExperimentalMaterial3Api::class) private fun TimePicker24HourPreview()</ID>
+    <ID>UnusedPrivateMember:ScheduleScreen.kt$@Preview(showBackground = true, name = "TimePicker - Clock Style") @Composable @OptIn(ExperimentalMaterial3Api::class) private fun TimePickerClockPreview()</ID>
+    <ID>UnusedPrivateMember:ScheduleScreen.kt$@Preview(showBackground = true, name = "TimePickerDialog - Step 2") @Composable @OptIn(ExperimentalMaterial3Api::class) private fun TimePickerDialogPreview()</ID>
+    <ID>UnusedPrivateMember:SchedulesScreen.kt$@Preview(showBackground = true, name = "ScheduleItem - Completed") @Composable @OptIn(kotlin.time.ExperimentalTime::class) private fun ScheduleItemCompletedPreview()</ID>
+    <ID>UnusedPrivateMember:SchedulesScreen.kt$@Preview(showBackground = true, name = "ScheduleItem - Future") @Composable @OptIn(kotlin.time.ExperimentalTime::class) private fun ScheduleItemFuturePreview()</ID>
+    <ID>UnusedPrivateMember:SchedulesScreen.kt$@Preview(showBackground = true, name = "ScheduleItem - Pending") @Composable @OptIn(kotlin.time.ExperimentalTime::class) private fun ScheduleItemPendingPreview()</ID>
+    <ID>UnusedPrivateMember:SchedulesScreen.kt$@Preview(showBackground = true, name = "SchedulesScreen - Empty") @Composable private fun SchedulesScreenEmptyPreview()</ID>
+    <ID>UnusedPrivateMember:SchedulesScreen.kt$@Preview(showBackground = true, name = "SchedulesScreen - Error") @Composable private fun SchedulesScreenErrorPreview()</ID>
+    <ID>UnusedPrivateMember:SchedulesScreen.kt$@Preview(showBackground = true, name = "SchedulesScreen - Idle State") @Composable private fun SchedulesScreenIdlePreview()</ID>
+    <ID>UnusedPrivateMember:SchedulesScreen.kt$@Preview(showBackground = true, name = "SchedulesScreen - Loading") @Composable private fun SchedulesScreenLoadingPreview()</ID>
+    <ID>UnusedPrivateMember:SchedulesScreen.kt$@Preview(showBackground = true, name = "SchedulesScreen - With Error Message") @Composable @OptIn(kotlin.time.ExperimentalTime::class) private fun SchedulesScreenWithErrorMessagePreview()</ID>
+    <ID>UnusedPrivateMember:SchedulesScreen.kt$@Preview(showBackground = true, name = "SchedulesScreen - With Loading Indicator") @Composable @OptIn(kotlin.time.ExperimentalTime::class) private fun SchedulesScreenWithLoadingIndicatorPreview()</ID>
+    <ID>UnusedPrivateMember:SchedulesScreen.kt$@Preview(showBackground = true, name = "SchedulesScreen - With Schedules") @Composable @OptIn(kotlin.time.ExperimentalTime::class) private fun SchedulesScreenWithDataPreview()</ID>
+    <ID>UnusedPrivateMember:SchedulesScreen.kt$@Preview(showBackground = true, name = "SchedulesScreen - With Success Message") @Composable @OptIn(kotlin.time.ExperimentalTime::class) private fun SchedulesScreenWithSuccessMessagePreview()</ID>
+    <ID>UnusedPrivateProperty:ScheduleViewModel.kt$ScheduleViewModel$private val savedStateHandle: SavedStateHandle</ID>
+  </CurrentIssues>
+</SmellBaseline>

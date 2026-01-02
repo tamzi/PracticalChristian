@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>LongMethod:BookScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun BookScreenContent( state: BookUiState, onNavigateBackClicked: () -&gt; Unit )</ID>
+    <ID>LongMethod:BooksScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun BooksScreenContent( state: BooksScreenUiState, onChangeViewTypeClicked: () -&gt; Unit, onBookClicked: (Int) -&gt; Unit, onNavigateToHome: () -&gt; Unit = {}, onNavigateToNotes: () -&gt; Unit = {} )</ID>
+    <ID>MaxLineLength:BookScreen.kt$colors = CardDefaults.cardColors(containerColor = SacramentTheme.colors.surfaces.background)</ID>
+    <ID>MaximumLineLength:BookScreen.kt$ </ID>
+    <ID>NoUnusedImports:BookViewModel.kt$com.practicalchristian.app.feature.books.BookViewModel.kt</ID>
+    <ID>UnusedPrivateMember:BookScreen.kt$@Preview(showBackground = true, name = "BookScreen - Error (No book name)") @Composable private fun BookScreenContentErrorNoNamePreview()</ID>
+    <ID>UnusedPrivateMember:BookScreen.kt$@Preview(showBackground = true, name = "BookScreen - Error") @Composable private fun BookScreenContentErrorPreview()</ID>
+    <ID>UnusedPrivateMember:BookScreen.kt$@Preview(showBackground = true, name = "BookScreen - Loading") @Composable private fun BookScreenContentLoadingPreview()</ID>
+    <ID>UnusedPrivateMember:BookScreen.kt$@Preview(showBackground = true, name = "BookScreen - Success (1 chapter)") @Composable private fun BookScreenContentSuccessSmallPreview()</ID>
+    <ID>UnusedPrivateMember:BookScreen.kt$@Preview(showBackground = true, name = "BookScreen - Success (22 chapters)") @Composable private fun BookScreenContentSuccessMediumPreview()</ID>
+    <ID>UnusedPrivateMember:BookScreen.kt$@Preview(showBackground = true, name = "BookScreen - Success (50 chapters)") @Composable private fun BookScreenContentSuccessPreview()</ID>
+    <ID>UnusedPrivateMember:BooksScreen.kt$@Preview(showBackground = true, name = "BookItem - Grid View") @Composable private fun BookItemGridPreview()</ID>
+    <ID>UnusedPrivateMember:BooksScreen.kt$@Preview(showBackground = true, name = "BookItem - List View") @Composable private fun BookItemListPreview()</ID>
+    <ID>UnusedPrivateMember:BooksScreen.kt$@Preview(showBackground = true, name = "BooksScreen - Empty") @Composable private fun BooksScreenEmptyPreview()</ID>
+    <ID>UnusedPrivateMember:BooksScreen.kt$@Preview(showBackground = true, name = "BooksScreen - Error") @Composable private fun BooksScreenErrorPreview()</ID>
+    <ID>UnusedPrivateMember:BooksScreen.kt$@Preview(showBackground = true, name = "BooksScreen - Grid View with Books") @Composable private fun BooksScreenGridViewPreview()</ID>
+    <ID>UnusedPrivateMember:BooksScreen.kt$@Preview(showBackground = true, name = "BooksScreen - Idle State") @Composable private fun BooksScreenIdlePreview()</ID>
+    <ID>UnusedPrivateMember:BooksScreen.kt$@Preview(showBackground = true, name = "BooksScreen - List View with Books") @Composable private fun BooksScreenListViewPreview()</ID>
+    <ID>UnusedPrivateMember:BooksScreen.kt$@Preview(showBackground = true, name = "BooksScreen - Loading") @Composable private fun BooksScreenLoadingPreview()</ID>
+    <ID>UnusedPrivateMember:BooksScreen.kt$@Preview(showBackground = true, name = "BooksScreen - Single Book") @Composable private fun BooksScreenSingleBookPreview()</ID>
+    <ID>UnusedPrivateProperty:BookViewModel.kt$BookViewModel$private val savedStateHandle: SavedStateHandle</ID>
+  </CurrentIssues>
+</SmellBaseline>

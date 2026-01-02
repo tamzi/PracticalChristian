@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>UnusedPrivateMember:LandingScreen.kt$@Preview(showBackground = true, name = "LandingScreen - Error State") @Composable private fun LandingScreenErrorPreview()</ID>
+    <ID>UnusedPrivateMember:LandingScreen.kt$@Preview(showBackground = true, name = "LandingScreen - Idle State") @Composable private fun LandingScreenIdlePreview()</ID>
+  </CurrentIssues>
+</SmellBaseline>

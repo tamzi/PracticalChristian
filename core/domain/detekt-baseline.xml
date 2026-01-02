@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>ForbiddenComment:AppError.kt$AppError$* Represents different types of errors that can occur in the application * TODO: create a Generic fallback error messages enums</ID>
+    <ID>LongParameterList:NotesRepository.kt$NotesRepository$( title: String, content: String, type: NoteType, tags: List&lt;TagDomain&gt;, startBook: Int, startChapter: Int, startVerse: Int, endBook: Int, endChapter: Int, endVerse: Int, )</ID>
+  </CurrentIssues>
+</SmellBaseline>

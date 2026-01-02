@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>ForbiddenComment:HomeScreen.kt$/* TODO: Navigate to plan details */</ID>
+    <ID>ForbiddenComment:HomeScreen.kt$/* TODO: Navigate to plans list */</ID>
+    <ID>ForbiddenComment:HomeViewModel.kt$HomeViewModel$* Load initial data for the home screen. * TODO: Replace with actual repository calls.</ID>
+    <ID>LongMethod:HomeScreen.kt$@Composable fun HomeScreenContent( state: HomeScreenUiState, onNavigateToProfile: () -&gt; Unit = {}, onNavigateToSchedules: () -&gt; Unit = {}, onNavigateToBooks: () -&gt; Unit = {}, onNavigateToNotes: () -&gt; Unit = {}, onNavigateToSettings: () -&gt; Unit = {}, onDaySelected: (LocalDate) -&gt; Unit = {}, navigateBack: () -&gt; Unit = {}, )</ID>
+    <ID>LongMethod:HomeScreen.kt$@Composable private fun CurrentReadingSection( reading: ReadingProgress, onContinueReading: () -&gt; Unit )</ID>
+    <ID>LongMethod:HomeScreen.kt$@Composable private fun HeaderSection( userName: String, profilePictureUri: String?, onProfileClick: () -&gt; Unit, onNotificationClick: () -&gt; Unit )</ID>
+    <ID>LongMethod:HomeScreen.kt$@Composable private fun PlanCard( plan: ReadingPlan, onClick: () -&gt; Unit )</ID>
+    <ID>LongMethod:HomeScreen.kt$@Composable private fun YourProgressSection( daysStreak: Int, chaptersCompleted: Int )</ID>
+    <ID>LongMethod:HomeScreen.kt$@Preview(showBackground = true, name = "Home Screen - Full") @Composable fun HomeScreenPreview()</ID>
+    <ID>LongParameterList:HomeScreen.kt$( state: HomeScreenUiState, onNavigateToProfile: () -&gt; Unit = {}, onNavigateToSchedules: () -&gt; Unit = {}, onNavigateToBooks: () -&gt; Unit = {}, onNavigateToNotes: () -&gt; Unit = {}, onNavigateToSettings: () -&gt; Unit = {}, onDaySelected: (LocalDate) -&gt; Unit = {}, navigateBack: () -&gt; Unit = {}, )</ID>
+    <ID>LongParameterList:HomeScreen.kt$( title: String, subtitle: String, emoji: String, backgroundColor: Color, modifier: Modifier = Modifier, onClick: () -&gt; Unit )</ID>
+    <ID>NoTrailingSpaces:HomeViewModel.kt$HomeViewModel$ </ID>
+    <ID>StringTemplate:HomeScreen.kt$${userName}</ID>
+    <ID>TooManyFunctions:HomeScreen.kt$com.practicalchristian.app.feature.home.HomeScreen.kt</ID>
+  </CurrentIssues>
+</SmellBaseline>

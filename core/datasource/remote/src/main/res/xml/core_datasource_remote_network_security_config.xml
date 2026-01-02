@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">api.dailyapp.com</domain>
+        <domain includeSubdomains="true">secure.dailyapp.com</domain>
+    </domain-config>
+    
+    <!-- Allow cleartext traffic for localhost in debug builds -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">10.0.2.2</domain>
+    </domain-config>
+
+    <!-- Certificate pinning can be added here once real pins are available. -->
+</network-security-config>

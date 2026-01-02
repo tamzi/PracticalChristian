@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>LongMethod:TagsScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun TagsScreenContent( state: TagsScreenUiState, onClickBack: () -&gt; Unit, onClickToggleBottomSheetState: (Boolean) -&gt; Unit, onClickTagAction: (ItemAction) -&gt; Unit, onChangeTagName: (String) -&gt; Unit, onChangeTagColor: (String) -&gt; Unit, onClickGenerateColors: () -&gt; Unit, onClickTag: (TagDomain) -&gt; Unit, )</ID>
+    <ID>LongParameterList:TagsScreen.kt$( state: TagsScreenUiState, onClickBack: () -&gt; Unit, onClickToggleBottomSheetState: (Boolean) -&gt; Unit, onClickTagAction: (ItemAction) -&gt; Unit, onChangeTagName: (String) -&gt; Unit, onChangeTagColor: (String) -&gt; Unit, onClickGenerateColors: () -&gt; Unit, onClickTag: (TagDomain) -&gt; Unit, )</ID>
+    <ID>MaxLineLength:TagsScreen.kt$onClick = { onClickTagAction.invoke(if (state.tagCanBeUpdated) ItemAction.UPDATE else ItemAction.CREATE) }</ID>
+    <ID>MaxLineLength:TagsViewModel.kt$TagsViewModel$((targetR - r) * (targetR - r) + (targetG - g) * (targetG - g) + (targetB - b) * (targetB - b)).toDouble()</ID>
+    <ID>MaximumLineLength:TagsScreen.kt$ </ID>
+    <ID>MaximumLineLength:TagsViewModel.kt$TagsViewModel$ </ID>
+    <ID>ReturnCount:TagsViewModel.kt$TagsViewModel$private fun validateAndSanitizeColor(color: String): String</ID>
+    <ID>TooManyFunctions:TagsViewModel.kt$TagsViewModel : StatefulViewModel</ID>
+  </CurrentIssues>
+</SmellBaseline>

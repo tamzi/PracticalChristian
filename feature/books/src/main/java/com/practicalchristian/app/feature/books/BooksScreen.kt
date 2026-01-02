@@ -1,0 +1,388 @@
+package com.practicalchristian.app.feature.books
+
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.List
+import androidx.compose.material.icons.rounded.GridOn
+import androidx.compose.material.icons.rounded.Warning
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.practicalchristian.app.core.domain.models.Book
+import com.practicalchristian.app.core.ui.components.BottomNavScreen
+import com.practicalchristian.app.core.ui.components.SharedBottomNavigationBar
+import com.practicalchristian.app.core.ui.helpers.UiListState
+import com.practicalchristian.app.core.ui.helpers.UiSuccessState
+import com.practicalchristian.app.core.ui.helpers.ViewType
+import com.practicalchristian.app.core.ui.helpers.sentence
+import com.practicalchristian.app.core.ui.navigation.AppDestination
+import com.practicalchristian.app.core.ui.navigation.AppNavigator
+import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.primitives.SacramentDivider
+import com.sacrament.ui.patterns.SacramentEmptyState
+import com.sacrament.ui.foundation.Bar
+import com.sacrament.ui.foundation.SacramentTheme
+
+/**
+ * Books screen - List of books.
+ */
+@Composable
+fun BooksScreen(
+    navigator: AppNavigator,
+    viewModel: BooksViewModel = hiltViewModel()
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    BooksScreenContent(
+        state = state,
+        onChangeViewTypeClicked = viewModel::toggleViewType,
+        onBookClicked = { id ->
+            navigator.navigate(AppDestination.BookDetails(bookId = id))
+        },
+        onNavigateToHome = { navigator.navigate(AppDestination.Home) },
+        onNavigateToNotes = { navigator.navigate(AppDestination.Notes) }
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BooksScreenContent(
+    state: BooksScreenUiState,
+    onChangeViewTypeClicked: () -> Unit,
+    onBookClicked: (Int) -> Unit,
+    onNavigateToHome: () -> Unit = {},
+    onNavigateToNotes: () -> Unit = {}
+) {
+    val spacing = SacramentTheme.spacing
+    Scaffold(
+        topBar = {
+            TopAppBar(title = { Text(text = "Books") }, actions = {
+                IconButton(onClick = onChangeViewTypeClicked) {
+                    Icon(
+                        imageVector = when (state.view) {
+                            ViewType.GRID -> Icons.AutoMirrored.Rounded.List
+                            ViewType.LIST -> Icons.Rounded.GridOn
+                        }, contentDescription = "grid"
+                    )
+                }
+            })
+        },
+        bottomBar = {
+            SharedBottomNavigationBar(
+                selectedScreen = BottomNavScreen.BOOKS,
+                onHomeClick = onNavigateToHome,
+                onBooksClick = { /* Already on Books */ },
+                onNotesClick = onNavigateToNotes
+            )
+        },
+        containerColor = SacramentTheme.colors.surfaces.background,
+    ) { values ->
+        Column(
+            modifier = Modifier.padding(values)
+        ) {
+            when (val result = state.listState) {
+                is UiListState.Error -> {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Warning,
+                            contentDescription = "error",
+                            tint = SacramentTheme.colors.semantic.error,
+                            modifier = Modifier
+                                .padding(bottom = spacing.padding12)
+                                .width(48.dp)
+                                .height(48.dp)
+                        )
+                        Text(
+                            text = "Error",
+                            color = SacramentTheme.colors.semantic.error,
+                            style = SacramentTheme.typography.titleLarge,
+                            textAlign = TextAlign.Center,
+                        )
+                        Text(
+                            text = result.message,
+                            color = SacramentTheme.colors.semantic.error,
+                            style = SacramentTheme.typography.bodyLarge,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.padding(
+                                top = spacing.padding8,
+                                start = spacing.padding32,
+                                end = spacing.padding32
+                            )
+                        )
+                    }
+                }
+
+                UiListState.Idle -> {
+                    SacramentEmptyState(
+                        icon = Icons.AutoMirrored.Rounded.List,
+                        title = "Welcome",
+                        description = "Please wait while we're setting things up",
+                        contentDescription = "error fetching results"
+                    )
+                }
+
+                UiListState.Loading -> {
+                    SacramentCenteredColumn(modifier = Modifier.fillMaxSize()) {
+                        CircularProgressIndicator()
+                    }
+                }
+
+                is UiListState.Success<List<Book>> -> {
+                    when (val success = result.data) {
+                        UiSuccessState.Empty -> {
+                            SacramentEmptyState(
+                                icon = Icons.AutoMirrored.Rounded.List,
+                                title = "Empty",
+                                description = "No Books found.",
+                                contentDescription = "empty icon"
+                            )
+                        }
+
+                        is UiSuccessState.Data<List<Book>> -> {
+                            val list = success.data
+                            AnimatedContent(state.view, label = "") { type ->
+                                when (type) {
+                                    ViewType.GRID -> {
+                                        LazyVerticalGrid(columns = GridCells.Fixed(3)) {
+                                            items(list.size) { index ->
+                                                val book = list[index]
+                                                BookItem(
+                                                    isGrid = true,
+                                                    book = book,
+                                                    isFirst = index == 0,
+                                                    isLast = index == list.lastIndex,
+                                                    onBookClicked = onBookClicked,
+                                                )
+                                            }
+                                        }
+                                    }
+
+                                    ViewType.LIST -> {
+                                        LazyColumn {
+                                            items(list.size) { index ->
+                                                val book = list[index]
+                                                BookItem(
+                                                    isGrid = false,
+                                                    book = book,
+                                                    isFirst = index == 0,
+                                                    isLast = index == list.lastIndex,
+                                                    onBookClicked = onBookClicked,
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun BookItem(
+    isGrid: Boolean,
+    book: Book,
+    isFirst: Boolean,
+    isLast: Boolean,
+    onBookClicked: (Int) -> Unit,
+) {
+    val spacing = SacramentTheme.spacing
+    val height = if (isGrid) 100.dp else 75.dp
+    Card(
+        modifier = Modifier.height(height),
+        shape = RoundedCornerShape(0.dp),
+        colors = CardDefaults.cardColors(containerColor = SacramentTheme.colors.surfaces.background),
+        onClick = { onBookClicked.invoke(book.id) }) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            SacramentDivider(
+                modifier = Modifier.align(Alignment.TopCenter)
+            )
+            SacramentDivider(
+                modifier = Modifier
+                    .width(1.dp)
+                    .fillMaxHeight()
+                    .align(Alignment.CenterEnd)
+            )
+            SacramentDivider(
+                modifier = Modifier
+                    .width(1.dp)
+                    .fillMaxHeight()
+                    .align(Alignment.CenterStart)
+            )
+
+            SacramentDivider(
+                modifier = Modifier.align(Alignment.BottomCenter)
+            )
+            val padding = if (isGrid) spacing.padding16 else 0.dp
+            Text(
+                modifier = Modifier
+                    .padding(start = spacing.padding16, bottom = padding)
+                    .align(alignment = if (isGrid) Alignment.BottomStart else Alignment.CenterStart),
+                text = book.name.sentence
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "BooksScreen - Loading")
+@Composable
+private fun BooksScreenLoadingPreview() {
+    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        BooksScreenContent(
+            state = BooksScreenUiState(
+            view = ViewType.LIST, listState = UiListState.Loading
+        ), onChangeViewTypeClicked = {}, onBookClicked = {})
+    }
+}
+
+@Preview(showBackground = true, name = "BooksScreen - Empty")
+@Composable
+private fun BooksScreenEmptyPreview() {
+    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        BooksScreenContent(
+            state = BooksScreenUiState(
+            view = ViewType.LIST, listState = UiListState.Success(UiSuccessState.Empty)
+        ), onChangeViewTypeClicked = {}, onBookClicked = {})
+    }
+}
+
+@Preview(showBackground = true, name = "BooksScreen - Error")
+@Composable
+private fun BooksScreenErrorPreview() {
+    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        BooksScreenContent(
+            state = BooksScreenUiState(
+            view = ViewType.LIST,
+            listState = UiListState.Error("Failed to load books. Please check your internet connection.")
+        ), onChangeViewTypeClicked = {}, onBookClicked = {})
+    }
+}
+
+@Preview(showBackground = true, name = "BooksScreen - List View with Books")
+@Composable
+private fun BooksScreenListViewPreview() {
+    val sampleBooks = listOf(
+        Book(id = 1, name = "Genesis", chapters = 50),
+        Book(id = 2, name = "Exodus", chapters = 40),
+        Book(id = 3, name = "Leviticus", chapters = 27),
+        Book(id = 4, name = "Numbers", chapters = 36),
+        Book(id = 5, name = "Deuteronomy", chapters = 34)
+    )
+
+    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        BooksScreenContent(
+            state = BooksScreenUiState(
+            view = ViewType.LIST, listState = UiListState.Success(UiSuccessState.Data(sampleBooks))
+        ), onChangeViewTypeClicked = {}, onBookClicked = {})
+    }
+}
+
+@Preview(showBackground = true, name = "BooksScreen - Grid View with Books")
+@Composable
+private fun BooksScreenGridViewPreview() {
+    val sampleBooks = listOf(
+        Book(id = 1, name = "Genesis", chapters = 50),
+        Book(id = 2, name = "Exodus", chapters = 40),
+        Book(id = 3, name = "Leviticus", chapters = 27),
+        Book(id = 4, name = "Numbers", chapters = 36),
+        Book(id = 5, name = "Deuteronomy", chapters = 34),
+        Book(id = 6, name = "Joshua", chapters = 24),
+        Book(id = 7, name = "Judges", chapters = 21),
+        Book(id = 8, name = "Ruth", chapters = 4),
+        Book(id = 9, name = "1 Samuel", chapters = 31)
+    )
+
+    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        BooksScreenContent(
+            state = BooksScreenUiState(
+            view = ViewType.GRID, listState = UiListState.Success(UiSuccessState.Data(sampleBooks))
+        ), onChangeViewTypeClicked = {}, onBookClicked = {})
+    }
+}
+
+@Preview(showBackground = true, name = "BooksScreen - Single Book")
+@Composable
+private fun BooksScreenSingleBookPreview() {
+    val singleBook = listOf(
+        Book(id = 1, name = "Psalm", chapters = 150)
+    )
+
+    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        BooksScreenContent(
+            state = BooksScreenUiState(
+            view = ViewType.LIST, listState = UiListState.Success(UiSuccessState.Data(singleBook))
+        ), onChangeViewTypeClicked = {}, onBookClicked = {})
+    }
+}
+
+@Preview(showBackground = true, name = "BooksScreen - Idle State")
+@Composable
+private fun BooksScreenIdlePreview() {
+    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        BooksScreenContent(
+            state = BooksScreenUiState(
+            view = ViewType.LIST, listState = UiListState.Idle
+        ), onChangeViewTypeClicked = {}, onBookClicked = {})
+    }
+}
+
+@Preview(showBackground = true, name = "BookItem - Grid View")
+@Composable
+private fun BookItemGridPreview() {
+    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        BookItem(
+            isGrid = true,
+            book = Book(id = 1, name = "Genesis", chapters = 50),
+            isFirst = true,
+            isLast = false,
+            onBookClicked = {}
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "BookItem - List View")
+@Composable
+private fun BookItemListPreview() {
+    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        BookItem(
+            isGrid = false,
+            book = Book(id = 1, name = "Exodus", chapters = 40),
+            isFirst = false,
+            isLast = false,
+            onBookClicked = {}
+        )
+    }
+}

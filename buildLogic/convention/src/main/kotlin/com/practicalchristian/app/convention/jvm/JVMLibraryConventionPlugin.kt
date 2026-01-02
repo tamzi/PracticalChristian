@@ -1,0 +1,16 @@
+package com.practicalchristian.app.convention.jvm
+
+import com.practicalchristian.app.convention.android.configureKotlinJvm
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+
+class JvmLibraryConventionPlugin : Plugin<Project> {
+    override fun apply(target: Project) {
+        with(target) {
+            with(pluginManager) {
+                apply("org.jetbrains.kotlin.jvm")
+            }
+            configureKotlinJvm()
+        }
+    }
+}

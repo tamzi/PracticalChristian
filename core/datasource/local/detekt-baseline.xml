@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>Filename:PreferencesSource.kt$com.practicalchristian.app.core.localdatasource.preferences.source.PreferencesSource.kt</ID>
+    <ID>Filename:PreferencesSourceImpl.kt$com.practicalchristian.app.core.localdatasource.preferences.source.PreferencesSourceImpl.kt</ID>
+    <ID>ForbiddenComment:Sequence.kt$// TODO: The sequence will be replaced in a BIble JSON update. this place holder will be removed</ID>
+    <ID>MatchingDeclarationName:PreferencesSource.kt$PreferenceSource</ID>
+    <ID>MatchingDeclarationName:PreferencesSourceImpl.kt$PreferenceSourceImpl : PreferenceSource</ID>
+    <ID>PackageName:ScheduleEntryDao.kt$package com.practicalchristian.app.core.localdatasource.sources.schedule_entry</ID>
+    <ID>PackageName:ScheduleEntrySource.kt$package com.practicalchristian.app.core.localdatasource.sources.schedule_entry</ID>
+    <ID>PackageName:ScheduleEntrySourceImpl.kt$package com.practicalchristian.app.core.localdatasource.sources.schedule_entry</ID>
+    <ID>PackageNaming:ScheduleEntryDao.kt$package com.practicalchristian.app.core.localdatasource.sources.schedule_entry</ID>
+    <ID>PackageNaming:ScheduleEntrySource.kt$package com.practicalchristian.app.core.localdatasource.sources.schedule_entry</ID>
+    <ID>PackageNaming:ScheduleEntrySourceImpl.kt$package com.practicalchristian.app.core.localdatasource.sources.schedule_entry</ID>
+    <ID>TooGenericExceptionCaught:SafeTransaction.kt$e: Exception</ID>
+    <ID>TooGenericExceptionThrown:TagsSourceImpl.kt$TagsSourceImpl$throw Exception("No function found for getting tag by id")</ID>
+    <ID>TooManyFunctions:BaseSource.kt$BaseSource&lt;T : BaseCache&lt;*&gt;, R, S&gt;</ID>
+    <ID>UnusedPrivateProperty:BookSourcesImpl.kt$BookSourcesImpl$private val dispatcher: CoroutineDispatcher = Dispatchers.IO</ID>
+  </CurrentIssues>
+</SmellBaseline>

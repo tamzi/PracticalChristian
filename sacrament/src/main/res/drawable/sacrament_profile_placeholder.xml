@@ -1,0 +1,28 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Background circle -->
+    <path
+        android:fillColor="#E3F2FD"
+        android:pathData="M50,50m-50,0a50,50 0,1 1,100 0a50,50 0,1 1,-100 0" />
+
+    <!-- Person icon -->
+    <group
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:pivotX="50"
+        android:pivotY="50">
+        <!-- Head -->
+        <path
+            android:fillColor="#90CAF9"
+            android:pathData="M50,30m-12,0a12,12 0,1 1,24 0a12,12 0,1 1,-24 0" />
+
+        <!-- Body -->
+        <path
+            android:fillColor="#90CAF9"
+            android:pathData="M50,50c-15,0 -25,10 -25,22v8c0,2 1.5,3.5 3.5,3.5h43c2,0 3.5,-1.5 3.5,-3.5v-8c0,-12 -10,-22 -25,-22z" />
+    </group>
+</vector>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "573382057490",
+    "project_id": "daily-254",
+    "storage_bucket": "daily-254.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573382057490:android:b62ad5efa6879a114982cb",
+        "android_client_info": {
+          "package_name": "com.practicalchristian.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASIlfWaCQDoylbsgTAR-VeRBkLBpidjJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>LongMethod:OnboardingScreen.kt$@OptIn(ExperimentalFoundationApi::class) @Composable fun OnboardingScreenContent( isLoading: Boolean, onCreateAccount: () -&gt; Unit )</ID>
+    <ID>LongParameterList:OnboardingScreen.kt$( title: String, description: String, totalPages: Int, currentPage: Int, titleColor: Color, bodyColor: Color, accentColor: Color, isLoading: Boolean, onNext: () -&gt; Unit, modifier: Modifier = Modifier )</ID>
+    <ID>NoUnusedImports:OnboardingScreen.kt$com.practicalchristian.app.feature.onboarding.OnboardingScreen.kt</ID>
+    <ID>UnusedPrivateMember:OnboardingScreen.kt$@Composable @Preview(showBackground = true) private fun OnboardingScreenPreview()</ID>
+  </CurrentIssues>
+</SmellBaseline>

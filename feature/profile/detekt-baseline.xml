@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>LongMethod:ProfileScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun ProfileScreenContent( state: ProfileScreenUiState, onNavigateToTags: () -&gt; Unit, onToggleDarkModeClicked: () -&gt; Unit, onNavigateBackClicked: () -&gt; Unit, onProfilePictureSelected: (String?) -&gt; Unit, versionName: String = LocalContext.current.versionName )</ID>
+    <ID>LongParameterList:ProfileScreen.kt$( state: ProfileScreenUiState, onNavigateToTags: () -&gt; Unit, onToggleDarkModeClicked: () -&gt; Unit, onNavigateBackClicked: () -&gt; Unit, onProfilePictureSelected: (String?) -&gt; Unit, versionName: String = LocalContext.current.versionName )</ID>
+    <ID>UnusedPrivateMember:ProfileScreen.kt$@Preview(showBackground = true) @Composable private fun ProfileScreenContentPreview()</ID>
+    <ID>UnusedPrivateMember:ProfileScreen.kt$@Preview(showBackground = true, name = "Dark Mode") @Composable private fun ProfileScreenContentDarkPreview()</ID>
+    <ID>UnusedPrivateMember:ProfileScreen.kt$@Preview(showBackground = true, name = "With Profile Picture") @Composable private fun ProfileScreenContentWithPicturePreview()</ID>
+  </CurrentIssues>
+</SmellBaseline>

@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>ImplicitDefaultLocale:EditNoteViewModel.kt$String.format("#%06X", 0xFFFFFF and generateRgb())</ID>
+    <ID>LongMethod:EditNoteScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun EditNoteScreenContent( state: EditNoteScreenUiState, onClickNavigateBack: () -&gt; Unit, onValueChange: (String, EditNoteValue) -&gt; Unit, onClickTag: (TagDomain) -&gt; Unit, onTagCreateToggle: () -&gt; Unit, onToggleBottomSheetTags: () -&gt; Unit, onChangeTagName: (String) -&gt; Unit, onClickTagColor: (String) -&gt; Unit, onClickTagGenerateColors: () -&gt; Unit, onClickTagInsert: () -&gt; Unit, onClickNoteSave: (String) -&gt; Unit, )</ID>
+    <ID>LongMethod:EditNoteScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun TagsBottomSheet( name: String = "", color: String = "", isEnabled: Boolean, isBottomSheetVisible: Boolean, isCreatingTag: Boolean, tagsState: UiListState&lt;List&lt;TagDomain&gt;&gt;, tags: List&lt;TagDomain&gt;, colors: List&lt;String&gt;, onTagCreateToggle: () -&gt; Unit, onTagClicked: (TagDomain) -&gt; Unit, onDismissBottomSheet: () -&gt; Unit, onChangeTagName: (String) -&gt; Unit, onClickTagColor: (String) -&gt; Unit, onClickTagGenerateColors: () -&gt; Unit, onClickTagInsert: () -&gt; Unit, )</ID>
+    <ID>LongMethod:NotesScreen.kt$@OptIn(ExperimentalFoundationApi::class) @Composable fun NotesScreenContent( state: NotesScreenUiState, onNavigateToNote: (String) -&gt; Unit, onNavigateToNewNote: () -&gt; Unit, onNavigateToHome: () -&gt; Unit = {}, onNavigateToBooks: () -&gt; Unit = {} )</ID>
+    <ID>LongParameterList:EditNoteScreen.kt$( name: String = "", color: String = "", isEnabled: Boolean, isBottomSheetVisible: Boolean, isCreatingTag: Boolean, tagsState: UiListState&lt;List&lt;TagDomain&gt;&gt;, tags: List&lt;TagDomain&gt;, colors: List&lt;String&gt;, onTagCreateToggle: () -&gt; Unit, onTagClicked: (TagDomain) -&gt; Unit, onDismissBottomSheet: () -&gt; Unit, onChangeTagName: (String) -&gt; Unit, onClickTagColor: (String) -&gt; Unit, onClickTagGenerateColors: () -&gt; Unit, onClickTagInsert: () -&gt; Unit, )</ID>
+    <ID>LongParameterList:EditNoteScreen.kt$( state: EditNoteScreenUiState, onClickNavigateBack: () -&gt; Unit, onValueChange: (String, EditNoteValue) -&gt; Unit, onClickTag: (TagDomain) -&gt; Unit, onTagCreateToggle: () -&gt; Unit, onToggleBottomSheetTags: () -&gt; Unit, onChangeTagName: (String) -&gt; Unit, onClickTagColor: (String) -&gt; Unit, onClickTagGenerateColors: () -&gt; Unit, onClickTagInsert: () -&gt; Unit, onClickNoteSave: (String) -&gt; Unit, )</ID>
+    <ID>MaxLineLength:EditNoteScreen.kt$description = "You don't have any tags.\nClick on the button below to create"</ID>
+    <ID>MaxLineLength:NoteScreen.kt$content = "This is a sample note content with some rich text formatting. It demonstrates how the note appears in the screen."</ID>
+    <ID>MaxLineLength:NotesScreen.kt$content = "Reflecting on the amazing grace that God shows us daily. Even when we fall short, His love remains constant and unchanging."</ID>
+    <ID>MaxLineLength:NotesScreen.kt$content = "The importance of showing love to others, especially those who are difficult to love. This is a core teaching of Christ."</ID>
+    <ID>MaxLineLength:NotesScreen.kt$content = "Today I learned about having faith even when things seem uncertain. God's plan is always perfect, even when we cannot see the full picture."</ID>
+    <ID>MaxLineLength:NotesScreen.kt$style = SacramentTheme.typography.bodySmall.copy(fontWeight = FontWeight.Normal)</ID>
+    <ID>MaxLineLength:NotesScreen.kt$style = SacramentTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold)</ID>
+    <ID>MaximumLineLength:EditNoteScreen.kt$ </ID>
+    <ID>MaximumLineLength:NoteScreen.kt$ </ID>
+    <ID>MaximumLineLength:NotesScreen.kt$ </ID>
+    <ID>NoUnusedImports:NoteScreen.kt$com.practicalchristian.app.feature.notes.NoteScreen.kt</ID>
+    <ID>TooManyFunctions:EditNoteViewModel.kt$EditNoteViewModel : StatefulViewModel</ID>
+    <ID>UnusedPrivateMember:NotesScreen.kt$@Preview(showBackground = true, name = "NotesScreen - Empty") @Composable private fun NotesScreenEmptyPreview()</ID>
+    <ID>UnusedPrivateMember:NotesScreen.kt$@Preview(showBackground = true, name = "NotesScreen - Error") @Composable private fun NotesScreenErrorPreview()</ID>
+    <ID>UnusedPrivateMember:NotesScreen.kt$@Preview(showBackground = true, name = "NotesScreen - Idle State") @Composable private fun NotesScreenIdlePreview()</ID>
+    <ID>UnusedPrivateMember:NotesScreen.kt$@Preview(showBackground = true, name = "NotesScreen - Loading") @Composable private fun NotesScreenLoadingPreview()</ID>
+    <ID>UnusedPrivateMember:NotesScreen.kt$@Preview(showBackground = true, name = "NotesScreen - Single Note") @Composable private fun NotesScreenSingleNotePreview()</ID>
+    <ID>UnusedPrivateMember:NotesScreen.kt$@Preview(showBackground = true, name = "NotesScreen - With Notes") @Composable private fun NotesScreenWithDataPreview()</ID>
+    <ID>UnusedPrivateProperty:EditNoteViewModel.kt$EditNoteViewModel$private val savedStateHandle: SavedStateHandle</ID>
+    <ID>UnusedPrivateProperty:NoteViewModel.kt$NoteViewModel$private val savedStateHandle: SavedStateHandle</ID>
+  </CurrentIssues>
+</SmellBaseline>

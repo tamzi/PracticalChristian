@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>Filename:ScreenModelHelpers.kt$com.practicalchristian.app.core.ui.helpers.ScreenModelHelpers.kt</ID>
+    <ID>MatchingDeclarationName:BottomNavigationBar.kt$BottomNavScreen</ID>
+    <ID>MatchingDeclarationName:ScreenModelHelpers.kt$StatefulViewModel&lt;T&gt; : ViewModel</ID>
+  </CurrentIssues>
+</SmellBaseline>
