@@ -16,11 +16,11 @@ Single source of truth for project tasks, priorities, and status.
 <summary>EPIC: Design system setup + enforcement</summary>
 
 
-- [ ] STORY: Patterns + previews + test hooks
-  - [ ] TASK: Implement patterns (ScreenScaffold, EmptyState, ErrorState, LoadingState).
-  - [ ] TASK: Add preview infrastructure (PreviewTheme, SampleModels, PreviewParameterProviders).
+- [x] STORY: Patterns + previews + test hooks
+  - [x] TASK: Implement patterns (ScreenScaffold, EmptyState, ErrorState, LoadingState).
+  - [x] TASK: Add preview infrastructure (PreviewTheme, SampleModels, PreviewParameterProviders).
   - [ ] TASK: Standardize component API order + slot APIs; co-locate Defaults/Tokens where needed.
-  - [ ] TASK: Add TestTags + semantics defaults + accessibility minimum touch targets.
+  - [x] TASK: Add TestTags + semantics defaults + accessibility minimum touch targets.
 
 - [ ] STORY: Design system catalog app + docs
   - [ ] TASK: Align design system module naming/structure (`sacrament`) and update settings + docs + dependencies accordingly.
