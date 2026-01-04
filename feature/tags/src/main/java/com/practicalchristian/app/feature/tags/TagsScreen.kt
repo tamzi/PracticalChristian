@@ -300,8 +300,8 @@ fun TagsScreenContent(
                     SacramentEmptyState(
                         icon = Icons.AutoMirrored.Rounded.List,
                         title = "Welcome",
-                        description = "Please wait while we're fetching your tags",
-                        contentDescription = "idle fetching results"
+                        contentDescription = "idle fetching results",
+                        description = "Please wait while we're fetching your tags"
                     )
                 }
 
@@ -317,15 +317,16 @@ fun TagsScreenContent(
                             SacramentEmptyState(
                                 icon = Icons.Rounded.Tag,
                                 title = "Empty",
+                                contentDescription = "empty icon",
                                 description = "You don't have any tags.\nClick on the button below to create",
-                                contentDescription = "empty icon"
-                            ) {
-                                Button(
-                                    modifier = Modifier.padding(top = spacing.padding16),
-                                    onClick = { onClickToggleBottomSheetState.invoke(true) }) {
-                                    Text(text = "create")
+                                action = {
+                                    Button(
+                                        modifier = Modifier.padding(top = spacing.padding16),
+                                        onClick = { onClickToggleBottomSheetState.invoke(true) }) {
+                                        Text(text = "create")
+                                    }
                                 }
-                            }
+                            )
                         }
 
                         is UiSuccessState.Data -> {
