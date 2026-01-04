@@ -1,10 +1,10 @@
 package com.practicalchristian.app.feature.onboarding
 
+import androidx.annotation.DrawableRes
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -44,7 +44,6 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -84,7 +83,7 @@ private data class OnboardingPage(
     val title: String,
     val description: String,
     val accentColor: Color,
-    @DrawableRes val imageRes: Int
+    @param:DrawableRes val imageRes: Int
 )
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -142,7 +141,6 @@ fun OnboardingScreenContent(
                     scope.launch {
                         pagerState.animateScrollToPage(pagerState.currentPage + 1)
                     }
-                    Unit
                 }
             }
 
