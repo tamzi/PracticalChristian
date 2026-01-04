@@ -16,13 +16,19 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.preview.PreviewTheme
+import com.sacrament.ui.preview.SampleIcons
+import com.sacrament.ui.preview.SampleText
 import com.sacrament.ui.primitives.SacramentCenteredColumn
 import com.sacrament.ui.primitives.SacramentText
+import com.sacrament.ui.testing.TestTags
+import com.sacrament.ui.testing.testTag
 
 /**
  * Empty/info state molecule with icon, title, and optional description/action.
+ *
+ * Follows design system parameter order: required content → callbacks → appearance → modifier.
  *
  * Usage:
  * `SacramentEmptyState(icon = Icons.Rounded.Info, title = "No items", description = "Try again later", contentDescription = "...")`
@@ -31,14 +37,15 @@ import com.sacrament.ui.primitives.SacramentText
 fun SacramentEmptyState(
     icon: ImageVector,
     title: String,
-    description: String?,
     contentDescription: String,
-    modifier: Modifier = Modifier,
+    description: String? = null,
     action: (@Composable () -> Unit)? = null,
+    modifier: Modifier = Modifier,
 ) {
     val spacing = SacramentTheme.spacing
     SacramentCenteredColumn(
         modifier = modifier
+            .testTag(TestTags.Pattern.EmptyState, contentDescription)
             .fillMaxSize()
             .padding(spacing.lg),
     ) {
@@ -71,12 +78,12 @@ fun SacramentEmptyState(
 @Preview
 @Composable
 fun SacramentEmptyStatePreview() {
-    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+    PreviewTheme {
         SacramentEmptyState(
-            icon = Icons.Rounded.Warning,
-            title = "Kumethoka",
-            description = "Sijui Kumeenda aje",
-            contentDescription = "an icon to show end of the world"
+            icon = SampleIcons.Info,
+            title = SampleText.ShortTitle,
+            contentDescription = "Empty state preview",
+            description = SampleText.MediumBody,
         )
     }
 }
