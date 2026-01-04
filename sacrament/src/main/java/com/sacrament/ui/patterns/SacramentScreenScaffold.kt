@@ -39,87 +39,22 @@ import com.sacrament.ui.testing.testTag
 @Composable
 fun SacramentScreenScaffold(
     content: @Composable (PaddingValues) -> Unit,
-    topBar: @Composable (() -> Unit)? = null,
-    bottomBar: @Composable (() -> Unit)? = null,
-    floatingActionButton: @Composable (() -> Unit)? = null,
+    topBar: @Composable () -> Unit = {},
+    bottomBar: @Composable () -> Unit = {},
+    floatingActionButton: @Composable () -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
     val colors = SacramentTheme.colors
-    val scaffoldModifier = modifier
-        .testTag(TestTags.Pattern.ScreenScaffold, "Screen scaffold")
-        .fillMaxSize()
-
-    // Material3 Scaffold requires non-null composables, so we conditionally include them
-    when {
-        topBar != null && bottomBar != null && floatingActionButton != null -> {
-            Scaffold(
-                modifier = scaffoldModifier,
-                topBar = topBar,
-                bottomBar = bottomBar,
-                floatingActionButton = floatingActionButton,
-                containerColor = colors.surfaces.background,
-                contentWindowInsets = WindowInsets.statusBars,
-            ) { paddingValues -> content(paddingValues) }
-        }
-        topBar != null && bottomBar != null -> {
-            Scaffold(
-                modifier = scaffoldModifier,
-                topBar = topBar,
-                bottomBar = bottomBar,
-                containerColor = colors.surfaces.background,
-                contentWindowInsets = WindowInsets.statusBars,
-            ) { paddingValues -> content(paddingValues) }
-        }
-        topBar != null && floatingActionButton != null -> {
-            Scaffold(
-                modifier = scaffoldModifier,
-                topBar = topBar,
-                floatingActionButton = floatingActionButton,
-                containerColor = colors.surfaces.background,
-                contentWindowInsets = WindowInsets.statusBars,
-            ) { paddingValues -> content(paddingValues) }
-        }
-        bottomBar != null && floatingActionButton != null -> {
-            Scaffold(
-                modifier = scaffoldModifier,
-                bottomBar = bottomBar,
-                floatingActionButton = floatingActionButton,
-                containerColor = colors.surfaces.background,
-                contentWindowInsets = WindowInsets.statusBars,
-            ) { paddingValues -> content(paddingValues) }
-        }
-        topBar != null -> {
-            Scaffold(
-                modifier = scaffoldModifier,
-                topBar = topBar,
-                containerColor = colors.surfaces.background,
-                contentWindowInsets = WindowInsets.statusBars,
-            ) { paddingValues -> content(paddingValues) }
-        }
-        bottomBar != null -> {
-            Scaffold(
-                modifier = scaffoldModifier,
-                bottomBar = bottomBar,
-                containerColor = colors.surfaces.background,
-                contentWindowInsets = WindowInsets.statusBars,
-            ) { paddingValues -> content(paddingValues) }
-        }
-        floatingActionButton != null -> {
-            Scaffold(
-                modifier = scaffoldModifier,
-                floatingActionButton = floatingActionButton,
-                containerColor = colors.surfaces.background,
-                contentWindowInsets = WindowInsets.statusBars,
-            ) { paddingValues -> content(paddingValues) }
-        }
-        else -> {
-            Scaffold(
-                modifier = scaffoldModifier,
-                containerColor = colors.surfaces.background,
-                contentWindowInsets = WindowInsets.statusBars,
-            ) { paddingValues -> content(paddingValues) }
-        }
-    }
+    Scaffold(
+        modifier = modifier
+            .testTag(TestTags.Pattern.ScreenScaffold, "Screen scaffold")
+            .fillMaxSize(),
+        topBar = topBar,
+        bottomBar = bottomBar,
+        floatingActionButton = floatingActionButton,
+        containerColor = colors.surfaces.background,
+        contentWindowInsets = WindowInsets.statusBars,
+    ) { paddingValues -> content(paddingValues) }
 }
 
 @Preview
