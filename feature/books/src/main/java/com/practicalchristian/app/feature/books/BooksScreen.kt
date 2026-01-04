@@ -145,8 +145,8 @@ fun BooksScreenContent(
                     SacramentEmptyState(
                         icon = Icons.AutoMirrored.Rounded.List,
                         title = "Welcome",
-                        description = "Please wait while we're setting things up",
-                        contentDescription = "error fetching results"
+                        contentDescription = "error fetching results",
+                        description = "Please wait while we're setting things up"
                     )
                 }
 
@@ -162,8 +162,8 @@ fun BooksScreenContent(
                             SacramentEmptyState(
                                 icon = Icons.AutoMirrored.Rounded.List,
                                 title = "Empty",
-                                description = "No Books found.",
-                                contentDescription = "empty icon"
+                                contentDescription = "empty icon",
+                                description = "No Books found."
                             )
                         }
 

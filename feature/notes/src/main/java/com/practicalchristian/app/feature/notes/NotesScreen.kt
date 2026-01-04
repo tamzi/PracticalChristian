@@ -166,8 +166,8 @@ fun NotesScreenContent(
                     SacramentEmptyState(
                         icon = Icons.AutoMirrored.Rounded.List,
                         title = "Welcome",
-                        description = "Please wait while we're setting things up",
-                        contentDescription = "error fetching results"
+                        contentDescription = "error fetching results",
+                        description = "Please wait while we're setting things up"
                     )
                 }
 
@@ -183,14 +183,15 @@ fun NotesScreenContent(
                             SacramentEmptyState(
                                 icon = Icons.AutoMirrored.Rounded.Note,
                                 title = "Empty",
+                                contentDescription = "empty icon",
                                 description = "You don't have any Notes.\nClick on the button below to create",
-                                contentDescription = "empty icon"
-                            ) {
-                                SacramentButton(
-                                    text = "create",
-                                    onClick = onNavigateToNewNote,
-                                )
-                            }
+                                action = {
+                                    SacramentButton(
+                                        text = "create",
+                                        onClick = onNavigateToNewNote,
+                                    )
+                                }
+                            )
                         }
 
                         is UiSuccessState.Data -> {

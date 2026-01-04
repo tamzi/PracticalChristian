@@ -140,8 +140,8 @@ private fun LandingScreenIdlePreview() {
             SacramentEmptyState(
                 icon = Icons.AutoMirrored.Rounded.List,
                 title = "Welcome",
-                description = "Please wait while we're setting things up",
-                contentDescription = "setting up"
+                contentDescription = "setting up",
+                description = "Please wait while we're setting things up"
             )
         }
     }
