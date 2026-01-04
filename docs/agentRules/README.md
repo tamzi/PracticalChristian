@@ -15,6 +15,7 @@ docs/agentRules/
 ├── README.md                    # This file - index and overview
 ├── projectOverview.md           # High-level project information
 ├── workflowRules.md             # Work planning, review, and summary
+├── thoughtfulCollaboration.md   # Critical thinking and collaboration guidelines
 ├── commitRules.md               # Git commit message guidelines
 ├── testingRules.md              # Testing standards and practices
 ├── featureDevelopmentRules.md   # Feature development workflow
@@ -34,6 +35,10 @@ versions
 
 → See [`workflowRules.md`](./workflowRules.md) - **CRITICAL:** Planning, self-review, and
 implementation summaries
+
+### For Thoughtful Collaboration
+
+→ See [`thoughtfulCollaboration.md`](./thoughtfulCollaboration.md) - **CRITICAL:** Think before acting, challenge assumptions, propose alternatives
 
 ### For Committing Code
 
@@ -72,14 +77,15 @@ patterns
 
 ## Key Guidelines for AI Agents
 
-1. **Discuss before implementing** - Engage in discussion for questions/suggestions (see
+1. **Think before acting** - Challenge assumptions, propose alternatives (see `thoughtfulCollaboration.md`)
+2. **Discuss before implementing** - Engage in discussion for questions/suggestions (see
    `workflowRules.md`)
-2. **Follow commit rules** - Past tense, concise, no period (see `commitRules.md`)
-3. **⚠️ ONE documentation file per commit** - NEVER bundle multiple docs in one commit
-4. **Atomic commits** - One logical change per commit
-5. **Test before committing** - Run relevant tests
-6. **Update documentation** - When changing code behavior
-7. **NEVER push** - Always let the user push commits
+3. **Follow commit rules** - Past tense, concise, no period (see `commitRules.md`)
+4. **⚠️ ONE documentation file per commit** - NEVER bundle multiple docs in one commit
+5. **Atomic commits** - One logical change per commit
+6. **Test before committing** - Run relevant tests
+7. **Update documentation** - When changing code behavior
+8. **NEVER push** - Always let the user push commits
 
 ### For Human Developers
 
@@ -108,6 +114,14 @@ These rules serve as:
 - Implementation summaries
 - Library version policy (no alpha/beta)
 - Documentation preferences (inline over README)
+
+### 2a. Thoughtful Collaboration (thoughtfulCollaboration.md)
+
+- Think before acting - never blindly execute
+- Challenge assumptions and propose alternatives
+- Investigate before making changes
+- Present options instead of just executing
+- Ask clarifying questions when uncertain
 
 ### 3. Commit Guidelines (commitRules.md)
 
