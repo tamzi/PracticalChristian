@@ -433,8 +433,8 @@ fun TagsBottomSheet(
                                     SacramentEmptyState(
                                         icon = Icons.AutoMirrored.Rounded.List,
                                         title = "Error",
-                                        description = tagsState.message,
-                                        contentDescription = "error fetching results"
+                                        contentDescription = "error fetching results",
+                                        description = tagsState.message
                                     )
                                 }
 
@@ -442,8 +442,8 @@ fun TagsBottomSheet(
                                     SacramentEmptyState(
                                         icon = Icons.AutoMirrored.Rounded.List,
                                         title = "Welcome",
-                                        description = "Please wait while we're fetching your tags",
-                                        contentDescription = "idle fetching results"
+                                        contentDescription = "idle fetching results",
+                                        description = "Please wait while we're fetching your tags"
                                     )
                                 }
 
@@ -459,15 +459,16 @@ fun TagsBottomSheet(
                                             SacramentEmptyState(
                                                 icon = Icons.Rounded.Tag,
                                                 title = "Empty",
+                                                contentDescription = "empty icon",
                                                 description = "You don't have any tags.\nClick on the button below to create",
-                                                contentDescription = "empty icon"
-                                            ) {
-                                                Button(
-                                                    modifier = Modifier.padding(top = spacing.padding16),
-                                                    onClick = { }) {
-                                                    Text(text = "create")
+                                                action = {
+                                                    Button(
+                                                        modifier = Modifier.padding(top = spacing.padding16),
+                                                        onClick = { }) {
+                                                        Text(text = "create")
+                                                    }
                                                 }
-                                            }
+                                            )
                                         }
 
                                         is UiSuccessState.Data -> {

@@ -221,8 +221,8 @@ fun ScheduleScreenContent(
                     SacramentEmptyState(
                         icon = Icons.AutoMirrored.Rounded.List,
                         title = "Welcome",
-                        description = "Please wait while we're setting things up",
-                        contentDescription = "error fetching results"
+                        contentDescription = "error fetching results",
+                        description = "Please wait while we're setting things up"
                     )
                 }
 
@@ -238,13 +238,14 @@ fun ScheduleScreenContent(
                             SacramentEmptyState(
                                 icon = Icons.AutoMirrored.Rounded.List,
                                 title = "Empty",
+                                contentDescription = "empty icon",
                                 description = "You don't have a schedule.\nSetup to continue",
-                                contentDescription = "empty icon"
-                            ) {
-                                Button(onClick = onNavigateToSetup) {
-                                    Text(text = "Setup")
+                                action = {
+                                    Button(onClick = onNavigateToSetup) {
+                                        Text(text = "Setup")
+                                    }
                                 }
-                            }
+                            )
                         }
 
                         is UiSuccessState.Data -> {
