@@ -24,19 +24,33 @@ Single source of truth for project tasks, priorities, and status.
 
 - [ ] STORY: Design system catalog app + docs
   - [ ] TASK: Align design system module naming/structure (`sacrament`) and update settings + docs + dependencies accordingly.
+    - [ ] TASK: Update task reference from `:core:designsystem` to `sacrament` in workToBeDone.md (module is correctly named `sacrament`).
   - [ ] TASK: Add `:sacrament-demo` app to showcase the design system.
   - [ ] TASK: Build component catalog screens with variants/sizes/intents.
-  - [ ] TASK: Add `:core:designsystem/README.md` linking to the guide and how to add components.
+  - [ ] TASK: Update `sacrament/README.md` to link to design system guide and document how to add components (README exists but may need enhancement).
   - [ ] TASK: Add a "Definition of Done" checklist for components in `CONTRIBUTING.md` (previews + tests + a11y).
+    - [ ] TASK: Create `CONTRIBUTING.md` at project root if it doesn't exist.
 
 - [ ] STORY: Enforce design system boundaries
   - [x] TASK: Remove `androidx.compose.material3.*` usage inside the design system module.
   - [ ] TASK: Replace remaining hardcoded styles with design system tokens across `app`, `core`, and `feature` modules.
   - [ ] TASK: Replace Material3 UI components in `app`, `core`, and `feature` modules with design system primitives/components.
+    - [ ] TASK: Replace Material3 components in `feature/tags` (heavy usage: Button, Card, Scaffold, TextField, etc.).
+    - [ ] TASK: Replace Material3 components in `feature/schedules` (Button, Card, Scaffold, TopAppBar, etc.).
+    - [ ] TASK: Replace Material3 components in `feature/notes` (Scaffold, TextField, TopAppBar, etc.).
+    - [ ] TASK: Replace Material3 components in `feature/books` (Card, Scaffold, TopAppBar, etc.).
+    - [ ] TASK: Replace Material3 components in `feature/auth`, `feature/home`, `feature/settings`, `feature/setup`, `feature/profile`, `feature/onboarding`.
+    - [ ] TASK: Replace Material3 Scaffold in `sacrament` module (currently used internally by `SacramentScreenScaffold`).
+    - [ ] TASK: Remove Material3 dependency from `app/build.gradle.kts`.
+    - [ ] TASK: Remove Material3 dependency from `core/ui/build.gradle.kts`.
   - [x] TASK: Migrate remaining `PracticalChristianPalette` usages to `PracticalChristianTokens` across feature modules.
   - [ ] TASK: Migrate feature previews to use the design system theme for consistent visuals.
+    - [ ] TASK: Update previews in `feature/tags` to use `SacramentTheme`.
+    - [ ] TASK: Update previews in `feature/schedules` to use `SacramentTheme`.
+    - [ ] TASK: Verify all feature previews use `SacramentTheme` (landing, home, notes, profile already migrated).
   - [ ] TASK: Add lint/detekt guardrails to block `androidx.compose.material3.*` and `Color(0x...)` outside `sacrament`.
   - [ ] TASK: Remove Material3 dependency from feature convention plugin and module build files once migrations are complete.
+    - [ ] TASK: Remove Material3 from `buildLogic/convention/src/main/kotlin/com/practicalchristian/app/convention/feature/AndroidFeatureConventionPlugin.kt`.
   - [ ] TASK: Add CI check to enforce design system rules.
   - [ ] TASK: Document usage in `docs/tech/technicalArchitecture.md` and `docs/agentRules/featureDevelopmentRules.md`.
 
