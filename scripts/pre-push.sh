@@ -91,7 +91,18 @@ while IFS= read -r line; do
         fi
     else
         # Existing branch - check commits since last push
-        range="$remote_sha..$local_sha"
+        # For force pushes (after rebase), exclude commits already on origin/main
+        if git merge-base --is-ancestor "$remote_sha" "$local_sha" 2>/dev/null; then
+            # Normal push - remote is ancestor of local
+            range="$remote_sha..$local_sha"
+        else
+            # Force push (branches diverged) - only check commits not on origin/main
+            if git rev-parse --verify origin/main >/dev/null 2>&1; then
+                range="origin/main..$local_sha"
+            else
+                range="$remote_sha..$local_sha"
+            fi
+        fi
     fi
     
     # Validate commit rules
@@ -102,13 +113,27 @@ while IFS= read -r line; do
     
     # Get list of commits in the range
     # This retrieves all commit SHAs that are about to be pushed
-    commits=$(git rev-list "$range" 2>/dev/null || echo "")
+    # Exclude commits that are already on origin/main (important for force pushes after rebase)
+    if git rev-parse --verify origin/main >/dev/null 2>&1; then
+        # Use --not to exclude commits already on main
+        commits=$(git rev-list "$range" --not origin/main 2>/dev/null || echo "")
+    else
+        commits=$(git rev-list "$range" 2>/dev/null || echo "")
+    fi
     
     if [ -z "$commits" ]; then
         echo -e "${GREEN}✓${NC} No new commits to validate" >&2
         echo "" >&2
     else
         for commit in $commits; do
+            # Skip commits that are already on origin/main (important for force pushes)
+            if git rev-parse --verify origin/main >/dev/null 2>&1; then
+                if git merge-base --is-ancestor "$commit" origin/main 2>/dev/null; then
+                    # This commit is on origin/main, skip it
+                    continue
+                fi
+            fi
+            
             # Get commit message (first line only - the subject)
             msg=$(git log -1 --pretty=%B "$commit" | head -1)
             
