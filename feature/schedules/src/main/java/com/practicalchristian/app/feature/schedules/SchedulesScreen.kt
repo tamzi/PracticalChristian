@@ -19,6 +19,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.List
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.rounded.DoneAll
 import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.material3.Button
@@ -43,7 +44,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -65,10 +65,10 @@ import com.practicalchristian.app.core.ui.helpers.sentence
 import com.practicalchristian.app.core.ui.navigation.AppDestination
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.R
-import com.sacrament.ui.primitives.SacramentCenteredColumn
-import com.sacrament.ui.patterns.SacramentEmptyState
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.patterns.SacramentEmptyState
+import com.sacrament.ui.primitives.SacramentCenteredColumn
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime
@@ -123,7 +123,7 @@ fun ScheduleScreenContent(
                     modifier = Modifier
                         .height(28.dp)
                         .width(28.dp),
-                    painter = painterResource(id = R.drawable.menu),
+                    imageVector = Icons.Filled.Menu,
                     contentDescription = "menu"
                 )
             }
