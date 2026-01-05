@@ -45,6 +45,26 @@ SacramentTheme(
 - **`preview/`**: Preview utilities and sample data
 - **`testing/`**: Test tags and accessibility defaults
 
+## Catalog App
+
+The design system includes a catalog app (`:sacrament-demo`) that showcases all components, variants, sizes, and intents.
+
+### Running the Catalog
+
+```bash
+./gradlew :sacrament-demo:installDebug
+```
+
+Or run from Android Studio:
+1. Select the `sacrament-demo` run configuration
+2. Run on a device or emulator
+
+The catalog app provides:
+- Interactive component gallery
+- All variants, sizes, and tones
+- Live examples of component usage
+- Pattern demonstrations
+
 ## Adding a Component
 
 1. Follow parameter order: required content → callbacks → variant → modifier last
@@ -53,6 +73,7 @@ SacramentTheme(
 4. Add previews using `PreviewTheme` and `SampleModels`
 5. Include test tags via `TestTags`
 6. Ensure minimum 48dp touch targets
+7. Add component to catalog app (`:sacrament-demo`)
 
 See [Design System Guide](docs/tech/sacrament/designSystem.md) for details.
 
