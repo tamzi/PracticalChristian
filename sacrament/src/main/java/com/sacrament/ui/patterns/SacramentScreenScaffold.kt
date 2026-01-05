@@ -38,11 +38,11 @@ import com.sacrament.ui.testing.testTag
  */
 @Composable
 fun SacramentScreenScaffold(
-    content: @Composable (PaddingValues) -> Unit,
     topBar: @Composable () -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
     floatingActionButton: @Composable () -> Unit = {},
     modifier: Modifier = Modifier,
+    content: @Composable (PaddingValues) -> Unit,
 ) {
     val colors = SacramentTheme.colors
     Scaffold(
