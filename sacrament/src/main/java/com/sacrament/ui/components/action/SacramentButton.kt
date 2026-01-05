@@ -35,7 +35,6 @@ import com.sacrament.ui.primitives.SacramentText
 fun SacramentButton(
     text: String,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
     variant: SacramentButtonVariant = SacramentButtonVariant.Filled,
     tone: SacramentButtonTone = SacramentButtonTone.Brand,
     size: SacramentButtonSize = SacramentButtonSize.Medium,
@@ -43,6 +42,7 @@ fun SacramentButton(
     leadingIcon: ImageVector? = null,
     trailingIcon: ImageVector? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    modifier: Modifier = Modifier,
 ) {
     val colors = SacramentButtonDefaults.colors(variant, tone)
     val pressed by interactionSource.collectIsPressedAsState()
