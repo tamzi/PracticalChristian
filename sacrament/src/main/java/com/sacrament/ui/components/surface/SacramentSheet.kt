@@ -18,10 +18,10 @@ import androidx.compose.foundation.layout.padding
  */
 @Composable
 fun SacramentSheet(
-    content: @Composable () -> Unit,
     colors: SacramentSheetColors = SacramentSheetDefaults.colors(),
     shape: Shape = SacramentSheetDefaults.shape(),
     modifier: Modifier = Modifier,
+    content: @Composable () -> Unit,
 ) {
     Box(
         modifier = modifier
