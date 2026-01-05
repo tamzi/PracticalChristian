@@ -114,8 +114,9 @@ while IFS= read -r line; do
     # Get list of commits in the range
     # This retrieves all commit SHAs that are about to be pushed
     # Exclude commits that are already on origin/main (important for force pushes after rebase)
-    if git rev-parse --verify origin/main >/dev/null 2>&1; then
+    if git rev-parse --verify origin/main >/dev/null 2>&1 && [[ "$range" != origin/main..* ]]; then
         # Use --not to exclude commits already on main
+        # Skip if range already starts with origin/main.. (avoids redundant exclusion)
         commits=$(git rev-list "$range" --not origin/main 2>/dev/null || echo "")
     else
         commits=$(git rev-list "$range" 2>/dev/null || echo "")
