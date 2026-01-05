@@ -33,8 +33,8 @@ enum class SacramentBadgeTone {
 @Composable
 fun SacramentBadge(
     text: String,
-    modifier: Modifier = Modifier,
     tone: SacramentBadgeTone = SacramentBadgeTone.Neutral,
+    modifier: Modifier = Modifier,
 ) {
     val colors = SacramentTheme.colors
     val spacing = SacramentTheme.spacing
