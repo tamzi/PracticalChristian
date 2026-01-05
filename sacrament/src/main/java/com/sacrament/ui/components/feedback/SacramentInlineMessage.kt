@@ -33,9 +33,9 @@ enum class SacramentInlineMessageTone {
 @Composable
 fun SacramentInlineMessage(
     message: String,
-    modifier: Modifier = Modifier,
     tone: SacramentInlineMessageTone = SacramentInlineMessageTone.Neutral,
     icon: ImageVector? = null,
+    modifier: Modifier = Modifier,
 ) {
     val colors = SacramentTheme.colors
     val spacing = SacramentTheme.spacing
