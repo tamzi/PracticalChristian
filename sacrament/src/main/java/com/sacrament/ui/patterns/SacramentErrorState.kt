@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.preview.PreviewTheme
 import com.sacrament.ui.preview.SampleErrors
-import com.sacrament.ui.preview.SampleIcons
 import com.sacrament.ui.preview.SampleText
 import com.sacrament.ui.primitives.SacramentCenteredColumn
 import com.sacrament.ui.primitives.SacramentText
@@ -36,12 +35,12 @@ import com.sacrament.ui.testing.testTag
  */
 @Composable
 fun SacramentErrorState(
+    modifier: Modifier = Modifier,
     title: String,
+    action: (@Composable () -> Unit)? = null,
     contentDescription: String,
     message: String? = null,
-    action: (@Composable () -> Unit)? = null,
     icon: ImageVector = Icons.Rounded.Warning,
-    modifier: Modifier = Modifier,
 ) {
     val spacing = SacramentTheme.spacing
     val colors = SacramentTheme.colors
