@@ -36,9 +36,9 @@ enum class SacramentTagTone {
 @Composable
 fun SacramentTag(
     text: String,
-    modifier: Modifier = Modifier,
     tone: SacramentTagTone = SacramentTagTone.Neutral,
     leadingIcon: ImageVector? = null,
+    modifier: Modifier = Modifier,
 ) {
     val colors = SacramentTheme.colors
     val spacing = SacramentTheme.spacing
