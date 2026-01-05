@@ -23,12 +23,12 @@ import com.sacrament.ui.primitives.SacramentText
 @Composable
 fun SacramentListItem(
     headline: @Composable () -> Unit,
-    modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
     overline: @Composable (() -> Unit)? = null,
     supporting: @Composable (() -> Unit)? = null,
     leading: @Composable (() -> Unit)? = null,
     trailing: @Composable (() -> Unit)? = null,
-    onClick: (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
 ) {
     val spacing = SacramentTheme.spacing
     Row(
