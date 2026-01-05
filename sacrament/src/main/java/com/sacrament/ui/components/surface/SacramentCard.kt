@@ -22,12 +22,12 @@ import com.sacrament.ui.primitives.SacramentText
  */
 @Composable
 fun SacramentCard(
-    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit,
     onClick: (() -> Unit)? = null,
     enabled: Boolean = true,
     colors: SacramentCardColors = SacramentCardDefaults.colors(),
     contentPadding: PaddingValues = PaddingValues(0.dp),
-    content: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val shape = SacramentCardDefaults.shape()
     val border = BorderStroke(SacramentCardDefaults.borderWidth(), colors.border)
