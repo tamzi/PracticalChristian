@@ -23,10 +23,10 @@ import com.sacrament.ui.primitives.SacramentText
 @Composable
 fun SacramentTopAppBar(
     title: @Composable () -> Unit,
-    modifier: Modifier = Modifier,
     navigationIcon: @Composable (() -> Unit)? = null,
     actions: @Composable RowScope.() -> Unit = {},
     colors: SacramentTopAppBarColors = SacramentTopAppBarDefaults.colors(),
+    modifier: Modifier = Modifier,
 ) {
     val spacing = SacramentTheme.spacing
 
