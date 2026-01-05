@@ -40,13 +40,13 @@ fun SacramentFab(
     imageVector: ImageVector,
     contentDescription: String?,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    label: String? = null,
     variant: SacramentButtonVariant = SacramentButtonVariant.Filled,
     tone: SacramentButtonTone = SacramentButtonTone.Brand,
     size: SacramentFabSize = SacramentFabSize.Medium,
     enabled: Boolean = true,
+    label: String? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    modifier: Modifier = Modifier,
 ) {
     val colors = SacramentButtonDefaults.colors(variant, tone)
     val pressed by interactionSource.collectIsPressedAsState()
