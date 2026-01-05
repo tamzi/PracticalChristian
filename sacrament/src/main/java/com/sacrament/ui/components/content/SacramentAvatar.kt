@@ -30,12 +30,12 @@ enum class SacramentAvatarSize {
  */
 @Composable
 fun SacramentAvatar(
-    modifier: Modifier = Modifier,
     size: SacramentAvatarSize = SacramentAvatarSize.Medium,
-    backgroundColor: Color = SacramentTheme.colors.surfaces.surfaceVariant,
-    contentColor: Color = SacramentTheme.colors.text.strong,
     imageVector: ImageVector? = null,
     initials: String? = null,
+    backgroundColor: Color = SacramentTheme.colors.surfaces.surfaceVariant,
+    contentColor: Color = SacramentTheme.colors.text.strong,
+    modifier: Modifier = Modifier,
 ) {
     val diameter = when (size) {
         SacramentAvatarSize.Small -> 32.dp
