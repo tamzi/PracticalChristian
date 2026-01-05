@@ -36,12 +36,12 @@ enum class SacramentProgressVariant {
  */
 @Composable
 fun SacramentProgressIndicator(
-    modifier: Modifier = Modifier,
     progress: Float? = null,
     variant: SacramentProgressVariant = SacramentProgressVariant.Circular,
     color: Color = SacramentTheme.colors.brand.primary,
     trackColor: Color = SacramentTheme.colors.utilities.progressTrack,
     strokeWidth: Dp = 4.dp,
+    modifier: Modifier = Modifier,
 ) {
     when (variant) {
         SacramentProgressVariant.Circular -> {
