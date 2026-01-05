@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
@@ -31,16 +29,16 @@ import com.sacrament.ui.testing.testTag
  * Follows design system parameter order: required content → callbacks → appearance → modifier.
  *
  * Usage:
- * `SacramentEmptyState(icon = Icons.Rounded.Info, title = "No items", description = "Try again later", contentDescription = "...")`
+ * `SacramentEmptyState(icon = Icons.Rounded.Info, title = "No items", contentDescription = "...", description = "Try again later")`
  */
 @Composable
 fun SacramentEmptyState(
+    modifier: Modifier = Modifier,
     icon: ImageVector,
     title: String,
+    action: (@Composable () -> Unit)? = null,
     contentDescription: String,
     description: String? = null,
-    action: (@Composable () -> Unit)? = null,
-    modifier: Modifier = Modifier,
 ) {
     val spacing = SacramentTheme.spacing
     SacramentCenteredColumn(
