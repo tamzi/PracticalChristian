@@ -19,17 +19,17 @@ Single source of truth for project tasks, priorities, and status.
 - [x] STORY: Patterns + previews + test hooks
   - [x] TASK: Implement patterns (ScreenScaffold, EmptyState, ErrorState, LoadingState).
   - [x] TASK: Add preview infrastructure (PreviewTheme, SampleModels, PreviewParameterProviders).
-  - [ ] TASK: Standardize component API order + slot APIs; co-locate Defaults/Tokens where needed.
+  - [x] TASK: Standardize component API order + slot APIs; co-locate Defaults/Tokens where needed.
   - [x] TASK: Add TestTags + semantics defaults + accessibility minimum touch targets.
 
-- [ ] STORY: Design system catalog app + docs
-  - [ ] TASK: Align design system module naming/structure (`sacrament`) and update settings + docs + dependencies accordingly.
-    - [ ] TASK: Update task reference from `:core:designsystem` to `sacrament` in workToBeDone.md (module is correctly named `sacrament`).
-  - [ ] TASK: Add `:sacrament-demo` app to showcase the design system.
-  - [ ] TASK: Build component catalog screens with variants/sizes/intents.
-  - [ ] TASK: Update `sacrament/README.md` to link to design system guide and document how to add components (README exists but may need enhancement).
-  - [ ] TASK: Add a "Definition of Done" checklist for components in `CONTRIBUTING.md` (previews + tests + a11y).
-    - [ ] TASK: Create `CONTRIBUTING.md` at project root if it doesn't exist.
+- [x] STORY: Design system catalog app + docs
+  - [x] TASK: Align design system module naming/structure (`sacrament`) and update settings + docs + dependencies accordingly.
+    - [x] TASK: Update task reference from `:core:designsystem` to `sacrament` in workToBeDone.md (module is correctly named `sacrament`).
+  - [x] TASK: Add `:sacrament-demo` app to showcase the design system.
+  - [x] TASK: Build component catalog screens with variants/sizes/intents.
+  - [x] TASK: Update `sacrament/README.md` to link to design system guide and document how to add components (README exists but may need enhancement).
+  - [x] TASK: Add a "Definition of Done" checklist for components in `CONTRIBUTING.md` (previews + tests + a11y).
+    - [x] TASK: Create `CONTRIBUTING.md` at project root if it doesn't exist.
 
 - [ ] STORY: Enforce design system boundaries
   - [x] TASK: Remove `androidx.compose.material3.*` usage inside the design system module.
