@@ -56,6 +56,7 @@ gradle.settingsEvaluated {
 // App & Design System
 include(":app")
 include(":sacrament")
+include(":sacrament-demo")
 
 // Tools / infra
 include(":sync:work")
