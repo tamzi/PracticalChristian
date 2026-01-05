@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
@@ -19,6 +21,7 @@ import com.sacrament.ui.preview.PreviewTheme
 import com.sacrament.ui.preview.SampleIcons
 import com.sacrament.ui.preview.SampleText
 import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.primitives.SacramentSurface
 import com.sacrament.ui.primitives.SacramentText
 import com.sacrament.ui.testing.TestTags
 import com.sacrament.ui.testing.testTag
@@ -77,11 +80,13 @@ fun SacramentEmptyState(
 @Composable
 fun SacramentEmptyStatePreview() {
     PreviewTheme {
-        SacramentEmptyState(
-            icon = SampleIcons.Info,
-            title = SampleText.ShortTitle,
-            contentDescription = "Empty state preview",
-            description = SampleText.MediumBody,
-        )
+        SacramentSurface(color = Color.White, shape = RoundedCornerShape(0.dp)) {
+            SacramentEmptyState(
+                icon = SampleIcons.Info,
+                title = SampleText.ShortTitle,
+                contentDescription = "Empty state preview",
+                description = SampleText.MediumBody,
+            )
+        }
     }
 }
