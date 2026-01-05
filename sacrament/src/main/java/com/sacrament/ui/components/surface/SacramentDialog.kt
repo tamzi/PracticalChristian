@@ -25,9 +25,9 @@ fun SacramentDialog(
     title: @Composable () -> Unit,
     text: @Composable () -> Unit,
     confirmButton: @Composable () -> Unit,
-    modifier: Modifier = Modifier,
     dismissButton: @Composable (() -> Unit)? = null,
     colors: SacramentDialogColors = SacramentDialogDefaults.colors(),
+    modifier: Modifier = Modifier,
 ) {
     val spacing = SacramentTheme.spacing
     val shape = SacramentDialogDefaults.shape()
