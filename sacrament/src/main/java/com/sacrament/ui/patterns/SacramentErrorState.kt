@@ -2,6 +2,7 @@ package com.sacrament.ui.patterns
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -10,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
@@ -49,6 +51,7 @@ fun SacramentErrorState(
         modifier = modifier
             .testTag(TestTags.Pattern.ErrorState, contentDescription)
             .fillMaxSize()
+            .background(Color.White)
             .padding(spacing.lg),
     ) {
         Image(
