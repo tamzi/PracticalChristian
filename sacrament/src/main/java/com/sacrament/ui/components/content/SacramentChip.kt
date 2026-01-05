@@ -27,10 +27,10 @@ import com.sacrament.ui.primitives.SacramentText
 @Composable
 fun SacramentChip(
     label: String,
-    modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
     selected: Boolean = false,
     leadingIcon: ImageVector? = null,
-    onClick: (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
 ) {
     val colors = SacramentTheme.colors
     val spacing = SacramentTheme.spacing
