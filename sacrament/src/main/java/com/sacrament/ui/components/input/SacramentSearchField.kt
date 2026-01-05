@@ -16,9 +16,9 @@ fun SacramentSearchField(
     query: String,
     onQueryChange: (String) -> Unit,
     onSearch: ((String) -> Unit)? = null,
-    placeholder: String = "Search",
-    enabled: Boolean = true,
     size: SacramentTextFieldSize = SacramentTextFieldSize.Medium,
+    enabled: Boolean = true,
+    placeholder: String = "Search",
     modifier: Modifier = Modifier,
 ) {
     SacramentTextField(
