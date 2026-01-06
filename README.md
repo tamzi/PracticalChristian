@@ -56,8 +56,18 @@ A modern Android application for daily Bible meditations and spiritual growth.
 # Generate detekt baseline
 ./gradlew detektBaseline
 
-# Run tests
+# Testing
+# Run all unit tests across all modules
 ./gradlew test
+  
+ # Force all tests to run (ignore cache)  
+./gradlew test --rerun-tasks
+
+ # Run tests with detailed output
+./gradlew test --info
+
+# Run tests for a specific module
+./gradlew :app:testDebugUnitTest
 
 # Build debug APK
 ./gradlew assembleDebug
