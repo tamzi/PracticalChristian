@@ -49,7 +49,7 @@ fun ContentCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)
                     ) {
                         SacramentAvatar(size = SacramentAvatarSize.Small)
-                        SacramentAvatar(size = SacramentAvatarSize.Small, text = "AB")
+                        SacramentAvatar(size = SacramentAvatarSize.Small, initials = "AB")
                     }
                 }
                 CatalogRow("Medium") {
@@ -57,7 +57,7 @@ fun ContentCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)
                     ) {
                         SacramentAvatar(size = SacramentAvatarSize.Medium)
-                        SacramentAvatar(size = SacramentAvatarSize.Medium, text = "AB")
+                        SacramentAvatar(size = SacramentAvatarSize.Medium, initials = "AB")
                     }
                 }
                 CatalogRow("Large") {
@@ -65,7 +65,7 @@ fun ContentCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)
                     ) {
                         SacramentAvatar(size = SacramentAvatarSize.Large)
-                        SacramentAvatar(size = SacramentAvatarSize.Large, text = "AB")
+                        SacramentAvatar(size = SacramentAvatarSize.Large, initials = "AB")
                     }
                 }
             }

@@ -5,8 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Info
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.sacrament.demo.catalog.CatalogTopAppBar
@@ -31,7 +31,6 @@ fun PatternsCatalogScreen(onNavigateBack: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .verticalScroll(rememberScrollState())
                 .padding(SacramentTheme.spacing.lg),
             verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xl)
         ) {
@@ -44,25 +43,27 @@ fun PatternsCatalogScreen(onNavigateBack: () -> Unit) {
             
             CatalogSection("Empty State") {
                 SacramentEmptyState(
+                    modifier = Modifier.fillMaxWidth(),
+                    icon = Icons.Rounded.Info,
                     title = "No items found",
-                    message = "This is an example empty state pattern",
-                    modifier = Modifier.fillMaxWidth()
+                    contentDescription = "Example empty state",
+                    description = "This is an example empty state pattern",
                 )
             }
-            
+
             CatalogSection("Error State") {
                 SacramentErrorState(
+                    modifier = Modifier.fillMaxWidth(),
                     title = "Something went wrong",
+                    contentDescription = "Example error state",
                     message = "This is an example error state pattern",
-                    onRetry = {},
-                    modifier = Modifier.fillMaxWidth()
+                    action = {},
                 )
             }
-            
+
             CatalogSection("Loading State") {
                 SacramentLoadingState(
-                    message = "Loading content...",
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
                 )
             }
         }
