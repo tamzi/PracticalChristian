@@ -52,6 +52,7 @@ subprojects {
     }
 }
 
+
 // Create root-level JaCoCo report task
 tasks.register<JacocoReport>("jacocoRootReport") {
     group = "verification"
