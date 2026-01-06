@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,7 +43,6 @@ fun InputCatalogScreen(onNavigateBack: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .verticalScroll(rememberScrollState())
                 .padding(SacramentTheme.spacing.lg),
             verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xl)
         ) {
@@ -67,14 +64,7 @@ fun InputCatalogScreen(onNavigateBack: () -> Unit) {
                         placeholder = "Enter text"
                     )
                 }
-                CatalogRow("Large") {
-                    SacramentTextField(
-                        value = textFieldValue,
-                        onValueChange = { textFieldValue = it },
-                        size = SacramentTextFieldSize.Large,
-                        placeholder = "Enter text"
-                    )
-                }
+                // Large size not currently available; using Medium for demonstration.
                 CatalogRow("With Label") {
                     SacramentTextField(
                         value = textFieldValue,
@@ -116,13 +106,7 @@ fun InputCatalogScreen(onNavigateBack: () -> Unit) {
                         size = SacramentCheckboxSize.Medium
                     )
                 }
-                CatalogRow("Large") {
-                    SacramentCheckbox(
-                        checked = checkboxChecked,
-                        onCheckedChange = { checkboxChecked = it },
-                        size = SacramentCheckboxSize.Large
-                    )
-                }
+                // Large size not currently available in SacramentCheckboxSize.
             }
             
             // Radio Buttons
@@ -141,13 +125,7 @@ fun InputCatalogScreen(onNavigateBack: () -> Unit) {
                         size = SacramentRadioSize.Medium
                     )
                 }
-                CatalogRow("Large") {
-                    SacramentRadio(
-                        selected = radioSelected,
-                        onClick = { radioSelected = !radioSelected },
-                        size = SacramentRadioSize.Large
-                    )
-                }
+                // Large size not currently available in SacramentRadioSize.
             }
             
             // Switches
@@ -166,13 +144,7 @@ fun InputCatalogScreen(onNavigateBack: () -> Unit) {
                         size = SacramentSwitchSize.Medium
                     )
                 }
-                CatalogRow("Large") {
-                    SacramentSwitch(
-                        checked = switchChecked,
-                        onCheckedChange = { switchChecked = it },
-                        size = SacramentSwitchSize.Large
-                    )
-                }
+                // Large size not currently available in SacramentSwitchSize.
             }
         }
     }
