@@ -3,8 +3,9 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>LongMethod:AuthenticationScreen.kt$@Composable private fun AuthenticationSignUp( state: AuthenticationScreenUiState, onSignUpWithGoogle: () -&gt; Unit, onSignUpWithFacebook: () -&gt; Unit, onSignUpWithTikTok: () -&gt; Unit, onSignUpWithX: () -&gt; Unit )</ID>
-    <ID>MaxLineLength:AuthenticationScreen.kt$text = "By continuing, you agree to PracticalChristian's Terms of Service and confirm that you have read and understand our Privacy Policy."</ID>
+    <ID>MaxLineLength:AuthenticationScreen.kt$text = "By continuing, you agree to Practical Christian's Terms of Service and confirm that you have read and understand our Privacy Policy."</ID>
     <ID>MaximumLineLength:AuthenticationScreen.kt$ </ID>
+    <ID>NoTrailingSpaces:AuthenticationScreen.kt$ </ID>
     <ID>NoTrailingSpaces:AuthenticationViewModel.kt$AuthenticationViewModel$ </ID>
     <ID>UnusedPrivateMember:AuthenticationScreen.kt$@Preview(showBackground = true) @Composable private fun AuthenticationScreenLoadingPreview()</ID>
     <ID>UnusedPrivateMember:AuthenticationScreen.kt$@Preview(showBackground = true) @Composable private fun AuthenticationScreenPreview()</ID>
