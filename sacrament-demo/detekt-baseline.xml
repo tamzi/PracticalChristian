@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>LongMethod:ActionCatalogScreen.kt$@Composable fun ActionCatalogScreen(onNavigateBack: () -&gt; Unit)</ID>
+    <ID>LongMethod:CatalogHomeScreen.kt$@Composable fun CatalogHomeScreen( onNavigateToAction: () -&gt; Unit, onNavigateToInput: () -&gt; Unit, onNavigateToNavigation: () -&gt; Unit, onNavigateToSurface: () -&gt; Unit, onNavigateToContent: () -&gt; Unit, onNavigateToFeedback: () -&gt; Unit, onNavigateToPatterns: () -&gt; Unit, )</ID>
+    <ID>LongMethod:ContentCatalogScreen.kt$@Composable fun ContentCatalogScreen(onNavigateBack: () -&gt; Unit)</ID>
+    <ID>LongMethod:FeedbackCatalogScreen.kt$@Composable fun FeedbackCatalogScreen(onNavigateBack: () -&gt; Unit)</ID>
+    <ID>LongMethod:InputCatalogScreen.kt$@Composable fun InputCatalogScreen(onNavigateBack: () -&gt; Unit)</ID>
+    <ID>LongParameterList:CatalogHomeScreen.kt$( onNavigateToAction: () -&gt; Unit, onNavigateToInput: () -&gt; Unit, onNavigateToNavigation: () -&gt; Unit, onNavigateToSurface: () -&gt; Unit, onNavigateToContent: () -&gt; Unit, onNavigateToFeedback: () -&gt; Unit, onNavigateToPatterns: () -&gt; Unit, )</ID>
+    <ID>MaxLineLength:PatternsCatalogScreen.kt$text = "The screen scaffold is used throughout this catalog app. It provides consistent structure with top bar, bottom bar, and FAB support."</ID>
+    <ID>MaximumLineLength:PatternsCatalogScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ActionCatalogScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CatalogHomeScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CatalogTopAppBar.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ContentCatalogScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:FeedbackCatalogScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:InputCatalogScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:MainActivity.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:NavigationCatalogScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:PatternsCatalogScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SurfaceCatalogScreen.kt$ </ID>
+    <ID>NoTrailingSpaces:ActionCatalogScreen.kt$ </ID>
+    <ID>NoTrailingSpaces:CatalogHomeScreen.kt$ </ID>
+    <ID>NoTrailingSpaces:ContentCatalogScreen.kt$ </ID>
+    <ID>NoTrailingSpaces:FeedbackCatalogScreen.kt$ </ID>
+    <ID>NoTrailingSpaces:InputCatalogScreen.kt$ </ID>
+    <ID>NoTrailingSpaces:MainActivity.kt$ </ID>
+    <ID>NoTrailingSpaces:NavigationCatalogScreen.kt$ </ID>
+    <ID>NoTrailingSpaces:PatternsCatalogScreen.kt$ </ID>
+    <ID>NoTrailingSpaces:SurfaceCatalogScreen.kt$ </ID>
+    <ID>NoUnusedImports:CatalogHomeScreen.kt$com.sacrament.demo.catalog.CatalogHomeScreen.kt</ID>
+    <ID>NoUnusedImports:MainActivity.kt$com.sacrament.demo.MainActivity.kt</ID>
+    <ID>NoUnusedImports:NavigationCatalogScreen.kt$com.sacrament.demo.catalog.navigation.NavigationCatalogScreen.kt</ID>
+  </CurrentIssues>
+</SmellBaseline>
