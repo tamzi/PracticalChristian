@@ -8,9 +8,11 @@ import com.practicalchristian.app.convention.android.libs
 import com.practicalchristian.app.convention.test.disableUnnecessaryAndroidTests
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.kotlin
+import org.gradle.kotlin.dsl.withType
 
 
 class AndroidLibraryWithCoverageConventionPlugin : Plugin<Project> {
@@ -39,6 +41,12 @@ class AndroidLibraryWithCoverageConventionPlugin : Plugin<Project> {
             extensions.configure<LibraryAndroidComponentsExtension> {
                 disableUnnecessaryAndroidTests(target)
             }
+            
+            // Configure test tasks to use JUnit Platform for JUnit 6 (Jupiter)
+            tasks.withType<Test> {
+                useJUnitPlatform()
+            }
+            
             dependencies {
                 add("androidTestImplementation", kotlin("test"))
                 add("testImplementation", kotlin("test"))
