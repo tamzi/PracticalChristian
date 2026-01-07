@@ -100,25 +100,25 @@ fun OnboardingScreenContent(
                 title = "Unhurried Scripture",
                 description = "Short, guided devotionals that meet you in the quiet of your day.",
                 accentColor = colors.onboarding.accentPrimary,
-                imageRes = R.drawable.onboarding_unhurried_scripture
+                imageRes = R.drawable.feature_onboarding_unhurried_scripture
             ),
             OnboardingPage(
                 title = "Reflect and Pray",
                 description = "Private journal and prayer lists, encrypted by default.",
                 accentColor = colors.onboarding.accentSecondary,
-                imageRes = R.drawable.onboarding_reflect_and_pray
+                imageRes = R.drawable.feature_onboarding_reflect_and_pray
             ),
             OnboardingPage(
                 title = "Build Your Rhythm",
                 description = "Choose 5, 10, or 20 minute sessions with gentle reminders.",
                 accentColor = colors.onboarding.accentTertiary,
-                imageRes = R.drawable.onboarding_build_your_rhythm
+                imageRes = R.drawable.feature_onboarding_build_your_rhythm
             ),
             OnboardingPage(
                 title = "Offline and Yours",
                 description = "Download scripture and keep your progress anywhere.",
                 accentColor = colors.onboarding.accentQuaternary,
-                imageRes = R.drawable.onboarding_offline_and_yours
+                imageRes = R.drawable.feature_onboarding_offline_and_yours
             )
         )
     }
