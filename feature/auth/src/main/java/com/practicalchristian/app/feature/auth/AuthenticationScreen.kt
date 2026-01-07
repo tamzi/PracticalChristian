@@ -128,28 +128,28 @@ private fun AuthenticationSignUp(
             )
             Spacer(modifier = Modifier.height(spacing.padding200))
             AuthProviderButton(
-                iconRes = R.drawable.auth_google,
+                iconRes = R.drawable.feature_auth_google,
                 label = "Continue with Google",
                 onClick = onSignUpWithGoogle,
                 enabled = !state.isLoading
             )
             Spacer(modifier = Modifier.height(spacing.padding12))
             AuthProviderButton(
-                iconRes = R.drawable.auth_facebook,
+                iconRes = R.drawable.feature_auth_facebook,
                 label = "Continue with Facebook",
                 onClick = onSignUpWithFacebook,
                 enabled = !state.isLoading
             )
             Spacer(modifier = Modifier.height(spacing.padding12))
             AuthProviderButton(
-                iconRes = R.drawable.auth_tiktok,
+                iconRes = R.drawable.feature_auth_tiktok,
                 label = "Continue with TikTok",
                 onClick = onSignUpWithTikTok,
                 enabled = !state.isLoading
             )
             Spacer(modifier = Modifier.height(spacing.padding12))
             AuthProviderButton(
-                iconRes = R.drawable.auth_x,
+                iconRes = R.drawable.feature_auth_x,
                 label = "Continue with X",
                 onClick = onSignUpWithX,
                 enabled = !state.isLoading
