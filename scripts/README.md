@@ -28,6 +28,7 @@ Runs **fast validation checks** before every commit (< 5 seconds):
 - File count and naming conventions
 - Documentation rules enforcement
 - No code examples in markdown files
+- Design system enforcement (no Material components or raw colors)
 
 ### Commit-Msg Hook
 
@@ -53,6 +54,7 @@ See `docs/agentRules/commitRules.md` for the policy on bypassing hooks.
 | `install-git-hooks.sh`    | Installs all git hooks                  |
 | `verify-hooks.sh`         | Verifies hooks are properly installed   |
 | `check-hooks-on-build.sh` | Checks hooks during build               |
+| `check-design-system-usage.sh` | Blocks Material usage and raw colors |
 | `pre-commit-hook.sh`      | Validates staged changes                |
 | `commit-msg-hook.sh`      | Validates commit message format         |
 | `pre-push.sh`             | Validates commit history and runs tests |
