@@ -171,6 +171,12 @@ if [ "$CODE_EXAMPLES_FOUND" -eq 0 ]; then
 fi
 echo ""
 
+# Check 7: Design system enforcement (no Material components or raw colors)
+if ! ./scripts/check-design-system-usage.sh; then
+    VIOLATIONS=$((VIOLATIONS + 1))
+fi
+echo ""
+
 # If violations found, block the commit
 if [ "$VIOLATIONS" -gt 0 ]; then
     echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
