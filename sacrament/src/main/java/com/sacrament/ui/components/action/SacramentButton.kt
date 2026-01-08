@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
@@ -76,33 +77,37 @@ fun SacramentButton(
         )
         .padding(SacramentButtonDefaults.contentPadding(size))
 
-    Row(
+    Box(
         modifier = buttonModifier,
-        horizontalArrangement = Arrangement.spacedBy(SacramentButtonDefaults.iconSpacing(size)),
-        verticalAlignment = Alignment.CenterVertically,
+        contentAlignment = Alignment.Center,
     ) {
-        if (leadingIcon != null) {
-            SacramentIcon(
-                imageVector = leadingIcon,
-                contentDescription = null,
-                tint = contentColor,
-                size = SacramentButtonDefaults.iconSize(size),
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(SacramentButtonDefaults.iconSpacing(size)),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            if (leadingIcon != null) {
+                SacramentIcon(
+                    imageVector = leadingIcon,
+                    contentDescription = null,
+                    tint = contentColor,
+                    size = SacramentButtonDefaults.iconSize(size),
+                )
+            }
+            SacramentText(
+                text = text,
+                style = SacramentButtonDefaults.textStyle(size),
+                color = contentColor,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
             )
-        }
-        SacramentText(
-            text = text,
-            style = SacramentButtonDefaults.textStyle(size),
-            color = contentColor,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-        )
-        if (trailingIcon != null) {
-            SacramentIcon(
-                imageVector = trailingIcon,
-                contentDescription = null,
-                tint = contentColor,
-                size = SacramentButtonDefaults.iconSize(size),
-            )
+            if (trailingIcon != null) {
+                SacramentIcon(
+                    imageVector = trailingIcon,
+                    contentDescription = null,
+                    tint = contentColor,
+                    size = SacramentButtonDefaults.iconSize(size),
+                )
+            }
         }
     }
 }

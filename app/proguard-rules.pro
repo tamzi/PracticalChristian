@@ -76,10 +76,10 @@
 -keep class com.practicalchristian.app.domain.models.** { *; }
 
 # Keep repository interfaces
--keep interface com.practicalchristian.app.domain.repositories.** { *; }
+-keep interface com.practicalchristian.app.domain.repository.** { *; }
 
 # Keep data layer implementations
--keep class com.practicalchristian.app.data.repositories.** { *; }
+-keep class com.practicalchristian.app.data.repository.** { *; }
 
 # Keep error handling classes
 -keep class com.practicalchristian.app.domain.models.AppError { *; }
