@@ -200,6 +200,35 @@ replaceability and facilitates using the core logic on iOS. For example,
 repository implemented in `core:data` to save to DB and sync, without the UI
 needing to know details.
 
+#### Feature Module Package Structure
+
+Feature modules are organized by screen scope. Use simple, predictable folders
+and keep shared UI pieces in a local `ui/` folder (do not add design system
+components inside feature modules).
+
+Example:
+
+```
+feature/notes/
+  src/main/java/.../feature/notes/
+    list/      // list screen + viewmodel + ui state
+    detail/    // detail screen + viewmodel + ui state
+    edit/      // edit screen + viewmodel + ui state
+    navigation/
+```
+
+#### Core Package Naming Conventions
+
+Use consistent package naming across core modules:
+
+- `core:domain`: `model/`, `repository/`, `usecases/` (optionally nested by
+  feature, e.g. `usecases/notes/`). Use cases stay in `core:domain`, not in
+  feature modules.
+- `core:data`: `repository/`, `mappers/`, `di/`.
+- `core:datasource:remote`: `api/`, `dto/`, `mapper/`.
+- `core:datasource:local`: `dao/`, `entity/`, `mapper/` (or `database/` when
+  using Room/SQLDelight wrappers).
+
 ### Design System Module
 
 - `sacrament`: A UI toolkit module with common Compose UI components, theming
