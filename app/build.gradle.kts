@@ -53,6 +53,7 @@ dependencies {
     implementation(projects.feature.onboarding)
     implementation(projects.feature.landing)
     implementation(projects.feature.setup)
+    implementation(projects.feature.notifications)
     implementation(projects.feature.home)
     implementation(projects.feature.notes)
     implementation(projects.feature.books)
