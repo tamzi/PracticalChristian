@@ -347,6 +347,12 @@ while IFS= read -r line; do
         
         echo -e "${GREEN}✓${NC} All commits follow the rules" >&2
         echo "" >&2
+
+        echo "🎨 Checking design system usage in pushed commits..." >&2
+        if ! ./scripts/check-design-system-usage.sh --range "$range"; then
+            exit 1
+        fi
+        echo "" >&2
     fi
 done <<< "$input"
 
