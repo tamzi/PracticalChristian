@@ -1,6 +1,6 @@
 @file:OptIn(kotlin.time.ExperimentalTime::class)
 
-package com.practicalchristian.app.feature.notes
+package com.practicalchristian.app.feature.notes.list
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.ExperimentalFoundationApi
