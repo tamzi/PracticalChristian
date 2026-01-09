@@ -1,11 +1,11 @@
-package com.practicalchristian.app.core.data.repositories
+package com.practicalchristian.app.core.data.repository
 
 import com.practicalchristian.app.core.data.mappers.toDomain
 import com.practicalchristian.app.core.data.mappers.toDomainError
 import com.practicalchristian.app.core.domain.models.DomainError
 import com.practicalchristian.app.core.domain.models.Outcome
 import com.practicalchristian.app.core.domain.models.ScheduleDomain
-import com.practicalchristian.app.core.domain.repositories.ScheduleRepository
+import com.practicalchristian.app.core.domain.repository.ScheduleRepository
 import com.practicalchristian.app.core.localdatasource.entity.ScheduleEntryCache
 import com.practicalchristian.app.core.localdatasource.helpers.LocalResult
 import com.practicalchristian.app.core.localdatasource.sources.schedule.ScheduleSource

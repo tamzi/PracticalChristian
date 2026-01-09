@@ -1,4 +1,4 @@
-package com.practicalchristian.app.core.data.repositories
+package com.practicalchristian.app.core.data.repository
 
 import com.practicalchristian.app.core.data.mappers.toCache
 import com.practicalchristian.app.core.data.mappers.toDomain
@@ -8,7 +8,7 @@ import com.practicalchristian.app.core.domain.models.NoteDomain
 import com.practicalchristian.app.core.domain.models.NoteType
 import com.practicalchristian.app.core.domain.models.Outcome
 import com.practicalchristian.app.core.domain.models.TagDomain
-import com.practicalchristian.app.core.domain.repositories.NotesRepository
+import com.practicalchristian.app.core.domain.repository.NotesRepository
 import com.practicalchristian.app.core.localdatasource.entity.NoteCache
 import com.practicalchristian.app.core.localdatasource.helpers.LocalResult
 import com.practicalchristian.app.core.localdatasource.sources.book.BookSources
