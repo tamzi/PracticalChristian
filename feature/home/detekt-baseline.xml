@@ -15,6 +15,6 @@
     <ID>LongParameterList:HomeScreen.kt$( title: String, subtitle: String, emoji: String, backgroundColor: Color, modifier: Modifier = Modifier, onClick: () -&gt; Unit )</ID>
     <ID>NoTrailingSpaces:HomeViewModel.kt$HomeViewModel$ </ID>
     <ID>StringTemplate:HomeScreen.kt$${userName}</ID>
-    <ID>TooManyFunctions:HomeScreen.kt$com.practicalchristian.app.feature.home.HomeScreen.kt</ID>
+    <ID>TooManyFunctions:HomeScreen.kt$com.practicalchristian.app.feature.home.home.HomeScreen.kt</ID>
   </CurrentIssues>
 </SmellBaseline>

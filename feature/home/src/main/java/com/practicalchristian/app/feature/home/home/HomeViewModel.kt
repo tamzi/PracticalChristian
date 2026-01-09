@@ -1,6 +1,6 @@
 @file:OptIn(kotlin.time.ExperimentalTime::class)
 
-package com.practicalchristian.app.feature.home
+package com.practicalchristian.app.feature.home.home
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Bookmark
@@ -8,7 +8,7 @@ import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.LocalLibrary
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.viewModelScope
-import com.practicalchristian.app.core.domain.repositories.PreferencesRepository
+import com.practicalchristian.app.core.domain.repository.PreferencesRepository
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import com.practicalchristian.app.core.ui.navigation.AppDestination
 import com.practicalchristian.app.core.ui.navigation.NavigationEvent
