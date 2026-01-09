@@ -1,4 +1,4 @@
-package com.practicalchristian.app.feature.books
+package com.practicalchristian.app.feature.books.list
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Box

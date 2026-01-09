@@ -1,8 +1,8 @@
-package com.practicalchristian.app.feature.books
+package com.practicalchristian.app.feature.books.list
 
 import androidx.lifecycle.viewModelScope
 import com.practicalchristian.app.core.domain.models.Book
-import com.practicalchristian.app.core.domain.repositories.BooksRepository
+import com.practicalchristian.app.core.domain.repository.BooksRepository
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import com.practicalchristian.app.core.ui.helpers.UiListState
 import com.practicalchristian.app.core.ui.helpers.UiSuccessState
