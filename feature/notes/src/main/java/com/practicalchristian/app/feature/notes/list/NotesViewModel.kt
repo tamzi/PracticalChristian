@@ -1,8 +1,8 @@
-package com.practicalchristian.app.feature.notes
+package com.practicalchristian.app.feature.notes.list
 
 import androidx.lifecycle.viewModelScope
 import com.practicalchristian.app.core.domain.models.NoteDomain
-import com.practicalchristian.app.core.domain.repositories.NotesRepository
+import com.practicalchristian.app.core.domain.repository.NotesRepository
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import com.practicalchristian.app.core.ui.helpers.UiListState
 import com.practicalchristian.app.core.ui.helpers.UiSuccessState
