@@ -24,9 +24,15 @@ sealed interface AppDestination {
     @Serializable
     data object Setup : AppDestination
 
+    @Serializable
+    data object NotificationReminder : AppDestination
+
     // Main app
     @Serializable
     data object Home : AppDestination
+
+    @Serializable
+    data object NotificationsHub : AppDestination
 
     // Notes section (top-level graph)
     @Serializable
@@ -92,6 +98,7 @@ val AppDestination.usesSurfaceBar: Boolean
     get() = when (this) {
         AppDestination.Onboarding,
         AppDestination.Authentication,
+        AppDestination.NotificationReminder,
         AppDestination.Home,
         AppDestination.Notes,
         is AppDestination.EditNote -> true
