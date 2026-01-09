@@ -6,7 +6,7 @@
     <ID>LongMethod:BooksScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun BooksScreenContent( state: BooksScreenUiState, onChangeViewTypeClicked: () -&gt; Unit, onBookClicked: (Int) -&gt; Unit, onNavigateToHome: () -&gt; Unit = {}, onNavigateToNotes: () -&gt; Unit = {} )</ID>
     <ID>MaxLineLength:BookScreen.kt$colors = CardDefaults.cardColors(containerColor = SacramentTheme.colors.surfaces.background)</ID>
     <ID>MaximumLineLength:BookScreen.kt$ </ID>
-    <ID>NoUnusedImports:BookViewModel.kt$com.practicalchristian.app.feature.books.BookViewModel.kt</ID>
+    <ID>NoUnusedImports:BookViewModel.kt$com.practicalchristian.app.feature.books.detail.BookViewModel.kt</ID>
     <ID>UnusedPrivateMember:BookScreen.kt$@Preview(showBackground = true, name = "BookScreen - Error (No book name)") @Composable private fun BookScreenContentErrorNoNamePreview()</ID>
     <ID>UnusedPrivateMember:BookScreen.kt$@Preview(showBackground = true, name = "BookScreen - Error") @Composable private fun BookScreenContentErrorPreview()</ID>
     <ID>UnusedPrivateMember:BookScreen.kt$@Preview(showBackground = true, name = "BookScreen - Loading") @Composable private fun BookScreenContentLoadingPreview()</ID>
