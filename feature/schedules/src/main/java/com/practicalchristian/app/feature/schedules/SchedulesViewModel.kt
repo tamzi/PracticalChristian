@@ -5,8 +5,8 @@ package com.practicalchristian.app.feature.schedules
 import androidx.lifecycle.viewModelScope
 import com.practicalchristian.app.core.domain.models.Outcome
 import com.practicalchristian.app.core.domain.models.ScheduleDomain
-import com.practicalchristian.app.core.domain.repositories.PreferencesRepository
-import com.practicalchristian.app.core.domain.repositories.ScheduleRepository
+import com.practicalchristian.app.core.domain.repository.PreferencesRepository
+import com.practicalchristian.app.core.domain.repository.ScheduleRepository
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import com.practicalchristian.app.core.ui.helpers.UiListState
 import com.practicalchristian.app.core.ui.helpers.UiSuccessState

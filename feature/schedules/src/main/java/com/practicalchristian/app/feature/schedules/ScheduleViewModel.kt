@@ -3,7 +3,7 @@ package com.practicalchristian.app.feature.schedules
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.practicalchristian.app.core.domain.models.ScheduleDomain
-import com.practicalchristian.app.core.domain.repositories.ScheduleRepository
+import com.practicalchristian.app.core.domain.repository.ScheduleRepository
 import com.practicalchristian.app.core.ui.helpers.ItemState
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
