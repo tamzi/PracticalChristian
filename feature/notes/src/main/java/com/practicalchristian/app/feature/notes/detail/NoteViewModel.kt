@@ -1,10 +1,10 @@
-package com.practicalchristian.app.feature.notes
+package com.practicalchristian.app.feature.notes.detail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.practicalchristian.app.core.domain.models.NoteDomain
 import com.practicalchristian.app.core.domain.models.Outcome
-import com.practicalchristian.app.core.domain.repositories.NotesRepository
+import com.practicalchristian.app.core.domain.repository.NotesRepository
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import com.practicalchristian.app.core.ui.helpers.toUserMessage
 import dagger.hilt.android.lifecycle.HiltViewModel
