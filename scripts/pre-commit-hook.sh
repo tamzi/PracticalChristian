@@ -32,10 +32,12 @@ echo ""
 VIOLATIONS=0
 
 # Get list of staged files
-# Only check files that are about to be committed (staged)
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
+# Use separate lists to match pre-push file counting (no rename detection)
+# while still only reading files that exist for content checks.
+COUNTED_FILES=$(git diff --cached --name-only --no-renames)
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
 
-if [ -z "$STAGED_FILES" ]; then
+if [ -z "$COUNTED_FILES" ]; then
     echo "No files staged for commit."
     exit 0
 fi
@@ -91,12 +93,12 @@ echo ""
 # Check 3: One documentation file per commit (BLOCKING VIOLATION)
 # Each documentation file should have its own commit for easier tracking
 echo "📄 Checking documentation files per commit..."
-DOC_COUNT=$(echo "$STAGED_FILES" | grep -c '\.md$' || true)
+DOC_COUNT=$(echo "$COUNTED_FILES" | grep -c '\.md$' || true)
 if [ "$DOC_COUNT" -gt 1 ]; then
     echo -e "${RED}❌ VIOLATION: $DOC_COUNT documentation files staged (maximum: 1)${NC}"
     echo -e "   Rule: Each documentation file MUST be in its own commit"
     echo -e "   Staged .md files:"
-    echo "$STAGED_FILES" | grep '\.md$' | sed 's/^/     - /'
+    echo "$COUNTED_FILES" | grep '\.md$' | sed 's/^/     - /'
     echo ""
     echo -e "   ${RED}Split into separate commits - one file per commit${NC}"
     VIOLATIONS=$((VIOLATIONS + 1))
@@ -108,7 +110,7 @@ echo ""
 # Check 4: Maximum files per commit (stricter enforcement)
 # Commits should be focused (1-3 files ideal, 5 files max) to keep changes atomic
 echo "📊 Checking commit size..."
-FILE_COUNT=$(echo "$STAGED_FILES" | wc -l | tr -d ' ')
+FILE_COUNT=$(echo "$COUNTED_FILES" | wc -l | tr -d ' ')
 if [ "$FILE_COUNT" -gt 5 ]; then
     echo -e "${RED}❌ VIOLATION: $FILE_COUNT files staged (maximum: 5)${NC}"
     echo -e "   Rule: Keep commits focused - ideal is 1-3 files"
@@ -125,8 +127,8 @@ echo ""
 # Check 5: No mixed code and documentation changes (BLOCKING VIOLATION)
 # Documentation changes should be in separate commits from code changes
 echo "🔀 Checking for mixed concerns..."
-HAS_CODE=$(echo "$STAGED_FILES" | grep -cv '\.md$' || true)
-HAS_DOCS=$(echo "$STAGED_FILES" | grep -c '\.md$' || true)
+HAS_CODE=$(echo "$COUNTED_FILES" | grep -cv '\.md$' || true)
+HAS_DOCS=$(echo "$COUNTED_FILES" | grep -c '\.md$' || true)
 
 if [ "$HAS_CODE" -gt 0 ] && [ "$HAS_DOCS" -gt 0 ]; then
     echo -e "${RED}❌ VIOLATION: Mixing code and documentation changes${NC}"
