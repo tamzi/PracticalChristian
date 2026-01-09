@@ -1,4 +1,4 @@
-package com.practicalchristian.app.feature.notes
+package com.practicalchristian.app.feature.notes.detail
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Column

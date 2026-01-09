@@ -18,7 +18,7 @@
     <ID>MaximumLineLength:EditNoteScreen.kt$ </ID>
     <ID>MaximumLineLength:NoteScreen.kt$ </ID>
     <ID>MaximumLineLength:NotesScreen.kt$ </ID>
-    <ID>NoUnusedImports:NoteScreen.kt$com.practicalchristian.app.feature.notes.NoteScreen.kt</ID>
+    <ID>NoUnusedImports:NoteScreen.kt$com.practicalchristian.app.feature.notes.detail.NoteScreen.kt</ID>
     <ID>TooManyFunctions:EditNoteViewModel.kt$EditNoteViewModel : StatefulViewModel</ID>
     <ID>UnusedPrivateMember:NotesScreen.kt$@Preview(showBackground = true, name = "NotesScreen - Empty") @Composable private fun NotesScreenEmptyPreview()</ID>
     <ID>UnusedPrivateMember:NotesScreen.kt$@Preview(showBackground = true, name = "NotesScreen - Error") @Composable private fun NotesScreenErrorPreview()</ID>
