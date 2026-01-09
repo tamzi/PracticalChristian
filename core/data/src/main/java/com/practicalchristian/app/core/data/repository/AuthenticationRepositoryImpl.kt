@@ -1,6 +1,6 @@
-package com.practicalchristian.app.core.data.repositories
+package com.practicalchristian.app.core.data.repository
 
-import com.practicalchristian.app.core.domain.repositories.AuthenticationRepository
+import com.practicalchristian.app.core.domain.repository.AuthenticationRepository
 import com.practicalchristian.app.core.localdatasource.preferences.auth.AuthenticationPreferences
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
