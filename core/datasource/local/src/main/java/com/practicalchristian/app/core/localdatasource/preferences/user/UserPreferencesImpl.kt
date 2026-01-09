@@ -15,6 +15,8 @@ class UserPreferencesImpl @Inject constructor(
         val darkModeTheme = booleanPreferencesKey("DARK_MODE")
         val profilePictureUri = stringPreferencesKey("PROFILE_PICTURE_URI")
         val userName = stringPreferencesKey("USER_NAME")
+        val notificationPermissionRequested = booleanPreferencesKey("NOTIFICATION_PERMISSION_REQUESTED")
+        val notificationPermissionGranted = booleanPreferencesKey("NOTIFICATION_PERMISSION_GRANTED")
     }
 
     override val darkModeTheme: Flow<Boolean>
@@ -46,5 +48,13 @@ class UserPreferencesImpl @Inject constructor(
         } else {
             source.delete(key = Keys.userName)
         }
+    }
+
+    override suspend fun setNotificationPermissionRequested(requested: Boolean) {
+        source.update(key = Keys.notificationPermissionRequested, value = requested)
+    }
+
+    override suspend fun setNotificationPermissionGranted(granted: Boolean) {
+        source.update(key = Keys.notificationPermissionGranted, value = granted)
     }
 }
