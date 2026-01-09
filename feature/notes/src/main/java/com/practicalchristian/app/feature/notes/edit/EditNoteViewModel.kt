@@ -1,4 +1,4 @@
-package com.practicalchristian.app.feature.notes
+package com.practicalchristian.app.feature.notes.edit
 
 import android.graphics.Color
 import androidx.lifecycle.SavedStateHandle
@@ -8,9 +8,9 @@ import com.practicalchristian.app.core.domain.models.NoteDomain
 import com.practicalchristian.app.core.domain.models.NoteType
 import com.practicalchristian.app.core.domain.models.Outcome
 import com.practicalchristian.app.core.domain.models.TagDomain
-import com.practicalchristian.app.core.domain.repositories.BooksRepository
-import com.practicalchristian.app.core.domain.repositories.NotesRepository
-import com.practicalchristian.app.core.domain.repositories.TagsRepository
+import com.practicalchristian.app.core.domain.repository.BooksRepository
+import com.practicalchristian.app.core.domain.repository.NotesRepository
+import com.practicalchristian.app.core.domain.repository.TagsRepository
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import com.practicalchristian.app.core.ui.helpers.UiListState
 import com.practicalchristian.app.core.ui.helpers.UiSuccessState

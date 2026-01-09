@@ -1,4 +1,4 @@
-package com.practicalchristian.app.feature.notes
+package com.practicalchristian.app.feature.notes.edit
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
