@@ -5,7 +5,7 @@ import androidx.core.graphics.toColorInt
 import androidx.lifecycle.viewModelScope
 import com.practicalchristian.app.core.domain.models.Outcome
 import com.practicalchristian.app.core.domain.models.TagDomain
-import com.practicalchristian.app.core.domain.repositories.TagsRepository
+import com.practicalchristian.app.core.domain.repository.TagsRepository
 import com.practicalchristian.app.core.ui.helpers.ItemAction
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import com.practicalchristian.app.core.ui.helpers.UiListState
