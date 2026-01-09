@@ -1,11 +1,11 @@
-package com.practicalchristian.app.core.data.repositories
+package com.practicalchristian.app.core.data.repository
 
 import com.practicalchristian.app.core.data.mappers.toCache
 import com.practicalchristian.app.core.data.mappers.toDomain
 import com.practicalchristian.app.core.data.mappers.toDomainError
 import com.practicalchristian.app.core.domain.models.Outcome
 import com.practicalchristian.app.core.domain.models.TagDomain
-import com.practicalchristian.app.core.domain.repositories.TagsRepository
+import com.practicalchristian.app.core.domain.repository.TagsRepository
 import com.practicalchristian.app.core.localdatasource.helpers.LocalResult
 import com.practicalchristian.app.core.localdatasource.sources.tags.TagsSource
 import kotlinx.coroutines.flow.Flow
