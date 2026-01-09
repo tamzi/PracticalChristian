@@ -1,4 +1,4 @@
-package com.practicalchristian.app.feature.home
+package com.practicalchristian.app.feature.home.home
 
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.LocalActivity
