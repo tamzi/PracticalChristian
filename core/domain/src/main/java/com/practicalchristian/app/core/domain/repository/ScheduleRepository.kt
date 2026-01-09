@@ -1,4 +1,4 @@
-package com.practicalchristian.app.core.domain.repositories
+package com.practicalchristian.app.core.domain.repository
 
 import com.practicalchristian.app.core.domain.models.Outcome
 import com.practicalchristian.app.core.domain.models.ScheduleDomain
