@@ -15,19 +15,21 @@ import com.practicalchristian.app.core.ui.navigation.AppDestination
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.practicalchristian.app.feature.profile.ProfileScreen
 import com.practicalchristian.app.feature.auth.AuthenticationScreen
-import com.practicalchristian.app.feature.books.BookScreen
-import com.practicalchristian.app.feature.books.BooksScreen
-import com.practicalchristian.app.feature.notes.EditNoteScreen
-import com.practicalchristian.app.feature.home.HomeScreen
+import com.practicalchristian.app.feature.books.detail.BookScreen
+import com.practicalchristian.app.feature.books.list.BooksScreen
+import com.practicalchristian.app.feature.notes.edit.EditNoteScreen
+import com.practicalchristian.app.feature.home.home.HomeScreen
 import com.practicalchristian.app.feature.landing.LandingScreen
-import com.practicalchristian.app.feature.notes.NoteScreen
-import com.practicalchristian.app.feature.notes.NotesScreen
+import com.practicalchristian.app.feature.notes.detail.NoteScreen
+import com.practicalchristian.app.feature.notes.list.NotesScreen
 import com.practicalchristian.app.feature.onboarding.OnboardingScreen
 import com.practicalchristian.app.feature.schedules.ScheduleScreen
 import com.practicalchristian.app.feature.schedules.SchedulesScreen
 import com.practicalchristian.app.feature.setup.SetupScreen
 import com.practicalchristian.app.feature.settings.SettingsScreen
 import com.practicalchristian.app.feature.tags.TagsScreen
+import com.practicalchristian.app.feature.notifications.reminder.NotificationReminderScreen
+import com.practicalchristian.app.feature.notifications.hub.NotificationsHubScreen
 
 /**
  * Navigation host for the PracticalChristian app.
@@ -70,6 +72,10 @@ fun PracticalChristianNavHost(
             SetupScreen(navigator = navigator)
         }
 
+        composable<AppDestination.NotificationReminder> {
+            NotificationReminderScreen(navigator = navigator)
+        }
+
         composable<AppDestination.Home> {
             HomeScreen(navigator = navigator)
         }
@@ -94,6 +100,10 @@ fun PracticalChristianNavHost(
 
         composable<AppDestination.Tags> {
             TagsScreen(navigator = navigator)
+        }
+
+        composable<AppDestination.NotificationsHub> {
+            NotificationsHubScreen(navigator = navigator)
         }
     }
 }
