@@ -1,8 +1,8 @@
 package com.practicalchristian.app.feature.setup
 
 import androidx.lifecycle.viewModelScope
-import com.practicalchristian.app.core.domain.repositories.AuthenticationRepository
-import com.practicalchristian.app.core.domain.repositories.PreferencesRepository
+import com.practicalchristian.app.core.domain.repository.AuthenticationRepository
+import com.practicalchristian.app.core.domain.repository.PreferencesRepository
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
