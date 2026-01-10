@@ -35,7 +35,7 @@ For comprehensive, enforceable rules that you **MUST** follow, see:
 
 This document provides essential context, conventions, and guidelines for AI agents (like Codex, Claude,
 GitHub Copilot, etc.) contributing to the PracticalChristian codebase. PracticalChristian is a Bible
-meditations app for Android, 
+meditations app for Android, designed to help users build consistent, Scripture-centered habits.
 
 ## Project Context
 
