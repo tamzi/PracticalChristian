@@ -179,7 +179,7 @@ class NotificationsHubViewModel @Inject constructor(
                             iconVector = Icons.Rounded.Favorite,
                             tone = NotificationIconTone.Accent,
                         ),
-                        text = "What if your next Crush is online right now?",
+                        text = "Time for your morning prayer. Start your day with gratitude and reflection",
                         isUnread = true,
                     ),
                     NotificationItem(
@@ -188,7 +188,7 @@ class NotificationsHubViewModel @Inject constructor(
                             iconVector = Icons.Rounded.GridView,
                             tone = NotificationIconTone.Success,
                         ),
-                        text = "Choose who you want to meet! Certified profiles, online at the same time, new profiles...",
+                        text = "Your daily reading plan is ready. Continue your journey through Scripture",
                         isUnread = true,
                     ),
                     NotificationItem(
@@ -198,7 +198,7 @@ class NotificationsHubViewModel @Inject constructor(
                             tone = NotificationIconTone.Info,
                             hasOverlay = true,
                         ),
-                        text = "Target: Certified profiles! No need to compromise to make great connections",
+                        text = "New meditation available: Finding peace in difficult times",
                         isUnread = true,
                     ),
                 ),
@@ -212,7 +212,7 @@ class NotificationsHubViewModel @Inject constructor(
                             iconVector = Icons.Rounded.GridView,
                             tone = NotificationIconTone.Success,
                         ),
-                        text = "Meet people according to your mood and your interests",
+                        text = "You've completed 5 days of your reading plan. Keep up the great work!",
                         isUnread = true,
                     ),
                     NotificationItem(
@@ -221,7 +221,7 @@ class NotificationsHubViewModel @Inject constructor(
                             iconVector = Icons.Rounded.Favorite,
                             tone = NotificationIconTone.Accent,
                         ),
-                        text = "Find your next Crush. Take a look at the latest happners you crossed paths with!",
+                        text = "Don't forget to review your bookmarked verses from this week",
                         isUnread = false,
                     ),
                     NotificationItem(
@@ -230,7 +230,7 @@ class NotificationsHubViewModel @Inject constructor(
                             iconVector = Icons.Rounded.Notifications,
                             tone = NotificationIconTone.Success,
                         ),
-                        text = "Explore the Map and easily find the people you cross paths with. Your Crush may be right here",
+                        text = "Your evening prayer reminder is set for 8:00 PM",
                         isUnread = false,
                     ),
                     NotificationItem(
@@ -239,7 +239,7 @@ class NotificationsHubViewModel @Inject constructor(
                             iconVector = Icons.Rounded.Favorite,
                             tone = NotificationIconTone.Accent,
                         ),
-                        text = "Your future Crush may have signed up at the same time as you 👀",
+                        text = "New devotional book added to your library: Daily Wisdom",
                         isUnread = false,
                     ),
                 ),
