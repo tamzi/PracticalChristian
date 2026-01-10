@@ -34,7 +34,8 @@ VIOLATIONS=0
 # Get list of staged files
 # Use separate lists to match pre-push file counting (no rename detection)
 # while still only reading files that exist for content checks.
-COUNTED_FILES=$(git diff --cached --name-status | awk '{ if ($1 ~ /^R/) { print $2; print $3 } else if ($1 ~ /^C/) { print $3 } else { print $2 } }')
+# For renames (R), only count the new filename to avoid double-counting
+COUNTED_FILES=$(git diff --cached --name-status | awk '{ if ($1 ~ /^R/) { print $3 } else if ($1 ~ /^C/) { print $3 } else { print $2 } }')
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
 
 if [ -z "$COUNTED_FILES" ]; then
