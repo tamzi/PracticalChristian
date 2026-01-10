@@ -89,25 +89,32 @@ class NotificationsHubViewModel @Inject constructor(
             // notificationsRepository.markAsRead(notificationId)
             
             // Update local state for now
-            update {
-                val updatedSections = sections.map { section ->
-                    section.copy(
-                        notifications = section.notifications.map { notification ->
-                            if (notification.id == notificationId) {
-                                notification.copy(isUnread = false)
-                            } else {
-                                notification
-                            }
-                        }
+            val currentSections = state.value.sections
+            var notificationFound = false
+            val updatedSections = currentSections.map { section ->
+                if (notificationFound) return@map section
+                
+                val notificationIndex = section.notifications.indexOfFirst { 
+                    it.id == notificationId && it.isUnread 
+                }
+                if (notificationIndex != -1) {
+                    notificationFound = true
+                    val updatedNotifications = section.notifications.toMutableList()
+                    updatedNotifications[notificationIndex] = 
+                        updatedNotifications[notificationIndex].copy(isUnread = false)
+                    section.copy(notifications = updatedNotifications)
+                } else {
+                    section
+                }
+            }
+            
+            if (notificationFound) {
+                update {
+                    copy(
+                        sections = updatedSections,
+                        unreadCount = (unreadCount - 1).coerceAtLeast(0)
                     )
                 }
-                val unreadCount = updatedSections.sumOf { section ->
-                    section.notifications.count { it.isUnread }
-                }
-                copy(
-                    sections = updatedSections,
-                    unreadCount = unreadCount
-                )
             }
         }
     }
