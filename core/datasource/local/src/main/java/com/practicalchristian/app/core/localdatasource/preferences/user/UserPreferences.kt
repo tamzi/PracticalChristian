@@ -7,6 +7,8 @@ interface UserPreferences {
     val darkModeTheme: Flow<Boolean>
     val profilePictureUri: Flow<String?>
     val userName: Flow<String?>
+    val notificationPermissionRequested: Flow<Boolean>
+    val notificationPermissionGranted: Flow<Boolean>
 
     suspend fun toggleDarkModeTheme()
     suspend fun setProfilePictureUri(uri: String?)

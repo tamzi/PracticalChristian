@@ -28,6 +28,12 @@ class UserPreferencesImpl @Inject constructor(
     override val userName: Flow<String?>
         get() = source.getNullable(key = Keys.userName)
 
+    override val notificationPermissionRequested: Flow<Boolean>
+        get() = source.get(key = Keys.notificationPermissionRequested, default = false)
+
+    override val notificationPermissionGranted: Flow<Boolean>
+        get() = source.get(key = Keys.notificationPermissionGranted, default = false)
+
     override suspend fun toggleDarkModeTheme() {
         val current = source.get(key = Keys.darkModeTheme, default = true).first()
         source.update(key = Keys.darkModeTheme, value = current.not())
