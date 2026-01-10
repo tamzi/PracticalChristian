@@ -31,9 +31,9 @@ Detailed module docs go in `docs/architecture/{moduleName}/`
 
 ### ⚠️ Rule 4: File Naming
 
-Use camelCase for all files except `README.md` (capital letters).
+Use camelCase for all files except `README.md` and `Agents.md` (capital letters).
 
-*Why: Consistent naming convention across all docs (README.md is the only exception).*
+*Why: Consistent naming convention across all docs (README.md and Agents.md are the only exceptions).*
 
 **Wrong:** `IMPLEMENTATION.md`, `TESTING_GUIDE.md`  
 **Correct:** `implementation.md`, `testingGuide.md`
@@ -292,7 +292,7 @@ docs/architecture/stories/
 **❌ Wrong:** `IMPLEMENTATION.md`, `INDEX.md`, `STATUS.md`  
 **✅ Correct:** `implementation.md`, `index.md`, `status.md`
 
-Exception: `README.md` must use capital letters.
+Exceptions: `README.md` and `Agents.md` must use capital letters.
 
 ### 4. Multiple Doc Files in Module
 
@@ -346,7 +346,7 @@ Before committing documentation:
 
 - [ ] All docs in `docs/` (except module READMEs)
 - [ ] Module READMEs < 100 lines
-- [ ] Files use camelCase (except README.md)
+- [ ] Files use camelCase (except README.md and Agents.md)
 - [ ] `docs/README.md` index updated
 - [ ] Cross-references correct
 - [ ] No architecture diagrams in module READMEs
@@ -370,7 +370,7 @@ Before committing documentation:
 1. ✅ All docs in `docs/` (except module READMEs)
 2. ✅ Module READMEs < 100 lines
 3. ✅ Detailed docs in `docs/architecture/{moduleName}/`
-4. ✅ camelCase naming (except README.md)
+4. ✅ camelCase naming (except README.md and Agents.md)
 5. ✅ Update `docs/README.md` index
 6. ✅ No "Last Updated" dates or maintainers in documentation
 7. ✅ No Kotlin/Java code examples in .md files (use KDoc instead)
