@@ -157,7 +157,10 @@ private fun NotificationsHubScreenContent(
                                     )
                                 }
 
-                                itemsIndexed(section.notifications) { index, notification ->
+                                itemsIndexed(
+                                    items = section.notifications,
+                                    key = { _, notification -> notification.id }
+                                ) { index, notification ->
                                     NotificationItemRow(
                                         notification = notification,
                                         onClick = { onNotificationClick(notification.id) },
