@@ -89,22 +89,21 @@ class NotificationsHubViewModel @Inject constructor(
             // notificationsRepository.markAsRead(notificationId)
             
             // Update local state for now
-            val currentSections = state.value.sections
-            val updatedSections = currentSections.map { section ->
-                section.copy(
-                    notifications = section.notifications.map { notification ->
-                        if (notification.id == notificationId && notification.isUnread) {
-                            notification.copy(isUnread = false)
-                        } else {
-                            notification
-                        }
-                    }
-                )
-            }
-            val newUnreadCount = updatedSections.sumOf { section ->
-                section.notifications.count { it.isUnread }
-            }
             update {
+                val updatedSections = sections.map { section ->
+                    section.copy(
+                        notifications = section.notifications.map { notification ->
+                            if (notification.id == notificationId && notification.isUnread) {
+                                notification.copy(isUnread = false)
+                            } else {
+                                notification
+                            }
+                        }
+                    )
+                }
+                val newUnreadCount = updatedSections.sumOf { section ->
+                    section.notifications.count { it.isUnread }
+                }
                 copy(
                     sections = updatedSections,
                     unreadCount = newUnreadCount,
