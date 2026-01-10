@@ -89,40 +89,26 @@ class NotificationsHubViewModel @Inject constructor(
             // notificationsRepository.markAsRead(notificationId)
             
             // Update local state for now
-            val currentState = state.value
-            val currentSections = currentState.sections
-            var notificationFound = false
+            val currentSections = state.value.sections
             val updatedSections = currentSections.map { section ->
-                val notificationIndex = section.notifications.indexOfFirst { 
-                    it.id == notificationId && it.isUnread 
-                }
-                if (notificationIndex != -1 && !notificationFound) {
-                    notificationFound = true
-                    val updatedNotifications = section.notifications.toMutableList()
-                    updatedNotifications[notificationIndex] = 
-                        updatedNotifications[notificationIndex].copy(isUnread = false)
-                    section.copy(notifications = updatedNotifications)
-                } else {
-                    section
-                }
+                section.copy(
+                    notifications = section.notifications.map { notification ->
+                        if (notification.id == notificationId && notification.isUnread) {
+                            notification.copy(isUnread = false)
+                        } else {
+                            notification
+                        }
+                    }
+                )
             }
-            
-            if (notificationFound) {
-                val currentUnreadCount = currentState.unreadCount
-                val newUnreadCount = (currentUnreadCount - 1).coerceAtLeast(0)
-                update {
-                    copy(
-                        sections = updatedSections,
-                        unreadCount = newUnreadCount,
-                        listState = UiListState.Success(
-                            data = if (updatedSections.isEmpty()) {
-                                UiSuccessState.Empty
-                            } else {
-                                UiSuccessState.Data(data = updatedSections)
-                            }
-                        )
-                    )
-                }
+            val newUnreadCount = updatedSections.sumOf { section ->
+                section.notifications.count { it.isUnread }
+            }
+            update {
+                copy(
+                    sections = updatedSections,
+                    unreadCount = newUnreadCount,
+                )
             }
         }
     }
