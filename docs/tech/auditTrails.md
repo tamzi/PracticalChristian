@@ -135,6 +135,12 @@ Minimum fields for each audit event:
 - No end-user access or export from the app.
 - Backend should provide secure, auditable access pathways.
 
+## Known Gaps
+
+- Notification permission state changes are persisted without audit events. Add attempt and outcome
+  events with user/context, timestamp, and outcome for the notification reminder flow in
+  `feature/notifications/src/main/java/com/practicalchristian/app/feature/notifications/reminder/NotificationReminderViewModel.kt`.
+
 ## Open Decisions
 
 - Establish the critical action catalog by feature.
