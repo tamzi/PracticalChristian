@@ -89,15 +89,14 @@ class NotificationsHubViewModel @Inject constructor(
             // notificationsRepository.markAsRead(notificationId)
             
             // Update local state for now
-            val currentSections = state.value.sections
+            val currentState = state.value
+            val currentSections = currentState.sections
             var notificationFound = false
             val updatedSections = currentSections.map { section ->
-                if (notificationFound) return@map section
-                
                 val notificationIndex = section.notifications.indexOfFirst { 
                     it.id == notificationId && it.isUnread 
                 }
-                if (notificationIndex != -1) {
+                if (notificationIndex != -1 && !notificationFound) {
                     notificationFound = true
                     val updatedNotifications = section.notifications.toMutableList()
                     updatedNotifications[notificationIndex] = 
@@ -109,10 +108,19 @@ class NotificationsHubViewModel @Inject constructor(
             }
             
             if (notificationFound) {
+                val currentUnreadCount = currentState.unreadCount
+                val newUnreadCount = (currentUnreadCount - 1).coerceAtLeast(0)
                 update {
                     copy(
                         sections = updatedSections,
-                        unreadCount = (unreadCount - 1).coerceAtLeast(0)
+                        unreadCount = newUnreadCount,
+                        listState = UiListState.Success(
+                            data = if (updatedSections.isEmpty()) {
+                                UiSuccessState.Empty
+                            } else {
+                                UiSuccessState.Data(data = updatedSections)
+                            }
+                        )
                     )
                 }
             }
@@ -136,7 +144,14 @@ class NotificationsHubViewModel @Inject constructor(
                 }
                 copy(
                     sections = updatedSections,
-                    unreadCount = 0
+                    unreadCount = 0,
+                    listState = UiListState.Success(
+                        data = if (updatedSections.isEmpty()) {
+                            UiSuccessState.Empty
+                        } else {
+                            UiSuccessState.Data(data = updatedSections)
+                        }
+                    )
                 )
             }
         }
