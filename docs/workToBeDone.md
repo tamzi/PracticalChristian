@@ -13,6 +13,18 @@ Single source of truth for project tasks, priorities, and status.
 ## Current Focus
 
 <details>
+<summary>EPIC: pr fixes</summary>
+
+- [ ] STORY 1: Notifications detekt cleanup
+  - [ ] TASK: Split long methods in notifications reminder and hub screens/viewmodels.
+  - [ ] TASK: Remove trailing spaces and consecutive blank lines in notifications feature files.
+  - [ ] TASK: Wrap or refactor lines exceeding max line length in notifications hub viewmodel.
+  - [ ] TASK: Replace or remove forbidden TODO comments in notifications hub viewmodel.
+  - [ ] TASK: Resolve unused preview warnings in notifications reminder and hub screens.
+
+</details>
+
+<details>
 <summary>EPIC: Design system setup + enforcement</summary>
 
 
@@ -131,5 +143,42 @@ Single source of truth for project tasks, priorities, and status.
 
 - [ ] STORY: Discovery research
   - [ ] TASK: Run research on pastoral content formats, multi-church behavior, privacy language, and opt-in signals for MTS/W.
+
+</details>
+
+<details>
+<summary>EPIC: Comprehensive Audit Trails</summary>
+
+- [ ] STORY: Define audit trail scope and criteria
+  - [x] TASK: Document architecture and event schema in `docs/tech/auditTrails.md`.
+  - [ ] TASK: Define a critical action catalog by feature.
+- [ ] STORY: Local persistence and retention
+  - [ ] TASK: Add audit event storage using Room with encryption at rest.
+  - [ ] TASK: Enforce 90-day retention with periodic cleanup.
+- [ ] STORY: Background sync
+  - [ ] TASK: Add local queue and upload worker with retry/backoff.
+  - [ ] TASK: Add a stub backend interface and ingestion contract.
+- [ ] STORY: Compliance access
+  - [ ] TASK: Define backend export format and access flow.
+
+</details>
+
+<details>
+<summary>EPIC: Secure error handling</summary>
+
+- [ ] STORY: App-wide policy and guidance
+  - [x] TASK: Document secure error handling guidelines in `docs/tech/errorHandling.md`.
+  - [ ] TASK: Define user-facing error copy catalog and severity categories.
+  - [ ] TASK: Define error code taxonomy and mapping ownership by layer.
+- [ ] STORY: UI sanitization
+  - [ ] TASK: Replace direct rendering of raw error messages in feature UIs (notifications, schedules, tags, books, notes).
+  - [ ] TASK: Route user-facing copy through a single mapping utility per feature or shared helper.
+- [ ] STORY: Logging and telemetry
+  - [ ] TASK: Add redaction and correlation IDs for error logs and crash reports.
+  - [ ] TASK: Verify analytics payloads exclude secrets and PII.
+- [ ] STORY: Edge case management
+  - [ ] TASK: Gate POST_NOTIFICATIONS permission requests to Android 13+ in `feature/notifications/src/main/java/com/practicalchristian/app/feature/notifications/reminder/NotificationReminderScreen.kt`.
+  - [ ] TASK: Define handling for permission denial and "don't ask again" states in notifications onboarding.
+  - [ ] TASK: Add error handling guidance for API-level behavior in `docs/tech/errorHandling.md`.
 
 </details>
