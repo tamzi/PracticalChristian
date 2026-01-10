@@ -53,7 +53,7 @@ com.practicalchristian.app.core.localdatasource.dao
 
 ### Documentation Files
 
-**All documentation must use camelCase naming, with one exception:**
+**All documentation must use camelCase naming, with two exceptions:**
 
 | File Type               | Convention              | Example                              |
 |-------------------------|-------------------------|--------------------------------------|
@@ -61,6 +61,7 @@ com.practicalchristian.app.core.localdatasource.dao
 | **Implementation Logs** | camelCase               | `phase1CoreModules.md`               |
 | **Guides**              | camelCase               | `quickStart.md`, `testingGuide.md`   |
 | **README files**        | `README.md` (uppercase) | `README.md` (exception to camelCase) |
+| **Agent rules summary** | `Agents.md` (PascalCase) | `Agents.md` (exception to camelCase) |
 
 **Rules:**
 
@@ -69,8 +70,8 @@ com.practicalchristian.app.core.localdatasource.dao
 - ✅ Use descriptive names
 - ✅ No spaces, use camelCase instead
 - ✅ No underscores or hyphens
-- ✅ **Exception:** README files must be `README.md` (all capitals)
-- ❌ No PascalCase (except README.md)
+- ✅ **Exceptions:** README files must be `README.md` and the agent rules summary must be `Agents.md`
+- ❌ No PascalCase (except README.md and Agents.md)
 - ❌ No snake_case
 - ❌ No kebab-case
 - ❌ **NEVER** use lowercase `readme.md` - always use `README.md`
