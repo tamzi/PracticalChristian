@@ -93,19 +93,24 @@ for file in $FILES; do
                 VIOLATIONS=$((VIOLATIONS + 1))
             fi
 
-            if [[ "$file" != sacrament/src/main/java/com/sacrament/ui/foundation/color/* ]]; then
-                if [ -n "$REF" ]; then
-                    raw_color_hits=$(printf "%s\n" "$content" | grep -nE 'Color[[:space:]]*\([[:space:]]*0[xX][0-9A-Fa-f]{6,8}' || true)
-                else
-                    raw_color_hits=$(grep -nE 'Color[[:space:]]*\([[:space:]]*0[xX][0-9A-Fa-f]{6,8}' "$file" || true)
-                fi
-                if [ -n "$raw_color_hits" ]; then
-                    echo -e "${RED}❌ VIOLATION: Raw hex color usage in $file${NC}"
-                    echo "$raw_color_hits" | sed 's/^/     - /'
-                    echo "   Fix: Use SacramentTheme color tokens instead of Color(0x...)."
-                    VIOLATIONS=$((VIOLATIONS + 1))
-                fi
-            fi
+            case "$file" in
+                sacrament/src/main/java/com/sacrament/ui/foundation/color/*)
+                    # Skip raw color checks for color palette files
+                    ;;
+                *)
+                    if [ -n "$REF" ]; then
+                        raw_color_hits=$(printf "%s\n" "$content" | grep -nE 'Color[[:space:]]*\([[:space:]]*0[xX][0-9A-Fa-f]{6,8}' || true)
+                    else
+                        raw_color_hits=$(grep -nE 'Color[[:space:]]*\([[:space:]]*0[xX][0-9A-Fa-f]{6,8}' "$file" || true)
+                    fi
+                    if [ -n "$raw_color_hits" ]; then
+                        echo -e "${RED}❌ VIOLATION: Raw hex color usage in $file${NC}"
+                        echo "$raw_color_hits" | sed 's/^/     - /'
+                        echo "   Fix: Use SacramentTheme color tokens instead of Color(0x...)."
+                        VIOLATIONS=$((VIOLATIONS + 1))
+                    fi
+                    ;;
+            esac
             ;;
     esac
 done
