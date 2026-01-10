@@ -18,24 +18,23 @@ class NotificationReminderViewModel @Inject constructor(
 
     fun onPermissionResult(isGranted: Boolean) {
         viewModelScope.launch {
-            // Save notification permission preference
-            preferencesRepository.setNotificationPermissionRequested(true)
-            preferencesRepository.setNotificationPermissionGranted(isGranted)
-
-            // Navigate to home after permission is handled
-            update { copy(shouldNavigateToHome = true) }
+            handlePermissionResult(isGranted)
         }
     }
 
     fun onSkip() {
         viewModelScope.launch {
-            // Mark that user skipped the permission request
-            preferencesRepository.setNotificationPermissionRequested(true)
-            preferencesRepository.setNotificationPermissionGranted(false)
-
-            // Navigate to home
-            update { copy(shouldNavigateToHome = true) }
+            handlePermissionResult(false)
         }
+    }
+
+    private suspend fun handlePermissionResult(isGranted: Boolean) {
+        // Save notification permission preference
+        preferencesRepository.setNotificationPermissionRequested(true)
+        preferencesRepository.setNotificationPermissionGranted(isGranted)
+
+        // Navigate to home after permission is handled
+        update { copy(shouldNavigateToHome = true) }
     }
 
     fun onNavigationComplete() {
