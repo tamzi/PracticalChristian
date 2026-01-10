@@ -129,8 +129,8 @@ while read -r oldrev newrev refname; do
         for file in $files; do
             if [[ "$file" == *.md ]]; then
                 filename=$(basename "$file")
-                # Skip README.md (allowed to be uppercase)
-                if [[ "$filename" != "README.md" ]]; then
+                # Skip README.md and Agents.md (allowed to be uppercase)
+                if [[ "$filename" != "README.md" ]] && [[ "$filename" != "Agents.md" ]]; then
                     # Check if filename starts with uppercase or has underscores
                     if [[ "$filename" =~ ^[A-Z] ]] || [[ "$filename" =~ _ ]]; then
                         echo -e "${RED}❌ VIOLATION in commit $commit_short:${NC}" >&2
