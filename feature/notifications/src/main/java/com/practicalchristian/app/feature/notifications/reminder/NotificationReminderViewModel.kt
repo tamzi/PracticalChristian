@@ -21,7 +21,7 @@ class NotificationReminderViewModel @Inject constructor(
             // Save notification permission preference
             preferencesRepository.setNotificationPermissionRequested(true)
             preferencesRepository.setNotificationPermissionGranted(isGranted)
-            
+
             // Navigate to home after permission is handled
             update { copy(shouldNavigateToHome = true) }
         }
@@ -32,7 +32,7 @@ class NotificationReminderViewModel @Inject constructor(
             // Mark that user skipped the permission request
             preferencesRepository.setNotificationPermissionRequested(true)
             preferencesRepository.setNotificationPermissionGranted(false)
-            
+
             // Navigate to home
             update { copy(shouldNavigateToHome = true) }
         }
@@ -42,4 +42,3 @@ class NotificationReminderViewModel @Inject constructor(
         update { copy(shouldNavigateToHome = false) }
     }
 }
-
