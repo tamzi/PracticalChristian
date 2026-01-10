@@ -152,6 +152,8 @@ Single source of truth for project tasks, priorities, and status.
 - [ ] STORY: Define audit trail scope and criteria
   - [x] TASK: Document architecture and event schema in `docs/tech/auditTrails.md`.
   - [ ] TASK: Define a critical action catalog by feature.
+- [ ] STORY: Feature instrumentation
+  - [ ] TASK: Add audit events for notification permission request and skip outcomes in `feature/notifications/src/main/java/com/practicalchristian/app/feature/notifications/reminder/NotificationReminderViewModel.kt`.
 - [ ] STORY: Local persistence and retention
   - [ ] TASK: Add audit event storage using Room with encryption at rest.
   - [ ] TASK: Enforce 90-day retention with periodic cleanup.
