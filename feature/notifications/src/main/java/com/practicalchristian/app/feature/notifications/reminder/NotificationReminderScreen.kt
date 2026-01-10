@@ -97,7 +97,7 @@ private fun NotificationReminderScreenContent(
 
         // Title
         SacramentText(
-            text = "Get appointment\nreminders",
+            text = "Stay connected\nwith reminders",
             style = SacramentTheme.typography.headlineMedium.copy(textAlign = TextAlign.Center),
             color = colors.text.strong,
             modifier = Modifier.fillMaxWidth()
@@ -107,7 +107,7 @@ private fun NotificationReminderScreenContent(
 
         // Description
         SacramentText(
-            text = "Get reminders when your booking is getting close and stay informed about any changes that happen.",
+            text = "Get reminders for prayer times, daily readings, and devotional content to help you stay consistent in your spiritual journey.",
             style = SacramentTheme.typography.bodyMedium.copy(textAlign = TextAlign.Center),
             color = colors.text.muted,
             modifier = Modifier.fillMaxWidth()
