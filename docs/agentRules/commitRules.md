@@ -16,7 +16,7 @@
 **For Documentation Files (.md):**
 
 - [ ] `wc -l <file>` - Module READMEs must be < 100 lines
-- [ ] Check filename - Must use camelCase (except README.md)
+- [ ] Check filename - Must use camelCase (except README.md and Agents.md)
 - [ ] No multiple doc files in one commit
 - [ ] Read the file - verify no duplications, hallucinations
 
@@ -115,7 +115,7 @@ Before creating ANY commit, you MUST:
 
 6. **✅ ALWAYS Verify documentation compliance** (when committing docs)
     - **REQUIRED:** Run `wc -l <file>` for module READMEs - MUST be < 100 lines
-    - **REQUIRED:** Check filename uses camelCase (except README.md)
+    - **REQUIRED:** Check filename uses camelCase (except README.md and Agents.md)
     - **REQUIRED:** If violations found, FIX THEM before committing
    - See [documentationRules.md](./documentationRules.md) for the full checklist AND MAKE APPROPRIATE CHANGES
 
@@ -532,4 +532,3 @@ This configures helpful aliases:
 - `git push-emergency` - Emergency bypass (requires typing "YES" to confirm)
 
 **Recommendation:** Use `git check-push` before pushing to catch issues early.
-
