@@ -69,7 +69,7 @@ patterns
 
 ### For Work Tracking
 
-→ See [`../wordToBeDone.md`](../wordToBeDone.md) - Current tasks and priorities
+→ See [`../workToBeDone.md`](../workToBeDone.md) - Current tasks and priorities
 
 ## Usage Guidelines
 
