@@ -65,14 +65,14 @@ for file in $STAGED_FILES; do
 done
 echo ""
 
-# Check 2: File naming convention (camelCase for .md files except README.md)
+# Check 2: File naming convention (camelCase for .md files except README.md and Agents.md)
 # All markdown files should use camelCase (e.g., commitRules.md, not COMMIT_RULES.md)
 echo "📝 Checking file naming conventions..."
 for file in $STAGED_FILES; do
     if [[ "$file" == *.md ]]; then
         filename=$(basename "$file")
-        # Skip README.md (allowed to be uppercase)
-        if [[ "$filename" != "README.md" ]]; then
+        # Skip README.md and Agents.md (allowed to be uppercase)
+        if [[ "$filename" != "README.md" ]] && [[ "$filename" != "Agents.md" ]]; then
             # Check if filename starts with uppercase (wrong) or has underscores (wrong)
             # camelCase should start with lowercase and may have internal caps
             if [[ "$filename" =~ ^[A-Z] ]] || [[ "$filename" =~ _ ]]; then
