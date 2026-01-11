@@ -2,6 +2,7 @@ package com.practicalchristian.app.feature.books.detail
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -13,15 +14,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Warning
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.components.surface.SacramentCardDefaults
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -63,33 +64,30 @@ fun BookScreen(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookScreenContent(
     state: BookUiState, onNavigateBackClicked: () -> Unit
 ) {
     val spacing = SacramentTheme.spacing
-    Scaffold(
-        modifier = Modifier,
+    SacramentScreenScaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(text = state.name.ifBlank { "book" }.sentence) },
+            SacramentTopAppBar(
+                title = { SacramentText(text = state.name.ifBlank { "book" }.sentence, style = SacramentTheme.typography.titleSmall) },
                 navigationIcon = {
-                    IconButton(onClick = onNavigateBackClicked) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = "navigate back"
-                        )
-                    }
-                })
-        },
-        containerColor = SacramentTheme.colors.surfaces.background,
+                    SacramentIconButton(
+                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                        contentDescription = "navigate back",
+                        onClick = onNavigateBackClicked
+                    )
+                }
+            )
+        }
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
             when (val data = state.result) {
                 ItemState.Loading -> {
                     SacramentCenteredColumn(modifier = Modifier.fillMaxSize()) {
-                        CircularProgressIndicator()
+                        SacramentProgressIndicator(variant = SacramentProgressVariant.Circular)
                     }
                 }
 
@@ -99,7 +97,7 @@ fun BookScreenContent(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
                     ) {
-                        Icon(
+                        SacramentIcon(
                             imageVector = Icons.Rounded.Warning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
@@ -108,22 +106,23 @@ fun BookScreenContent(
                                 .width(48.dp)
                                 .height(48.dp)
                         )
-                        Text(
+                        SacramentText(
                             text = "Error",
                             color = SacramentTheme.colors.semantic.error,
                             style = SacramentTheme.typography.titleLarge,
-                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
                         )
-                        Text(
+                        SacramentText(
                             text = data.message ?: "Unknown error occurred",
                             color = SacramentTheme.colors.semantic.error,
                             style = SacramentTheme.typography.bodyLarge,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(
-                                top = spacing.padding8,
-                                start = spacing.padding32,
-                                end = spacing.padding32
-                            )
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    top = spacing.padding8,
+                                    start = spacing.padding32,
+                                    end = spacing.padding32
+                                )
                         )
                     }
                 }
@@ -132,11 +131,11 @@ fun BookScreenContent(
                     val item = data.item
                     LazyVerticalGrid(columns = GridCells.Fixed(4)) {
                         items(item.chapters) {
-                            Card(
+                            SacramentCard(
                                 modifier = Modifier.height(100.dp),
                                 onClick = { },
-                                shape = RoundedCornerShape(0.dp),
-                                colors = CardDefaults.cardColors(containerColor = SacramentTheme.colors.surfaces.background),
+                                colors = SacramentCardDefaults.colors(),
+                                contentPadding = PaddingValues(0.dp)
                             ) {
                                 Box(modifier = Modifier.fillMaxSize()) {
                                     SacramentDivider(
@@ -158,9 +157,10 @@ fun BookScreenContent(
                                     SacramentDivider(
                                         modifier = Modifier.align(Alignment.BottomCenter)
                                     )
-                                    Text(
-                                        modifier = Modifier.align(alignment = Alignment.Center),
-                                        text = "${it + 1}"
+                                    SacramentText(
+                                        text = "${it + 1}",
+                                        style = SacramentTheme.typography.bodyMedium,
+                                        modifier = Modifier.align(alignment = Alignment.Center)
                                     )
                                 }
                             }
