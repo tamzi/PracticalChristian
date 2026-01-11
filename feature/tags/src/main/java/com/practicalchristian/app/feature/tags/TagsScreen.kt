@@ -1,7 +1,6 @@
 package com.practicalchristian.app.feature.tags
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,23 +25,22 @@ import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Tag
 import androidx.compose.material.icons.rounded.Warning
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.rememberModalBottomSheetState
+import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.components.action.SacramentButtonVariant
+import com.sacrament.ui.components.action.SacramentFab
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.components.input.SacramentTextField
+import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.components.surface.SacramentCardColors
+import com.sacrament.ui.components.surface.SacramentCardDefaults
+import com.sacrament.ui.components.surface.SacramentModalBottomSheet
+import com.sacrament.ui.components.surface.rememberSacramentModalBottomSheetState
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -50,7 +48,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
@@ -92,7 +89,6 @@ fun TagsScreen(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TagsScreenContent(
     state: TagsScreenUiState,
@@ -104,7 +100,7 @@ fun TagsScreenContent(
     onClickGenerateColors: () -> Unit,
     onClickTag: (TagDomain) -> Unit,
 ) {
-    val sheetState = rememberModalBottomSheetState(true)
+    val sheetState = rememberSacramentModalBottomSheetState(skipPartiallyExpanded = true)
     val scope = rememberCoroutineScope()
     val spacing = SacramentTheme.spacing
 
@@ -118,49 +114,45 @@ fun TagsScreenContent(
     }
 
     AnimatedVisibility(visible = state.isBottomSheetOpen) {
-        ModalBottomSheet(
+        SacramentModalBottomSheet(
             onDismissRequest = {
                 scope.launch {
                     onClickToggleBottomSheetState.invoke(false)
                     sheetState.hide()
                 }
-            }, sheetState = sheetState
+            },
+            sheetState = sheetState
         ) {
-            Surface(
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = spacing.padding32),
-                color = SacramentTheme.colors.surfaces.surface
+                    .padding(horizontal = spacing.padding32)
             ) {
-                Column(modifier = Modifier.fillMaxWidth()) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = if (state.tagCanBeUpdated) "Update" else "Create",
-                            fontSize = SacramentTheme.typography.titleMedium.fontSize
-                        )
-                        IconButton(onClick = { onClickToggleBottomSheetState.invoke(false) }) {
-                            Icon(imageVector = Icons.Rounded.Close, contentDescription = "close")
-                        }
-                    }
-                    TextField(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = spacing.padding32),
-                        value = state.tag?.name ?: "",
-                        onValueChange = onChangeTagName,
-                        placeholder = { Text(text = "Name") },
-                        maxLines = 1,
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Rounded.Tag, contentDescription = ""
-                            )
-                        },
-                        singleLine = true,
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    SacramentText(
+                        text = if (state.tagCanBeUpdated) "Update" else "Create",
+                        style = SacramentTheme.typography.titleMedium
                     )
+                    SacramentIconButton(
+                        imageVector = Icons.Rounded.Close,
+                        contentDescription = "close",
+                        onClick = { onClickToggleBottomSheetState.invoke(false) }
+                    )
+                }
+                SacramentTextField(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = spacing.padding32),
+                    value = state.tag?.name ?: "",
+                    onValueChange = onChangeTagName,
+                    placeholder = "Name",
+                    leadingIcon = Icons.Rounded.Tag,
+                    singleLine = true
+                )
                     LazyVerticalGrid(
                         modifier = Modifier.padding(
                             top = spacing.padding16,
@@ -170,18 +162,21 @@ fun TagsScreenContent(
                     ) {
                         items(state.colors.size) {
                             val value = state.colors[it]
-                            Card(
+                            SacramentCard(
                                 modifier = Modifier.padding(spacing.padding8),
                                 onClick = { onChangeTagColor.invoke(value) },
-                                colors = CardDefaults.cardColors(
-                                    containerColor = Color(
-                                        value.toColorInt()
+                                colors = if (state.tag?.color == value) {
+                                    SacramentCardColors(
+                                        container = Color(value.toColorInt()),
+                                        border = SacramentTheme.colors.text.strong
                                     )
-                                ),
-                                border = if (state.tag?.color == value) BorderStroke(
-                                    2.dp, SacramentTheme.colors.text.strong
-                                )
-                                else null
+                                } else {
+                                    SacramentCardColors(
+                                        container = Color(value.toColorInt()),
+                                        border = SacramentCardDefaults.colors().border
+                                    )
+                                },
+                                contentPadding = PaddingValues(0.dp)
                             ) {
                                 Box(
                                     modifier = Modifier
@@ -196,14 +191,12 @@ fun TagsScreenContent(
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.Center
                             ) {
-                                IconButton(
+                                SacramentIconButton(
                                     modifier = Modifier.padding(top = spacing.padding8),
-                                    onClick = onClickGenerateColors,
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Rounded.Refresh, contentDescription = ""
-                                    )
-                                }
+                                    imageVector = Icons.Rounded.Refresh,
+                                    contentDescription = "",
+                                    onClick = onClickGenerateColors
+                                )
                             }
                         }
                     }
@@ -217,43 +210,48 @@ fun TagsScreenContent(
                             modifier = Modifier.weight(1f), visible = state.tagCanBeUpdated
                         ) {
                             Row {
-                                OutlinedButton(
-                                    border = BorderStroke(1.dp, SacramentTheme.colors.brand.primary),
-                                    modifier = Modifier.weight(1f),
+                                SacramentButton(
+                                    text = "Delete",
                                     onClick = { onClickTagAction.invoke(ItemAction.DELETE) },
-                                ) {
-                                    Text(text = "Delete")
-                                }
+                                    variant = SacramentButtonVariant.Outlined,
+                                    modifier = Modifier.weight(1f)
+                                )
                                 Spacer(modifier = Modifier.width(spacing.padding32))
                             }
                         }
-                        Button(
-                            modifier = Modifier.weight(1f),
-                            onClick = { onClickTagAction.invoke(if (state.tagCanBeUpdated) ItemAction.UPDATE else ItemAction.CREATE) }) {
-                            Text(text = if (state.tagCanBeUpdated) "Update" else "Create")
-                        }
+                        SacramentButton(
+                            text = if (state.tagCanBeUpdated) "Update" else "Create",
+                            onClick = { onClickTagAction.invoke(if (state.tagCanBeUpdated) ItemAction.UPDATE else ItemAction.CREATE) },
+                            modifier = Modifier.weight(1f)
+                        )
                     }
                 }
             }
         }
     }
 
-    Scaffold(modifier = Modifier, topBar = {
-        TopAppBar(title = { Text(text = "Tags") }, navigationIcon = {
-            IconButton(onClick = onClickBack) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = ""
+    SacramentScreenScaffold(
+        topBar = {
+            SacramentTopAppBar(
+                title = { SacramentText(text = "Tags", style = SacramentTheme.typography.titleSmall) },
+                navigationIcon = {
+                    SacramentIconButton(
+                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                        contentDescription = "",
+                        onClick = onClickBack
+                    )
+                }
+            )
+        },
+        floatingActionButton = {
+            AnimatedVisibility(visible = state.listState.hasData) {
+                SacramentFab(
+                    imageVector = Icons.Rounded.Add,
+                    contentDescription = "",
+                    onClick = { onClickToggleBottomSheetState.invoke(true) }
                 )
             }
-        })
-    }, floatingActionButton = {
-        AnimatedVisibility(visible = state.listState.hasData) {
-            FloatingActionButton(onClick = { onClickToggleBottomSheetState.invoke(true) }) {
-                Icon(imageVector = Icons.Rounded.Add, contentDescription = "")
-            }
         }
-    },
-        containerColor = SacramentTheme.colors.surfaces.background,
     ) { values ->
         Column(
             modifier = Modifier
@@ -267,7 +265,7 @@ fun TagsScreenContent(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Icon(
+                        SacramentIcon(
                             imageVector = Icons.Rounded.Warning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
@@ -276,22 +274,23 @@ fun TagsScreenContent(
                                 .width(48.dp)
                                 .height(48.dp)
                         )
-                        Text(
+                        SacramentText(
                             text = "Error",
                             color = SacramentTheme.colors.semantic.error,
                             style = SacramentTheme.typography.titleLarge,
-                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
                         )
-                        Text(
+                        SacramentText(
                             text = result.message,
                             color = SacramentTheme.colors.semantic.error,
                             style = SacramentTheme.typography.bodyLarge,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(
-                                top = spacing.padding8,
-                                start = spacing.padding32,
-                                end = spacing.padding32
-                            )
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    top = spacing.padding8,
+                                    start = spacing.padding32,
+                                    end = spacing.padding32
+                                )
                         )
                     }
                 }
@@ -307,7 +306,7 @@ fun TagsScreenContent(
 
                 UiListState.Loading -> {
                     SacramentCenteredColumn(modifier = Modifier.fillMaxSize()) {
-                        CircularProgressIndicator()
+                        SacramentProgressIndicator(variant = SacramentProgressVariant.Circular)
                     }
                 }
 
@@ -320,11 +319,11 @@ fun TagsScreenContent(
                                 contentDescription = "empty icon",
                                 description = "You don't have any tags.\nClick on the button below to create",
                                 action = {
-                                    Button(
-                                        modifier = Modifier.padding(top = spacing.padding16),
-                                        onClick = { onClickToggleBottomSheetState.invoke(true) }) {
-                                        Text(text = "create")
-                                    }
+                                    SacramentButton(
+                                        text = "create",
+                                        onClick = { onClickToggleBottomSheetState.invoke(true) },
+                                        modifier = Modifier.padding(top = spacing.padding16)
+                                    )
                                 }
                             )
                         }
@@ -333,7 +332,10 @@ fun TagsScreenContent(
                             val list = success.data
                             Timber.d("COLORS -> \n$list")
                             AnimatedVisibility(visible = state.isLoading) {
-                                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                                SacramentProgressIndicator(
+                                    variant = SacramentProgressVariant.Linear,
+                                    modifier = Modifier.fillMaxWidth()
+                                )
                             }
                             LazyVerticalStaggeredGrid(
                                 columns = StaggeredGridCells.Adaptive(95.dp),
@@ -342,19 +344,19 @@ fun TagsScreenContent(
                                 contentPadding = PaddingValues(spacing.padding8)
                             ) {
                                 items(list) { item ->
-                                    Card(
+                                    SacramentCard(
                                         onClick = { onClickTag.invoke(item) },
-                                        colors = CardDefaults.cardColors(
-                                            containerColor = Color(
-                                                item.color.toColorInt()
-                                            )
+                                        colors = SacramentCardDefaults.colors(
+                                            container = Color(item.color.toColorInt())
+                                        ),
+                                        contentPadding = PaddingValues(
+                                            horizontal = spacing.padding16,
+                                            vertical = spacing.padding8
                                         )
                                     ) {
-                                        Text(
-                                            modifier = Modifier.padding(
-                                                horizontal = spacing.padding16,
-                                                vertical = spacing.padding8
-                                            ), text = item.name, color = Color.Black
+                                        SacramentText(
+                                            text = item.name,
+                                            color = SacramentTheme.colors.text.strong
                                         )
                                     }
                                 }
