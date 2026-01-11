@@ -18,21 +18,25 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Warning
-import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TimeInput
 import androidx.compose.material3.TimePicker
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberTimePickerState
+import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.components.action.SacramentButtonVariant
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.components.surface.SacramentCardColors
+import com.sacrament.ui.components.surface.SacramentCardDefaults
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -102,23 +106,27 @@ fun ScheduleScreenContent(
         isDialogOpen = state.isDatePickerOpen, onValueChangeCompletedAt = onValueChangeCompletedAt
     )
 
-    Scaffold(
+    SacramentScreenScaffold(
         topBar = {
-            TopAppBar(navigationIcon = {
-                IconButton(onClick = onNavigateBackClicked) {
-                    Icon(
+            SacramentTopAppBar(
+                navigationIcon = {
+                    SacramentIconButton(
                         imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                        contentDescription = ""
+                        contentDescription = "",
+                        onClick = onNavigateBackClicked
                     )
+                },
+                title = {
+                    val scheduleState = state.scheduleState
+                    if (scheduleState is ItemState.Success) {
+                        SacramentText(
+                            text = scheduleState.item.date.asFullDayString(),
+                            style = SacramentTheme.typography.titleSmall
+                        )
+                    }
                 }
-            }, title = {
-                val scheduleState = state.scheduleState
-                if (scheduleState is ItemState.Success) {
-                    Text(text = scheduleState.item.date.asFullDayString())
-                }
-            })
-        },
-        containerColor = SacramentTheme.colors.surfaces.background,
+            )
+        }
     ) {
         Column(
             modifier = Modifier
@@ -135,7 +143,7 @@ fun ScheduleScreenContent(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Icon(
+                        SacramentIcon(
                             imageVector = Icons.Rounded.Warning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
@@ -144,24 +152,24 @@ fun ScheduleScreenContent(
                                 .width(48.dp)
                                 .height(48.dp)
                         )
-                        Text(
-                            // TODO
+                        SacramentText(
                             text = "Error loading schedule data",
                             color = SacramentTheme.colors.semantic.error,
                             style = SacramentTheme.typography.titleLarge,
-                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
                         )
-                        Text(
+                        SacramentText(
                             text = result.message
                                 ?: "Failed to load schedule. Please try again later.",
                             color = SacramentTheme.colors.semantic.error,
                             style = SacramentTheme.typography.bodyLarge,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(
-                                top = spacing.padding8,
-                                start = spacing.padding32,
-                                end = spacing.padding32
-                            )
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    top = spacing.padding8,
+                                    start = spacing.padding32,
+                                    end = spacing.padding32
+                                )
                         )
                     }
                 }
@@ -172,25 +180,27 @@ fun ScheduleScreenContent(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        CircularProgressIndicator()
+                        SacramentProgressIndicator(variant = SacramentProgressVariant.Circular)
                     }
                 }
 
                 is ItemState.Success -> {
                     val schedule = result.item
-                    Text(text = buildAnnotatedString {
-                        append("STATUS :")
-                        append(schedule.status.label)
-                    })
+                    SacramentText(
+                        text = buildAnnotatedString {
+                            append("STATUS :")
+                            append(schedule.status.label)
+                        }.text,
+                        style = SacramentTheme.typography.bodyMedium
+                    )
                     AnimatedVisibility(visible = schedule.isComplete.not()) {
-                        Button(
+                        SacramentButton(
+                            text = "Complete",
+                            onClick = onClickToggleDatePicker,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(spacing.padding16),
-                            onClick = onClickToggleDatePicker
-                        ) {
-                            Text(text = "Complete")
-                        }
+                                .padding(spacing.padding16)
+                        )
                     }
                 }
             }
@@ -217,7 +227,8 @@ fun PracticalChristianDatePicker(
         DatePickerDialog(onDismissRequest = {
             onValueChangeCompletedAt.invoke(null)
         }, confirmButton = {
-            TextButton(
+            SacramentButton(
+                text = "Next: Select Time",
                 onClick = {
                     val dateMillis = dateState.selectedDateMillis
                     if (dateMillis != null) {
@@ -226,16 +237,14 @@ fun PracticalChristianDatePicker(
                     } else {
                         onValueChangeCompletedAt.invoke(null)
                     }
-                }) {
-                Text("Next: Select Time")
-            }
+                }
+            )
         }, dismissButton = {
-            TextButton(
-                onClick = {
-                    onValueChangeCompletedAt.invoke(null)
-                }) {
-                Text("Cancel")
-            }
+            SacramentButton(
+                text = "Cancel",
+                onClick = { onValueChangeCompletedAt.invoke(null) },
+                variant = SacramentButtonVariant.Outlined
+            )
         }) {
             DatePicker(state = dateState)
         }
@@ -248,7 +257,8 @@ fun PracticalChristianDatePicker(
             setShowTimePickerDialog(false)
             onValueChangeCompletedAt.invoke(null)
         }, confirmButton = {
-            TextButton(
+            SacramentButton(
+                text = "Complete",
                 onClick = {
                     val dateMillis = selectedDateMillis
                     if (dateMillis != null) {
@@ -260,17 +270,17 @@ fun PracticalChristianDatePicker(
                         onValueChangeCompletedAt.invoke(null)
                     }
                     setShowTimePickerDialog(false)
-                }) {
-                Text("Complete")
-            }
+                }
+            )
         }, dismissButton = {
-            TextButton(
+            SacramentButton(
+                text = "Cancel",
                 onClick = {
                     setShowTimePickerDialog(false)
                     onValueChangeCompletedAt.invoke(null)
-                }) {
-                Text("Cancel")
-            }
+                },
+                variant = SacramentButtonVariant.Outlined
+            )
         }, title = "Select Completion Time"
         ) {
             TimePicker(state = timeState)
@@ -292,17 +302,16 @@ fun TimePickerDialog(
     androidx.compose.ui.window.Dialog(
         onDismissRequest = onDismissRequest
     ) {
-        androidx.compose.material3.Card(
+        SacramentCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(spacing.padding16),
-            shape = androidx.compose.foundation.shape.RoundedCornerShape(28.dp),
+            contentPadding = androidx.compose.foundation.layout.PaddingValues(spacing.padding24)
         ) {
             Column(
-                modifier = Modifier.padding(spacing.padding24),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
+                SacramentText(
                     text = title,
                     style = SacramentTheme.typography.headlineSmall,
                     modifier = Modifier.padding(bottom = spacing.padding20)

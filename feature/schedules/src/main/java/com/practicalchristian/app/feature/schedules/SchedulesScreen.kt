@@ -4,6 +4,7 @@ package com.practicalchristian.app.feature.schedules
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,20 +23,19 @@ import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.rounded.DoneAll
 import androidx.compose.material.icons.rounded.Warning
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Snackbar
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.components.action.SacramentButtonVariant
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.components.feedback.SacramentSnackbar
+import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.components.surface.SacramentCardColors
+import com.sacrament.ui.components.surface.SacramentCardDefaults
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -104,7 +104,6 @@ fun SchedulesScreen(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScheduleScreenContent(
     state: SchedulesScreenUiState,
@@ -116,70 +115,57 @@ fun ScheduleScreenContent(
     onRemoveAlertMessage: () -> Unit,
 ) {
     val spacing = SacramentTheme.spacing
-    Scaffold(topBar = {
-        TopAppBar(navigationIcon = {
-            IconButton(onClick = onNavigateToSettings) {
-                Icon(
+    SacramentScreenScaffold(topBar = {
+        SacramentTopAppBar(
+            navigationIcon = {
+                SacramentIconButton(
+                    imageVector = Icons.Filled.Menu,
+                    contentDescription = "menu",
+                    onClick = onNavigateToSettings,
                     modifier = Modifier
                         .height(28.dp)
-                        .width(28.dp),
-                    imageVector = Icons.Filled.Menu,
-                    contentDescription = "menu"
+                        .width(28.dp)
                 )
-            }
-        }, title = {
-            Text(
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center,
-                text = "PracticalChristian",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Light
-            )
-        }, actions = {
-            IconButton(
-                onClick = onNavigateToProfile,
-                modifier = Modifier.padding(end = spacing.padding16)
-            ) {
-                if (state.profilePictureUri != null) {
-                    AsyncImage(
-                        contentDescription = "profile picture",
-                        contentScale = ContentScale.Crop,
-                        model = ImageRequest.Builder(LocalContext.current)
-                            .data(state.profilePictureUri).crossfade(true).build(),
-                        modifier = Modifier
-                            .size(28.dp)
-                            .clip(CircleShape)
-                            .border(2.dp, SacramentTheme.colors.text.strong, CircleShape)
-                    )
-                } else {
-                    AsyncImage(
-                        contentDescription = "profile picture placeholder",
-                        contentScale = ContentScale.Crop,
-                        model = ImageRequest.Builder(LocalContext.current)
-                            .data(R.drawable.sacrament_profile_placeholder).crossfade(true).build(),
-                        modifier = Modifier
-                            .size(28.dp)
-                            .clip(CircleShape)
-                            .border(2.dp, SacramentTheme.colors.text.strong, CircleShape)
-                    )
-                }
-            }
-        })
-    }, snackbarHost = {
-        val message = state.error ?: state.success ?: ""
-        AnimatedVisibility(visible = message.isNotBlank()) {
-            Snackbar {
-                Row {
-                    Text(modifier = Modifier.weight(1f), text = message)
-                    OutlinedButton(onClick = onRemoveAlertMessage) {
-                        Text(text = "ok")
+            },
+            title = {
+                SacramentText(
+                    text = "PracticalChristian",
+                    style = SacramentTheme.typography.titleLarge.copy(fontSize = 24.sp, fontWeight = FontWeight.Light),
+                    modifier = Modifier.fillMaxWidth()
+                )
+            },
+            actions = {
+                androidx.compose.foundation.clickable(
+                    onClick = onNavigateToProfile,
+                    modifier = Modifier.padding(end = spacing.padding16)
+                ) {
+                    if (state.profilePictureUri != null) {
+                        AsyncImage(
+                            contentDescription = "profile picture",
+                            contentScale = ContentScale.Crop,
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data(state.profilePictureUri).crossfade(true).build(),
+                            modifier = Modifier
+                                .size(28.dp)
+                                .clip(CircleShape)
+                                .border(2.dp, SacramentTheme.colors.text.strong, CircleShape)
+                        )
+                    } else {
+                        AsyncImage(
+                            contentDescription = "profile picture placeholder",
+                            contentScale = ContentScale.Crop,
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data(R.drawable.sacrament_profile_placeholder).crossfade(true).build(),
+                            modifier = Modifier
+                                .size(28.dp)
+                                .clip(CircleShape)
+                                .border(2.dp, SacramentTheme.colors.text.strong, CircleShape)
+                        )
                     }
                 }
             }
-        }
-    },
-        containerColor = SacramentTheme.colors.surfaces.background,
-    ) { values ->
+        )
+    } { values ->
         Column(modifier = Modifier.padding(values)) {
             when (val result = state.listState) {
                 is UiListState.Error -> {
@@ -188,7 +174,7 @@ fun ScheduleScreenContent(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
                     ) {
-                        Icon(
+                        SacramentIcon(
                             imageVector = Icons.Rounded.Warning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
@@ -197,22 +183,23 @@ fun ScheduleScreenContent(
                                 .width(48.dp)
                                 .height(48.dp)
                         )
-                        Text(
+                        SacramentText(
                             text = "Error",
                             color = SacramentTheme.colors.semantic.error,
                             style = SacramentTheme.typography.titleLarge,
-                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
                         )
-                        Text(
+                        SacramentText(
                             text = result.message,
                             color = SacramentTheme.colors.semantic.error,
                             style = SacramentTheme.typography.bodyLarge,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(
-                                top = spacing.padding8,
-                                start = spacing.padding32,
-                                end = spacing.padding32
-                            )
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    top = spacing.padding8,
+                                    start = spacing.padding32,
+                                    end = spacing.padding32
+                                )
                         )
                     }
                 }
@@ -228,7 +215,7 @@ fun ScheduleScreenContent(
 
                 UiListState.Loading -> {
                     SacramentCenteredColumn(modifier = Modifier.fillMaxSize()) {
-                        CircularProgressIndicator()
+                        SacramentProgressIndicator(variant = SacramentProgressVariant.Circular)
                     }
                 }
 
@@ -241,9 +228,10 @@ fun ScheduleScreenContent(
                                 contentDescription = "empty icon",
                                 description = "You don't have a schedule.\nSetup to continue",
                                 action = {
-                                    Button(onClick = onNavigateToSetup) {
-                                        Text(text = "Setup")
-                                    }
+                                    SacramentButton(
+                                        text = "Setup",
+                                        onClick = onNavigateToSetup
+                                    )
                                 }
                             )
                         }
@@ -251,7 +239,10 @@ fun ScheduleScreenContent(
                         is UiSuccessState.Data -> {
                             val list = success.data
                             AnimatedVisibility(visible = state.isLoading) {
-                                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                                SacramentProgressIndicator(
+                                    variant = SacramentProgressVariant.Linear,
+                                    modifier = Modifier.fillMaxWidth()
+                                )
                             }
                             LazyColumn {
                                 itemsIndexed(list) { index, item ->
@@ -276,7 +267,6 @@ fun ScheduleScreenContent(
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 private fun ScheduleItem(
     item: ScheduleDomain,
     isFirst: Boolean,
@@ -288,15 +278,12 @@ private fun ScheduleItem(
     val spacing = SacramentTheme.spacing
     val action = SwipeAction(
         icon = {
-            IconButton(
-                modifier = Modifier.padding(horizontal = spacing.padding16),
-                colors = IconButtonDefaults.iconButtonColors(
-                    containerColor = SacramentTheme.colors.utilities.successAction,
-                    contentColor = SacramentTheme.colors.utilities.onSuccessAction
-                ),
-                onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Rounded.DoneAll, contentDescription = "")
-            }
+            SacramentIconButton(
+                imageVector = Icons.Rounded.DoneAll,
+                contentDescription = "",
+                onClick = { /*TODO*/ },
+                modifier = Modifier.padding(horizontal = spacing.padding16)
+            )
         }, background = Color.Transparent, onSwipe = onItemSwipeClicked
     )
 
@@ -308,33 +295,33 @@ private fun ScheduleItem(
         startActions = actions,
         endActions = actions
     ) {
-        Card(
+        SacramentCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(spacing.padding8),
-            shape = RoundedCornerShape(10),
-            colors = CardDefaults.cardColors(
-                containerColor = item.status.color, contentColor = Color.Black
+            colors = SacramentCardColors(
+                container = item.status.color,
+                border = SacramentCardDefaults.colors().border
             ),
-            onClick = onItemClick
+            onClick = onItemClick,
+            contentPadding = androidx.compose.foundation.layout.PaddingValues(spacing.padding36)
         ) {
-            Column(modifier = Modifier.padding(spacing.padding36)) {
-                Column {
-                    Text(
-                        text = item.date.asFullDayString(),
-                    )
-                }
+            Column {
+                SacramentText(
+                    text = item.date.asFullDayString(),
+                    style = SacramentTheme.typography.bodyMedium
+                )
                 Spacer(modifier = Modifier.height(spacing.padding36))
-                Column(
-                    modifier = Modifier.padding()
-                ) {
-                    Text(
+                Column {
+                    SacramentText(
                         text = item.start.book.name.sentence,
-                        fontSize = SacramentTheme.typography.titleMedium.fontSize,
-                        fontWeight = FontWeight.Bold
+                        style = SacramentTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
                     )
                     AnimatedVisibility(visible = item.isSameBook) {
-                        Text(text = "Chapter ${item.start.chapter} - ${item.end.chapter}")
+                        SacramentText(
+                            text = "Chapter ${item.start.chapter} - ${item.end.chapter}",
+                            style = SacramentTheme.typography.bodyMedium
+                        )
                     }
                 }
             }
