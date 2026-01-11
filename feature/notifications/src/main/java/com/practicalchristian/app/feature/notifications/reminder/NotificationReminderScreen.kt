@@ -69,7 +69,7 @@ fun NotificationReminderScreen(
         },
         onSkip = {
             viewModel.onSkip()
-        }
+        },
     )
 }
 
@@ -88,50 +88,51 @@ private fun NotificationReminderScreenContent(
                 .padding(paddingValues)
                 .padding(horizontal = spacing.padding24)
         ) {
-        // Phone illustration with notification
-        PhoneNotificationIllustration(
-            modifier = Modifier.size(200.dp)
-        )
+            // Phone illustration with notification
+            PhoneNotificationIllustration(
+                modifier = Modifier.size(200.dp),
+            )
 
-        Spacer(modifier = Modifier.height(spacing.padding32))
+            Spacer(modifier = Modifier.height(spacing.padding32))
 
-        // Title
-        SacramentText(
-            text = "Stay connected\nwith reminders",
-            style = SacramentTheme.typography.headlineMedium.copy(textAlign = TextAlign.Center),
-            color = colors.text.strong,
-            modifier = Modifier.fillMaxWidth()
-        )
+            // Title
+            SacramentText(
+                text = "Stay connected\nwith reminders",
+                style = SacramentTheme.typography.headlineMedium.copy(textAlign = TextAlign.Center),
+                color = colors.text.strong,
+                modifier = Modifier.fillMaxWidth(),
+            )
 
-        Spacer(modifier = Modifier.height(spacing.padding16))
+            Spacer(modifier = Modifier.height(spacing.padding16))
 
-        // Description
-        SacramentText(
-            text = "Get reminders for prayer times, daily readings, and devotional content to help you stay consistent in your spiritual journey.",
-            style = SacramentTheme.typography.bodyMedium.copy(textAlign = TextAlign.Center),
-            color = colors.text.muted,
-            modifier = Modifier.fillMaxWidth()
-        )
+            // Description
+            SacramentText(
+                text = "Get reminders for prayer times, daily readings, and devotional content " +
+                    "to help you stay consistent in your spiritual journey.",
+                style = SacramentTheme.typography.bodyMedium.copy(textAlign = TextAlign.Center),
+                color = colors.text.muted,
+                modifier = Modifier.fillMaxWidth(),
+            )
 
-        Spacer(modifier = Modifier.height(spacing.padding32))
+            Spacer(modifier = Modifier.height(spacing.padding32))
 
-        // Primary button
-        SacramentButton(
-            text = "Turn on notifications",
-            onClick = onEnableNotifications,
-            variant = SacramentButtonVariant.Filled,
-            modifier = Modifier.fillMaxWidth()
-        )
+            // Primary button
+            SacramentButton(
+                text = "Turn on notifications",
+                onClick = onEnableNotifications,
+                variant = SacramentButtonVariant.Filled,
+                modifier = Modifier.fillMaxWidth(),
+            )
 
-        Spacer(modifier = Modifier.height(spacing.padding16))
+            Spacer(modifier = Modifier.height(spacing.padding16))
 
-        // Skip button
-        SacramentButton(
-            text = "Skip",
-            onClick = onSkip,
-            variant = SacramentButtonVariant.Ghost,
-            modifier = Modifier.fillMaxWidth()
-        )
+            // Skip button
+            SacramentButton(
+                text = "Skip",
+                onClick = onSkip,
+                variant = SacramentButtonVariant.Ghost,
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
     }
 }
@@ -148,20 +149,20 @@ private fun PhoneNotificationIllustration(
 
     Box(
         modifier = modifier,
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         // Halo circle
         SacramentSurface(
             modifier = Modifier.size(280.dp),
             color = haloColor,
-            shape = CircleShape
+            shape = CircleShape,
         ) {}
 
         // Phone
         SacramentSurface(
             modifier = Modifier.size(180.dp),
             color = phoneColor,
-            shape = RoundedCornerShape(radii.xl)
+            shape = RoundedCornerShape(radii.xl),
         ) {
             // Phone screen
             SacramentSurface(
@@ -169,7 +170,7 @@ private fun PhoneNotificationIllustration(
                     .fillMaxSize()
                     .padding(spacing.xs),
                 color = colors.surfaces.surface,
-                shape = RoundedCornerShape(radii.lg)
+                shape = RoundedCornerShape(radii.lg),
             ) {
                 // Notification banner
                 SacramentSurface(
@@ -178,24 +179,24 @@ private fun PhoneNotificationIllustration(
                         .height(48.dp)
                         .padding(horizontal = spacing.sm, vertical = spacing.xs),
                     color = colors.surfaces.surface,
-                    shape = RoundedCornerShape(radii.sm)
+                    shape = RoundedCornerShape(radii.sm),
                 ) {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(horizontal = spacing.sm, vertical = spacing.xs),
-                        verticalArrangement = Arrangement.spacedBy(spacing.xs)
+                        verticalArrangement = Arrangement.spacedBy(spacing.xs),
                     ) {
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(spacing.xs),
-                            verticalAlignment = Alignment.CenterVertically
+                            verticalAlignment = Alignment.CenterVertically,
                         ) {
                             SacramentIcon(
                                 imageVector = Icons.Rounded.AccessTime,
                                 contentDescription = null,
                                 tint = colors.text.strong,
-                                size = SacramentTheme.iconSizes.sm
+                                size = SacramentTheme.iconSizes.sm,
                             )
                             // Placeholder lines for notification text
                             SacramentSurface(
@@ -203,7 +204,7 @@ private fun PhoneNotificationIllustration(
                                     .weight(1f)
                                     .height(spacing.sm),
                                 color = colors.text.muted.copy(alpha = 0.3f),
-                                shape = RoundedCornerShape(radii.xs)
+                                shape = RoundedCornerShape(radii.xs),
                             ) {}
                         }
                         SacramentSurface(
@@ -211,7 +212,7 @@ private fun PhoneNotificationIllustration(
                                 .fillMaxWidth(0.7f)
                                 .height(spacing.padding6),
                             color = colors.text.muted.copy(alpha = 0.2f),
-                            shape = RoundedCornerShape(radii.xs)
+                            shape = RoundedCornerShape(radii.xs),
                         ) {}
                     }
                 }
@@ -222,12 +223,12 @@ private fun PhoneNotificationIllustration(
 
 @Preview(showBackground = true)
 @Composable
+@Suppress("UnusedPrivateMember")
 private fun NotificationReminderScreenPreview() {
     SacramentTheme(navigationBar = Bar.BACKGROUND, statusBar = Bar.BACKGROUND) {
         NotificationReminderScreenContent(
             onEnableNotifications = {},
-            onSkip = {}
+            onSkip = {},
         )
     }
 }
-
