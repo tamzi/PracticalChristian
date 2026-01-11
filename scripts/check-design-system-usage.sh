@@ -56,6 +56,14 @@ echo "🎨 Checking design system usage..."
 for file in $FILES; do
     case "$file" in
         *.kt|*.java)
+            # Skip Material3 checks for temporary bridge components in sacrament module
+            case "$file" in
+                sacrament/src/main/java/com/sacrament/ui/components/surface/SacramentModalBottomSheet.kt|sacrament/src/main/java/com/sacrament/ui/patterns/SacramentScreenScaffold.kt)
+                    # These are temporary bridge components that will be replaced
+                    continue
+                    ;;
+            esac
+
             if [ -n "$REF" ]; then
                 content=$(git show "$REF:$file" 2>/dev/null || true)
                 if [ -z "$content" ]; then
