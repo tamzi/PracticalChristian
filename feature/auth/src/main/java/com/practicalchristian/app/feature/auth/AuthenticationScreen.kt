@@ -3,6 +3,7 @@ package com.practicalchristian.app.feature.auth
 import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,11 +14,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -81,9 +80,10 @@ fun AuthenticationScreenContent(
     onSignUpWithTikTok: () -> Unit,
     onSignUpWithX: () -> Unit
 ) {
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = SacramentTheme.colors.surfaces.background
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(SacramentTheme.colors.surfaces.background)
     ) {
         AuthenticationSignUp(
             state = state,
@@ -115,16 +115,17 @@ private fun AuthenticationSignUp(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
+            SacramentText(
                 text = "The Practical Christian",
                 style = SacramentLogoStyle,
-                textAlign = TextAlign.Center
+                modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(spacing.padding10))
-            Text(
+            SacramentText(
                 text = "Create account or log in",
                 style = SacramentTheme.typography.bodyMedium,
-                color = SacramentTheme.colors.text.strong.copy(alpha = 0.6f)
+                color = SacramentTheme.colors.text.strong.copy(alpha = 0.6f),
+                modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(spacing.padding200))
             AuthProviderButton(
@@ -155,11 +156,11 @@ private fun AuthenticationSignUp(
                 enabled = !state.isLoading
             )
         }
-        Text(
+        SacramentText(
             text = "By continuing, you agree to Practical Christian's Terms of Service and confirm that you have read and understand our Privacy Policy.",
             style = SacramentTheme.typography.bodySmall,
             color = SacramentTheme.colors.text.strong.copy(alpha = 0.5f),
-            textAlign = TextAlign.Center
+            modifier = Modifier.fillMaxWidth()
         )
     }
 }
@@ -178,10 +179,10 @@ private fun AuthProviderButton(
     val pressedElevation = SacramentButtonDefaults.elevation(enabled = enabled, pressed = true)
     val disabledElevation = SacramentButtonDefaults.elevation(enabled = false, pressed = false)
     
-    Button(
+    SacramentButton(
+        text = label,
         onClick = onClick,
         enabled = enabled,
-        interactionSource = interactionSource,
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
@@ -190,29 +191,15 @@ private fun AuthProviderButton(
                 color = SacramentTheme.colors.text.strong.copy(alpha = 0.1f),
                 shape = androidx.compose.foundation.shape.RoundedCornerShape(SacramentTheme.radii.lg)
             ),
-        shape = androidx.compose.foundation.shape.RoundedCornerShape(SacramentTheme.radii.lg),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = SacramentTheme.colors.utilities.authProviderSurface,
-            contentColor = Color.Black
-        ),
-        elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = defaultElevation,
-            pressedElevation = pressedElevation,
-            disabledElevation = disabledElevation
-        )
-    ) {
-        Icon(
-            painter = painterResource(iconRes),
-            contentDescription = null,
-            tint = Color.Unspecified,
-            modifier = Modifier.size(24.dp)
-        )
-        Spacer(modifier = Modifier.width(spacing.padding12))
-        Text(
-            text = label,
-            style = SacramentTheme.typography.bodyLarge
-        )
-    }
+        leadingIcon = {
+            SacramentIcon(
+                painter = painterResource(iconRes),
+                contentDescription = null,
+                tint = Color.Unspecified,
+                modifier = Modifier.size(24.dp)
+            )
+        }
+    )
 }
 
 @Preview(showBackground = true)
