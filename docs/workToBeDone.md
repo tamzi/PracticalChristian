@@ -18,10 +18,10 @@ Single source of truth for project tasks, priorities, and status.
 - [x] STORY: Inventory + baseline
   - [x] TASK: Audit remaining Material3 usage and hardcoded colors outside `sacrament`.
   - [x] TASK: Run and validate `scripts/check-design-system-usage.sh` output.
-- [ ] STORY: Feature migrations - tags
-  - [ ] TASK: Replace Material3 components in `feature/tags` (heavy usage: Button, Card, Scaffold, TextField, etc.).
-  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/tags`.
-  - [ ] TASK: Update previews in `feature/tags` to use `SacramentTheme`.
+- [x] STORY: Feature migrations - tags
+  - [x] TASK: Replace Material3 components in `feature/tags` (heavy usage: Button, Card, Scaffold, TextField, etc.).
+  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/tags`.
+  - [x] TASK: Update previews in `feature/tags` to use `SacramentTheme`.
 - [ ] STORY: Feature migrations - schedules
   - [ ] TASK: Replace Material3 components in `feature/schedules` (Button, Card, Scaffold, TopAppBar, etc.).
   - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/schedules`.
@@ -75,6 +75,7 @@ Single source of truth for project tasks, priorities, and status.
   - [ ] TASK: Remove Material3 dependency from feature convention plugin and module build files once migrations are complete.
     - [ ] TASK: Remove Material3 from `buildLogic/convention/src/main/kotlin/com/practicalchristian/app/convention/feature/AndroidFeatureConventionPlugin.kt`.
   - [ ] TASK: Add CI check to enforce design system rules.
+  - [ ] TASK: Do a thorough deep code review of this epic to ensure it is complete and correct. Fix any issues found and commit the changes.
 
 </details>
 
