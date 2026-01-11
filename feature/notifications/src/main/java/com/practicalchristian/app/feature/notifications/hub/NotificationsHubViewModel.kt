@@ -107,6 +107,13 @@ class NotificationsHubViewModel @Inject constructor(
                 copy(
                     sections = updatedSections,
                     unreadCount = newUnreadCount,
+                    listState = UiListState.Success(
+                        data = if (updatedSections.isEmpty()) {
+                            UiSuccessState.Empty
+                        } else {
+                            UiSuccessState.Data(data = updatedSections)
+                        }
+                    )
                 )
             }
         }
