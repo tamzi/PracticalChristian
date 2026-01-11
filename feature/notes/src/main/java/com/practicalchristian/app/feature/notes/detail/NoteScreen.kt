@@ -7,14 +7,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -58,25 +56,25 @@ fun NoteScreen(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteScreenContent(
     state: NoteScreenUiState,
     onPressedBack: () -> Unit,
 ) {
     val spacing = SacramentTheme.spacing
-    Scaffold(
-        modifier = Modifier,
+    SacramentScreenScaffold(
         topBar = {
-            TopAppBar(title = { }, navigationIcon = {
-                IconButton(onClick = onPressedBack) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = ""
+            SacramentTopAppBar(
+                title = { },
+                navigationIcon = {
+                    SacramentIconButton(
+                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                        contentDescription = "",
+                        onClick = onPressedBack
                     )
                 }
-            })
-        },
-        containerColor = SacramentTheme.colors.surfaces.background,
+            )
+        }
     ) { values ->
         Column(
             modifier = Modifier
@@ -87,7 +85,7 @@ fun NoteScreenContent(
                 when (note) {
                     null -> {
                         SacramentCenteredColumn(modifier = Modifier.fillMaxSize()) {
-                            CircularProgressIndicator()
+                            SacramentProgressIndicator(variant = SacramentProgressVariant.Circular)
                         }
                     }
 
@@ -96,10 +94,10 @@ fun NoteScreenContent(
                         LaunchedEffect(note.content) {
                             richState.setText(note.content)
                         }
-                        Text(
-                            modifier = Modifier.padding(top = spacing.padding16),
+                        SacramentText(
                             text = note.title,
-                            fontSize = SacramentTheme.typography.labelLarge.fontSize
+                            style = SacramentTheme.typography.labelLarge,
+                            modifier = Modifier.padding(top = spacing.padding16)
                         )
                         RichTextEditor(
                             modifier = Modifier
@@ -119,12 +117,10 @@ fun NoteScreenContent(
 @Composable
 fun NoteScreenLoadingPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        Surface {
-            NoteScreenContent(
-                state = NoteScreenUiState(
-                    id = "1", note = null
-                ), onPressedBack = {})
-        }
+        NoteScreenContent(
+            state = NoteScreenUiState(
+                id = "1", note = null
+            ), onPressedBack = {})
     }
 }
 
@@ -132,8 +128,7 @@ fun NoteScreenLoadingPreview() {
 @Composable
 fun NoteScreenWithContentPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        Surface {
-            NoteScreenContent(
+        NoteScreenContent(
                 state = NoteScreenUiState(
                     id = "1", note = NoteDomain(
                         id = "1",
@@ -154,7 +149,6 @@ fun NoteScreenWithContentPreview() {
                         updatedAt = LocalDateTime(2024, 1, 15, 14, 45)
                     )
                 ), onPressedBack = {})
-        }
     }
 }
 
@@ -162,8 +156,7 @@ fun NoteScreenWithContentPreview() {
 @Composable
 fun NoteScreenLongContentPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        Surface {
-            NoteScreenContent(
+        NoteScreenContent(
                 state = NoteScreenUiState(
                     id = "2", note = NoteDomain(
                         id = "2",
@@ -200,7 +193,6 @@ fun NoteScreenLongContentPreview() {
                         updatedAt = LocalDateTime(2024, 1, 12, 16, 30)
                     )
                 ), onPressedBack = {})
-        }
     }
 }
 
@@ -208,8 +200,7 @@ fun NoteScreenLongContentPreview() {
 @Composable
 fun NoteScreenShortNotePreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        Surface {
-            NoteScreenContent(
+        NoteScreenContent(
                 state = NoteScreenUiState(
                     id = "3", note = NoteDomain(
                         id = "3",
@@ -227,6 +218,5 @@ fun NoteScreenShortNotePreview() {
                         updatedAt = LocalDateTime(2024, 1, 16, 7, 20)
                     )
                 ), onPressedBack = {})
-        }
     }
 }

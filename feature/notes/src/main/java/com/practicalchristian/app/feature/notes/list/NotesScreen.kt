@@ -18,7 +18,7 @@ import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.automirrored.rounded.Note
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Warning
-import androidx.compose.material3.Scaffold
+import com.sacrament.ui.patterns.SacramentScreenScaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -94,7 +94,7 @@ fun NotesScreenContent(
     onNavigateToBooks: () -> Unit = {}
 ) {
     val spacing = SacramentTheme.spacing
-    Scaffold(
+    SacramentScreenScaffold(
         topBar = {
             SacramentTopAppBar(
                 title = {
