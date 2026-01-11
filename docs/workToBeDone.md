@@ -15,9 +15,9 @@ Single source of truth for project tasks, priorities, and status.
 <details>
 <summary>EPIC: Design system setup + enforcement</summary>
 
-- [ ] STORY: Inventory + baseline
-  - [ ] TASK: Audit remaining Material3 usage and hardcoded colors outside `sacrament`.
-  - [ ] TASK: Run and validate `scripts/check-design-system-usage.sh` output.
+- [x] STORY: Inventory + baseline
+  - [x] TASK: Audit remaining Material3 usage and hardcoded colors outside `sacrament`.
+  - [x] TASK: Run and validate `scripts/check-design-system-usage.sh` output.
 - [ ] STORY: Feature migrations - tags
   - [ ] TASK: Replace Material3 components in `feature/tags` (heavy usage: Button, Card, Scaffold, TextField, etc.).
   - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/tags`.
