@@ -15,26 +15,66 @@ Single source of truth for project tasks, priorities, and status.
 <details>
 <summary>EPIC: Design system setup + enforcement</summary>
 
-- [ ] STORY: Enforce design system boundaries
-  - [ ] TASK: Replace remaining hardcoded styles with design system tokens across `app`, `core`, and `feature` modules.
-  - [ ] TASK: Replace Material3 UI components in `app`, `core`, and `feature` modules with design system primitives/components.
-    - [ ] TASK: Replace Material3 components in `feature/tags` (heavy usage: Button, Card, Scaffold, TextField, etc.).
-    - [ ] TASK: Replace Material3 components in `feature/schedules` (Button, Card, Scaffold, TopAppBar, etc.).
-    - [ ] TASK: Replace Material3 components in `feature/notes` (Scaffold, TextField, TopAppBar, etc.).
-    - [ ] TASK: Replace Material3 components in `feature/books` (Card, Scaffold, TopAppBar, etc.).
-    - [ ] TASK: Replace Material3 components in `feature/auth`, `feature/home`, `feature/settings`, `feature/setup`, `feature/profile`, `feature/onboarding`.
-    - [ ] TASK: Replace Material3 Scaffold in `sacrament` module (currently used internally by `SacramentScreenScaffold`).
-    - [ ] TASK: Remove Material3 dependency from `app/build.gradle.kts`.
-    - [ ] TASK: Remove Material3 dependency from `core/ui/build.gradle.kts`.
-  - [ ] TASK: Migrate feature previews to use the design system theme for consistent visuals.
-    - [ ] TASK: Update previews in `feature/tags` to use `SacramentTheme`.
-    - [ ] TASK: Update previews in `feature/schedules` to use `SacramentTheme`.
-    - [ ] TASK: Verify all feature previews use `SacramentTheme` (landing, home, notes, profile already migrated).
+- [ ] STORY: Inventory + baseline
+  - [ ] TASK: Audit remaining Material3 usage and hardcoded colors outside `sacrament`.
+  - [ ] TASK: Run and validate `scripts/check-design-system-usage.sh` output.
+- [ ] STORY: Feature migrations - tags
+  - [ ] TASK: Replace Material3 components in `feature/tags` (heavy usage: Button, Card, Scaffold, TextField, etc.).
+  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/tags`.
+  - [ ] TASK: Update previews in `feature/tags` to use `SacramentTheme`.
+- [ ] STORY: Feature migrations - schedules
+  - [ ] TASK: Replace Material3 components in `feature/schedules` (Button, Card, Scaffold, TopAppBar, etc.).
+  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/schedules`.
+  - [ ] TASK: Update previews in `feature/schedules` to use `SacramentTheme`.
+- [ ] STORY: Feature migrations - notes
+  - [ ] TASK: Replace Material3 components in `feature/notes` (Scaffold, TextField, TopAppBar, etc.).
+  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/notes`.
+  - [ ] TASK: Update previews in `feature/notes` to use `SacramentTheme`.
+- [ ] STORY: Feature migrations - books
+  - [ ] TASK: Replace Material3 components in `feature/books` (Card, Scaffold, TopAppBar, etc.).
+  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/books`.
+  - [ ] TASK: Update previews in `feature/books` to use `SacramentTheme`.
+- [ ] STORY: Feature migrations - auth
+  - [ ] TASK: Replace Material3 components in `feature/auth`.
+  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/auth`.
+  - [ ] TASK: Update previews in `feature/auth` to use `SacramentTheme`.
+- [ ] STORY: Feature migrations - home
+  - [ ] TASK: Replace Material3 components in `feature/home`.
+  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/home`.
+  - [ ] TASK: Update previews in `feature/home` to use `SacramentTheme`.
+- [ ] STORY: Feature migrations - settings
+  - [ ] TASK: Replace Material3 components in `feature/settings`.
+  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/settings`.
+  - [ ] TASK: Update previews in `feature/settings` to use `SacramentTheme`.
+- [ ] STORY: Feature migrations - setup
+  - [ ] TASK: Replace Material3 components in `feature/setup`.
+  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/setup`.
+  - [ ] TASK: Update previews in `feature/setup` to use `SacramentTheme`.
+- [ ] STORY: Feature migrations - profile
+  - [ ] TASK: Replace Material3 components in `feature/profile`.
+  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/profile`.
+  - [ ] TASK: Update previews in `feature/profile` to use `SacramentTheme`.
+- [ ] STORY: Feature migrations - onboarding
+  - [ ] TASK: Replace Material3 components in `feature/onboarding`.
+  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/onboarding`.
+  - [ ] TASK: Update previews in `feature/onboarding` to use `SacramentTheme`.
+- [ ] STORY: Core + app migration
+  - [ ] TASK: Replace Material3 UI components in `app` and `core` with design system primitives/components.
+  - [ ] TASK: Replace remaining hardcoded styles with design system tokens across `app` and `core`.
+  - [ ] TASK: Remove Material3 dependency from `app/build.gradle.kts`.
+  - [ ] TASK: Remove Material3 dependency from `core/ui/build.gradle.kts`.
+- [ ] STORY: Sacrament internal cleanup
+  - [ ] TASK: Replace Material3 Scaffold in `sacrament` (used by `SacramentScreenScaffold`).
+  - [ ] TASK: Verify `sacrament-demo` renders correctly after removal.
+- [ ] STORY: Previews + theme consistency
+  - [ ] TASK: Verify all feature previews use `SacramentTheme` (landing, home, notes, profile already migrated).
+- [ ] STORY: Documentation
+  - [ ] TASK: Document usage in `docs/tech/technicalArchitecture.md` and `docs/agentRules/featureDevelopmentRules.md`.
+- [ ] STORY: Enforcement (last)
   - [ ] TASK: Add lint/detekt guardrails to block `androidx.compose.material3.*` and `Color(0x...)` outside `sacrament`.
   - [ ] TASK: Remove Material3 dependency from feature convention plugin and module build files once migrations are complete.
     - [ ] TASK: Remove Material3 from `buildLogic/convention/src/main/kotlin/com/practicalchristian/app/convention/feature/AndroidFeatureConventionPlugin.kt`.
   - [ ] TASK: Add CI check to enforce design system rules.
-  - [ ] TASK: Document usage in `docs/tech/technicalArchitecture.md` and `docs/agentRules/featureDevelopmentRules.md`.
 
 </details>
 
