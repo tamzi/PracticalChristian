@@ -57,7 +57,7 @@ fun NotificationsHubScreen(
     viewModel: NotificationsHubViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    
+
     NotificationsHubScreenContent(
         state = state,
         onNavigateBack = { navigator.back() },
@@ -116,7 +116,7 @@ private fun NotificationsHubScreenContent(
                     SacramentProgressIndicator()
                 }
             }
-            
+
             is UiListState.Error -> {
                 SacramentEmptyState(
                     icon = Icons.Rounded.Notifications,
@@ -125,7 +125,7 @@ private fun NotificationsHubScreenContent(
                     description = listState.message,
                 )
             }
-            
+
             is UiListState.Success -> {
                 when (val success = listState.data) {
                     is UiSuccessState.Empty -> {
@@ -136,7 +136,7 @@ private fun NotificationsHubScreenContent(
                             description = "You're all caught up!",
                         )
                     }
-                    
+
                     is UiSuccessState.Data -> {
                         LazyColumn(
                             modifier = Modifier.fillMaxSize(),
@@ -173,7 +173,7 @@ private fun NotificationsHubScreenContent(
                     }
                 }
             }
-            
+
             UiListState.Idle -> {
                 // Initial state, will transition to Loading
             }
@@ -277,6 +277,7 @@ private fun notificationIconTint(
 
 @Preview(showBackground = true)
 @Composable
+@Suppress("UnusedPrivateMember")
 private fun NotificationsHubScreenPreview() {
     SacramentTheme(navigationBar = Bar.BACKGROUND, statusBar = Bar.BACKGROUND) {
         NotificationsHubScreenContent(
@@ -288,13 +289,14 @@ private fun NotificationsHubScreenPreview() {
                             NotificationItem(
                                 id = "1",
                                 iconData = NotificationIconData(
-                                    iconVector = Icons.Rounded.Favorite,
-                                    tone = NotificationIconTone.Accent,
+                                        iconVector = Icons.Rounded.Favorite,
+                                        tone = NotificationIconTone.Accent,
+                                    ),
+                                    text = "Time for your morning prayer. Start your day with " +
+                                        "gratitude and reflection",
+                                    isUnread = true,
                                 ),
-                                text = "Time for your morning prayer. Start your day with gratitude and reflection",
-                                isUnread = true,
                             ),
-                        ),
                     ),
                 ),
                 unreadCount = 2,
@@ -307,12 +309,13 @@ private fun NotificationsHubScreenPreview() {
                                     NotificationItem(
                                         id = "1",
                                         iconData = NotificationIconData(
-                                            iconVector = Icons.Rounded.Favorite,
-                                            tone = NotificationIconTone.Accent,
-                                        ),
-                                        text = "Time for your morning prayer. Start your day with gratitude and reflection",
-                                        isUnread = true,
+                                        iconVector = Icons.Rounded.Favorite,
+                                        tone = NotificationIconTone.Accent,
                                     ),
+                                    text = "Time for your morning prayer. Start your day with " +
+                                        "gratitude and reflection",
+                                    isUnread = true,
+                                ),
                                 ),
                             ),
                         )
