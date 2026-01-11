@@ -13,18 +13,6 @@ Single source of truth for project tasks, priorities, and status.
 ## Current Focus
 
 <details>
-<summary>EPIC: pr fixes</summary>
-
-- [ ] STORY 1: Notifications detekt cleanup
-  - [ ] TASK: Split long methods in notifications reminder and hub screens/viewmodels.
-  - [ ] TASK: Remove trailing spaces and consecutive blank lines in notifications feature files.
-  - [ ] TASK: Wrap or refactor lines exceeding max line length in notifications hub viewmodel.
-  - [ ] TASK: Replace or remove forbidden TODO comments in notifications hub viewmodel.
-  - [ ] TASK: Resolve unused preview warnings in notifications reminder and hub screens.
-
-</details>
-
-<details>
 <summary>EPIC: Design system setup + enforcement</summary>
 
 - [ ] STORY: Enforce design system boundaries
