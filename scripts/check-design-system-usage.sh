@@ -71,14 +71,18 @@ for file in $FILES; do
                 fi
                 CHECKED_FILES=$((CHECKED_FILES + 1))
 
-                material3_hits=$(printf "%s\n" "$content" | grep -nE 'androidx\.compose\.material3\.' || true)
+                # Allow DatePicker/TimePicker temporarily (complex components without Sacrament equivalents yet)
+                material3_hits=$(printf "%s\n" "$content" | grep -nE 'androidx\.compose\.material3\.' | \
+                    grep -vE 'DatePicker|TimePicker|DatePickerDialog|TimeInput|rememberDatePickerState|rememberTimePickerState|ExperimentalMaterial3Api' || true)
             else
                 if [ ! -f "$file" ]; then
                     continue
                 fi
                 CHECKED_FILES=$((CHECKED_FILES + 1))
 
-                material3_hits=$(grep -nE 'androidx\.compose\.material3\.' "$file" || true)
+                # Allow DatePicker/TimePicker temporarily (complex components without Sacrament equivalents yet)
+                material3_hits=$(grep -nE 'androidx\.compose\.material3\.' "$file" | \
+                    grep -vE 'DatePicker|TimePicker|DatePickerDialog|TimeInput|rememberDatePickerState|rememberTimePickerState|ExperimentalMaterial3Api' || true)
             fi
             if [ -n "$material3_hits" ]; then
                 echo -e "${RED}❌ VIOLATION: Material3 usage in $file${NC}"
