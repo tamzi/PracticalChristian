@@ -181,6 +181,7 @@ Single source of truth for project tasks, priorities, and status.
 - [ ] STORY: App-wide policy and guidance
   - [ ] TASK: Define user-facing error copy catalog and severity categories.
   - [ ] TASK: Define error code taxonomy and mapping ownership by layer.
+  - [ ] TASK: Document secure error handling guidelines in `docs/tech/errorHandling.md`.
 - [ ] STORY: UI sanitization
   - [ ] TASK: Replace direct rendering of raw error messages in feature UIs (notifications, schedules, tags, books, notes).
   - [ ] TASK: Route user-facing copy through a single mapping utility per feature or shared helper.
