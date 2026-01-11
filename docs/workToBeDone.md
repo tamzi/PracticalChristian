@@ -26,10 +26,10 @@ Single source of truth for project tasks, priorities, and status.
   - [x] TASK: Replace Material3 components in `feature/schedules` (Button, Card, Scaffold, TopAppBar, etc.).
   - [x] TASK: Replace hardcoded styles with design system tokens in `feature/schedules`.
   - [x] TASK: Update previews in `feature/schedules` to use `SacramentTheme`.
-- [ ] STORY: Feature migrations - notes
-  - [ ] TASK: Replace Material3 components in `feature/notes` (Scaffold, TextField, TopAppBar, etc.).
-  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/notes`.
-  - [ ] TASK: Update previews in `feature/notes` to use `SacramentTheme`.
+- [x] STORY: Feature migrations - notes
+  - [x] TASK: Replace Material3 components in `feature/notes` (Scaffold, TextField, TopAppBar, etc.).
+  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/notes`.
+  - [x] TASK: Update previews in `feature/notes` to use `SacramentTheme`.
 - [ ] STORY: Feature migrations - books
   - [ ] TASK: Replace Material3 components in `feature/books` (Card, Scaffold, TopAppBar, etc.).
   - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/books`.
