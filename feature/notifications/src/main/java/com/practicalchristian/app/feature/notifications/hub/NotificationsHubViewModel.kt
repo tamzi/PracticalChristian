@@ -26,14 +26,11 @@ data class NotificationsHubScreenUiState(
 
 /**
  * ViewModel for the notifications hub screen.
- * 
- * TODO: When notification domain models and repository are available,
- * replace sample data with actual repository calls.
+ *
+ * Uses local sample data until the notifications repository is available.
  */
 @HiltViewModel
 class NotificationsHubViewModel @Inject constructor(
-    // TODO: Inject NotificationsRepository when available
-    // private val notificationsRepository: NotificationsRepository
 ) : StatefulViewModel<NotificationsHubScreenUiState>(NotificationsHubScreenUiState()) {
 
     init {
@@ -43,33 +40,15 @@ class NotificationsHubViewModel @Inject constructor(
     private fun observeNotifications() {
         viewModelScope.launch {
             update { copy(listState = UiListState.Loading) }
-            
+
             // Simulate loading delay
             delay(500)
-            
-            // TODO: Replace with actual repository call
-            // notificationsRepository.notifications.collectLatest { notifications ->
-            //     val sections = groupNotificationsByTimePeriod(notifications)
-            //     val unreadCount = notifications.count { it.isUnread }
-            //     update {
-            //         copy(
-            //             sections = sections,
-            //             unreadCount = unreadCount,
-            //             listState = if (sections.isEmpty()) {
-            //                 UiListState.Success(data = UiSuccessState.Empty)
-            //             } else {
-            //                 UiListState.Success(data = UiSuccessState.Data(data = sections))
-            //             }
-            //         )
-            //     }
-            // }
-            
-            // Sample data for now
+
             val sampleSections = createSampleNotifications()
             val unreadCount = sampleSections.sumOf { section ->
                 section.notifications.count { it.isUnread }
             }
-            
+
             update {
                 copy(
                     sections = sampleSections,
@@ -85,9 +64,6 @@ class NotificationsHubViewModel @Inject constructor(
      */
     fun markAsRead(notificationId: String) {
         viewModelScope.launch {
-            // TODO: Call repository to mark notification as read
-            // notificationsRepository.markAsRead(notificationId)
-            
             // Update local state for now
             update {
                 val updatedSections = sections.map { section ->
@@ -124,9 +100,6 @@ class NotificationsHubViewModel @Inject constructor(
      */
     fun markAllAsRead() {
         viewModelScope.launch {
-            // TODO: Call repository to mark all notifications as read
-            // notificationsRepository.markAllAsRead()
-            
             // Update local state for now
             update {
                 val updatedSections = sections.map { section ->
@@ -158,86 +131,94 @@ class NotificationsHubViewModel @Inject constructor(
 
     /**
      * Create sample notifications for development.
-     * TODO: Remove when repository is available.
      */
-    private fun createSampleNotifications(): List<NotificationSection> {
-        return listOf(
-            NotificationSection(
-                title = "Today",
-                notifications = listOf(
-                    NotificationItem(
-                        id = "1",
-                        iconData = NotificationIconData(
-                            iconVector = Icons.Rounded.Favorite,
-                            tone = NotificationIconTone.Accent,
-                        ),
-                        text = "Time for your morning prayer. Start your day with gratitude and reflection",
-                        isUnread = true,
-                    ),
-                    NotificationItem(
-                        id = "2",
-                        iconData = NotificationIconData(
-                            iconVector = Icons.Rounded.GridView,
-                            tone = NotificationIconTone.Success,
-                        ),
-                        text = "Your daily reading plan is ready. Continue your journey through Scripture",
-                        isUnread = true,
-                    ),
-                    NotificationItem(
-                        id = "3",
-                        iconData = NotificationIconData(
-                            iconVector = Icons.Rounded.Verified,
-                            tone = NotificationIconTone.Info,
-                            hasOverlay = true,
-                        ),
-                        text = "New meditation available: Finding peace in difficult times",
-                        isUnread = true,
-                    ),
-                ),
+    private fun createSampleNotifications(): List<NotificationSection> = listOf(
+        createTodaySection(),
+        createThisWeekSection(),
+    )
+
+    private fun createTodaySection(): NotificationSection = NotificationSection(
+        title = "Today",
+        notifications = listOf(
+            sampleNotificationItem(
+                id = "1",
+                iconVector = Icons.Rounded.Favorite,
+                tone = NotificationIconTone.Accent,
+                text = "Time for your morning prayer. Start your day with " +
+                    "gratitude and reflection",
+                isUnread = true,
             ),
-            NotificationSection(
-                title = "This week",
-                notifications = listOf(
-                    NotificationItem(
-                        id = "4",
-                        iconData = NotificationIconData(
-                            iconVector = Icons.Rounded.GridView,
-                            tone = NotificationIconTone.Success,
-                        ),
-                        text = "You've completed 5 days of your reading plan. Keep up the great work!",
-                        isUnread = true,
-                    ),
-                    NotificationItem(
-                        id = "5",
-                        iconData = NotificationIconData(
-                            iconVector = Icons.Rounded.Favorite,
-                            tone = NotificationIconTone.Accent,
-                        ),
-                        text = "Don't forget to review your bookmarked verses from this week",
-                        isUnread = false,
-                    ),
-                    NotificationItem(
-                        id = "6",
-                        iconData = NotificationIconData(
-                            iconVector = Icons.Rounded.Notifications,
-                            tone = NotificationIconTone.Success,
-                        ),
-                        text = "Your evening prayer reminder is set for 8:00 PM",
-                        isUnread = false,
-                    ),
-                    NotificationItem(
-                        id = "7",
-                        iconData = NotificationIconData(
-                            iconVector = Icons.Rounded.Favorite,
-                            tone = NotificationIconTone.Accent,
-                        ),
-                        text = "New devotional book added to your library: Daily Wisdom",
-                        isUnread = false,
-                    ),
-                ),
+            sampleNotificationItem(
+                id = "2",
+                iconVector = Icons.Rounded.GridView,
+                tone = NotificationIconTone.Success,
+                text = "Your daily reading plan is ready. Continue your journey " +
+                    "through Scripture",
+                isUnread = true,
             ),
-        )
-    }
+            sampleNotificationItem(
+                id = "3",
+                iconVector = Icons.Rounded.Verified,
+                tone = NotificationIconTone.Info,
+                text = "New meditation available: Finding peace in difficult times",
+                isUnread = true,
+                hasOverlay = true,
+            ),
+        ),
+    )
+
+    private fun createThisWeekSection(): NotificationSection = NotificationSection(
+        title = "This week",
+        notifications = listOf(
+            sampleNotificationItem(
+                id = "4",
+                iconVector = Icons.Rounded.GridView,
+                tone = NotificationIconTone.Success,
+                text = "You've completed 5 days of your reading plan. Keep up " +
+                    "the great work!",
+                isUnread = true,
+            ),
+            sampleNotificationItem(
+                id = "5",
+                iconVector = Icons.Rounded.Favorite,
+                tone = NotificationIconTone.Accent,
+                text = "Don't forget to review your bookmarked verses from this week",
+                isUnread = false,
+            ),
+            sampleNotificationItem(
+                id = "6",
+                iconVector = Icons.Rounded.Notifications,
+                tone = NotificationIconTone.Success,
+                text = "Your evening prayer reminder is set for 8:00 PM",
+                isUnread = false,
+            ),
+            sampleNotificationItem(
+                id = "7",
+                iconVector = Icons.Rounded.Favorite,
+                tone = NotificationIconTone.Accent,
+                text = "New devotional book added to your library: Daily Wisdom",
+                isUnread = false,
+            ),
+        ),
+    )
+
+    private fun sampleNotificationItem(
+        id: String,
+        iconVector: ImageVector,
+        tone: NotificationIconTone,
+        text: String,
+        isUnread: Boolean,
+        hasOverlay: Boolean = false,
+    ): NotificationItem = NotificationItem(
+        id = id,
+        iconData = NotificationIconData(
+            iconVector = iconVector,
+            tone = tone,
+            hasOverlay = hasOverlay,
+        ),
+        text = text,
+        isUnread = isUnread,
+    )
 }
 
 /**
@@ -260,12 +241,10 @@ data class NotificationSection(
 
 /**
  * Data class for notification icon configuration.
- * 
+ *
  * NOTE: Color and ImageVector are stored in StateFlow (in-memory) which is fine,
  * but if we need to save state across process death, we should use identifiers
  * (e.g., enum for icon type, color hex string) instead.
- * 
- * TODO: When notification domain models are available, replace this with proper domain models.
  */
 data class NotificationIconData(
     val iconVector: ImageVector,
