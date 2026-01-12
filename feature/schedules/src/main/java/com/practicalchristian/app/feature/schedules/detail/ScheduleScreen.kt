@@ -493,13 +493,16 @@ private fun TimePickerDialogPreview() {
 
         TimePickerDialog(
             onDismissRequest = {}, confirmButton = {
-            TextButton(onClick = {}) {
-                Text("Complete")
-            }
+            SacramentButton(
+                text = "Complete",
+                onClick = {}
+            )
         }, dismissButton = {
-            TextButton(onClick = {}) {
-                Text("Cancel")
-            }
+            SacramentButton(
+                text = "Cancel",
+                onClick = {},
+                variant = SacramentButtonVariant.Outlined
+            )
         }, title = "Select Completion Time"
         ) {
             TimePicker(state = timeState)
