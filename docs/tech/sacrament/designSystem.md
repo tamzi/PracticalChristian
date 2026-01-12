@@ -31,10 +31,17 @@ We are building a Material-free Compose design system:
 
 - No MaterialTheme
 - No ColorScheme, Typography, Shapes from Material
-- No Material components (Button, TextField, etc.)
+- No Material components (Button, TextField, etc.) outside the `sacrament` module
+- **Material icons are ONLY allowed in `sacrament` module** (for the `SacramentIcons` registry)
+- All feature modules must use `SacramentIcons` instead of Material icons directly
 
 We do use Compose UI + Foundation (layout, text, gestures, scrolling,
 animation) and implement our own primitives/components on top of our tokens.
+
+**Icon Usage Rules:**
+- ✅ Material icons allowed in `sacrament` module only (for `SacramentIcons.kt`)
+- ❌ Material icons forbidden in feature modules, core, app
+- ✅ All features must use `SacramentIcons` from the design system
 
 ### A) Typical Material 3 app (MaterialTheme + M3 components)
 
