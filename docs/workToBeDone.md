@@ -42,14 +42,14 @@ Single source of truth for project tasks, priorities, and status.
   - [x] TASK: Replace Material3 components in `feature/home`.
   - [x] TASK: Replace hardcoded styles with design system tokens in `feature/home`.
   - [x] TASK: Update previews in `feature/home` to use `SacramentTheme`.
-- [ ] STORY: Feature migrations - settings
-  - [ ] TASK: Replace Material3 components in `feature/settings`.
-  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/settings`.
-  - [ ] TASK: Update previews in `feature/settings` to use `SacramentTheme`.
-- [ ] STORY: Feature migrations - setup
-  - [ ] TASK: Replace Material3 components in `feature/setup`.
-  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/setup`.
-  - [ ] TASK: Update previews in `feature/setup` to use `SacramentTheme`.
+- [x] STORY: Feature migrations - settings
+  - [x] TASK: Replace Material3 components in `feature/settings`.
+  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/settings`.
+  - [x] TASK: Update previews in `feature/settings` to use `SacramentTheme`.
+- [x] STORY: Feature migrations - setup
+  - [x] TASK: Replace Material3 components in `feature/setup`.
+  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/setup`.
+  - [x] TASK: Update previews in `feature/setup` to use `SacramentTheme`.
 - [ ] STORY: Feature migrations - profile
   - [ ] TASK: Replace Material3 components in `feature/profile`.
   - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/profile`.
