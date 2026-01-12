@@ -17,21 +17,14 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.practicalchristian.app.core.ui.navigation.AppDestination
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.primitives.SacramentCenteredColumn
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.primitives.SacramentIcon
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.primitives.SacramentSurface
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.primitives.SacramentText
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.patterns.SacramentEmptyState
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.Bar
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.patterns.SacramentEmptyState
+import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentSurface
+import com.sacrament.ui.primitives.SacramentText
 
 /**
  * Landing screen - Entry point of the app.
