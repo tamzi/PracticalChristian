@@ -17,14 +17,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.automirrored.rounded.List
-import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material.icons.rounded.Close
-import androidx.compose.material.icons.rounded.Refresh
-import androidx.compose.material.icons.rounded.Tag
-import androidx.compose.material.icons.rounded.Warning
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.action.SacramentButton
 import com.sacrament.ui.components.action.SacramentButtonVariant
 import com.sacrament.ui.components.action.SacramentFab
@@ -138,7 +131,7 @@ fun TagsScreenContent(
                         style = SacramentTheme.typography.titleMedium
                     )
                     SacramentIconButton(
-                        imageVector = Icons.Rounded.Close,
+                        imageVector = SacramentIcons.Close,
                         contentDescription = "close",
                         onClick = { onClickToggleBottomSheetState.invoke(false) }
                     )
@@ -150,7 +143,7 @@ fun TagsScreenContent(
                     value = state.tag?.name ?: "",
                     onValueChange = onChangeTagName,
                     placeholder = "Name",
-                    leadingIcon = Icons.Rounded.Tag,
+                    leadingIcon = SacramentIcons.Tag,
                     singleLine = true
                 )
                     LazyVerticalGrid(
@@ -193,7 +186,7 @@ fun TagsScreenContent(
                             ) {
                                 SacramentIconButton(
                                     modifier = Modifier.padding(top = spacing.padding8),
-                                    imageVector = Icons.Rounded.Refresh,
+                                    imageVector = SacramentIcons.Refresh,
                                     contentDescription = "",
                                     onClick = onClickGenerateColors
                                 )
@@ -236,7 +229,7 @@ fun TagsScreenContent(
                 title = { SacramentText(text = "Tags", style = SacramentTheme.typography.titleSmall) },
                 navigationIcon = {
                     SacramentIconButton(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                        imageVector = SacramentIcons.ArrowBack,
                         contentDescription = "",
                         onClick = onClickBack
                     )
@@ -246,7 +239,7 @@ fun TagsScreenContent(
         floatingActionButton = {
             AnimatedVisibility(visible = state.listState.hasData) {
                 SacramentFab(
-                    imageVector = Icons.Rounded.Add,
+                    imageVector = SacramentIcons.Add,
                     contentDescription = "",
                     onClick = { onClickToggleBottomSheetState.invoke(true) }
                 )
@@ -266,7 +259,7 @@ fun TagsScreenContent(
                         verticalArrangement = Arrangement.Center
                     ) {
                         SacramentIcon(
-                            imageVector = Icons.Rounded.Warning,
+                            imageVector = SacramentIcons.Warning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
                             modifier = Modifier
@@ -297,7 +290,7 @@ fun TagsScreenContent(
 
                 UiListState.Idle -> {
                     SacramentEmptyState(
-                        icon = Icons.AutoMirrored.Rounded.List,
+                        icon = SacramentIcons.List,
                         title = "Welcome",
                         contentDescription = "idle fetching results",
                         description = "Please wait while we're fetching your tags"
@@ -314,7 +307,7 @@ fun TagsScreenContent(
                     when (val success = result.data) {
                         UiSuccessState.Empty -> {
                             SacramentEmptyState(
-                                icon = Icons.Rounded.Tag,
+                                icon = SacramentIcons.Tag,
                                 title = "Empty",
                                 contentDescription = "empty icon",
                                 description = "You don't have any tags.\nClick on the button below to create",
