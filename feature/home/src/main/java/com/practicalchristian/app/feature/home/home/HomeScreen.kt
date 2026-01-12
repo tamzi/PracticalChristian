@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,15 +26,15 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Notifications
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.components.action.SacramentButtonVariant
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.components.surface.SacramentCardColors
+import com.sacrament.ui.components.surface.SacramentCardDefaults
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -110,15 +111,14 @@ fun HomeScreenContent(
     val colors = SacramentTheme.colors
     val spacing = SacramentTheme.spacing
 
-    Scaffold(
+    SacramentScreenScaffold(
         bottomBar = {
             BottomNavigationBar(
                 onHomeClick = { /* Already on home */ },
                 onBooksClick = onNavigateToBooks,
                 onNotesClick = onNavigateToNotes
             )
-        },
-        containerColor = SacramentTheme.colors.surfaces.background,
+        }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -141,11 +141,9 @@ fun HomeScreenContent(
             Spacer(modifier = Modifier.height(spacing.padding24))
 
             // Title
-            Text(
+            SacramentText(
                 text = "Your Daily\nBible Reading",
-                style = SacramentTheme.typography.displaySmall,
-                fontWeight = FontWeight.Bold,
-                lineHeight = 44.sp
+                style = SacramentTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold, lineHeight = 44.sp)
             )
 
             Spacer(modifier = Modifier.height(spacing.padding24))
@@ -301,12 +299,11 @@ private fun HeaderSection(
             }
 
             Column {
-                Text(
+                SacramentText(
                     text = "PracticalChristian",
-                    style = SacramentTheme.typography.titleLarge,
-                    fontWeight = FontWeight.SemiBold
+                    style = SacramentTheme.typography.titleLarge.copy(fontWeight = FontWeight.SemiBold)
                 )
-                Text(
+                SacramentText(
                     text = "Hello ${userName}",
                     style = SacramentTheme.typography.bodyMedium,
                     color = SacramentTheme.colors.text.muted
@@ -315,16 +312,12 @@ private fun HeaderSection(
         }
 
         Row(horizontalArrangement = Arrangement.spacedBy(spacing.padding8)) {
-            IconButton(
+            SacramentIconButton(
+                imageVector = Icons.Rounded.Notifications,
+                contentDescription = "Notifications",
                 onClick = onNotificationClick,
                 modifier = Modifier.size(40.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.Notifications,
-                    contentDescription = "Notifications",
-                    tint = SacramentTheme.colors.text.strong
-                )
-            }
+            )
         }
     }
 }
@@ -382,17 +375,15 @@ private fun DayItem(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(spacing.padding4)
         ) {
-            Text(
+            SacramentText(
                 text = day.dayOfWeek,
-                style = SacramentTheme.typography.bodySmall,
-                color = contentColor.copy(alpha = 0.7f),
-                fontWeight = FontWeight.Medium
+                style = SacramentTheme.typography.bodySmall.copy(fontWeight = FontWeight.Medium),
+                color = contentColor.copy(alpha = 0.7f)
             )
-            Text(
+            SacramentText(
                 text = day.dayOfMonth.toString(),
-                style = SacramentTheme.typography.titleLarge,
-                color = contentColor,
-                fontWeight = FontWeight.Bold
+                style = SacramentTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                color = contentColor
             )
         }
     }
@@ -404,58 +395,39 @@ private fun BeginReadingCard(
 ) {
     val colors = SacramentTheme.colors
     val spacing = SacramentTheme.spacing
-    Card(
+    SacramentCard(
         modifier = Modifier
             .fillMaxWidth()
             .height(180.dp),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = colors.surfaces.lavender
-        ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 6.dp,
-            pressedElevation = 2.dp
-        )
+        colors = SacramentCardColors(container = colors.surfaces.lavender),
+        contentPadding = androidx.compose.foundation.layout.PaddingValues(spacing.padding20)
     ) {
         Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(spacing.padding20)
+            modifier = Modifier.fillMaxSize()
         ) {
             Column(
                 modifier = Modifier.align(Alignment.TopStart)
             ) {
-                Text(
+                SacramentText(
                     text = "Let's Begin Today's Reading",
-                    style = SacramentTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
+                    style = SacramentTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
                     color = colors.text.strong
                 )
                 Spacer(modifier = Modifier.height(spacing.padding8))
-                Text(
+                SacramentText(
                     text = "Every word holds wisdom—let's\nbegin your journey within.",
-                    style = SacramentTheme.typography.bodyMedium,
-                    color = colors.text.muted,
-                    lineHeight = 20.sp
+                    style = SacramentTheme.typography.bodyMedium.copy(lineHeight = 20.sp),
+                    color = colors.text.muted
                 )
             }
 
-            Button(
+            SacramentButton(
+                text = "Start Reading",
                 onClick = onStartReading,
                 modifier = Modifier
                     .align(Alignment.BottomStart)
-                    .height(48.dp),
-                shape = RoundedCornerShape(24.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = SacramentTheme.colors.brand.primary
-                )
-            ) {
-                Text(
-                    text = "Start Reading",
-                    style = SacramentTheme.typography.titleSmall,
-                    fontWeight = FontWeight.SemiBold
-                )
-            }
+                    .height(48.dp)
+            )
         }
     }
 }
@@ -471,38 +443,29 @@ private fun DevotionCard(
 ) {
     val colors = SacramentTheme.colors
     val spacing = SacramentTheme.spacing
-    Card(
+    SacramentCard(
         modifier = modifier
             .height(160.dp)
             .clickable { onClick() },
-        shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = backgroundColor
-        ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp,
-            pressedElevation = 2.dp
-        )
+        colors = SacramentCardColors(container = backgroundColor),
+        contentPadding = PaddingValues(spacing.padding16)
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(spacing.padding16),
+            modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
+            SacramentText(
                 text = emoji,
-                fontSize = 48.sp,
+                style = SacramentTheme.typography.displayLarge,
                 modifier = Modifier.padding(top = spacing.padding8)
             )
             Column {
-                Text(
+                SacramentText(
                     text = title,
-                    style = SacramentTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
+                    style = SacramentTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                     color = colors.text.strong
                 )
-                Text(
+                SacramentText(
                     text = subtitle,
                     style = SacramentTheme.typography.bodySmall,
                     color = colors.text.muted
@@ -523,18 +486,15 @@ private fun TodaysGoalSection(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
+            SacramentText(
                 text = "Today's Goal",
-                style = SacramentTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
+                style = SacramentTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
             )
-            TextButton(onClick = onSeeAllClick) {
-                Text(
-                    text = "See all",
-                    style = SacramentTheme.typography.bodyMedium,
-                    color = SacramentTheme.colors.brand.primary
-                )
-            }
+            SacramentButton(
+                text = "See all",
+                onClick = onSeeAllClick,
+                variant = SacramentButtonVariant.Text
+            )
         }
 
         Spacer(modifier = Modifier.height(spacing.padding12))
@@ -563,24 +523,16 @@ private fun GoalItem(
     onClick: () -> Unit
 ) {
     val spacing = SacramentTheme.spacing
-    Card(
+    SacramentCard(
         modifier = Modifier
             .fillMaxWidth()
             .height(72.dp)
             .clickable { onClick() },
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = SacramentTheme.colors.surfaces.surfaceVariant
-        ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 2.dp,
-            pressedElevation = 1.dp
-        )
+        colors = SacramentCardDefaults.colors(),
+        contentPadding = PaddingValues(horizontal = spacing.padding16)
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = spacing.padding16),
+            modifier = Modifier.fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -588,17 +540,16 @@ private fun GoalItem(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(spacing.padding12)
             ) {
-                Text(
+                SacramentText(
                     text = emoji,
-                    fontSize = 28.sp
+                    style = SacramentTheme.typography.displayMedium
                 )
-                Text(
+                SacramentText(
                     text = title,
-                    style = SacramentTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Medium
+                    style = SacramentTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium)
                 )
             }
-            Icon(
+            SacramentIcon(
                 imageVector = Icons.Rounded.ChevronRight,
                 contentDescription = "Go",
                 tint = SacramentTheme.colors.text.muted
@@ -636,38 +587,29 @@ private fun YourProgressSection(
             horizontalArrangement = Arrangement.spacedBy(spacing.padding12)
         ) {
             // Days Streak Card
-            Card(
+            SacramentCard(
                 modifier = Modifier
                     .weight(1f)
                     .height(120.dp),
-                shape = RoundedCornerShape(20.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = colors.surfaces.peach
-                ),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 4.dp,
-                    pressedElevation = 2.dp
-                )
+                colors = SacramentCardColors(container = colors.surfaces.peach),
+                contentPadding = PaddingValues(spacing.padding16)
             ) {
                 Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(spacing.padding16),
+                    modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(
+                    SacramentText(
                         text = "🔥",
-                        fontSize = 40.sp
+                        style = SacramentTheme.typography.displayMedium
                     )
                     Spacer(modifier = Modifier.height(spacing.padding8))
-                    Text(
+                    SacramentText(
                         text = daysStreak.toString().padStart(2, '0'),
-                        style = SacramentTheme.typography.headlineMedium,
-                        fontWeight = FontWeight.Bold,
+                        style = SacramentTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
                         color = colors.brand.primary
                     )
-                    Text(
+                    SacramentText(
                         text = "Days Streak",
                         style = SacramentTheme.typography.bodySmall,
                         color = colors.text.muted
@@ -676,38 +618,29 @@ private fun YourProgressSection(
             }
 
             // Chapters Card
-            Card(
+            SacramentCard(
                 modifier = Modifier
                     .weight(1f)
                     .height(120.dp),
-                shape = RoundedCornerShape(20.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = colors.surfaces.mint
-                ),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 4.dp,
-                    pressedElevation = 2.dp
-                )
+                colors = SacramentCardColors(container = colors.surfaces.mint),
+                contentPadding = PaddingValues(spacing.padding16)
             ) {
                 Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(spacing.padding16),
+                    modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(
+                    SacramentText(
                         text = "📖",
-                        fontSize = 40.sp
+                        style = SacramentTheme.typography.displayMedium
                     )
                     Spacer(modifier = Modifier.height(spacing.padding8))
-                    Text(
+                    SacramentText(
                         text = chaptersCompleted.toString(),
-                        style = SacramentTheme.typography.headlineMedium,
-                        fontWeight = FontWeight.Bold,
+                        style = SacramentTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
                         color = colors.brand.primary
                     )
-                    Text(
+                    SacramentText(
                         text = "Chapters",
                         style = SacramentTheme.typography.bodySmall,
                         color = colors.text.muted
@@ -725,37 +658,25 @@ private fun CurrentReadingSection(
 ) {
     val colors = SacramentTheme.colors
     val spacing = SacramentTheme.spacing
-    Card(
-        modifier = Modifier
-            .fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = colors.surfaces.lavenderSoft
-        ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 6.dp,
-            pressedElevation = 2.dp
-        )
+    SacramentCard(
+        modifier = Modifier.fillMaxWidth(),
+        colors = SacramentCardColors(container = colors.surfaces.lavenderSoft),
+        contentPadding = PaddingValues(spacing.padding20)
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(spacing.padding20)
-        ) {
+        Column {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.Top
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(
+                    SacramentText(
                         text = "Matthew Chapter ${reading.bookName.substringAfter(" ")}",
-                        style = SacramentTheme.typography.headlineSmall,
-                        fontWeight = FontWeight.Bold,
+                        style = SacramentTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                         color = colors.text.strong
                     )
                     Spacer(modifier = Modifier.height(spacing.padding4))
-                    Text(
+                    SacramentText(
                         text = "Chapters ${reading.chaptersCompleted} of ${reading.totalChapters} Finished",
                         style = SacramentTheme.typography.bodyMedium,
                         color = colors.text.muted
@@ -786,23 +707,21 @@ private fun CurrentReadingSection(
                     modifier = Modifier.size(90.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    androidx.compose.material3.CircularProgressIndicator(
-                        progress = { reading.progressPercentage },
+                    SacramentProgressIndicator(
+                        variant = SacramentProgressVariant.Circular,
+                        progress = reading.progressPercentage,
                         modifier = Modifier.size(90.dp),
-                        color = colors.brand.primary,
-                        strokeWidth = 8.dp,
-                        trackColor = colors.utilities.progressTrack
+                        color = colors.brand.primary
                     )
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(
+                        SacramentText(
                             text = "${(reading.progressPercentage * 100).toInt()}%",
-                            style = SacramentTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold,
+                            style = SacramentTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                             color = colors.brand.primary
                         )
-                        Text(
+                        SacramentText(
                             text = "done",
                             style = SacramentTheme.typography.bodySmall,
                             color = colors.text.muted
@@ -814,23 +733,13 @@ private fun CurrentReadingSection(
             Spacer(modifier = Modifier.height(spacing.padding16))
 
             // Continue Reading Button
-        Button(
-            onClick = onContinueReading,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            shape = RoundedCornerShape(28.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = colors.brand.primary
-            )
-        ) {
-            Text(
+            SacramentButton(
                 text = "Continue Reading",
-                style = SacramentTheme.typography.titleMedium,
-                fontWeight = FontWeight.SemiBold,
-                color = colors.text.onBrand
+                onClick = onContinueReading,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
             )
-            }
         }
     }
 }
