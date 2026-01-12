@@ -231,14 +231,14 @@ Use consistent package naming across core modules:
 
 ### Design System Module
 
-- `sacrament`: A UI toolkit module with common Compose UI components, theming
+- `sacrament`: A Material-free Compose design system module with common UI components, theming,
   and styles used across the app. This includes colors, typography, reusable
-  widgets (buttons, loading indicators), etc. Following NowinAndroid's
-  approach, `sacrament` provides a consistent look and feel. It will allow
-  easy global theme changes, which is important for the planned redesign in
-  Phase 3 (changes concentrate in the design system). Both Android and iOS will
-  follow the same design guidelines: on iOS we'll create analogous components in
-  SwiftUI or use Compose Multiplatform if we go that route.
+  widgets (buttons, loading indicators, cards, etc.), built entirely on Compose
+  Foundation (no Material3 dependencies). The design system enforces consistency
+  through tokens → primitives → components → patterns, while keeping pages/screens
+  in feature modules. All feature modules must use Sacrament components exclusively;
+  Material3 components and hardcoded colors are prohibited outside the `sacrament`
+  module. See `docs/tech/sacrament/designSystem.md` for complete guidelines.
 
 ### Module Dependencies
 
