@@ -61,7 +61,6 @@ dependencies {
     implementation(projects.feature.settings)
     implementation(projects.feature.tags)
     implementation(projects.feature.profile)
-    implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
