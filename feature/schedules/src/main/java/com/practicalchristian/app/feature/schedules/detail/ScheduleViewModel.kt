@@ -1,4 +1,4 @@
-package com.practicalchristian.app.feature.schedules
+package com.practicalchristian.app.feature.schedules.detail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope

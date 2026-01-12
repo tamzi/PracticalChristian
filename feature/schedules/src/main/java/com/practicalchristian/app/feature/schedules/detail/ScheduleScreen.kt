@@ -44,8 +44,6 @@ import com.practicalchristian.app.core.ui.helpers.ItemState
 import com.practicalchristian.app.core.ui.helpers.asFullDayString
 import com.practicalchristian.app.core.ui.helpers.asLocalDateTime
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
-import com.practicalchristian.app.feature.schedules.ScheduleScreenUiState
-import com.practicalchristian.app.feature.schedules.ScheduleViewModel
 import com.sacrament.ui.components.action.SacramentButton
 import com.sacrament.ui.components.action.SacramentButtonVariant
 import com.sacrament.ui.components.action.SacramentIconButton
