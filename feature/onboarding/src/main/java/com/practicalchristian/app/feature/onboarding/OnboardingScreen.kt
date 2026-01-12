@@ -297,20 +297,16 @@ private fun ProgressRingNextButton(
                 style = style
             )
         }
-        IconButton(
+        SacramentIconButton(
+            imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+            contentDescription = "Next",
             onClick = onClick,
             enabled = enabled,
             modifier = Modifier
                 .size(buttonSize)
                 .shadow(10.dp, CircleShape)
                 .background(Color.White, CircleShape)
-        ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                contentDescription = "Next",
-                tint = accentColor
-            )
-        }
+        )
     }
 }
 
