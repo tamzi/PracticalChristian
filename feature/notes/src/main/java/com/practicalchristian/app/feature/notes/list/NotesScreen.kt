@@ -13,11 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.List
-import androidx.compose.material.icons.automirrored.rounded.Note
-import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material.icons.rounded.Warning
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -108,7 +104,7 @@ fun NotesScreenContent(
         floatingActionButton = {
             AnimatedVisibility(visible = state.listState.hasData) {
                 SacramentFab(
-                    imageVector = Icons.Rounded.Add,
+                    imageVector = SacramentIcons.Add,
                     contentDescription = "Create note",
                     onClick = onNavigateToNewNote,
                 )
@@ -138,7 +134,7 @@ fun NotesScreenContent(
                         verticalArrangement = Arrangement.Center
                     ) {
                         SacramentIcon(
-                            imageVector = Icons.Rounded.Warning,
+                            imageVector = SacramentIcons.Warning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
                             modifier = Modifier.padding(bottom = spacing.padding12),
@@ -164,7 +160,7 @@ fun NotesScreenContent(
 
                 UiListState.Idle -> {
                     SacramentEmptyState(
-                        icon = Icons.AutoMirrored.Rounded.List,
+                        icon = SacramentIcons.List,
                         title = "Welcome",
                         contentDescription = "error fetching results",
                         description = "Please wait while we're setting things up"
@@ -181,7 +177,7 @@ fun NotesScreenContent(
                     when (val success = result.data) {
                         UiSuccessState.Empty -> {
                             SacramentEmptyState(
-                                icon = Icons.AutoMirrored.Rounded.Note,
+                                icon = SacramentIcons.Note,
                                 title = "Empty",
                                 contentDescription = "empty icon",
                                 description = "You don't have any Notes.\nClick on the button below to create",
