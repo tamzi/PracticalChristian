@@ -24,15 +24,7 @@ import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.automirrored.rounded.List
-import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material.icons.rounded.Book
-import androidx.compose.material.icons.rounded.Close
-import androidx.compose.material.icons.rounded.Refresh
-import androidx.compose.material.icons.rounded.Save
-import androidx.compose.material.icons.rounded.Tag
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.action.SacramentButton
 import com.sacrament.ui.components.action.SacramentIconButton
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
@@ -155,7 +147,7 @@ fun EditNoteScreenContent(
             title = { SacramentText(text = "", style = SacramentTheme.typography.titleSmall) },
             navigationIcon = {
                 SacramentIconButton(
-                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                    imageVector = SacramentIcons.ArrowBack,
                     contentDescription = "back",
                     onClick = onClickNavigateBack
                 )
@@ -218,12 +210,12 @@ fun EditNoteScreenContent(
             Row(modifier = Modifier.fillMaxWidth()) {
                 Row {
                     SacramentIconButton(
-                        imageVector = Icons.Rounded.Book,
+                        imageVector = SacramentIcons.Book,
                         contentDescription = "book",
                         onClick = { /*TODO*/ }
                     )
                     SacramentIconButton(
-                        imageVector = Icons.Rounded.Tag,
+                        imageVector = SacramentIcons.Tag,
                         contentDescription = "tag",
                         onClick = onToggleBottomSheetTags
                     )
@@ -231,7 +223,7 @@ fun EditNoteScreenContent(
                 Spacer(modifier = Modifier.weight(1f))
                 Row {
                     SacramentIconButton(
-                        imageVector = Icons.Rounded.Save,
+                        imageVector = SacramentIcons.Save,
                         contentDescription = "save",
                         onClick = { onClickNoteSave.invoke(richTextState.toMarkdown()) }
                     )
@@ -314,7 +306,7 @@ fun TagsBottomSheet(
                         style = SacramentTheme.typography.titleSmall
                     )
                     SacramentIconButton(
-                        imageVector = if (isCreatingTag) Icons.Rounded.Close else Icons.Rounded.Add,
+                        imageVector = if (isCreatingTag) SacramentIcons.Close else SacramentIcons.Add,
                         contentDescription = "",
                         onClick = onTagCreateToggle
                     )
@@ -334,7 +326,7 @@ fun TagsBottomSheet(
                                         value = name,
                                         onValueChange = onChangeTagName,
                                         placeholder = "Name",
-                                        leadingIcon = Icons.Rounded.Tag,
+                                        leadingIcon = SacramentIcons.Tag,
                                         singleLine = true
                                     )
                                     LazyVerticalGrid(
@@ -376,7 +368,7 @@ fun TagsBottomSheet(
                                                 horizontalArrangement = Arrangement.Center
                                             ) {
                                                 SacramentIconButton(
-                                                    imageVector = Icons.Rounded.Refresh,
+                                                    imageVector = SacramentIcons.Refresh,
                                                     contentDescription = "",
                                                     onClick = onClickTagGenerateColors,
                                                     modifier = Modifier.padding(top = spacing.padding8)
@@ -405,7 +397,7 @@ fun TagsBottomSheet(
                             when (tagsState) {
                                 is UiListState.Error -> {
                                     SacramentEmptyState(
-                                        icon = Icons.AutoMirrored.Rounded.List,
+                                        icon = SacramentIcons.List,
                                         title = "Error",
                                         contentDescription = "error fetching results",
                                         description = tagsState.message
@@ -414,7 +406,7 @@ fun TagsBottomSheet(
 
                                 UiListState.Idle -> {
                                     SacramentEmptyState(
-                                        icon = Icons.AutoMirrored.Rounded.List,
+                                        icon = SacramentIcons.List,
                                         title = "Welcome",
                                         contentDescription = "idle fetching results",
                                         description = "Please wait while we're fetching your tags"
@@ -431,7 +423,7 @@ fun TagsBottomSheet(
                                     when (val result = tagsState.data) {
                                         UiSuccessState.Empty -> {
                                             SacramentEmptyState(
-                                                icon = Icons.Rounded.Tag,
+                                                icon = SacramentIcons.Tag,
                                                 title = "Empty",
                                                 contentDescription = "empty icon",
                                                 description = "You don't have any tags.\nClick on the button below to create",
