@@ -2,10 +2,7 @@
 
 package com.practicalchristian.app.feature.home.home
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Bookmark
-import androidx.compose.material.icons.rounded.Home
-import androidx.compose.material.icons.rounded.LocalLibrary
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.viewModelScope
 import com.practicalchristian.app.core.domain.repository.PreferencesRepository
@@ -28,9 +25,9 @@ import javax.inject.Inject
  * Home tab destinations for internal navigation.
  */
 enum class HomeDestination(val icon: ImageVector, val value: String) {
-    SCHEDULE(icon = Icons.Rounded.Home, value = "Home"),
-    BOOKS(icon = Icons.Rounded.LocalLibrary, value = "Books"),
-    NOTES(icon = Icons.Rounded.Bookmark, value = "Library"),
+    SCHEDULE(icon = SacramentIcons.Home, value = "Home"),
+    BOOKS(icon = SacramentIcons.LocalLibrary, value = "Books"),
+    NOTES(icon = SacramentIcons.Bookmark, value = "Library"),
 }
 
 /**
