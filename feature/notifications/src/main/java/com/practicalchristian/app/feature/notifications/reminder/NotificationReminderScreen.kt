@@ -15,8 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.AccessTime
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -30,14 +28,23 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.practicalchristian.app.core.ui.navigation.AppDestination
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.action.SacramentButtonVariant
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.Bar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentSurface
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentText
+import com.sacrament.ui.foundation.icon.SacramentIcons
 
 /**
  * Screen for requesting notification permissions.
@@ -193,7 +200,7 @@ private fun PhoneNotificationIllustration(
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
                             SacramentIcon(
-                                imageVector = Icons.Rounded.AccessTime,
+                                imageVector = SacramentIcons.AccessTime,
                                 contentDescription = null,
                                 tint = colors.text.strong,
                                 size = SacramentTheme.iconSizes.sm,
