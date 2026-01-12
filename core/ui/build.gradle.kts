@@ -18,8 +18,6 @@ dependencies {
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.ui)
-    implementation(libs.androidx.compose.material.iconsExtended)
-    implementation(libs.androidx.material)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
 }
