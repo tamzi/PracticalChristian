@@ -23,8 +23,8 @@ import com.practicalchristian.app.feature.landing.LandingScreen
 import com.practicalchristian.app.feature.notes.detail.NoteScreen
 import com.practicalchristian.app.feature.notes.list.NotesScreen
 import com.practicalchristian.app.feature.onboarding.OnboardingScreen
-import com.practicalchristian.app.feature.schedules.ScheduleScreen
-import com.practicalchristian.app.feature.schedules.SchedulesScreen
+import com.practicalchristian.app.feature.schedules.detail.ScheduleScreen
+import com.practicalchristian.app.feature.schedules.hub.SchedulesScreen
 import com.practicalchristian.app.feature.setup.SetupScreen
 import com.practicalchristian.app.feature.settings.SettingsScreen
 import com.practicalchristian.app.feature.tags.TagsScreen
