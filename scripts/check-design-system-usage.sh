@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Enforce design system usage in staged code:
 # - No Material components (androidx.compose.material3.* or androidx.compose.material.*)
-#   except for Material icons.
+#   outside the sacrament module.
+# - Material icons are ONLY allowed in sacrament module (for SacramentIcons registry).
+#   All other modules must use SacramentIcons instead of Material icons directly.
 # - No raw hex colors (Color(0x...)) outside the sacrament palette.
 
 set -e
@@ -56,13 +58,45 @@ echo "🎨 Checking design system usage..."
 for file in $FILES; do
     case "$file" in
         *.kt|*.java)
-            # Skip Material3 checks for temporary bridge components in sacrament module
+            # Material3 is ONLY allowed in sacrament module (for bridge components)
+            # Skip Material3 checks for allowed bridge components in sacrament module
             case "$file" in
-                sacrament/src/main/java/com/sacrament/ui/components/surface/SacramentModalBottomSheet.kt|sacrament/src/main/java/com/sacrament/ui/patterns/SacramentScreenScaffold.kt)
-                    # These are temporary bridge components that will be replaced
+                sacrament/src/main/java/com/sacrament/ui/components/surface/SacramentModalBottomSheet.kt)
+                    # Temporary bridge component using Material3 ModalBottomSheet
+                    continue
+                    ;;
+                sacrament/src/main/java/com/sacrament/ui/components/input/PracticalChristianDatePicker.kt|sacrament/src/main/java/com/sacrament/ui/components/input/TimePickerDialog.kt)
+                    # Temporary bridge components using Material3 DatePicker/TimePicker
                     continue
                     ;;
             esac
+
+            # Check Material3 usage - only allowed in sacrament module
+            if [[ "$file" != sacrament/* ]]; then
+                # Outside sacrament: Material3 is completely forbidden
+                if [ -n "$REF" ]; then
+                    content=$(git show "$REF:$file" 2>/dev/null || true)
+                    if [ -z "$content" ]; then
+                        continue
+                    fi
+                    CHECKED_FILES=$((CHECKED_FILES + 1))
+                    material3_hits=$(printf "%s\n" "$content" | grep -nE 'androidx\.compose\.material3\.' | \
+                        grep -vE 'DatePicker|TimePicker|DatePickerDialog|TimeInput|rememberDatePickerState|rememberTimePickerState|ExperimentalMaterial3Api' || true)
+                else
+                    if [ ! -f "$file" ]; then
+                        continue
+                    fi
+                    CHECKED_FILES=$((CHECKED_FILES + 1))
+                    material3_hits=$(grep -nE 'androidx\.compose\.material3\.' "$file" | \
+                        grep -vE 'DatePicker|TimePicker|DatePickerDialog|TimeInput|rememberDatePickerState|rememberTimePickerState|ExperimentalMaterial3Api' || true)
+                fi
+                if [ -n "$material3_hits" ]; then
+                    echo -e "${RED}❌ VIOLATION: Material3 usage in $file${NC}"
+                    echo "$material3_hits" | sed 's/^/     - /'
+                    echo "   Fix: Material3 is only allowed in sacrament module. Use Sacrament components instead."
+                    VIOLATIONS=$((VIOLATIONS + 1))
+                fi
+            fi
 
             if [ -n "$REF" ]; then
                 content=$(git show "$REF:$file" 2>/dev/null || true)
@@ -91,17 +125,36 @@ for file in $FILES; do
                 VIOLATIONS=$((VIOLATIONS + 1))
             fi
 
-            if [ -n "$REF" ]; then
-                material_hits=$(printf "%s\n" "$content" | grep -nE 'androidx\.compose\.material\.' | \
-                    grep -vE 'androidx\.compose\.material\.icons(Extended|\.|$)' || true)
+            # Check Material (not Material3) usage
+            # Material icons are ONLY allowed in sacrament module
+            if [[ "$file" == sacrament/* ]]; then
+                # Allow Material icons in sacrament module (for SacramentIcons registry)
+                if [ -n "$REF" ]; then
+                    material_hits=$(printf "%s\n" "$content" | grep -nE 'androidx\.compose\.material\.' | \
+                        grep -vE 'androidx\.compose\.material\.icons(Extended|\.|$)' || true)
+                else
+                    material_hits=$(grep -nE 'androidx\.compose\.material\.' "$file" | \
+                        grep -vE 'androidx\.compose\.material\.icons(Extended|\.|$)' || true)
+                fi
             else
-                material_hits=$(grep -nE 'androidx\.compose\.material\.' "$file" | \
-                    grep -vE 'androidx\.compose\.material\.icons(Extended|\.|$)' || true)
+                # Outside sacrament: Material icons are NOT allowed - must use SacramentIcons
+                if [ -n "$REF" ]; then
+                    material_hits=$(printf "%s\n" "$content" | grep -nE 'androidx\.compose\.material\.' || true)
+                else
+                    material_hits=$(grep -nE 'androidx\.compose\.material\.' "$file" || true)
+                fi
             fi
             if [ -n "$material_hits" ]; then
-                echo -e "${RED}❌ VIOLATION: Material usage in $file${NC}"
-                echo "$material_hits" | sed 's/^/     - /'
-                echo "   Fix: Replace with Sacrament components/tokens."
+                if [[ "$file" == sacrament/* ]]; then
+                    echo -e "${RED}❌ VIOLATION: Material usage (non-icon) in $file${NC}"
+                    echo "$material_hits" | sed 's/^/     - /'
+                    echo "   Fix: Only Material icons are allowed in sacrament module."
+                else
+                    echo -e "${RED}❌ VIOLATION: Material usage in $file${NC}"
+                    echo "$material_hits" | sed 's/^/     - /'
+                    echo "   Fix: Use SacramentIcons instead of Material icons directly."
+                    echo "   Example: Replace 'Icons.Rounded.Add' with 'SacramentIcons.Add'"
+                fi
                 VIOLATIONS=$((VIOLATIONS + 1))
             fi
 
