@@ -1,6 +1,6 @@
-@file:OptIn(kotlin.time.ExperimentalTime::class)
+@file:OptIn(ExperimentalTime::class)
 
-package com.practicalchristian.app.feature.schedules
+package com.practicalchristian.app.feature.schedules.hub
 
 import androidx.lifecycle.viewModelScope
 import com.practicalchristian.app.core.domain.models.Outcome
@@ -19,6 +19,7 @@ import kotlinx.datetime.toLocalDateTime
 import timber.log.Timber
 import javax.inject.Inject
 import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 data class SchedulesScreenUiState(
     val error: String? = null,

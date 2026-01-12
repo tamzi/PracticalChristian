@@ -1,12 +1,13 @@
-@file:OptIn(kotlin.time.ExperimentalTime::class)
+@file:OptIn(ExperimentalTime::class)
 
-package com.practicalchristian.app.feature.schedules
+package com.practicalchristian.app.feature.schedules.hub
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,33 +18,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import com.sacrament.ui.components.action.SacramentButton
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.action.SacramentButtonVariant
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.action.SacramentIconButton
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.feedback.SacramentProgressIndicator
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.feedback.SacramentProgressVariant
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.feedback.SacramentSnackbar
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.navigation.SacramentTopAppBar
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.surface.SacramentCard
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.surface.SacramentCardColors
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.surface.SacramentCardDefaults
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.primitives.SacramentIcon
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.primitives.SacramentText
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -53,7 +27,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -73,15 +46,22 @@ import com.practicalchristian.app.core.ui.helpers.sentence
 import com.practicalchristian.app.core.ui.navigation.AppDestination
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.R
-import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.components.surface.SacramentCardColors
+import com.sacrament.ui.components.surface.SacramentCardDefaults
 import com.sacrament.ui.foundation.Bar
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentEmptyState
-import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.patterns.SacramentScreenScaffold
 import com.sacrament.ui.primitives.SacramentCenteredColumn
-import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime
@@ -91,6 +71,7 @@ import kotlinx.datetime.toLocalDateTime
 import me.saket.swipe.SwipeAction
 import me.saket.swipe.SwipeableActionsBox
 import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 /**
  * Schedules screen - List of schedules.
@@ -179,13 +160,13 @@ fun ScheduleScreenContent(
             }
         )
     } { values ->
-        Column(modifier = Modifier.padding(values)) {
+        Column(modifier = padding(values)) {
             when (val result = state.listState) {
                 is UiListState.Error -> {
                     Column(
                         modifier = Modifier.fillMaxSize(),
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
+                        verticalArrangement = Arrangement.Center
                     ) {
                         SacramentIcon(
                             imageVector = SacramentIcons.Warning,
@@ -317,7 +298,7 @@ private fun ScheduleItem(
                 border = SacramentCardDefaults.colors().border
             ),
             onClick = onItemClick,
-            contentPadding = androidx.compose.foundation.layout.PaddingValues(spacing.padding36)
+            contentPadding = PaddingValues(spacing.padding36)
         ) {
             Column {
                 SacramentText(
@@ -398,7 +379,7 @@ private fun SchedulesScreenErrorPreview() {
 
 @Preview(showBackground = true, name = "SchedulesScreen - With Schedules")
 @Composable
-@OptIn(kotlin.time.ExperimentalTime::class)
+@OptIn(ExperimentalTime::class)
 private fun SchedulesScreenWithDataPreview() {
     val now = Clock.System.now().toLocalDateTime(TimeZone.UTC)
     val sampleSchedules = listOf(
@@ -440,7 +421,7 @@ private fun SchedulesScreenWithDataPreview() {
 
 @Preview(showBackground = true, name = "SchedulesScreen - With Loading Indicator")
 @Composable
-@OptIn(kotlin.time.ExperimentalTime::class)
+@OptIn(ExperimentalTime::class)
 private fun SchedulesScreenWithLoadingIndicatorPreview() {
     val now = Clock.System.now().toLocalDateTime(TimeZone.UTC)
     val sampleSchedules = listOf(
@@ -470,7 +451,7 @@ private fun SchedulesScreenWithLoadingIndicatorPreview() {
 
 @Preview(showBackground = true, name = "SchedulesScreen - With Error Message")
 @Composable
-@OptIn(kotlin.time.ExperimentalTime::class)
+@OptIn(ExperimentalTime::class)
 private fun SchedulesScreenWithErrorMessagePreview() {
     val now = Clock.System.now().toLocalDateTime(TimeZone.UTC)
     val sampleSchedules = listOf(
@@ -501,7 +482,7 @@ private fun SchedulesScreenWithErrorMessagePreview() {
 
 @Preview(showBackground = true, name = "SchedulesScreen - With Success Message")
 @Composable
-@OptIn(kotlin.time.ExperimentalTime::class)
+@OptIn(ExperimentalTime::class)
 private fun SchedulesScreenWithSuccessMessagePreview() {
     val now = Clock.System.now().toLocalDateTime(TimeZone.UTC)
     val sampleSchedules = listOf(
@@ -550,7 +531,7 @@ private fun SchedulesScreenIdlePreview() {
 
 @Preview(showBackground = true, name = "ScheduleItem - Completed")
 @Composable
-@OptIn(kotlin.time.ExperimentalTime::class)
+@OptIn(ExperimentalTime::class)
 private fun ScheduleItemCompletedPreview() {
     val now = Clock.System.now().toLocalDateTime(TimeZone.UTC)
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
@@ -568,7 +549,7 @@ private fun ScheduleItemCompletedPreview() {
 
 @Preview(showBackground = true, name = "ScheduleItem - Pending")
 @Composable
-@OptIn(kotlin.time.ExperimentalTime::class)
+@OptIn(ExperimentalTime::class)
 private fun ScheduleItemPendingPreview() {
     val now = Clock.System.now().toLocalDateTime(TimeZone.UTC)
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
@@ -586,7 +567,7 @@ private fun ScheduleItemPendingPreview() {
 
 @Preview(showBackground = true, name = "ScheduleItem - Future")
 @Composable
-@OptIn(kotlin.time.ExperimentalTime::class)
+@OptIn(ExperimentalTime::class)
 private fun ScheduleItemFuturePreview() {
     val now = Clock.System.now().toLocalDateTime(TimeZone.UTC)
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
