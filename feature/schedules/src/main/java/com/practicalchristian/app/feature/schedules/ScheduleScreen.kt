@@ -93,7 +93,6 @@ fun ScheduleScreen(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScheduleScreenContent(
     state: ScheduleScreenUiState,
