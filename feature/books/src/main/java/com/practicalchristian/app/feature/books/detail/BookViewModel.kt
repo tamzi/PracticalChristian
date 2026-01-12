@@ -9,7 +9,6 @@ import com.practicalchristian.app.core.ui.helpers.ItemState
 import com.practicalchristian.app.core.ui.helpers.ItemState.Success
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import com.practicalchristian.app.core.ui.helpers.toUserMessage
-import com.practicalchristian.app.core.ui.navigation.AppDestination
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

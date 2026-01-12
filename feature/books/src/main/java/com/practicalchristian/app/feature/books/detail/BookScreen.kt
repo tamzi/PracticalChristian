@@ -11,31 +11,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.shape.RoundedCornerShape
-import com.sacrament.ui.components.action.SacramentIconButton
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.feedback.SacramentProgressIndicator
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.feedback.SacramentProgressVariant
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.navigation.SacramentTopAppBar
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.surface.SacramentCard
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.surface.SacramentCardDefaults
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.primitives.SacramentIcon
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.primitives.SacramentText
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -44,14 +24,20 @@ import com.practicalchristian.app.core.domain.extensions.sentence
 import com.practicalchristian.app.core.domain.models.Book
 import com.practicalchristian.app.core.ui.helpers.ItemState
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
-import com.sacrament.ui.primitives.SacramentCenteredColumn
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.primitives.SacramentDivider
-import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.components.surface.SacramentCardDefaults
 import com.sacrament.ui.foundation.Bar
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.primitives.SacramentDivider
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 
 /**
  * Book details screen showing chapters.
