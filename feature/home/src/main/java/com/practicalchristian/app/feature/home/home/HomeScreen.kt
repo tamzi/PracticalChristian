@@ -23,9 +23,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ChevronRight
-import androidx.compose.material.icons.rounded.Notifications
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.action.SacramentButton
 import com.sacrament.ui.components.action.SacramentButtonVariant
 import com.sacrament.ui.components.action.SacramentIconButton
@@ -313,7 +311,7 @@ private fun HeaderSection(
 
         Row(horizontalArrangement = Arrangement.spacedBy(spacing.padding8)) {
             SacramentIconButton(
-                imageVector = Icons.Rounded.Notifications,
+                imageVector = SacramentIcons.Notifications,
                 contentDescription = "Notifications",
                 onClick = onNotificationClick,
                 modifier = Modifier.size(40.dp)
@@ -550,7 +548,7 @@ private fun GoalItem(
                 )
             }
             SacramentIcon(
-                imageVector = Icons.Rounded.ChevronRight,
+                imageVector = SacramentIcons.ChevronRight,
                 contentDescription = "Go",
                 tint = SacramentTheme.colors.text.muted
             )

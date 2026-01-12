@@ -3,8 +3,7 @@ package com.practicalchristian.app.feature.settings
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.action.SacramentIconButton
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
 import com.sacrament.ui.patterns.SacramentScreenScaffold
@@ -37,7 +36,7 @@ fun SettingsScreenContent(onNavigateBackClicked: () -> Unit) {
             title = { SacramentText(text = "Settings", style = SacramentTheme.typography.titleLarge) },
             navigationIcon = {
                 SacramentIconButton(
-                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                    imageVector = SacramentIcons.ArrowBack,
                     contentDescription = "navigate back",
                     onClick = onNavigateBackClicked
                 )
