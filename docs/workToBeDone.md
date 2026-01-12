@@ -66,15 +66,15 @@ Single source of truth for project tasks, priorities, and status.
 - [ ] STORY: Sacrament internal cleanup
   - [ ] TASK: Replace Material3 Scaffold in `sacrament` (used by `SacramentScreenScaffold`).
   - [ ] TASK: Verify `sacrament-demo` renders correctly after removal.
-- [ ] STORY: Previews + theme consistency
-  - [ ] TASK: Verify all feature previews use `SacramentTheme` (landing, home, notes, profile already migrated).
-- [ ] STORY: Documentation
-  - [ ] TASK: Document usage in `docs/tech/technicalArchitecture.md` and `docs/agentRules/featureDevelopmentRules.md`.
-- [ ] STORY: Enforcement (last)
-  - [ ] TASK: Add lint/detekt guardrails to block `androidx.compose.material3.*` and `Color(0x...)` outside `sacrament`.
-  - [ ] TASK: Remove Material3 dependency from feature convention plugin and module build files once migrations are complete.
-    - [ ] TASK: Remove Material3 from `buildLogic/convention/src/main/kotlin/com/practicalchristian/app/convention/feature/AndroidFeatureConventionPlugin.kt`.
-  - [ ] TASK: Add CI check to enforce design system rules.
+- [x] STORY: Previews + theme consistency
+  - [x] TASK: Verify all feature previews use `SacramentTheme` (landing, home, notes, profile already migrated).
+- [x] STORY: Documentation
+  - [x] TASK: Document usage in `docs/tech/technicalArchitecture.md` and `docs/agentRules/featureDevelopmentRules.md`.
+- [x] STORY: Enforcement (last)
+  - [x] TASK: Add lint/detekt guardrails to block `androidx.compose.material3.*` and `Color(0x...)` outside `sacrament`.
+  - [x] TASK: Remove Material3 dependency from feature convention plugin and module build files once migrations are complete.
+    - [x] TASK: Remove Material3 from `buildLogic/convention/src/main/kotlin/com/practicalchristian/app/convention/feature/AndroidFeatureConventionPlugin.kt`.
+  - [x] TASK: Add CI check to enforce design system rules.
   - [ ] TASK: Do a thorough deep code review of this epic to ensure it is complete and correct. Fix any issues found and commit the changes.
 
 </details>
