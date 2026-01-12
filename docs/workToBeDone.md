@@ -50,14 +50,14 @@ Single source of truth for project tasks, priorities, and status.
   - [x] TASK: Replace Material3 components in `feature/setup`.
   - [x] TASK: Replace hardcoded styles with design system tokens in `feature/setup`.
   - [x] TASK: Update previews in `feature/setup` to use `SacramentTheme`.
-- [ ] STORY: Feature migrations - profile
-  - [ ] TASK: Replace Material3 components in `feature/profile`.
-  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/profile`.
-  - [ ] TASK: Update previews in `feature/profile` to use `SacramentTheme`.
-- [ ] STORY: Feature migrations - onboarding
-  - [ ] TASK: Replace Material3 components in `feature/onboarding`.
-  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/onboarding`.
-  - [ ] TASK: Update previews in `feature/onboarding` to use `SacramentTheme`.
+- [x] STORY: Feature migrations - profile
+  - [x] TASK: Replace Material3 components in `feature/profile`.
+  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/profile`.
+  - [x] TASK: Update previews in `feature/profile` to use `SacramentTheme`.
+- [x] STORY: Feature migrations - onboarding
+  - [x] TASK: Replace Material3 components in `feature/onboarding`.
+  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/onboarding`.
+  - [x] TASK: Update previews in `feature/onboarding` to use `SacramentTheme`.
 - [ ] STORY: Core + app migration
   - [ ] TASK: Replace Material3 UI components in `app` and `core` with design system primitives/components.
   - [ ] TASK: Replace remaining hardcoded styles with design system tokens across `app` and `core`.
