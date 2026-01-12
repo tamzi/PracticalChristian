@@ -12,10 +12,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.rounded.Favorite
-import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -29,24 +25,43 @@ import com.practicalchristian.app.core.ui.helpers.UiListState
 import com.practicalchristian.app.core.ui.helpers.UiSuccessState
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.content.SacramentBadge
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.content.SacramentBadgeTone
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.content.SacramentListItem
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.Bar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.color.SacramentColorTokens
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.shape.SacramentRadiusSize
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.shape.SacramentShapeDefaults
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentEmptyState
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentDivider
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentDividerTone
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentSurface
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentText
+import com.sacrament.ui.foundation.icon.SacramentIcons
 
 /**
  * Notifications hub screen displaying grouped notifications.
@@ -98,7 +113,7 @@ private fun NotificationsHubScreenContent(
                 },
                 navigationIcon = {
                     SacramentIconButton(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                        imageVector = SacramentIcons.ArrowBack,
                         contentDescription = "Back",
                         onClick = onNavigateBack,
                     )
@@ -119,7 +134,7 @@ private fun NotificationsHubScreenContent(
 
             is UiListState.Error -> {
                 SacramentEmptyState(
-                    icon = Icons.Rounded.Notifications,
+                    icon = SacramentIcons.Notifications,
                     title = "Error",
                     contentDescription = "error loading notifications",
                     description = listState.message,
@@ -130,7 +145,7 @@ private fun NotificationsHubScreenContent(
                 when (val success = listState.data) {
                     is UiSuccessState.Empty -> {
                         SacramentEmptyState(
-                            icon = Icons.Rounded.Notifications,
+                            icon = SacramentIcons.Notifications,
                             title = "No notifications",
                             contentDescription = "empty notifications",
                             description = "You're all caught up!",
@@ -289,7 +304,7 @@ private fun NotificationsHubScreenPreview() {
                             NotificationItem(
                                 id = "1",
                                 iconData = NotificationIconData(
-                                        iconVector = Icons.Rounded.Favorite,
+                                        iconVector = SacramentIcons.Favorite,
                                         tone = NotificationIconTone.Accent,
                                     ),
                                     text = "Time for your morning prayer. Start your day with " +
@@ -309,7 +324,7 @@ private fun NotificationsHubScreenPreview() {
                                     NotificationItem(
                                         id = "1",
                                         iconData = NotificationIconData(
-                                        iconVector = Icons.Rounded.Favorite,
+                                        iconVector = SacramentIcons.Favorite,
                                         tone = NotificationIconTone.Accent,
                                     ),
                                     text = "Time for your morning prayer. Start your day with " +

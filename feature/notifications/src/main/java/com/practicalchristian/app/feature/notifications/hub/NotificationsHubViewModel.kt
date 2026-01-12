@@ -1,10 +1,5 @@
 package com.practicalchristian.app.feature.notifications.hub
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Favorite
-import androidx.compose.material.icons.rounded.GridView
-import androidx.compose.material.icons.rounded.Notifications
-import androidx.compose.material.icons.rounded.Verified
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.viewModelScope
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
@@ -142,7 +137,7 @@ class NotificationsHubViewModel @Inject constructor(
         notifications = listOf(
             sampleNotificationItem(
                 id = "1",
-                iconVector = Icons.Rounded.Favorite,
+                iconVector = SacramentIcons.Favorite,
                 tone = NotificationIconTone.Accent,
                 text = "Time for your morning prayer. Start your day with " +
                     "gratitude and reflection",
@@ -150,7 +145,7 @@ class NotificationsHubViewModel @Inject constructor(
             ),
             sampleNotificationItem(
                 id = "2",
-                iconVector = Icons.Rounded.GridView,
+                iconVector = SacramentIcons.GridView,
                 tone = NotificationIconTone.Success,
                 text = "Your daily reading plan is ready. Continue your journey " +
                     "through Scripture",
@@ -158,7 +153,7 @@ class NotificationsHubViewModel @Inject constructor(
             ),
             sampleNotificationItem(
                 id = "3",
-                iconVector = Icons.Rounded.Verified,
+                iconVector = SacramentIcons.Verified,
                 tone = NotificationIconTone.Info,
                 text = "New meditation available: Finding peace in difficult times",
                 isUnread = true,
@@ -172,7 +167,7 @@ class NotificationsHubViewModel @Inject constructor(
         notifications = listOf(
             sampleNotificationItem(
                 id = "4",
-                iconVector = Icons.Rounded.GridView,
+                iconVector = SacramentIcons.GridView,
                 tone = NotificationIconTone.Success,
                 text = "You've completed 5 days of your reading plan. Keep up " +
                     "the great work!",
@@ -180,21 +175,21 @@ class NotificationsHubViewModel @Inject constructor(
             ),
             sampleNotificationItem(
                 id = "5",
-                iconVector = Icons.Rounded.Favorite,
+                iconVector = SacramentIcons.Favorite,
                 tone = NotificationIconTone.Accent,
                 text = "Don't forget to review your bookmarked verses from this week",
                 isUnread = false,
             ),
             sampleNotificationItem(
                 id = "6",
-                iconVector = Icons.Rounded.Notifications,
+                iconVector = SacramentIcons.Notifications,
                 tone = NotificationIconTone.Success,
                 text = "Your evening prayer reminder is set for 8:00 PM",
                 isUnread = false,
             ),
             sampleNotificationItem(
                 id = "7",
-                iconVector = Icons.Rounded.Favorite,
+                iconVector = SacramentIcons.Favorite,
                 tone = NotificationIconTone.Accent,
                 text = "New devotional book added to your library: Daily Wisdom",
                 isUnread = false,
