@@ -18,24 +18,32 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.List
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.rounded.DoneAll
-import androidx.compose.material.icons.rounded.Warning
 import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.action.SacramentButtonVariant
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.feedback.SacramentSnackbar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.surface.SacramentCardColors
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.surface.SacramentCardDefaults
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentText
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -65,10 +73,15 @@ import com.practicalchristian.app.core.ui.helpers.sentence
 import com.practicalchristian.app.core.ui.navigation.AppDestination
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.R
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.Bar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentEmptyState
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime
@@ -119,7 +132,7 @@ fun ScheduleScreenContent(
         SacramentTopAppBar(
             navigationIcon = {
                 SacramentIconButton(
-                    imageVector = Icons.Filled.Menu,
+                    imageVector = SacramentIcons.Menu,
                     contentDescription = "menu",
                     onClick = onNavigateToSettings,
                     modifier = Modifier
@@ -175,7 +188,7 @@ fun ScheduleScreenContent(
                         verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
                     ) {
                         SacramentIcon(
-                            imageVector = Icons.Rounded.Warning,
+                            imageVector = SacramentIcons.Warning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
                             modifier = Modifier
@@ -206,7 +219,7 @@ fun ScheduleScreenContent(
 
                 UiListState.Idle -> {
                     SacramentEmptyState(
-                        icon = Icons.AutoMirrored.Rounded.List,
+                        icon = SacramentIcons.List,
                         title = "Welcome",
                         contentDescription = "error fetching results",
                         description = "Please wait while we're setting things up"
@@ -223,7 +236,7 @@ fun ScheduleScreenContent(
                     when (val success = result.data) {
                         UiSuccessState.Empty -> {
                             SacramentEmptyState(
-                                icon = Icons.AutoMirrored.Rounded.List,
+                                icon = SacramentIcons.List,
                                 title = "Empty",
                                 contentDescription = "empty icon",
                                 description = "You don't have a schedule.\nSetup to continue",
@@ -279,7 +292,7 @@ private fun ScheduleItem(
     val action = SwipeAction(
         icon = {
             SacramentIconButton(
-                imageVector = Icons.Rounded.DoneAll,
+                imageVector = SacramentIcons.DoneAll,
                 contentDescription = "",
                 onClick = { /*TODO*/ },
                 modifier = Modifier.padding(horizontal = spacing.padding16)
