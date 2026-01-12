@@ -133,6 +133,45 @@ See `feature/presentation/build.gradle.kts` for proper dependency setup:
 - Design system: `sacrament`
 - Navigation: Navigation Compose libraries
 
+## Design System Usage
+
+### Design System Rules
+
+**All UI must use Sacrament design system components exclusively.**
+
+✅ **Required:**
+- Use `SacramentTheme` for all previews and screens
+- Use Sacrament components (`SacramentButton`, `SacramentCard`, `SacramentTextField`, etc.)
+- Use design system tokens (`SacramentTheme.colors`, `SacramentTheme.spacing`, etc.)
+- Use `SacramentScreenScaffold` for screen layouts
+
+❌ **Prohibited:**
+- **No Material3 components** (`androidx.compose.material3.*`) outside `sacrament` module
+- **No hardcoded colors** (`Color(0x...)`) outside `sacrament` module
+- **No MaterialTheme** - use `SacramentTheme` instead
+- **No Material icons** - use `androidx.compose.material.icons.*` (allowed)
+
+### Component Migration
+
+When building new features or updating existing ones:
+1. Use Sacrament components from `com.sacrament.ui.components.*`
+2. Use Sacrament primitives from `com.sacrament.ui.primitives.*`
+3. Use Sacrament patterns from `com.sacrament.ui.patterns.*`
+4. Reference design system guide: `docs/tech/sacrament/designSystem.md`
+
+### Preview Requirements
+
+All `@Preview` functions must wrap content with `SacramentTheme`:
+```kotlin
+@Preview
+@Composable
+fun MyScreenPreview() {
+    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        MyScreenContent(...)
+    }
+}
+```
+
 ## Best Practices
 
 ### Do ✅
