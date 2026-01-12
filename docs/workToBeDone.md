@@ -38,10 +38,10 @@ Single source of truth for project tasks, priorities, and status.
   - [ ] TASK: Replace Material3 components in `feature/auth`.
   - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/auth`.
   - [ ] TASK: Update previews in `feature/auth` to use `SacramentTheme`.
-- [ ] STORY: Feature migrations - home
-  - [ ] TASK: Replace Material3 components in `feature/home`.
-  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/home`.
-  - [ ] TASK: Update previews in `feature/home` to use `SacramentTheme`.
+- [x] STORY: Feature migrations - home
+  - [x] TASK: Replace Material3 components in `feature/home`.
+  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/home`.
+  - [x] TASK: Update previews in `feature/home` to use `SacramentTheme`.
 - [ ] STORY: Feature migrations - settings
   - [ ] TASK: Replace Material3 components in `feature/settings`.
   - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/settings`.
