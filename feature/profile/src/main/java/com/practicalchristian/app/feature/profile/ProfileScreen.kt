@@ -14,19 +14,20 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.automirrored.rounded.ArrowForwardIos
-import androidx.compose.material.icons.rounded.DarkMode
-import androidx.compose.material.icons.rounded.Edit
-import androidx.compose.material.icons.rounded.LightMode
 import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.surface.SacramentCardDefaults
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentText
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -45,8 +46,11 @@ import com.practicalchristian.app.core.ui.helpers.versionName
 import com.practicalchristian.app.core.ui.navigation.AppDestination
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.R
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.Bar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 
 /**
  * Profile screen.
@@ -90,14 +94,14 @@ fun ProfileScreenContent(
                 title = { SacramentText(text = "Profile", style = SacramentTheme.typography.titleLarge) },
                 navigationIcon = {
                     SacramentIconButton(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                        imageVector = SacramentIcons.ArrowBack,
                         contentDescription = "navigate back",
                         onClick = onNavigateBackClicked
                     )
                 },
                 actions = {
                     SacramentIconButton(
-                        imageVector = if (state.isDarkThemeEnabled) Icons.Rounded.LightMode else Icons.Rounded.DarkMode,
+                        imageVector = if (state.isDarkThemeEnabled) SacramentIcons.LightMode else SacramentIcons.DarkMode,
                         contentDescription = "dark mode icon toggle",
                         onClick = onToggleDarkModeClicked
                     )
@@ -146,7 +150,7 @@ fun ProfileScreenContent(
                         }
 
                         SacramentIconButton(
-                            imageVector = Icons.Rounded.Edit,
+                            imageVector = SacramentIcons.Edit,
                             contentDescription = "edit profile picture",
                             onClick = { imagePickerLauncher.launch("image/*") },
                             modifier = Modifier
@@ -180,7 +184,7 @@ fun ProfileScreenContent(
                 ) {
                     SacramentText(text = "Tags", style = SacramentTheme.typography.bodyLarge)
                     SacramentIcon(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowForwardIos,
+                        imageVector = SacramentIcons.ArrowForwardIos,
                         contentDescription = ""
                     )
                 }
