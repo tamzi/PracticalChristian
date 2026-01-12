@@ -5,12 +5,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.LargeTopAppBar
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,31 +30,27 @@ fun SettingsScreen(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreenContent(onNavigateBackClicked: () -> Unit) {
-    Scaffold(topBar = {
-        LargeTopAppBar(title = {
-            Text(text = "Settings")
-        }, navigationIcon = {
-            IconButton(onClick = onNavigateBackClicked) {
-                Icon(
+    SacramentScreenScaffold(topBar = {
+        SacramentTopAppBar(
+            title = { SacramentText(text = "Settings", style = SacramentTheme.typography.titleLarge) },
+            navigationIcon = {
+                SacramentIconButton(
                     imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                    contentDescription = "navigate back"
+                    contentDescription = "navigate back",
+                    onClick = onNavigateBackClicked
                 )
             }
-        }, actions = {
-        })
-    },
-        containerColor = SacramentTheme.colors.surfaces.background,
-    ) { padding ->
+        )
+    }) { padding ->
         Column(
             modifier = Modifier
                 .padding(padding)
                 .fillMaxSize()
         ) {
             SacramentCenteredColumn(modifier = Modifier.fillMaxSize()) {
-                Text(text = "Settings")
+                SacramentText(text = "Settings", style = SacramentTheme.typography.bodyLarge)
             }
         }
     }
