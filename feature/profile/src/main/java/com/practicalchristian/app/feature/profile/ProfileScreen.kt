@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,14 +20,13 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowForwardIos
 import androidx.compose.material.icons.rounded.DarkMode
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.LightMode
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.LargeTopAppBar
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.components.surface.SacramentCardDefaults
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -68,7 +68,6 @@ fun ProfileScreen(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreenContent(
     state: ProfileScreenUiState,
@@ -85,35 +84,34 @@ fun ProfileScreenContent(
         onProfilePictureSelected(uri?.toString())
     }
 
-    Scaffold(
+    SacramentScreenScaffold(
         topBar = {
-            LargeTopAppBar(title = {
-                Text(text = "Profile")
-            }, navigationIcon = {
-                IconButton(onClick = onNavigateBackClicked) {
-                    Icon(
+            SacramentTopAppBar(
+                title = { SacramentText(text = "Profile", style = SacramentTheme.typography.titleLarge) },
+                navigationIcon = {
+                    SacramentIconButton(
                         imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                        contentDescription = "navigate back"
+                        contentDescription = "navigate back",
+                        onClick = onNavigateBackClicked
                     )
-                }
-            }, actions = {
-                IconButton(onClick = onToggleDarkModeClicked) {
-                    Icon(
+                },
+                actions = {
+                    SacramentIconButton(
                         imageVector = if (state.isDarkThemeEnabled) Icons.Rounded.LightMode else Icons.Rounded.DarkMode,
-                        contentDescription = "dark mode icon toggle"
+                        contentDescription = "dark mode icon toggle",
+                        onClick = onToggleDarkModeClicked
                     )
                 }
-            })
-        },
-        containerColor = SacramentTheme.colors.surfaces.background,
+            )
+        }
     ) {
         Column(modifier = Modifier.padding(it)) {
             // Profile Picture Section
-            Card(
+            SacramentCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(spacing.padding16),
-                colors = CardDefaults.cardColors(containerColor = SacramentTheme.colors.surfaces.surface)
+                colors = SacramentCardDefaults.colors()
             ) {
                 Column(
                     modifier = Modifier
@@ -147,21 +145,17 @@ fun ProfileScreenContent(
                                     .clickable { imagePickerLauncher.launch("image/*") })
                         }
 
-                        IconButton(
+                        SacramentIconButton(
+                            imageVector = Icons.Rounded.Edit,
+                            contentDescription = "edit profile picture",
                             onClick = { imagePickerLauncher.launch("image/*") },
                             modifier = Modifier
                                 .align(Alignment.BottomEnd)
                                 .size(24.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Rounded.Edit,
-                                contentDescription = "edit profile picture",
-                                modifier = Modifier.size(16.dp)
-                            )
-                        }
+                        )
                     }
 
-                    Text(
+                    SacramentText(
                         text = "Tap to change profile picture",
                         style = SacramentTheme.typography.bodySmall,
                         color = SacramentTheme.colors.text.strong.copy(alpha = 0.6f),
@@ -171,22 +165,21 @@ fun ProfileScreenContent(
             }
 
             // Tags Section
-            Card(
+            SacramentCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(spacing.padding16),
                 onClick = onNavigateToTags,
-                colors = CardDefaults.cardColors(containerColor = SacramentTheme.colors.surfaces.surface)
+                colors = SacramentCardDefaults.colors(),
+                contentPadding = androidx.compose.foundation.layout.PaddingValues(spacing.padding16)
             ) {
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(spacing.padding16),
+                    modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Tags")
-                    Icon(
+                    SacramentText(text = "Tags", style = SacramentTheme.typography.bodyLarge)
+                    SacramentIcon(
                         imageVector = Icons.AutoMirrored.Rounded.ArrowForwardIos,
                         contentDescription = ""
                     )
@@ -194,8 +187,10 @@ fun ProfileScreenContent(
             }
 
             Spacer(modifier = Modifier.weight(1f))
-            Text(
-                modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, text = versionName
+            SacramentText(
+                text = versionName,
+                style = SacramentTheme.typography.bodySmall,
+                modifier = Modifier.fillMaxWidth()
             )
         }
     }

@@ -25,12 +25,11 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowForward
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.components.action.SacramentButtonVariant
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -127,7 +126,7 @@ fun OnboardingScreenContent(
     val titleColor = Color.White
     val bodyColor = Color.White.copy(alpha = 0.85f)
 
-    Surface(modifier = Modifier.fillMaxSize(), color = Color.Transparent) {
+    Box(modifier = Modifier.fillMaxSize()) {
         HorizontalPager(
             state = pagerState,
             modifier = Modifier.fillMaxSize()
@@ -167,13 +166,12 @@ fun OnboardingScreenContent(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Spacer(modifier = Modifier.width(spacing.padding1))
-                        TextButton(
+                        SacramentButton(
+                            text = "Skip",
                             onClick = onCreateAccount,
                             enabled = !isLoading,
-                            colors = ButtonDefaults.textButtonColors(contentColor = Color.White)
-                        ) {
-                            Text(text = "Skip")
-                        }
+                            variant = SacramentButtonVariant.Text
+                        )
                     }
                     Spacer(modifier = Modifier.weight(1f))
                     FooterPanel(
@@ -223,13 +221,13 @@ private fun FooterPanel(
             Column(
                 modifier = Modifier.weight(1f)
             ) {
-                Text(
+                SacramentText(
                     text = title,
                     style = SacramentTheme.typography.titleLarge,
                     color = titleColor
                 )
                 Spacer(modifier = Modifier.height(spacing.padding8))
-                Text(
+                SacramentText(
                     text = description,
                     style = SacramentTheme.typography.bodyMedium,
                     color = bodyColor
