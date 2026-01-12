@@ -25,43 +25,25 @@ import com.practicalchristian.app.core.ui.helpers.UiListState
 import com.practicalchristian.app.core.ui.helpers.UiSuccessState
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.components.action.SacramentIconButton
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.content.SacramentBadge
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.content.SacramentBadgeTone
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.content.SacramentListItem
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.Bar
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.color.SacramentColorTokens
 import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.shape.SacramentRadiusSize
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.shape.SacramentShapeDefaults
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentEmptyState
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentCenteredColumn
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentDivider
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentDividerTone
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentIcon
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentSurface
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentText
-import com.sacrament.ui.foundation.icon.SacramentIcons
 
 /**
  * Notifications hub screen displaying grouped notifications.
