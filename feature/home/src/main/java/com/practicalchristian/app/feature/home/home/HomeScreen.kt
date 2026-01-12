@@ -25,6 +25,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.components.action.SacramentButtonTone
 import com.sacrament.ui.components.action.SacramentButtonVariant
 import com.sacrament.ui.components.action.SacramentIconButton
 import com.sacrament.ui.components.surface.SacramentCard
@@ -572,10 +573,9 @@ private fun YourProgressSection(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
+            SacramentText(
                 text = "Your Progress",
-                style = SacramentTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
+                style = SacramentTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
             )
         }
 
@@ -757,18 +757,16 @@ private fun PlansSection(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
+            SacramentText(
                 text = "Plans only for you",
-                style = SacramentTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
+                style = SacramentTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
             )
-            TextButton(onClick = onViewAllClick) {
-                Text(
-                    text = "View All",
-                    style = SacramentTheme.typography.bodyMedium,
-                    color = colors.brand.primary
-                )
-            }
+            SacramentButton(
+                text = "View All",
+                onClick = onViewAllClick,
+                variant = SacramentButtonVariant.Ghost,
+                tone = SacramentButtonTone.Brand
+            )
         }
 
         Spacer(modifier = Modifier.height(spacing.padding12))
