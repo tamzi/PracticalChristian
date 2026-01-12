@@ -3,9 +3,6 @@ package com.practicalchristian.app.feature.landing
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.List
-import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -20,13 +17,21 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.practicalchristian.app.core.ui.navigation.AppDestination
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentSurface
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentText
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentEmptyState
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.Bar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 
 /**
  * Landing screen - Entry point of the app.
@@ -138,7 +143,7 @@ private fun LandingScreenIdlePreview() {
             shape = RectangleShape,
         ) {
             SacramentEmptyState(
-                icon = Icons.AutoMirrored.Rounded.List,
+                icon = SacramentIcons.List,
                 title = "Welcome",
                 contentDescription = "setting up",
                 description = "Please wait while we're setting things up"
@@ -163,7 +168,7 @@ private fun LandingScreenErrorPreview() {
                 verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
             ) {
                 SacramentIcon(
-                    imageVector = Icons.Rounded.Warning,
+                    imageVector = SacramentIcons.Warning,
                     contentDescription = "error",
                     tint = SacramentTheme.colors.semantic.error,
                     modifier = Modifier
