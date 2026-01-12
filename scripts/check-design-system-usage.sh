@@ -93,10 +93,10 @@ for file in $FILES; do
 
             if [ -n "$REF" ]; then
                 material_hits=$(printf "%s\n" "$content" | grep -nE 'androidx\.compose\.material\.' | \
-                    grep -vE 'androidx\.compose\.material\.icons(\.|$)' || true)
+                    grep -vE 'androidx\.compose\.material\.icons(Extended|\.|$)' || true)
             else
                 material_hits=$(grep -nE 'androidx\.compose\.material\.' "$file" | \
-                    grep -vE 'androidx\.compose\.material\.icons(\.|$)' || true)
+                    grep -vE 'androidx\.compose\.material\.icons(Extended|\.|$)' || true)
             fi
             if [ -n "$material_hits" ]; then
                 echo -e "${RED}❌ VIOLATION: Material usage in $file${NC}"
