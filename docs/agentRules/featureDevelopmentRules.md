@@ -149,7 +149,9 @@ See `feature/presentation/build.gradle.kts` for proper dependency setup:
 - **No Material3 components** (`androidx.compose.material3.*`) outside `sacrament` module
 - **No hardcoded colors** (`Color(0x...)`) outside `sacrament` module
 - **No MaterialTheme** - use `SacramentTheme` instead
-- **No Material icons** - use `androidx.compose.material.icons.*` (allowed)
+- **No Material icons** - Material icons are ONLY allowed in `sacrament` module
+  - Use `SacramentIcons` instead of `Icons.Rounded.*` or `Icons.AutoMirrored.Rounded.*`
+  - Example: `SacramentIcons.Add` instead of `Icons.Rounded.Add`
 
 ### Component Migration
 
