@@ -13,10 +13,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.List
-import androidx.compose.material.icons.rounded.GridOn
-import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -35,19 +31,33 @@ import com.practicalchristian.app.core.ui.helpers.sentence
 import com.practicalchristian.app.core.ui.navigation.AppDestination
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.surface.SacramentCardDefaults
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.Bar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentEmptyState
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentDivider
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentText
+import com.sacrament.ui.foundation.icon.SacramentIcons
 
 /**
  * Books screen - List of books.
@@ -85,8 +95,8 @@ fun BooksScreenContent(
                 actions = {
                     SacramentIconButton(
                         imageVector = when (state.view) {
-                            ViewType.GRID -> Icons.AutoMirrored.Rounded.List
-                            ViewType.LIST -> Icons.Rounded.GridOn
+                            ViewType.GRID -> SacramentIcons.List
+                            ViewType.LIST -> SacramentIcons.GridOn
                         },
                         contentDescription = "grid",
                         onClick = onChangeViewTypeClicked
@@ -114,7 +124,7 @@ fun BooksScreenContent(
                         verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
                     ) {
                         SacramentIcon(
-                            imageVector = Icons.Rounded.Warning,
+                            imageVector = SacramentIcons.Warning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
                             modifier = Modifier
@@ -145,7 +155,7 @@ fun BooksScreenContent(
 
                 UiListState.Idle -> {
                     SacramentEmptyState(
-                        icon = Icons.AutoMirrored.Rounded.List,
+                        icon = SacramentIcons.List,
                         title = "Welcome",
                         contentDescription = "error fetching results",
                         description = "Please wait while we're setting things up"
@@ -162,7 +172,7 @@ fun BooksScreenContent(
                     when (val success = result.data) {
                         UiSuccessState.Empty -> {
                             SacramentEmptyState(
-                                icon = Icons.AutoMirrored.Rounded.List,
+                                icon = SacramentIcons.List,
                                 title = "Empty",
                                 contentDescription = "empty icon",
                                 description = "No Books found."
