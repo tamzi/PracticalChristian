@@ -12,18 +12,24 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.rounded.Warning
 import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.components.surface.SacramentCardDefaults
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentText
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -39,9 +45,13 @@ import com.practicalchristian.app.core.domain.models.Book
 import com.practicalchristian.app.core.ui.helpers.ItemState
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentDivider
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.Bar
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 
 /**
  * Book details screen showing chapters.
@@ -76,7 +86,7 @@ fun BookScreenContent(
                 title = { SacramentText(text = state.name.ifBlank { "book" }.sentence, style = SacramentTheme.typography.titleSmall) },
                 navigationIcon = {
                     SacramentIconButton(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                        imageVector = SacramentIcons.ArrowBack,
                         contentDescription = "navigate back",
                         onClick = onNavigateBackClicked
                     )
@@ -99,7 +109,7 @@ fun BookScreenContent(
                         verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
                     ) {
                         SacramentIcon(
-                            imageVector = Icons.Rounded.Warning,
+                            imageVector = SacramentIcons.Warning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
                             modifier = Modifier
