@@ -6,10 +6,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
+import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.components.input.SacramentTextField
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -58,7 +58,7 @@ fun SetupScreenContent(
     onSetupComplete: () -> Unit
 ) {
     val spacing = SacramentTheme.spacing
-    Scaffold { values ->
+    SacramentScreenScaffold { values ->
         Column(
             modifier = Modifier
                 .padding(values)
@@ -73,33 +73,32 @@ fun SetupScreenContent(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.Start
                 ) {
-                    Text(
+                    SacramentText(
                         text = "Let's get to know you",
                         style = SacramentTheme.typography.headlineSmall
                     )
                     Spacer(modifier = Modifier.height(spacing.padding8))
-                    Text(
+                    SacramentText(
                         text = "Tell us what to call you. You can skip this for now.",
                         style = SacramentTheme.typography.bodyMedium,
                         color = SacramentTheme.colors.text.strong.copy(alpha = 0.7f)
                     )
                     Spacer(modifier = Modifier.height(spacing.padding24))
-                    TextField(
+                    SacramentTextField(
                         value = state.name,
                         onValueChange = onNameChanged,
                         modifier = Modifier.fillMaxWidth(),
-                        label = { Text(text = "Name (optional)") },
+                        placeholder = "Name (optional)",
                         singleLine = true,
                         enabled = !state.isLoading
                     )
                     Spacer(modifier = Modifier.height(spacing.padding24))
-                    Button(
+                    SacramentButton(
+                        text = if (state.isLoading) "Saving..." else "Continue",
                         onClick = onSetupComplete,
                         enabled = !state.isLoading,
                         modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text(text = if (state.isLoading) "Saving..." else "Continue")
-                    }
+                    )
                 }
             }
         }
