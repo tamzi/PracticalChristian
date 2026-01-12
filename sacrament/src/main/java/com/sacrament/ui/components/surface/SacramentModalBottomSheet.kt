@@ -1,16 +1,12 @@
 package com.sacrament.ui.components.surface
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.SheetState
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.primitives.SacramentText
@@ -22,11 +18,12 @@ import com.sacrament.ui.primitives.SacramentText
  * we can implement a fully Material-free version using Compose foundation.
  * The visual styling follows Sacrament design tokens.
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SacramentModalBottomSheet(
-    onDismissRequest: () -> Unit,
-    sheetState: androidx.compose.material3.SheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
     modifier: Modifier = Modifier,
+    onDismissRequest: () -> Unit,
+    sheetState: SheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
     content: @Composable () -> Unit,
 ) {
     val colors = SacramentSheetDefaults.colors()
@@ -47,10 +44,11 @@ fun SacramentModalBottomSheet(
 /**
  * Helper to create a modal bottom sheet state.
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun rememberSacramentModalBottomSheetState(
     skipPartiallyExpanded: Boolean = true,
-): androidx.compose.material3.SheetState {
+): SheetState {
     return rememberModalBottomSheetState(skipPartiallyExpanded = skipPartiallyExpanded)
 }
 
