@@ -2,8 +2,6 @@
 
 package com.practicalchristian.app.feature.home.home
 
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.viewModelScope
 import com.practicalchristian.app.core.domain.repository.PreferencesRepository
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
@@ -20,15 +18,6 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.plus
 import kotlinx.datetime.todayIn
 import javax.inject.Inject
-
-/**
- * Home tab destinations for internal navigation.
- */
-enum class HomeDestination(val icon: ImageVector, val value: String) {
-    SCHEDULE(icon = SacramentIcons.Home, value = "Home"),
-    BOOKS(icon = SacramentIcons.LocalLibrary, value = "Books"),
-    NOTES(icon = SacramentIcons.Bookmark, value = "Library"),
-}
 
 /**
  * Calendar day representation for the week view.
@@ -63,7 +52,6 @@ data class ReadingPlan(
  * UI state for HomeScreen.
  */
 data class HomeScreenUiState(
-    val destination: HomeDestination = HomeDestination.SCHEDULE,
     val userName: String = "User",
     val profilePictureUri: String? = null,
     val selectedDate: LocalDate = kotlin.time.Clock.System.todayIn(TimeZone.currentSystemDefault()),
@@ -138,10 +126,6 @@ class HomeViewModel @Inject constructor(
         return days
     }
 
-    fun onDestinationClicked(destination: HomeDestination) {
-        update { copy(destination = destination) }
-    }
-
     fun onDaySelected(date: LocalDate) {
         val newWeekDays = generateWeekDays(date)
         update {
@@ -179,6 +163,12 @@ class HomeViewModel @Inject constructor(
     fun navigateToSettings() {
         viewModelScope.launch {
             _navigationEvents.send(NavigationEvent.NavigateTo(AppDestination.Settings))
+        }
+    }
+
+    fun navigateToNotifications() {
+        viewModelScope.launch {
+            _navigationEvents.send(NavigationEvent.NavigateTo(AppDestination.NotificationsHub))
         }
     }
 }

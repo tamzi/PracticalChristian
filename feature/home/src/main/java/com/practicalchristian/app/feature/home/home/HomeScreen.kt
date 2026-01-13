@@ -23,19 +23,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.action.SacramentButton
-import com.sacrament.ui.components.action.SacramentButtonTone
-import com.sacrament.ui.components.action.SacramentButtonVariant
-import com.sacrament.ui.components.action.SacramentIconButton
-import com.sacrament.ui.components.feedback.SacramentProgressIndicator
-import com.sacrament.ui.components.feedback.SacramentProgressVariant
-import com.sacrament.ui.components.surface.SacramentCard
-import com.sacrament.ui.components.surface.SacramentCardColors
-import com.sacrament.ui.components.surface.SacramentCardDefaults
-import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.primitives.SacramentIcon
-import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -57,8 +44,21 @@ import com.practicalchristian.app.core.ui.components.BottomNavigationBar
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.practicalchristian.app.core.ui.navigation.NavigationEvent
 import com.sacrament.ui.R
+import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.components.action.SacramentButtonTone
+import com.sacrament.ui.components.action.SacramentButtonVariant
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.components.surface.SacramentCard
+import com.sacrament.ui.components.surface.SacramentCardColors
+import com.sacrament.ui.components.surface.SacramentCardDefaults
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 import kotlinx.datetime.LocalDate
 
 /**
@@ -90,6 +90,7 @@ fun HomeScreen(
         onNavigateToBooks = viewModel::navigateToBooks,
         onNavigateToNotes = viewModel::navigateToNotes,
         onNavigateToSettings = viewModel::navigateToSettings,
+        onNavigateToNotifications = viewModel::navigateToNotifications,
         onDaySelected = viewModel::onDaySelected,
         navigateBack = { activity?.finish() }
     )
@@ -103,6 +104,7 @@ fun HomeScreenContent(
     onNavigateToBooks: () -> Unit = {},
     onNavigateToNotes: () -> Unit = {},
     onNavigateToSettings: () -> Unit = {},
+    onNavigateToNotifications: () -> Unit = {},
     onDaySelected: (LocalDate) -> Unit = {},
     navigateBack: () -> Unit = {},
 ) {
@@ -136,7 +138,8 @@ fun HomeScreenContent(
                 userName = state.userName,
                 profilePictureUri = state.profilePictureUri,
                 onProfileClick = onNavigateToProfile,
-                onNotificationClick = { /* TODO */ }
+                onNotificationClick = onNavigateToNotifications,
+                onSettingsClick = onNavigateToSettings
             )
 
             Spacer(modifier = Modifier.height(spacing.padding24))
@@ -256,7 +259,8 @@ private fun HeaderSection(
     userName: String,
     profilePictureUri: String?,
     onProfileClick: () -> Unit,
-    onNotificationClick: () -> Unit
+    onNotificationClick: () -> Unit,
+    onSettingsClick: () -> Unit
 ) {
     val spacing = SacramentTheme.spacing
     Row(
@@ -317,6 +321,12 @@ private fun HeaderSection(
                 imageVector = SacramentIcons.Notifications,
                 contentDescription = "Notifications",
                 onClick = onNotificationClick,
+                modifier = Modifier.size(40.dp)
+            )
+            SacramentIconButton(
+                imageVector = SacramentIcons.Settings,
+                contentDescription = "Settings",
+                onClick = onSettingsClick,
                 modifier = Modifier.size(40.dp)
             )
         }
@@ -405,7 +415,7 @@ private fun BeginReadingCard(
             container = colors.surfaces.lavender,
             border = SacramentCardDefaults.colors().border
         ),
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(spacing.padding20)
+        contentPadding = PaddingValues(spacing.padding20)
     ) {
         Box(
             modifier = Modifier.fillMaxSize()
@@ -766,7 +776,6 @@ private fun PlansSection(
     onPlanClick: (ReadingPlan) -> Unit,
     onViewAllClick: () -> Unit
 ) {
-    val colors = SacramentTheme.colors
     val spacing = SacramentTheme.spacing
     Column {
         Row(
