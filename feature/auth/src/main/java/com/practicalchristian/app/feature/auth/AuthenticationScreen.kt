@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -19,8 +18,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -32,7 +29,6 @@ import com.sacrament.ui.components.action.SacramentButtonDefaults
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.foundation.typography.SacramentLogoStyle
-import com.sacrament.ui.primitives.SacramentIcon
 import com.sacrament.ui.primitives.SacramentText
 
 /**
@@ -188,15 +184,7 @@ private fun AuthProviderButton(
                 width = 1.dp,
                 color = SacramentTheme.colors.text.strong.copy(alpha = 0.1f),
                 shape = androidx.compose.foundation.shape.RoundedCornerShape(SacramentTheme.radii.lg)
-            ),
-        leadingIcon = {
-            SacramentIcon(
-                painter = painterResource(iconRes),
-                contentDescription = null,
-                tint = Color.Unspecified,
-                modifier = Modifier.size(24.dp)
             )
-        }
     )
 }
 
