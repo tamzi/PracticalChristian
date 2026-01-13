@@ -20,12 +20,14 @@ import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.GridOn
 import androidx.compose.material.icons.rounded.GridView
 import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.LightMode
 import androidx.compose.material.icons.rounded.LocalLibrary
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Save
 import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.Tag
 import androidx.compose.material.icons.rounded.Verified
 import androidx.compose.material.icons.rounded.Warning
@@ -81,6 +83,8 @@ object SacramentIcons {
     val Warning: ImageVector = Icons.Rounded.Warning
     val Favorite: ImageVector = Icons.Rounded.Favorite
     val Verified: ImageVector = Icons.Rounded.Verified
+    val Info: ImageVector = Icons.Rounded.Info
+    val Star: ImageVector = Icons.Rounded.Star
 
     // Theme
     val LightMode: ImageVector = Icons.Rounded.LightMode
