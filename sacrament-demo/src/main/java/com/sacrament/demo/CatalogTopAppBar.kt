@@ -1,4 +1,4 @@
-package com.sacrament.demo.catalog
+package com.sacrament.demo
 
 import androidx.compose.runtime.Composable
 import com.sacrament.ui.components.action.SacramentIconButton
