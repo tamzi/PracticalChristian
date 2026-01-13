@@ -57,19 +57,19 @@ import com.sacrament.ui.testing.testTag
  */
 @Composable
 fun SacramentScreenScaffold(
+    modifier: Modifier = Modifier,
     topBar: @Composable () -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
     floatingActionButton: @Composable () -> Unit = {},
-    modifier: Modifier = Modifier,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     val colors = SacramentTheme.colors
     val density = LocalDensity.current
-    
+
     // Track bottom bar height to offset FAB
     var bottomBarHeightPx by remember { mutableStateOf(0) }
     val bottomBarHeightDp = with(density) { bottomBarHeightPx.toDp() }
-    
+
     Box(
         modifier = modifier
             .testTag(TestTags.Pattern.ScreenScaffold, "Screen scaffold")
@@ -83,36 +83,30 @@ fun SacramentScreenScaffold(
         ) {
             // Top bar
             topBar()
-            
+
             // Content area - fills remaining space
             Box(
                 modifier = Modifier
                     .weight(1f)
                     .imePadding()
-            // Bottom bar
-            Box(
-                modifier = Modifier
-                    .windowInsetsPadding(WindowInsets.navigationBars)
             ) {
-                bottomBar()
-            }
                 // The Column layout manages top/bottom bars, so no padding offset is needed.
                 // Content receives zero padding since bars don't overlay the content area.
                 content(PaddingValues(top = 0.dp, bottom = 0.dp))
             }
-            
+
             // Bottom bar - measure its height to offset FAB
             Box(
                 modifier = Modifier
                     .windowInsetsPadding(WindowInsets.navigationBars)
-                    .onSizeChanged { size ->
-                        bottomBarHeightPx = size.height
+                    .onSizeChanged { 
+                        bottomBarHeightPx = it.height
                     }
             ) {
                 bottomBar()
             }
         }
-        
+
         // FAB positioned absolutely, offset above bottom bar when present
         // Uses standard FAB positioning: 16.dp from edges + bottom bar height
         Box(
@@ -144,7 +138,7 @@ fun SacramentScreenScaffoldPreview() {
                 )
             },
             content = { paddingValues ->
-                androidx.compose.foundation.layout.Column(
+                Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(paddingValues),
@@ -189,7 +183,7 @@ fun SacramentScreenScaffoldWithBottomBarPreview() {
                 )
             },
             content = { paddingValues ->
-                androidx.compose.foundation.layout.Column(
+                Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(paddingValues),

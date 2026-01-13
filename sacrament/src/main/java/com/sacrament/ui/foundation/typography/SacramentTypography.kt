@@ -9,15 +9,15 @@ import androidx.compose.ui.text.TextStyle
  * Usage (direct import - preferred):
  * ```kotlin
  * import com.sacrament.ui.foundation.typography.sacramentHeader
- * 
+ *
  * SacramentText(text = "Title", style = sacramentHeader)
  * ```
- * 
+ *
  * Usage (via theme):
  * ```kotlin
  * SacramentText(text = "Title", style = SacramentTheme.typography.sacramentHeader)
  * ```
- * 
+ *
  * Semantic typography styles (preferred):
  * - `sacramentScreenHeader` - Main screen headers
  * - `sacramentHeader` - Section headers
