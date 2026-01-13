@@ -6,6 +6,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -129,9 +130,10 @@ fun ScheduleScreenContent(
                 )
             },
             actions = {
-                androidx.compose.foundation.clickable(
-                    onClick = onNavigateToProfile,
-                    modifier = Modifier.padding(end = spacing.padding16)
+                Box(
+                    modifier = Modifier
+                        .clickable(onClick = onNavigateToProfile)
+                        .padding(end = spacing.padding16)
                 ) {
                     if (state.profilePictureUri != null) {
                         AsyncImage(
@@ -159,8 +161,8 @@ fun ScheduleScreenContent(
                 }
             }
         )
-    } { values ->
-        Column(modifier = padding(values)) {
+    }) { paddingValues ->
+        Column(modifier = Modifier.padding(paddingValues)) {
             when (val result = state.listState) {
                 is UiListState.Error -> {
                     Column(
