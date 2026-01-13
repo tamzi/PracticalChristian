@@ -72,17 +72,10 @@ fun SacramentScreenScaffold(
                     .weight(1f)
                     .imePadding()
             ) {
-                // Provide padding values for content compatibility
-                // Since bars are in Column layout, they already take space
-                // Padding is mainly for system insets and FAB spacing
-                content(
-                    PaddingValues(
-                        // No top/bottom padding needed as bars are in layout
-                        // But provide for any edge cases or future compatibility
-                        top = 0.dp,
-                        bottom = 0.dp
-                    )
-                )
+                // Pass empty PaddingValues for API compatibility with Scaffold-like patterns
+                // Top/bottom bars are handled by Column layout (not via padding)
+                // Content can optionally use these values but they're zero by default
+                content(PaddingValues())
                 
                 // FAB positioned in content area (above bottom bar when present)
                 // Uses BottomEnd alignment so it floats above content and above bottom bar
