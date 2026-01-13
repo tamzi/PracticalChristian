@@ -5,16 +5,20 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.sacrament.demo.catalog.CatalogRow
+import com.sacrament.demo.catalog.CatalogSection
+import com.sacrament.demo.catalog.CatalogTopAppBar
 import com.sacrament.ui.components.feedback.SacramentInlineMessage
 import com.sacrament.ui.components.feedback.SacramentInlineMessageTone
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
 import com.sacrament.ui.components.feedback.SacramentProgressVariant
-import com.sacrament.demo.catalog.CatalogTopAppBar
+import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.patterns.SacramentScreenScaffold
 import com.sacrament.ui.primitives.SacramentText
-import com.sacrament.ui.foundation.SacramentTheme
 
 @Composable
 fun FeedbackCatalogScreen(onNavigateBack: () -> Unit) {
@@ -30,8 +34,9 @@ fun FeedbackCatalogScreen(onNavigateBack: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(SacramentTheme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xl)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
+            verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xxl)
         ) {
             // Progress Indicators
             CatalogSection("Progress Indicators") {
@@ -96,41 +101,6 @@ fun FeedbackCatalogScreen(onNavigateBack: () -> Unit) {
                 )
             }
         }
-    }
-}
-
-@Composable
-private fun CatalogSection(
-    title: String,
-    content: @Composable () -> Unit
-) {
-    Column(
-        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
-    ) {
-        SacramentText(
-            text = title,
-            style = SacramentTheme.typography.titleLarge,
-            modifier = Modifier.padding(bottom = SacramentTheme.spacing.xs)
-        )
-        content()
-    }
-}
-
-@Composable
-private fun CatalogRow(
-    label: String,
-    content: @Composable () -> Unit
-) {
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xs)
-    ) {
-        SacramentText(
-            text = label,
-            style = SacramentTheme.typography.labelMedium,
-            modifier = Modifier.padding(start = SacramentTheme.spacing.xs)
-        )
-        content()
     }
 }
 
