@@ -25,6 +25,7 @@ import androidx.compose.material.icons.rounded.LocalLibrary
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Save
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Tag
 import androidx.compose.material.icons.rounded.Verified
 import androidx.compose.material.icons.rounded.Warning
@@ -73,6 +74,7 @@ object SacramentIcons {
     // UI elements
     val Menu: ImageVector = Icons.Filled.Menu
     val Notifications: ImageVector = Icons.Rounded.Notifications
+    val Settings: ImageVector = Icons.Rounded.Settings
     val AccessTime: ImageVector = Icons.Rounded.AccessTime
 
     // Status
