@@ -15,6 +15,8 @@ import com.sacrament.demo.action.button.screens.ButtonIconsCatalogScreen
 import com.sacrament.demo.action.button.screens.ButtonSizesCatalogScreen
 import com.sacrament.demo.action.button.screens.ButtonTonesCatalogScreen
 import com.sacrament.demo.action.button.screens.ButtonVariantsCatalogScreen
+import com.sacrament.demo.action.fab.screens.FloatingActionButtonsCatalogScreen
+import com.sacrament.demo.action.iconbutton.screens.IconButtonsCatalogScreen
 import com.sacrament.demo.content.screens.AvatarsCatalogScreen
 import com.sacrament.demo.content.screens.BadgesCatalogScreen
 import com.sacrament.demo.content.screens.ChipsCatalogScreen
@@ -28,7 +30,10 @@ import com.sacrament.demo.input.screens.InputCatalogOverviewScreen
 import com.sacrament.demo.input.screens.RadiosCatalogScreen
 import com.sacrament.demo.input.screens.SwitchesCatalogScreen
 import com.sacrament.demo.input.screens.TextFieldsCatalogScreen
+import com.sacrament.demo.navigation.screens.BottomBarCatalogScreen
 import com.sacrament.demo.navigation.screens.NavigationCatalogOverviewScreen
+import com.sacrament.demo.navigation.screens.NavigationRailCatalogScreen
+import com.sacrament.demo.navigation.screens.TabRowCatalogScreen
 import com.sacrament.demo.navigation.screens.TopAppBarCatalogScreen
 import com.sacrament.demo.patterns.screens.EmptyStateCatalogScreen
 import com.sacrament.demo.patterns.screens.ErrorStateCatalogScreen
@@ -36,6 +41,8 @@ import com.sacrament.demo.patterns.screens.LoadingStateCatalogScreen
 import com.sacrament.demo.patterns.screens.PatternsCatalogOverviewScreen
 import com.sacrament.demo.patterns.screens.ScreenScaffoldCatalogScreen
 import com.sacrament.demo.surface.screens.CardsCatalogScreen
+import com.sacrament.demo.surface.screens.DialogsCatalogScreen
+import com.sacrament.demo.surface.screens.SheetsCatalogScreen
 import com.sacrament.demo.surface.screens.SurfaceCatalogOverviewScreen
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
@@ -81,7 +88,9 @@ fun CatalogApp() {
             composable("action") {
                 _root_ide_package_.com.sacrament.demo.action.ActionCatalogScreen(
                     onNavigateBack = { navController.popBackStack() },
-                    onNavigateToButtons = { navController.navigate("action/buttons") }
+                    onNavigateToButtons = { navController.navigate("action/buttons") },
+                    onNavigateToIconButtons = { navController.navigate("action/iconbuttons") },
+                    onNavigateToFABs = { navController.navigate("action/fabs") }
                 )
             }
             composable("action/buttons") {
@@ -109,6 +118,14 @@ fun CatalogApp() {
                 ButtonIconsCatalogScreen(
                     onNavigateBack = { navController.popBackStack() })
             }
+            composable("action/iconbuttons") {
+                IconButtonsCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("action/fabs") {
+                FloatingActionButtonsCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
             composable("input") {
                 InputCatalogOverviewScreen(
                     onNavigateBack = { navController.popBackStack() },
@@ -133,21 +150,46 @@ fun CatalogApp() {
             composable("navigation") {
                 NavigationCatalogOverviewScreen(
                     onNavigateBack = { navController.popBackStack() },
-                    onNavigateToTopAppBar = { navController.navigate("navigation/topappbar") }
+                    onNavigateToTopAppBar = { navController.navigate("navigation/topappbar") },
+                    onNavigateToBottomBar = { navController.navigate("navigation/bottombar") },
+                    onNavigateToTabRow = { navController.navigate("navigation/tabrow") },
+                    onNavigateToNavigationRail = { navController.navigate("navigation/rail") }
                 )
             }
             composable("navigation/topappbar") {
                 TopAppBarCatalogScreen(
                     onNavigateBack = { navController.popBackStack() })
             }
+            composable("navigation/bottombar") {
+                BottomBarCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("navigation/tabrow") {
+                TabRowCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("navigation/rail") {
+                NavigationRailCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
             composable("surface") {
                 SurfaceCatalogOverviewScreen(
                     onNavigateBack = { navController.popBackStack() },
-                    onNavigateToCards = { navController.navigate("surface/cards") }
+                    onNavigateToCards = { navController.navigate("surface/cards") },
+                    onNavigateToDialogs = { navController.navigate("surface/dialogs") },
+                    onNavigateToSheets = { navController.navigate("surface/sheets") }
                 )
             }
             composable("surface/cards") {
                 CardsCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("surface/dialogs") {
+                DialogsCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("surface/sheets") {
+                SheetsCatalogScreen(
                     onNavigateBack = { navController.popBackStack() })
             }
             composable("content") {
