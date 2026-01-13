@@ -89,12 +89,14 @@ fun PracticalChristianDatePicker(
                     onClick = {
                         val dateMillis = selectedDateMillis
                         if (dateMillis != null) {
-                            // Convert epoch millis to LocalDate using kotlinx.datetime
-                            // Material3 DatePicker returns UTC midnight for the selected date
+                            // Convert epoch milliseconds to LocalDate with proper timezone handling
+                            // Material3 DatePicker always returns UTC midnight (00:00:00) for the selected date
+                            // We interpret this as a calendar date (not a specific moment in time)
                             val instant = Instant.fromEpochMilliseconds(dateMillis)
                             val selectedDate = instant.toLocalDateTime(TimeZone.UTC).date
                             
-                            // Combine date with user-selected time
+                            // Combine the calendar date with user-selected time to create LocalDateTime
+                            // This represents a timezone-agnostic date and time (e.g., "2024-01-13 14:30")
                             val selectedDateTime = selectedDate.atTime(
                                 hour = timeState.hour,
                                 minute = timeState.minute
