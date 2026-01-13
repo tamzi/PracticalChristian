@@ -1,4 +1,4 @@
-package com.sacrament.demo.catalog.feedback
+package com.sacrament.demo.feedback
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,9 +9,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.sacrament.demo.catalog.CatalogRow
-import com.sacrament.demo.catalog.CatalogSection
-import com.sacrament.demo.catalog.CatalogTopAppBar
+import com.sacrament.demo.CatalogSection
+import com.sacrament.demo.CatalogTopAppBar
 import com.sacrament.ui.components.feedback.SacramentInlineMessage
 import com.sacrament.ui.components.feedback.SacramentInlineMessageTone
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
@@ -20,6 +19,21 @@ import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.patterns.SacramentScreenScaffold
 import com.sacrament.ui.primitives.SacramentText
 
+/**
+ * Feedback Components catalog screen.
+ *
+ * Displays examples of feedback components that communicate system status and messages
+ * to users, including progress indicators, inline messages, and snackbars.
+ *
+ * Navigation path: Home → Feedback Components (this screen)
+ *
+ * Components demonstrated:
+ * - **Progress Indicators**: Linear and Circular variants at 60% progress
+ * - **Inline Messages**: Neutral, Success, Warning, Error, Info tones
+ * - **Snackbars**: Interactive demo not shown (requires state management)
+ *
+ * @param onNavigateBack Callback to navigate back to the catalog home screen
+ */
 @Composable
 fun FeedbackCatalogScreen(onNavigateBack: () -> Unit) {
     SacramentScreenScaffold(
@@ -101,6 +115,33 @@ fun FeedbackCatalogScreen(onNavigateBack: () -> Unit) {
                 )
             }
         }
+    }
+}
+
+/**
+ * Row component for displaying feedback component examples.
+ *
+ * Used exclusively in FeedbackCatalogScreen to present labeled examples of
+ * feedback components (progress indicators, inline messages, snackbars).
+ *
+ * @param label Descriptive label for the example (e.g., "Linear", "Success")
+ * @param content The composable content to display below the label
+ */
+@Composable
+private fun CatalogRow(
+    label: String,
+    content: @Composable () -> Unit
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)
+    ) {
+        SacramentText(
+            text = label,
+            style = SacramentTheme.typography.bodyMedium,
+            color = SacramentTheme.colors.text.muted
+        )
+        content()
     }
 }
 
