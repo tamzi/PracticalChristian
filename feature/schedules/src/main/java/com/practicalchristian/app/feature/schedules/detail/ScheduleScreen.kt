@@ -16,13 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.DatePickerDialog
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TimeInput
-import androidx.compose.material3.TimePicker
-import androidx.compose.material3.rememberDatePickerState
-import androidx.compose.material3.rememberTimePickerState
+import com.sacrament.ui.components.input.PracticalChristianDatePicker
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -33,7 +27,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.practicalchristian.app.core.domain.models.Book
@@ -42,7 +35,6 @@ import com.practicalchristian.app.core.domain.models.ScheduleEntry
 import com.practicalchristian.app.core.domain.models.ScheduleItem
 import com.practicalchristian.app.core.ui.helpers.ItemState
 import com.practicalchristian.app.core.ui.helpers.asFullDayString
-import com.practicalchristian.app.core.ui.helpers.asLocalDateTime
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.components.action.SacramentButton
 import com.sacrament.ui.components.action.SacramentButtonVariant
@@ -205,133 +197,6 @@ fun ScheduleScreenContent(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun PracticalChristianDatePicker(
-    isDialogOpen: Boolean,
-    onValueChangeCompletedAt: (LocalDateTime?) -> Unit,
-) {
-    val dateState = rememberDatePickerState()
-    val timeState = rememberTimePickerState(
-        initialHour = 12, initialMinute = 0, is24Hour = false
-    )
-
-    val (showTimePickerDialog, setShowTimePickerDialog) = remember { mutableStateOf(false) }
-    val (selectedDateMillis, setSelectedDateMillis) = remember { mutableStateOf<Long?>(null) }
-
-    // Step 1: Date Selection Dialog
-    if (isDialogOpen && !showTimePickerDialog) {
-        DatePickerDialog(onDismissRequest = {
-            onValueChangeCompletedAt.invoke(null)
-        }, confirmButton = {
-            SacramentButton(
-                text = "Next: Select Time",
-                onClick = {
-                    val dateMillis = dateState.selectedDateMillis
-                    if (dateMillis != null) {
-                        setSelectedDateMillis(dateMillis)
-                        setShowTimePickerDialog(true)
-                    } else {
-                        onValueChangeCompletedAt.invoke(null)
-                    }
-                }
-            )
-        }, dismissButton = {
-            SacramentButton(
-                text = "Cancel",
-                onClick = { onValueChangeCompletedAt.invoke(null) },
-                variant = SacramentButtonVariant.Outlined
-            )
-        }) {
-            DatePicker(state = dateState)
-        }
-    }
-
-    // Step 2: Time Selection Dialog
-    if (showTimePickerDialog) {
-        TimePickerDialog(
-            onDismissRequest = {
-            setShowTimePickerDialog(false)
-            onValueChangeCompletedAt.invoke(null)
-        }, confirmButton = {
-            SacramentButton(
-                text = "Complete",
-                onClick = {
-                    val dateMillis = selectedDateMillis
-                    if (dateMillis != null) {
-                        val selectedDate = dateMillis.asLocalDateTime()?.date
-                        val selectedDateTime =
-                            selectedDate?.atTime(timeState.hour, timeState.minute)
-                        onValueChangeCompletedAt.invoke(selectedDateTime)
-                    } else {
-                        onValueChangeCompletedAt.invoke(null)
-                    }
-                    setShowTimePickerDialog(false)
-                }
-            )
-        }, dismissButton = {
-            SacramentButton(
-                text = "Cancel",
-                onClick = {
-                    setShowTimePickerDialog(false)
-                    onValueChangeCompletedAt.invoke(null)
-                },
-                variant = SacramentButtonVariant.Outlined
-            )
-        }, title = "Select Completion Time"
-        ) {
-            TimePicker(state = timeState)
-        }
-    }
-}
-
-// Custom TimePickerDialog component using Material3 design
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TimePickerDialog(
-    onDismissRequest: () -> Unit,
-    confirmButton: @Composable () -> Unit,
-    dismissButton: @Composable (() -> Unit)? = null,
-    title: String = "Select Time",
-    content: @Composable () -> Unit
-) {
-    val spacing = SacramentTheme.spacing
-    Dialog(
-        onDismissRequest = onDismissRequest
-    ) {
-        SacramentCard(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(spacing.padding16),
-            contentPadding = PaddingValues(spacing.padding24)
-        ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                SacramentText(
-                    text = title,
-                    style = SacramentTheme.typography.headlineSmall,
-                    modifier = Modifier.padding(bottom = spacing.padding20)
-                )
-
-                content()
-
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = spacing.padding24),
-                    horizontalArrangement = Arrangement.End,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    dismissButton?.invoke()
-                    Spacer(modifier = Modifier.width(spacing.padding8))
-                    confirmButton()
-                }
-            }
-        }
-    }
-}
-
 @Preview(showBackground = true, name = "ScheduleScreen - Loading")
 @Composable
 private fun ScheduleScreenLoadingPreview() {
@@ -443,69 +308,5 @@ private fun PracticalChristianDatePickerWithTimePreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         PracticalChristianDatePicker(
             isDialogOpen = true, onValueChangeCompletedAt = {})
-    }
-}
-
-@Preview(showBackground = true, name = "TimePicker - Clock Style")
-@Composable
-@OptIn(ExperimentalMaterial3Api::class)
-private fun TimePickerClockPreview() {
-    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        val timeState = rememberTimePickerState(
-            initialHour = 14, initialMinute = 30, is24Hour = false
-        )
-        TimePicker(state = timeState)
-    }
-}
-
-@Preview(showBackground = true, name = "TimeInput - Keyboard Style")
-@Composable
-@OptIn(ExperimentalMaterial3Api::class)
-private fun TimeInputKeyboardPreview() {
-    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        val timeState = rememberTimePickerState(
-            initialHour = 14, initialMinute = 30, is24Hour = false
-        )
-        TimeInput(state = timeState)
-    }
-}
-
-@Preview(showBackground = true, name = "TimePicker - 24 Hour Format")
-@Composable
-@OptIn(ExperimentalMaterial3Api::class)
-private fun TimePicker24HourPreview() {
-    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        val timeState = rememberTimePickerState(
-            initialHour = 14, initialMinute = 30, is24Hour = true
-        )
-        TimePicker(state = timeState)
-    }
-}
-
-@Preview(showBackground = true, name = "TimePickerDialog - Step 2")
-@Composable
-@OptIn(ExperimentalMaterial3Api::class)
-private fun TimePickerDialogPreview() {
-    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        val timeState = rememberTimePickerState(
-            initialHour = 14, initialMinute = 30, is24Hour = false
-        )
-
-        TimePickerDialog(
-            onDismissRequest = {}, confirmButton = {
-            SacramentButton(
-                text = "Complete",
-                onClick = {}
-            )
-        }, dismissButton = {
-            SacramentButton(
-                text = "Cancel",
-                onClick = {},
-                variant = SacramentButtonVariant.Outlined
-            )
-        }, title = "Select Completion Time"
-        ) {
-            TimePicker(state = timeState)
-        }
     }
 }
