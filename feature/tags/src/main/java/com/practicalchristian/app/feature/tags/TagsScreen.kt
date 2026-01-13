@@ -16,11 +16,8 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -48,15 +45,14 @@ import com.sacrament.ui.components.surface.SacramentCard
 import com.sacrament.ui.components.surface.SacramentCardColors
 import com.sacrament.ui.components.surface.SacramentCardDefaults
 import com.sacrament.ui.components.surface.SacramentModalBottomSheet
-import com.sacrament.ui.components.surface.rememberSacramentModalBottomSheetState
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentEmptyState
+import com.sacrament.ui.patterns.SacramentScreenScaffold
 import com.sacrament.ui.primitives.SacramentCenteredColumn
 import com.sacrament.ui.primitives.SacramentIcon
 import com.sacrament.ui.primitives.SacramentText
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
@@ -81,7 +77,6 @@ fun TagsScreen(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TagsScreenContent(
     state: TagsScreenUiState,
@@ -93,28 +88,13 @@ fun TagsScreenContent(
     onClickGenerateColors: () -> Unit,
     onClickTag: (TagDomain) -> Unit,
 ) {
-    val sheetState = rememberSacramentModalBottomSheetState(skipPartiallyExpanded = true)
-    val scope = rememberCoroutineScope()
     val spacing = SacramentTheme.spacing
-
-    LaunchedEffect(state.isBottomSheetOpen) {
-        if (state.isBottomSheetOpen) {
-            sheetState.show()
-        } else {
-            onClickToggleBottomSheetState.invoke(false)
-            sheetState.hide()
-        }
-    }
 
     AnimatedVisibility(visible = state.isBottomSheetOpen) {
         SacramentModalBottomSheet(
             onDismissRequest = {
-                scope.launch {
-                    onClickToggleBottomSheetState.invoke(false)
-                    sheetState.hide()
-                }
-            },
-            sheetState = sheetState
+                onClickToggleBottomSheetState.invoke(false)
+            }
         ) {
             Column(
                 modifier = Modifier
@@ -221,7 +201,6 @@ fun TagsScreenContent(
                 }
             }
         }
-    }
 
     SacramentScreenScaffold(
         topBar = {
@@ -245,10 +224,10 @@ fun TagsScreenContent(
                 )
             }
         }
-    ) { values ->
+    ) { paddingValues ->
         Column(
             modifier = Modifier
-                .padding(values)
+                .padding(paddingValues)
                 .fillMaxSize()
         ) {
             when (val result = state.listState) {
@@ -322,7 +301,7 @@ fun TagsScreenContent(
                         }
 
                         is UiSuccessState.Data -> {
-                            val list = success.data
+                            val list: List<TagDomain> = success.data
                             Timber.d("COLORS -> \n$list")
                             AnimatedVisibility(visible = state.isLoading) {
                                 SacramentProgressIndicator(
@@ -336,11 +315,14 @@ fun TagsScreenContent(
                                 verticalItemSpacing = spacing.padding8,
                                 contentPadding = PaddingValues(spacing.padding8)
                             ) {
-                                items(list) { item ->
+                                items(list.size) { index ->
+                                    val item = list[index]
+                                    val defaultColors = SacramentCardDefaults.colors()
                                     SacramentCard(
                                         onClick = { onClickTag.invoke(item) },
-                                        colors = SacramentCardDefaults.colors(
-                                            container = Color(item.color.toColorInt())
+                                        colors = SacramentCardColors(
+                                            container = Color(item.color.toColorInt()),
+                                            border = defaultColors.border
                                         ),
                                         contentPadding = PaddingValues(
                                             horizontal = spacing.padding16,
@@ -355,6 +337,8 @@ fun TagsScreenContent(
                                 }
                             }
                         }
+
+                        is UiSuccessState.Data<*> -> TODO()
                     }
                 }
             }
