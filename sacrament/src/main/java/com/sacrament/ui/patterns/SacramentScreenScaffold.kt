@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -97,9 +98,11 @@ fun SacramentScreenScaffold(
             
             // Bottom bar - measure its height to offset FAB
             Box(
-                modifier = Modifier.onSizeChanged { size ->
-                    bottomBarHeightPx = size.height
-                }
+                modifier = Modifier
+                    .windowInsetsPadding(WindowInsets.navigationBars)
+                    .onSizeChanged { size ->
+                        bottomBarHeightPx = size.height
+                    }
             ) {
                 bottomBar()
             }
