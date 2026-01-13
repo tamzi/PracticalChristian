@@ -10,17 +10,36 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sacrament.demo.action.button.screens.ButtonCatalogScreen
+import com.sacrament.demo.action.button.screens.ButtonIconsCatalogScreen
+import com.sacrament.demo.action.button.screens.ButtonSizesCatalogScreen
+import com.sacrament.demo.action.button.screens.ButtonTonesCatalogScreen
+import com.sacrament.demo.action.button.screens.ButtonVariantsCatalogScreen
+import com.sacrament.demo.content.screens.AvatarsCatalogScreen
+import com.sacrament.demo.content.screens.BadgesCatalogScreen
+import com.sacrament.demo.content.screens.ChipsCatalogScreen
+import com.sacrament.demo.content.screens.ContentCatalogOverviewScreen
+import com.sacrament.demo.content.screens.TagsCatalogScreen
+import com.sacrament.demo.feedback.screens.FeedbackCatalogOverviewScreen
+import com.sacrament.demo.feedback.screens.InlineMessagesCatalogScreen
+import com.sacrament.demo.feedback.screens.ProgressIndicatorsCatalogScreen
+import com.sacrament.demo.input.screens.CheckboxesCatalogScreen
+import com.sacrament.demo.input.screens.InputCatalogOverviewScreen
+import com.sacrament.demo.input.screens.RadiosCatalogScreen
+import com.sacrament.demo.input.screens.SwitchesCatalogScreen
+import com.sacrament.demo.input.screens.TextFieldsCatalogScreen
+import com.sacrament.demo.navigation.screens.NavigationCatalogOverviewScreen
+import com.sacrament.demo.navigation.screens.TopAppBarCatalogScreen
+import com.sacrament.demo.patterns.screens.EmptyStateCatalogScreen
+import com.sacrament.demo.patterns.screens.ErrorStateCatalogScreen
+import com.sacrament.demo.patterns.screens.LoadingStateCatalogScreen
+import com.sacrament.demo.patterns.screens.PatternsCatalogOverviewScreen
+import com.sacrament.demo.patterns.screens.ScreenScaffoldCatalogScreen
+import com.sacrament.demo.surface.screens.CardsCatalogScreen
+import com.sacrament.demo.surface.screens.SurfaceCatalogOverviewScreen
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.demo.catalog.CatalogHomeScreen
-import com.sacrament.demo.catalog.action.ActionCatalogScreen
-import com.sacrament.demo.catalog.content.ContentCatalogScreen
-import com.sacrament.demo.catalog.feedback.FeedbackCatalogScreen
-import com.sacrament.demo.catalog.input.InputCatalogScreen
-import com.sacrament.demo.catalog.navigation.NavigationCatalogScreen
-import com.sacrament.demo.catalog.patterns.PatternsCatalogScreen
-import com.sacrament.demo.catalog.surface.SurfaceCatalogScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,25 +79,137 @@ fun CatalogApp() {
                 )
             }
             composable("action") {
-                ActionCatalogScreen(onNavigateBack = { navController.popBackStack() })
+                _root_ide_package_.com.sacrament.demo.action.ActionCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() },
+                    onNavigateToButtons = { navController.navigate("action/buttons") }
+                )
+            }
+            composable("action/buttons") {
+                ButtonCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() },
+                    onNavigateToVariants = { navController.navigate("action/buttons/variants") },
+                    onNavigateToSizes = { navController.navigate("action/buttons/sizes") },
+                    onNavigateToTones = { navController.navigate("action/buttons/tones") },
+                    onNavigateToIcons = { navController.navigate("action/buttons/icons") }
+                )
+            }
+            composable("action/buttons/variants") {
+                ButtonVariantsCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("action/buttons/sizes") {
+                ButtonSizesCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("action/buttons/tones") {
+                ButtonTonesCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("action/buttons/icons") {
+                ButtonIconsCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
             }
             composable("input") {
-                InputCatalogScreen(onNavigateBack = { navController.popBackStack() })
+                InputCatalogOverviewScreen(
+                    onNavigateBack = { navController.popBackStack() },
+                    onNavigateToTextFields = { navController.navigate("input/textfields") },
+                    onNavigateToCheckboxes = { navController.navigate("input/checkboxes") },
+                    onNavigateToRadios = { navController.navigate("input/radios") },
+                    onNavigateToSwitches = { navController.navigate("input/switches") }
+                )
+            }
+            composable("input/textfields") {
+                TextFieldsCatalogScreen(onNavigateBack = { navController.popBackStack() })
+            }
+            composable("input/checkboxes") {
+                CheckboxesCatalogScreen(onNavigateBack = { navController.popBackStack() })
+            }
+            composable("input/radios") {
+                RadiosCatalogScreen(onNavigateBack = { navController.popBackStack() })
+            }
+            composable("input/switches") {
+                SwitchesCatalogScreen(onNavigateBack = { navController.popBackStack() })
             }
             composable("navigation") {
-                NavigationCatalogScreen(onNavigateBack = { navController.popBackStack() })
+                NavigationCatalogOverviewScreen(
+                    onNavigateBack = { navController.popBackStack() },
+                    onNavigateToTopAppBar = { navController.navigate("navigation/topappbar") }
+                )
+            }
+            composable("navigation/topappbar") {
+                TopAppBarCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
             }
             composable("surface") {
-                SurfaceCatalogScreen(onNavigateBack = { navController.popBackStack() })
+                SurfaceCatalogOverviewScreen(
+                    onNavigateBack = { navController.popBackStack() },
+                    onNavigateToCards = { navController.navigate("surface/cards") }
+                )
+            }
+            composable("surface/cards") {
+                CardsCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
             }
             composable("content") {
-                ContentCatalogScreen(onNavigateBack = { navController.popBackStack() })
+                ContentCatalogOverviewScreen(
+                    onNavigateBack = { navController.popBackStack() },
+                    onNavigateToAvatars = { navController.navigate("content/avatars") },
+                    onNavigateToBadges = { navController.navigate("content/badges") },
+                    onNavigateToChips = { navController.navigate("content/chips") },
+                    onNavigateToTags = { navController.navigate("content/tags") }
+                )
+            }
+            composable("content/avatars") {
+                AvatarsCatalogScreen(onNavigateBack = { navController.popBackStack() })
+            }
+            composable("content/badges") {
+                BadgesCatalogScreen(onNavigateBack = { navController.popBackStack() })
+            }
+            composable("content/chips") {
+                ChipsCatalogScreen(onNavigateBack = { navController.popBackStack() })
+            }
+            composable("content/tags") {
+                TagsCatalogScreen(onNavigateBack = { navController.popBackStack() })
             }
             composable("feedback") {
-                FeedbackCatalogScreen(onNavigateBack = { navController.popBackStack() })
+                FeedbackCatalogOverviewScreen(
+                    onNavigateBack = { navController.popBackStack() },
+                    onNavigateToProgressIndicators = { navController.navigate("feedback/progress") },
+                    onNavigateToInlineMessages = { navController.navigate("feedback/messages") }
+                )
+            }
+            composable("feedback/progress") {
+                ProgressIndicatorsCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("feedback/messages") {
+                InlineMessagesCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
             }
             composable("patterns") {
-                PatternsCatalogScreen(onNavigateBack = { navController.popBackStack() })
+                PatternsCatalogOverviewScreen(
+                    onNavigateBack = { navController.popBackStack() },
+                    onNavigateToScaffold = { navController.navigate("patterns/scaffold") },
+                    onNavigateToEmptyState = { navController.navigate("patterns/empty") },
+                    onNavigateToErrorState = { navController.navigate("patterns/error") },
+                    onNavigateToLoadingState = { navController.navigate("patterns/loading") }
+                )
+            }
+            composable("patterns/scaffold") {
+                ScreenScaffoldCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("patterns/empty") {
+                EmptyStateCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("patterns/error") {
+                ErrorStateCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
+            }
+            composable("patterns/loading") {
+                LoadingStateCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() })
             }
         }
     }
