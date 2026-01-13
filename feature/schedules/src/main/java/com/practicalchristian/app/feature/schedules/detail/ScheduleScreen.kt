@@ -8,23 +8,16 @@ import androidx.compose.foundation.gestures.rememberScrollableState
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import com.sacrament.ui.components.input.PracticalChristianDatePicker
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -37,12 +30,11 @@ import com.practicalchristian.app.core.ui.helpers.ItemState
 import com.practicalchristian.app.core.ui.helpers.asFullDayString
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.components.action.SacramentButton
-import com.sacrament.ui.components.action.SacramentButtonVariant
 import com.sacrament.ui.components.action.SacramentIconButton
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
 import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.components.input.PracticalChristianDatePicker
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
-import com.sacrament.ui.components.surface.SacramentCard
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.foundation.icon.SacramentIcons
@@ -176,10 +168,7 @@ fun ScheduleScreenContent(
                 is ItemState.Success -> {
                     val schedule = result.item
                     SacramentText(
-                        text = buildAnnotatedString {
-                            append("STATUS :")
-                            append(schedule.status.label)
-                        }.text,
+                        text = "STATUS : ${schedule.status.label}",
                         style = SacramentTheme.typography.bodyMedium
                     )
                     AnimatedVisibility(visible = schedule.isComplete.not()) {
