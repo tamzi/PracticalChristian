@@ -6,7 +6,7 @@ import androidx.compose.ui.unit.sp
 
 /**
  * Default implementation of SacramentTypography.
- * 
+ *
  * Semantic styles are defined here, while size-based styles are referenced
  * from SacramentTypographyScale.
  */
@@ -65,82 +65,3 @@ val DefaultSacramentTypography = SacramentTypography(
     sacramentLabelMedium = SacramentTypographyScale.sacramentLabelMedium,
     sacramentLabelSmall = SacramentTypographyScale.sacramentLabelSmall,
 )
-
-/**
- * Top-level typography properties for direct use.
- * 
- * Usage:
- * ```kotlin
- * import com.sacrament.ui.foundation.typography.sacramentHeader
- * 
- * SacramentText(
- *     text = "Title",
- *     style = sacramentHeader
- * )
- * ```
- */
-
-// Semantic styles (preferred)
-val sacramentScreenHeader: TextStyle
-    get() = DefaultSacramentTypography.sacramentScreenHeader
-
-val sacramentHeader: TextStyle
-    get() = DefaultSacramentTypography.sacramentHeader
-
-val sacramentTitle: TextStyle
-    get() = DefaultSacramentTypography.sacramentTitle
-
-val sacramentParagraph: TextStyle
-    get() = DefaultSacramentTypography.sacramentParagraph
-
-val sacramentLabel: TextStyle
-    get() = DefaultSacramentTypography.sacramentLabel
-
-val sacramentCaption: TextStyle
-    get() = DefaultSacramentTypography.sacramentCaption
-
-// Size-based styles
-val sacramentDisplayLarge: TextStyle
-    get() = DefaultSacramentTypography.sacramentDisplayLarge
-
-val sacramentDisplayMedium: TextStyle
-    get() = DefaultSacramentTypography.sacramentDisplayMedium
-
-val sacramentDisplaySmall: TextStyle
-    get() = DefaultSacramentTypography.sacramentDisplaySmall
-
-val sacramentHeadlineLarge: TextStyle
-    get() = DefaultSacramentTypography.sacramentHeadlineLarge
-
-val sacramentHeadlineMedium: TextStyle
-    get() = DefaultSacramentTypography.sacramentHeadlineMedium
-
-val sacramentHeadlineSmall: TextStyle
-    get() = DefaultSacramentTypography.sacramentHeadlineSmall
-
-val sacramentTitleLarge: TextStyle
-    get() = DefaultSacramentTypography.sacramentTitleLarge
-
-val sacramentTitleMedium: TextStyle
-    get() = DefaultSacramentTypography.sacramentTitleMedium
-
-val sacramentTitleSmall: TextStyle
-    get() = DefaultSacramentTypography.sacramentTitleSmall
-
-val sacramentBodyLarge: TextStyle
-    get() = DefaultSacramentTypography.sacramentBodyLarge
-
-val sacramentBodyMedium: TextStyle
-    get() = DefaultSacramentTypography.sacramentBodyMedium
-
-val sacramentBodySmall: TextStyle
-    get() = DefaultSacramentTypography.sacramentBodySmall
-
-val sacramentLabelLarge: TextStyle
-    get() = DefaultSacramentTypography.sacramentLabelLarge
-
-val sacramentLabelMedium: TextStyle
-    get() = DefaultSacramentTypography.sacramentLabelMedium
-
-val sacramentLabelSmall: TextStyle
-    get() = DefaultSacramentTypography.sacramentLabelSmall
