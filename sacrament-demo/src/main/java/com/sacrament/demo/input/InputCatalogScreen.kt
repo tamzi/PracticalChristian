@@ -1,8 +1,9 @@
-package com.sacrament.demo.catalog.input
+package com.sacrament.demo.input
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -12,9 +13,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.sacrament.demo.catalog.CatalogRow
-import com.sacrament.demo.catalog.CatalogSection
-import com.sacrament.demo.catalog.CatalogTopAppBar
+import com.sacrament.demo.CatalogSection
+import com.sacrament.demo.CatalogTopAppBar
 import com.sacrament.ui.components.input.SacramentCheckbox
 import com.sacrament.ui.components.input.SacramentCheckboxSize
 import com.sacrament.ui.components.input.SacramentRadio
@@ -25,7 +25,24 @@ import com.sacrament.ui.components.input.SacramentTextField
 import com.sacrament.ui.components.input.SacramentTextFieldSize
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentText
 
+/**
+ * Input Components catalog screen.
+ *
+ * Displays interactive examples of input components including text fields, checkboxes,
+ * radio buttons, and switches. All components are fully functional to demonstrate behavior.
+ *
+ * Navigation path: Home → Input Components (this screen)
+ *
+ * Components demonstrated:
+ * - **Text Fields**: Small, Medium sizes, with label, error state, and disabled state
+ * - **Checkboxes**: Small, Medium sizes
+ * - **Radio Buttons**: Small, Medium sizes
+ * - **Switches**: Small, Medium sizes
+ *
+ * @param onNavigateBack Callback to navigate back to the catalog home screen
+ */
 @Composable
 fun InputCatalogScreen(onNavigateBack: () -> Unit) {
     var textFieldValue by remember { mutableStateOf("") }
@@ -150,6 +167,33 @@ fun InputCatalogScreen(onNavigateBack: () -> Unit) {
                 // Large size not currently available in SacramentSwitchSize.
             }
         }
+    }
+}
+
+/**
+ * Row component for displaying input component examples.
+ *
+ * Used exclusively in InputCatalogScreen to present labeled examples of
+ * input components (text fields, checkboxes, radio buttons, switches).
+ *
+ * @param label Descriptive label for the example (e.g., "Small", "With Label")
+ * @param content The composable content to display below the label
+ */
+@Composable
+private fun CatalogRow(
+    label: String,
+    content: @Composable () -> Unit
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)
+    ) {
+        SacramentText(
+            text = label,
+            style = SacramentTheme.typography.bodyMedium,
+            color = SacramentTheme.colors.text.muted
+        )
+        content()
     }
 }
 
