@@ -117,8 +117,7 @@ fun NotesScreenContent(
                 onBooksClick = onNavigateToBooks,
                 onNotesClick = { /* Already on Notes */ }
             )
-        },
-        containerColor = SacramentTheme.colors.surfaces.background,
+        }
     ) {
         Column(
             modifier = Modifier
