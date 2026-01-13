@@ -151,10 +151,10 @@ fun EditNoteScreenContent(
                 )
             }
         )
-    }) {
+    }) { paddingValues ->
         Column(
             modifier = Modifier
-                .padding(it)
+                .padding(paddingValues)
                 .fillMaxSize()
         ) {
             Row(modifier = Modifier.fillMaxWidth()) {
@@ -197,7 +197,7 @@ fun EditNoteScreenContent(
                         .border(BorderStroke(0.dp, Color.Transparent))
                         .background(Color.Transparent),
                     state = richTextState,
-                    placeholder = "Description",
+                    placeholder = { SacramentText("Description") },
                     colors = RichTextEditorDefaults.richTextEditorColors(
                         containerColor = SacramentTheme.colors.surfaces.surface,
                         focusedIndicatorColor = Color.Transparent,
@@ -287,11 +287,9 @@ fun TagsBottomSheet(
     onClickTagInsert: () -> Unit,
 ) {
     val spacing = SacramentTheme.spacing
-    val sheetState = rememberSacramentModalBottomSheetState(skipPartiallyExpanded = true)
     AnimatedVisibility(visible = isBottomSheetVisible) {
         SacramentModalBottomSheet(
-            onDismissRequest = onDismissBottomSheet,
-            sheetState = sheetState
+            onDismissRequest = onDismissBottomSheet
         ) {
             Column(modifier = Modifier.fillMaxWidth()) {
                 Row(
@@ -309,164 +307,159 @@ fun TagsBottomSheet(
                         onClick = onTagCreateToggle
                     )
                 }
-                Column(modifier = Modifier.padding(values)) {
-                    when (isCreatingTag) {
-                        true -> {
-                            Column(
+                Column(modifier = Modifier.padding(horizontal = spacing.padding32)) {
+                    if (isCreatingTag) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = spacing.padding32)
+                        ) {
+                            SacramentTextField(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(horizontal = spacing.padding32)
+                                    .padding(top = spacing.padding32),
+                                value = name,
+                                onValueChange = onChangeTagName,
+                                placeholder = "Name",
+                                leadingIcon = SacramentIcons.Tag,
+                                singleLine = true
+                            )
+                            LazyVerticalGrid(
+                                modifier = Modifier.padding(
+                                    top = spacing.padding16,
+                                    bottom = spacing.padding32
+                                ),
+                                columns = GridCells.Fixed(5),
                             ) {
-                                    SacramentTextField(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(top = spacing.padding32),
-                                        value = name,
-                                        onValueChange = onChangeTagName,
-                                        placeholder = "Name",
-                                        leadingIcon = SacramentIcons.Tag,
-                                        singleLine = true
-                                    )
-                                    LazyVerticalGrid(
-                                        modifier = Modifier.padding(
-                                            top = spacing.padding16,
-                                            bottom = spacing.padding32
-                                        ),
-                                        columns = GridCells.Fixed(5),
+                                items(colors.size) {
+                                    val value = colors[it]
+                                    SacramentCard(
+                                        modifier = Modifier.padding(spacing.padding8),
+                                        onClick = { onClickTagColor.invoke(value) },
+                                        colors = if (color == value) {
+                                            SacramentCardColors(
+                                                container = Color(value.toColorInt()),
+                                                border = SacramentTheme.colors.text.strong
+                                            )
+                                        } else {
+                                            SacramentCardColors(
+                                                container = Color(value.toColorInt()),
+                                                border = SacramentCardDefaults.colors().border
+                                            )
+                                        },
+                                        contentPadding = PaddingValues(0.dp)
                                     ) {
-                                        items(colors.size) {
-                                            val value = colors[it]
-                                            SacramentCard(
-                                                modifier = Modifier.padding(spacing.padding8),
-                                                onClick = { onClickTagColor.invoke(value) },
-                                                colors = if (color == value) {
-                                                    SacramentCardColors(
-                                                        container = Color(value.toColorInt()),
-                                                        border = SacramentTheme.colors.text.strong
-                                                    )
-                                                } else {
-                                                    SacramentCardColors(
-                                                        container = Color(value.toColorInt()),
-                                                        border = SacramentCardDefaults.colors().border
-                                                    )
-                                                },
-                                                contentPadding = PaddingValues(0.dp)
-                                            ) {
-                                                Box(
-                                                    modifier = Modifier
-                                                        .width(50.dp)
-                                                        .height(50.dp)
-                                                )
-                                            }
-                                        }
-                                        item {
-                                            Row(
-                                                modifier = Modifier.fillMaxWidth(),
-                                                verticalAlignment = Alignment.CenterVertically,
-                                                horizontalArrangement = Arrangement.Center
-                                            ) {
-                                                SacramentIconButton(
-                                                    imageVector = SacramentIcons.Refresh,
-                                                    contentDescription = "",
-                                                    onClick = onClickTagGenerateColors,
-                                                    modifier = Modifier.padding(top = spacing.padding8)
-                                                )
-                                            }
-                                        }
+                                        Box(
+                                            modifier = Modifier
+                                                .width(50.dp)
+                                                .height(50.dp)
+                                        )
                                     }
+                                }
+                                item {
                                     Row(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(bottom = spacing.padding32),
-                                        horizontalArrangement = Arrangement.SpaceBetween
+                                        modifier = Modifier.fillMaxWidth(),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.Center
                                     ) {
-                                        SacramentButton(
-                                            text = "Create",
-                                            onClick = onClickTagInsert,
-                                            enabled = isEnabled,
-                                            modifier = Modifier.weight(1f)
+                                        SacramentIconButton(
+                                            imageVector = SacramentIcons.Refresh,
+                                            contentDescription = "",
+                                            onClick = onClickTagGenerateColors,
+                                            modifier = Modifier.padding(top = spacing.padding8)
                                         )
                                     }
                                 }
                             }
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(bottom = spacing.padding32),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                SacramentButton(
+                                    text = "Create",
+                                    onClick = onClickTagInsert,
+                                    enabled = isEnabled,
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
                         }
+                    } else {
+                        when (tagsState) {
+                            is UiListState.Error -> {
+                                SacramentEmptyState(
+                                    icon = SacramentIcons.List,
+                                    title = "Error",
+                                    contentDescription = "error fetching results",
+                                    description = tagsState.message
+                                )
+                            }
 
-                        false -> {
-                            when (tagsState) {
-                                is UiListState.Error -> {
-                                    SacramentEmptyState(
-                                        icon = SacramentIcons.List,
-                                        title = "Error",
-                                        contentDescription = "error fetching results",
-                                        description = tagsState.message
-                                    )
+                            UiListState.Idle -> {
+                                SacramentEmptyState(
+                                    icon = SacramentIcons.List,
+                                    title = "Welcome",
+                                    contentDescription = "idle fetching results",
+                                    description = "Please wait while we're fetching your tags"
+                                )
+                            }
+
+                            UiListState.Loading -> {
+                                SacramentCenteredColumn(modifier = Modifier.fillMaxSize()) {
+                                    SacramentProgressIndicator(variant = SacramentProgressVariant.Circular)
                                 }
+                            }
 
-                                UiListState.Idle -> {
-                                    SacramentEmptyState(
-                                        icon = SacramentIcons.List,
-                                        title = "Welcome",
-                                        contentDescription = "idle fetching results",
-                                        description = "Please wait while we're fetching your tags"
-                                    )
-                                }
-
-                                UiListState.Loading -> {
-                                    SacramentCenteredColumn(modifier = Modifier.fillMaxSize()) {
-                                        SacramentProgressIndicator(variant = SacramentProgressVariant.Circular)
+                            is UiListState.Success -> {
+                                when (val result = tagsState.data) {
+                                    UiSuccessState.Empty -> {
+                                        SacramentEmptyState(
+                                            icon = SacramentIcons.Tag,
+                                            title = "Empty",
+                                            contentDescription = "empty icon",
+                                            description = "You don't have any tags.\nClick on the button below to create",
+                                            action = {
+                                                SacramentButton(
+                                                    text = "create",
+                                                    onClick = { },
+                                                    modifier = Modifier.padding(top = spacing.padding16)
+                                                )
+                                            }
+                                        )
                                     }
-                                }
 
-                                is UiListState.Success -> {
-                                    when (val result = tagsState.data) {
-                                        UiSuccessState.Empty -> {
-                                            SacramentEmptyState(
-                                                icon = SacramentIcons.Tag,
-                                                title = "Empty",
-                                                contentDescription = "empty icon",
-                                                description = "You don't have any tags.\nClick on the button below to create",
-                                                action = {
-                                                    SacramentButton(
-                                                        text = "create",
-                                                        onClick = { },
-                                                        modifier = Modifier.padding(top = spacing.padding16)
+                                    is UiSuccessState.Data -> {
+                                        val list = result.data
+                                        LazyVerticalStaggeredGrid(
+                                            columns = StaggeredGridCells.Adaptive(95.dp),
+                                            horizontalArrangement = Arrangement.spacedBy(spacing.padding8),
+                                            verticalItemSpacing = spacing.padding8,
+                                            contentPadding = PaddingValues(spacing.padding8)
+                                        ) {
+                                            items(list) { item ->
+                                                val (background, onBackground) = if (tags.contains(
+                                                        item
                                                     )
-                                                }
-                                            )
-                                        }
-
-                                        is UiSuccessState.Data -> {
-                                            val list = result.data
-                                            LazyVerticalStaggeredGrid(
-                                                columns = StaggeredGridCells.Adaptive(95.dp),
-                                                horizontalArrangement = Arrangement.spacedBy(spacing.padding8),
-                                                verticalItemSpacing = spacing.padding8,
-                                                contentPadding = PaddingValues(spacing.padding8)
-                                            ) {
-                                                items(list) { item ->
-                                                    val (background, onBackground) = if (tags.contains(
-                                                            item
-                                                        )
-                                                    ) Pair(
-                                                        Color(item.color.toColorInt()), Color.Black
+                                                ) Pair(
+                                                    Color(item.color.toColorInt()), Color.Black
+                                                )
+                                                else Pair(Color.Gray, Color.White)
+                                                SacramentCard(
+                                                    onClick = { onTagClicked.invoke(item) },
+                                                    colors = SacramentCardColors(
+                                                        container = background,
+                                                        border = SacramentCardDefaults.colors().border
+                                                    ),
+                                                    contentPadding = PaddingValues(
+                                                        horizontal = spacing.padding16,
+                                                        vertical = spacing.padding8
                                                     )
-                                                    else Pair(Color.Gray, Color.White)
-                                                    SacramentCard(
-                                                        onClick = { onTagClicked.invoke(item) },
-                                                        colors = SacramentCardColors(
-                                                            container = background,
-                                                            border = SacramentCardDefaults.colors().border
-                                                        ),
-                                                        contentPadding = PaddingValues(
-                                                            horizontal = spacing.padding16,
-                                                            vertical = spacing.padding8
-                                                        )
-                                                    ) {
-                                                        SacramentText(
-                                                            text = item.name,
-                                                            color = onBackground
-                                                        )
-                                                    }
+                                                ) {
+                                                    SacramentText(
+                                                        text = item.name,
+                                                        color = onBackground
+                                                    )
                                                 }
                                             }
                                         }
