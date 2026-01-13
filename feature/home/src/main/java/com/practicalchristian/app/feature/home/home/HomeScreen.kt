@@ -28,6 +28,8 @@ import com.sacrament.ui.components.action.SacramentButton
 import com.sacrament.ui.components.action.SacramentButtonTone
 import com.sacrament.ui.components.action.SacramentButtonVariant
 import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.components.feedback.SacramentProgressVariant
 import com.sacrament.ui.components.surface.SacramentCard
 import com.sacrament.ui.components.surface.SacramentCardColors
 import com.sacrament.ui.components.surface.SacramentCardDefaults
@@ -399,7 +401,10 @@ private fun BeginReadingCard(
         modifier = Modifier
             .fillMaxWidth()
             .height(180.dp),
-        colors = SacramentCardColors(container = colors.surfaces.lavender),
+        colors = SacramentCardColors(
+            container = colors.surfaces.lavender,
+            border = SacramentCardDefaults.colors().border
+        ),
         contentPadding = androidx.compose.foundation.layout.PaddingValues(spacing.padding20)
     ) {
         Box(
@@ -447,7 +452,10 @@ private fun DevotionCard(
         modifier = modifier
             .height(160.dp)
             .clickable { onClick() },
-        colors = SacramentCardColors(container = backgroundColor),
+        colors = SacramentCardColors(
+            container = backgroundColor,
+            border = SacramentCardDefaults.colors().border
+        ),
         contentPadding = PaddingValues(spacing.padding16)
     ) {
         Column(
@@ -493,7 +501,7 @@ private fun TodaysGoalSection(
             SacramentButton(
                 text = "See all",
                 onClick = onSeeAllClick,
-                variant = SacramentButtonVariant.Text
+                variant = SacramentButtonVariant.Ghost
             )
         }
 
@@ -590,7 +598,10 @@ private fun YourProgressSection(
                 modifier = Modifier
                     .weight(1f)
                     .height(120.dp),
-                colors = SacramentCardColors(container = colors.surfaces.peach),
+                colors = SacramentCardColors(
+                    container = colors.surfaces.peach,
+                    border = SacramentCardDefaults.colors().border
+                ),
                 contentPadding = PaddingValues(spacing.padding16)
             ) {
                 Column(
@@ -621,7 +632,10 @@ private fun YourProgressSection(
                 modifier = Modifier
                     .weight(1f)
                     .height(120.dp),
-                colors = SacramentCardColors(container = colors.surfaces.mint),
+                colors = SacramentCardColors(
+                    container = colors.surfaces.mint,
+                    border = SacramentCardDefaults.colors().border
+                ),
                 contentPadding = PaddingValues(spacing.padding16)
             ) {
                 Column(
@@ -659,7 +673,10 @@ private fun CurrentReadingSection(
     val spacing = SacramentTheme.spacing
     SacramentCard(
         modifier = Modifier.fillMaxWidth(),
-        colors = SacramentCardColors(container = colors.surfaces.lavenderSoft),
+        colors = SacramentCardColors(
+            container = colors.surfaces.lavenderSoft,
+            border = SacramentCardDefaults.colors().border
+        ),
         contentPadding = PaddingValues(spacing.padding20)
     ) {
         Column {
@@ -823,9 +840,8 @@ private fun PlanCard(
                 ) {
                     SacramentText(
                         text = "${plan.daysCount} days plan",
-                        style = SacramentTheme.typography.labelMedium,
-                        color = colors.brand.tertiary,
-                        fontWeight = FontWeight.SemiBold
+                        style = SacramentTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
+                        color = colors.brand.tertiary
                     )
                 }
 
@@ -833,19 +849,19 @@ private fun PlanCard(
 
                 SacramentText(
                     text = plan.title,
-                    style = SacramentTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = colors.text.strong,
-                    lineHeight = 22.sp
+                    style = SacramentTheme.typography.titleMedium.copy(
+                        fontWeight = FontWeight.Bold,
+                        lineHeight = 22.sp
+                    ),
+                    color = colors.text.strong
                 )
 
                 Spacer(modifier = Modifier.height(spacing.padding8))
 
                 SacramentText(
                     text = "Start this Plan",
-                    style = SacramentTheme.typography.bodyMedium,
-                    color = colors.brand.primary,
-                    fontWeight = FontWeight.Medium
+                    style = SacramentTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium),
+                    color = colors.brand.primary
                 )
             }
 
