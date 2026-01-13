@@ -32,11 +32,15 @@ import com.sacrament.ui.primitives.SacramentText
  *
  * @param onNavigateBack Callback to navigate back to the catalog home screen
  * @param onNavigateToButtons Callback to navigate to the buttons catalog subpage
+ * @param onNavigateToIconButtons Callback to navigate to the icon buttons catalog subpage
+ * @param onNavigateToFABs Callback to navigate to the floating action buttons catalog subpage
  */
 @Composable
 fun ActionCatalogScreen(
     onNavigateBack: () -> Unit,
-    onNavigateToButtons: () -> Unit
+    onNavigateToButtons: () -> Unit,
+    onNavigateToIconButtons: () -> Unit = {},
+    onNavigateToFABs: () -> Unit = {}
 ) {
     SacramentScreenScaffold(
         topBar = {
@@ -59,22 +63,22 @@ fun ActionCatalogScreen(
                     .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
                 verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.lg)
             ) {
-                _root_ide_package_.com.sacrament.demo.action.ActionCatalogListItem(
+                ActionCatalogListItem(
                     title = "BUTTONS",
                     description = "Variants, Sizes, Tones, Icons",
                     onClick = onNavigateToButtons
                 )
 
-                _root_ide_package_.com.sacrament.demo.action.ActionCatalogListItem(
+                ActionCatalogListItem(
                     title = "ICON BUTTONS",
-                    description = "Small, Medium, Large sizes",
-                    onClick = { /* TODO: Implement icon buttons subpage */ }
+                    description = "Variants, Sizes, Tones, States",
+                    onClick = onNavigateToIconButtons
                 )
 
-                _root_ide_package_.com.sacrament.demo.action.ActionCatalogListItem(
+                ActionCatalogListItem(
                     title = "FLOATING ACTION BUTTONS",
-                    description = "Small, Medium, Large sizes",
-                    onClick = { /* TODO: Implement FABs subpage */ }
+                    description = "Not yet implemented",
+                    onClick = onNavigateToFABs
                 )
             }
         }
