@@ -98,31 +98,35 @@ for file in $FILES; do
                 fi
             fi
 
+            # Get file content for checks
             if [ -n "$REF" ]; then
                 content=$(git show "$REF:$file" 2>/dev/null || true)
                 if [ -z "$content" ]; then
                     continue
                 fi
-                CHECKED_FILES=$((CHECKED_FILES + 1))
-
-                # Allow DatePicker/TimePicker temporarily (complex components without Sacrament equivalents yet)
-                material3_hits=$(printf "%s\n" "$content" | grep -nE 'androidx\.compose\.material3\.' | \
-                    grep -vE 'DatePicker|TimePicker|DatePickerDialog|TimeInput|rememberDatePickerState|rememberTimePickerState|ExperimentalMaterial3Api' || true)
             else
                 if [ ! -f "$file" ]; then
                     continue
                 fi
-                CHECKED_FILES=$((CHECKED_FILES + 1))
-
-                # Allow DatePicker/TimePicker temporarily (complex components without Sacrament equivalents yet)
-                material3_hits=$(grep -nE 'androidx\.compose\.material3\.' "$file" | \
-                    grep -vE 'DatePicker|TimePicker|DatePickerDialog|TimeInput|rememberDatePickerState|rememberTimePickerState|ExperimentalMaterial3Api' || true)
             fi
-            if [ -n "$material3_hits" ]; then
-                echo -e "${RED}❌ VIOLATION: Material3 usage in $file${NC}"
-                echo "$material3_hits" | sed 's/^/     - /'
-                echo "   Fix: Replace with Sacrament components/tokens."
-                VIOLATIONS=$((VIOLATIONS + 1))
+            CHECKED_FILES=$((CHECKED_FILES + 1))
+
+            # Material3 is ONLY allowed in sacrament module (for bridge components)
+            # Check Material3 usage outside sacrament module
+            if [[ "$file" != sacrament/* ]]; then
+                if [ -n "$REF" ]; then
+                    material3_hits=$(printf "%s\n" "$content" | grep -nE 'androidx\.compose\.material3\.' | \
+                        grep -vE 'DatePicker|TimePicker|DatePickerDialog|TimeInput|rememberDatePickerState|rememberTimePickerState|ExperimentalMaterial3Api' || true)
+                else
+                    material3_hits=$(grep -nE 'androidx\.compose\.material3\.' "$file" | \
+                        grep -vE 'DatePicker|TimePicker|DatePickerDialog|TimeInput|rememberDatePickerState|rememberTimePickerState|ExperimentalMaterial3Api' || true)
+                fi
+                if [ -n "$material3_hits" ]; then
+                    echo -e "${RED}❌ VIOLATION: Material3 usage in $file${NC}"
+                    echo "$material3_hits" | sed 's/^/     - /'
+                    echo "   Fix: Material3 is only allowed in sacrament module. Use Sacrament components instead."
+                    VIOLATIONS=$((VIOLATIONS + 1))
+                fi
             fi
 
             # Check Material (not Material3) usage
