@@ -27,21 +27,24 @@ import com.sacrament.ui.primitives.SacramentText
  * provide elevated containers and overlays for content presentation.
  *
  * Navigation hierarchy:
- * - Home → Surface Components (this screen) → Cards
+ * - Home → Surface Components (this screen) → Cards/Dialogs/Sheets
  *
  * Subcategories:
  * - **Cards**: Container for related content and actions
- *
- * Note: Dialogs and Sheets require interactive state management and are
- * demonstrated in-context rather than as standalone catalog items.
+ * - **Dialogs**: Modal overlays for critical decisions
+ * - **Sheets**: Elevated surfaces and bottom sheets
  *
  * @param onNavigateBack Callback to navigate back to the catalog home screen
  * @param onNavigateToCards Callback to navigate to Cards screen
+ * @param onNavigateToDialogs Callback to navigate to Dialogs screen
+ * @param onNavigateToSheets Callback to navigate to Sheets screen
  */
 @Composable
 fun SurfaceCatalogOverviewScreen(
     onNavigateBack: () -> Unit,
-    onNavigateToCards: () -> Unit
+    onNavigateToCards: () -> Unit,
+    onNavigateToDialogs: () -> Unit = {},
+    onNavigateToSheets: () -> Unit = {}
 ) {
     SacramentScreenScaffold(
         topBar = {
@@ -70,18 +73,16 @@ fun SurfaceCatalogOverviewScreen(
                     onClick = onNavigateToCards
                 )
                 
-                // Note: Dialogs and Sheets are interactive and require state management,
-                // so they're better demonstrated in-context rather than as catalog items
                 SurfaceCatalogListItem(
                     title = "DIALOGS",
-                    description = "Modal overlays (demonstrated in-context)",
-                    onClick = { /* Could add later if needed */ }
+                    description = "Modal overlays for critical decisions",
+                    onClick = onNavigateToDialogs
                 )
                 
                 SurfaceCatalogListItem(
                     title = "SHEETS",
-                    description = "Bottom sheets (demonstrated in-context)",
-                    onClick = { /* Could add later if needed */ }
+                    description = "Elevated surfaces and bottom sheets",
+                    onClick = onNavigateToSheets
                 )
             }
         }
