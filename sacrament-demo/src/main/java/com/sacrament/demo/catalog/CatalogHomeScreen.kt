@@ -14,8 +14,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.primitives.SacramentText
 
@@ -99,14 +97,7 @@ private fun CatalogListItem(
             .clickable(onClick = onClick)
             .padding(vertical = SacramentTheme.spacing.md)
     ) {
-        SacramentText(
-            text = title,
-            style = SacramentTheme.typography.headlineMedium.copy(
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 1.sp
-            ),
-            color = SacramentTheme.colors.text.strong
-        )
+        CatalogSectionTitle(text = title)
         
         Spacer(modifier = Modifier.height(SacramentTheme.spacing.xs))
         
