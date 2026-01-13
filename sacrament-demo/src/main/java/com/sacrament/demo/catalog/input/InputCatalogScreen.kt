@@ -3,14 +3,18 @@ package com.sacrament.demo.catalog.input
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.sacrament.demo.catalog.CatalogRow
+import com.sacrament.demo.catalog.CatalogSection
+import com.sacrament.demo.catalog.CatalogTopAppBar
 import com.sacrament.ui.components.input.SacramentCheckbox
 import com.sacrament.ui.components.input.SacramentCheckboxSize
 import com.sacrament.ui.components.input.SacramentRadio
@@ -19,10 +23,8 @@ import com.sacrament.ui.components.input.SacramentSwitch
 import com.sacrament.ui.components.input.SacramentSwitchSize
 import com.sacrament.ui.components.input.SacramentTextField
 import com.sacrament.ui.components.input.SacramentTextFieldSize
-import com.sacrament.demo.catalog.CatalogTopAppBar
-import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.primitives.SacramentText
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.patterns.SacramentScreenScaffold
 
 @Composable
 fun InputCatalogScreen(onNavigateBack: () -> Unit) {
@@ -43,8 +45,9 @@ fun InputCatalogScreen(onNavigateBack: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(SacramentTheme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xl)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
+            verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xxl)
         ) {
             // Text Fields - Sizes
             CatalogSection("Text Fields - Sizes") {
@@ -147,41 +150,6 @@ fun InputCatalogScreen(onNavigateBack: () -> Unit) {
                 // Large size not currently available in SacramentSwitchSize.
             }
         }
-    }
-}
-
-@Composable
-private fun CatalogSection(
-    title: String,
-    content: @Composable () -> Unit
-) {
-    Column(
-        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
-    ) {
-        SacramentText(
-            text = title,
-            style = SacramentTheme.typography.titleLarge,
-            modifier = Modifier.padding(bottom = SacramentTheme.spacing.xs)
-        )
-        content()
-    }
-}
-
-@Composable
-private fun CatalogRow(
-    label: String,
-    content: @Composable () -> Unit
-) {
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xs)
-    ) {
-        SacramentText(
-            text = label,
-            style = SacramentTheme.typography.labelMedium,
-            modifier = Modifier.padding(start = SacramentTheme.spacing.xs)
-        )
-        content()
     }
 }
 
