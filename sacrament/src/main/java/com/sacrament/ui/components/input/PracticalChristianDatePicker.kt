@@ -1,27 +1,28 @@
+@file:OptIn(kotlin.time.ExperimentalTime::class)
+
 package com.sacrament.ui.components.input
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TimePicker
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberTimePickerState
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.sacrament.ui.components.action.SacramentButton
 import com.sacrament.ui.components.action.SacramentButtonVariant
-import java.util.Calendar
-import java.util.Date as JavaDate
-import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime
+import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Instant
 
 /**
  * Bridge component for date and time picking using Material3 DatePicker/TimePicker.
@@ -88,15 +89,16 @@ fun PracticalChristianDatePicker(
                     onClick = {
                         val dateMillis = selectedDateMillis
                         if (dateMillis != null) {
-                            val cal = Calendar.getInstance()
-                            cal.time = JavaDate(dateMillis)
-                            val selectedDate = LocalDate(
-                                year = cal[Calendar.YEAR],
-                                monthNumber = cal[Calendar.MONTH] + 1,
-                                dayOfMonth = cal[Calendar.DAY_OF_MONTH]
+                            // Convert epoch millis to LocalDate using kotlinx.datetime
+                            // Material3 DatePicker returns UTC midnight for the selected date
+                            val instant = Instant.fromEpochMilliseconds(dateMillis)
+                            val selectedDate = instant.toLocalDateTime(TimeZone.UTC).date
+                            
+                            // Combine date with user-selected time
+                            val selectedDateTime = selectedDate.atTime(
+                                hour = timeState.hour,
+                                minute = timeState.minute
                             )
-                            val selectedDateTime =
-                                selectedDate.atTime(timeState.hour, timeState.minute)
                             onValueChangeCompletedAt.invoke(selectedDateTime)
                         } else {
                             onValueChangeCompletedAt.invoke(null)
