@@ -34,10 +34,10 @@ Single source of truth for project tasks, priorities, and status.
   - [x] TASK: Replace Material3 components in `feature/books` (Card, Scaffold, TopAppBar, etc.).
   - [x] TASK: Replace hardcoded styles with design system tokens in `feature/books`.
   - [x] TASK: Update previews in `feature/books` to use `SacramentTheme`.
-- [ ] STORY: Feature migrations - auth
-  - [ ] TASK: Replace Material3 components in `feature/auth`.
-  - [ ] TASK: Replace hardcoded styles with design system tokens in `feature/auth`.
-  - [ ] TASK: Update previews in `feature/auth` to use `SacramentTheme`.
+- [x] STORY: Feature migrations - auth
+  - [x] TASK: Replace Material3 components in `feature/auth`.
+  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/auth`.
+  - [x] TASK: Update previews in `feature/auth` to use `SacramentTheme`.
 - [x] STORY: Feature migrations - home
   - [x] TASK: Replace Material3 components in `feature/home`.
   - [x] TASK: Replace hardcoded styles with design system tokens in `feature/home`.
@@ -58,14 +58,20 @@ Single source of truth for project tasks, priorities, and status.
   - [x] TASK: Replace Material3 components in `feature/onboarding`.
   - [x] TASK: Replace hardcoded styles with design system tokens in `feature/onboarding`.
   - [x] TASK: Update previews in `feature/onboarding` to use `SacramentTheme`.
-- [ ] STORY: Core + app migration
-  - [ ] TASK: Replace Material3 UI components in `app` and `core` with design system primitives/components.
-  - [ ] TASK: Replace remaining hardcoded styles with design system tokens across `app` and `core`.
-  - [ ] TASK: Remove Material3 dependency from `app/build.gradle.kts`.
-  - [ ] TASK: Remove Material3 dependency from `core/ui/build.gradle.kts`.
-- [ ] STORY: Sacrament internal cleanup
-  - [ ] TASK: Replace Material3 Scaffold in `sacrament` (used by `SacramentScreenScaffold`).
-  - [ ] TASK: Verify `sacrament-demo` renders correctly after removal.
+- [x] STORY: Core + app migration
+  - [x] TASK: Replace Material3 UI components in `app` and `core` with design system primitives/components.
+  - [x] TASK: Replace remaining hardcoded styles with design system tokens across `app` and `core`.
+  - [x] TASK: Remove Material3 dependency from `app/build.gradle.kts`.
+  - [x] TASK: Remove Material3 dependency from `core/ui/build.gradle.kts`.
+- [x] STORY: Sacrament internal cleanup
+  - [x] TASK: Replace Material3 Scaffold in `sacrament` (used by `SacramentScreenScaffold`).
+  - [x] TASK: Verify `sacrament-demo` renders correctly after removal.
+- [x] STORY: Icon centralization
+  - [x] TASK: Create centralized `SacramentIcons` registry in `sacrament` module.
+  - [x] TASK: Update all feature modules to use `SacramentIcons` instead of Material icons directly.
+  - [x] TASK: Update `core/ui` to use `SacramentIcons`.
+  - [x] TASK: Update enforcement script to allow Material icons only in `sacrament` module.
+  - [x] TASK: Update documentation to clarify icon usage rules.
 - [x] STORY: Previews + theme consistency
   - [x] TASK: Verify all feature previews use `SacramentTheme` (landing, home, notes, profile already migrated).
 - [x] STORY: Documentation
