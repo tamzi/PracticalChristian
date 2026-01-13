@@ -71,34 +71,7 @@ for file in $FILES; do
                     ;;
             esac
 
-            # Check Material3 usage - only allowed in sacrament module
-            if [[ "$file" != sacrament/* ]]; then
-                # Outside sacrament: Material3 is completely forbidden
-                if [ -n "$REF" ]; then
-                    content=$(git show "$REF:$file" 2>/dev/null || true)
-                    if [ -z "$content" ]; then
-                        continue
-                    fi
-                    CHECKED_FILES=$((CHECKED_FILES + 1))
-                    material3_hits=$(printf "%s\n" "$content" | grep -nE 'androidx\.compose\.material3\.' | \
-                        grep -vE 'DatePicker|TimePicker|DatePickerDialog|TimeInput|rememberDatePickerState|rememberTimePickerState|ExperimentalMaterial3Api' || true)
-                else
-                    if [ ! -f "$file" ]; then
-                        continue
-                    fi
-                    CHECKED_FILES=$((CHECKED_FILES + 1))
-                    material3_hits=$(grep -nE 'androidx\.compose\.material3\.' "$file" | \
-                        grep -vE 'DatePicker|TimePicker|DatePickerDialog|TimeInput|rememberDatePickerState|rememberTimePickerState|ExperimentalMaterial3Api' || true)
-                fi
-                if [ -n "$material3_hits" ]; then
-                    echo -e "${RED}❌ VIOLATION: Material3 usage in $file${NC}"
-                    echo "$material3_hits" | sed 's/^/     - /'
-                    echo "   Fix: Material3 is only allowed in sacrament module. Use Sacrament components instead."
-                    VIOLATIONS=$((VIOLATIONS + 1))
-                fi
-            fi
-
-            # Get file content for checks
+            # Get file content for all checks
             if [ -n "$REF" ]; then
                 content=$(git show "$REF:$file" 2>/dev/null || true)
                 if [ -z "$content" ]; then
@@ -111,9 +84,9 @@ for file in $FILES; do
             fi
             CHECKED_FILES=$((CHECKED_FILES + 1))
 
-            # Material3 is ONLY allowed in sacrament module (for bridge components)
-            # Check Material3 usage outside sacrament module
+            # Check Material3 usage - only allowed in sacrament module
             if [[ "$file" != sacrament/* ]]; then
+                # Outside sacrament: Material3 is completely forbidden
                 if [ -n "$REF" ]; then
                     material3_hits=$(printf "%s\n" "$content" | grep -nE 'androidx\.compose\.material3\.' | \
                         grep -vE 'DatePicker|TimePicker|DatePickerDialog|TimeInput|rememberDatePickerState|rememberTimePickerState|ExperimentalMaterial3Api' || true)
@@ -174,6 +147,7 @@ for file in $FILES; do
                     fi
                     if [ -n "$raw_color_hits" ]; then
                         echo -e "${RED}❌ VIOLATION: Raw hex color usage in $file${NC}"
+                        # shellcheck disable=SC2001
                         echo "$raw_color_hits" | sed 's/^/     - /'
                         echo "   Fix: Use SacramentTheme color tokens instead of Color(0x...)."
                         VIOLATIONS=$((VIOLATIONS + 1))
