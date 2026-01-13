@@ -5,17 +5,19 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Info
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.sacrament.demo.catalog.CatalogSection
 import com.sacrament.demo.catalog.CatalogTopAppBar
+import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentEmptyState
 import com.sacrament.ui.patterns.SacramentErrorState
 import com.sacrament.ui.patterns.SacramentLoadingState
 import com.sacrament.ui.patterns.SacramentScreenScaffold
 import com.sacrament.ui.primitives.SacramentText
-import com.sacrament.ui.foundation.SacramentTheme
 
 @Composable
 fun PatternsCatalogScreen(onNavigateBack: () -> Unit) {
@@ -31,8 +33,9 @@ fun PatternsCatalogScreen(onNavigateBack: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(SacramentTheme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xl)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
+            verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xxl)
         ) {
             CatalogSection("Screen Scaffold") {
                 SacramentText(
@@ -44,7 +47,7 @@ fun PatternsCatalogScreen(onNavigateBack: () -> Unit) {
             CatalogSection("Empty State") {
                 SacramentEmptyState(
                     modifier = Modifier.fillMaxWidth(),
-                    icon = Icons.Rounded.Info,
+                    icon = SacramentIcons.Info,
                     title = "No items found",
                     contentDescription = "Example empty state",
                     description = "This is an example empty state pattern",
@@ -69,21 +72,3 @@ fun PatternsCatalogScreen(onNavigateBack: () -> Unit) {
         }
     }
 }
-
-@Composable
-private fun CatalogSection(
-    title: String,
-    content: @Composable () -> Unit
-) {
-    Column(
-        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
-    ) {
-        SacramentText(
-            text = title,
-            style = SacramentTheme.typography.titleLarge,
-            modifier = Modifier.padding(bottom = SacramentTheme.spacing.xs)
-        )
-        content()
-    }
-}
-
