@@ -1,12 +1,11 @@
 package com.sacrament.demo.catalog
 
 import androidx.compose.runtime.Composable
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import com.sacrament.ui.components.action.SacramentIconButton
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
-import com.sacrament.ui.primitives.SacramentText
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.primitives.SacramentText
 
 @Composable
 fun CatalogTopAppBar(
@@ -23,7 +22,7 @@ fun CatalogTopAppBar(
         navigationIcon = if (onNavigateBack != null) {
             {
                 SacramentIconButton(
-                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                    imageVector = SacramentIcons.ArrowBack,
                     contentDescription = "Back",
                     onClick = onNavigateBack
                 )
