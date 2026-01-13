@@ -1,8 +1,7 @@
-package com.sacrament.demo.catalog
+package com.sacrament.demo
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -32,6 +31,7 @@ fun CatalogSectionTitle(
 
 /**
  * Container for a catalog section with a title and content.
+ * Used across all catalog screens to organize related components with a consistent header.
  */
 @Composable
 fun CatalogSection(
@@ -44,28 +44,6 @@ fun CatalogSection(
         verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.lg)
     ) {
         CatalogSectionTitle(text = title)
-        content()
-    }
-}
-
-/**
- * Container for a catalog row with a label and content.
- */
-@Composable
-fun CatalogRow(
-    label: String,
-    modifier: Modifier = Modifier,
-    content: @Composable () -> Unit
-) {
-    Column(
-        modifier = modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)
-    ) {
-        SacramentText(
-            text = label,
-            style = SacramentTheme.typography.bodyMedium,
-            color = SacramentTheme.colors.text.muted
-        )
         content()
     }
 }
