@@ -1,17 +1,17 @@
-package com.sacrament.demo.catalog.content
+package com.sacrament.demo.content
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.sacrament.demo.catalog.CatalogRow
-import com.sacrament.demo.catalog.CatalogSection
-import com.sacrament.demo.catalog.CatalogTopAppBar
+import com.sacrament.demo.CatalogSection
+import com.sacrament.demo.CatalogTopAppBar
 import com.sacrament.ui.components.content.SacramentAvatar
 import com.sacrament.ui.components.content.SacramentAvatarSize
 import com.sacrament.ui.components.content.SacramentBadge
@@ -22,7 +22,24 @@ import com.sacrament.ui.components.content.SacramentTagTone
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentText
 
+/**
+ * Content Components catalog screen.
+ *
+ * Displays examples of content-related components including avatars, badges, chips, and tags.
+ * Each component is shown with various sizes, states, or tones to demonstrate flexibility.
+ *
+ * Navigation path: Home → Content Components (this screen)
+ *
+ * Components demonstrated:
+ * - **Avatars**: Small, Medium, Large sizes with placeholder and initial states
+ * - **Badges**: Brand, Neutral, Success, Warning, Error tones
+ * - **Chips**: Unselected, Selected, With icons
+ * - **Tags**: Neutral, Brand, Success, Warning, Error, Info tones
+ *
+ * @param onNavigateBack Callback to navigate back to the catalog home screen
+ */
 @Composable
 fun ContentCatalogScreen(onNavigateBack: () -> Unit) {
     SacramentScreenScaffold(
@@ -128,6 +145,33 @@ fun ContentCatalogScreen(onNavigateBack: () -> Unit) {
                 }
             }
         }
+    }
+}
+
+/**
+ * Row component for displaying content component examples.
+ *
+ * Used exclusively in ContentCatalogScreen to present labeled examples of
+ * content components (avatars, badges, chips, tags).
+ *
+ * @param label Descriptive label for the example (e.g., "Small", "Brand")
+ * @param content The composable content to display below the label
+ */
+@Composable
+private fun CatalogRow(
+    label: String,
+    content: @Composable () -> Unit
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)
+    ) {
+        SacramentText(
+            text = label,
+            style = SacramentTheme.typography.bodyMedium,
+            color = SacramentTheme.colors.text.muted
+        )
+        content()
     }
 }
 
