@@ -135,29 +135,20 @@ fun ScheduleScreenContent(
                         .clickable(onClick = onNavigateToProfile)
                         .padding(end = spacing.padding16)
                 ) {
-                    if (state.profilePictureUri != null) {
-                        AsyncImage(
-                            contentDescription = "profile picture",
-                            contentScale = ContentScale.Crop,
-                            model = ImageRequest.Builder(LocalContext.current)
-                                .data(state.profilePictureUri).crossfade(true).build(),
-                            modifier = Modifier
-                                .size(28.dp)
-                                .clip(CircleShape)
-                                .border(2.dp, SacramentTheme.colors.text.strong, CircleShape)
-                        )
-                    } else {
-                        AsyncImage(
-                            contentDescription = "profile picture placeholder",
-                            contentScale = ContentScale.Crop,
-                            model = ImageRequest.Builder(LocalContext.current)
-                                .data(R.drawable.sacrament_profile_placeholder).crossfade(true).build(),
-                            modifier = Modifier
-                                .size(28.dp)
-                                .clip(CircleShape)
-                                .border(2.dp, SacramentTheme.colors.text.strong, CircleShape)
-                        )
-                    }
+                    AsyncImage(
+                        model = ImageRequest.Builder(LocalContext.current)
+                            .data(state.profilePictureUri)
+                            .crossfade(true)
+                            .placeholder(R.drawable.sacrament_profile_placeholder)
+                            .error(R.drawable.sacrament_profile_placeholder)
+                            .build(),
+                        contentDescription = "profile picture",
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .size(28.dp)
+                            .clip(CircleShape)
+                            .border(2.dp, SacramentTheme.colors.text.strong, CircleShape)
+                    )
                 }
             }
         )
