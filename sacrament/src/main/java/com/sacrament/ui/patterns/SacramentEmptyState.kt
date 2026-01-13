@@ -80,7 +80,8 @@ fun SacramentEmptyState(
 @Composable
 fun SacramentEmptyStatePreview() {
     PreviewTheme {
-        SacramentSurface(color = Color.White, shape = RoundedCornerShape(0.dp)) {
+        val radii = SacramentTheme.radii
+        SacramentSurface(color = Color.White, shape = RoundedCornerShape(radii.none)) {
             SacramentEmptyState(
                 icon = SampleIcons.Info,
                 title = SampleText.ShortTitle,
