@@ -1,6 +1,6 @@
-@file:OptIn(kotlin.time.ExperimentalTime::class)
+@file:OptIn(ExperimentalTime::class)
 
-package com.practicalchristian.app.feature.schedules
+package com.practicalchristian.app.feature.schedules.detail
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.gestures.Orientation
@@ -8,6 +8,7 @@ import androidx.compose.foundation.gestures.rememberScrollableState
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,30 +23,6 @@ import androidx.compose.material3.TimeInput
 import androidx.compose.material3.TimePicker
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberTimePickerState
-import com.sacrament.ui.components.action.SacramentButton
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.action.SacramentButtonVariant
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.action.SacramentIconButton
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.feedback.SacramentProgressIndicator
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.feedback.SacramentProgressVariant
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.navigation.SacramentTopAppBar
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.surface.SacramentCard
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.surface.SacramentCardColors
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.surface.SacramentCardDefaults
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.primitives.SacramentIcon
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.primitives.SacramentText
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -54,9 +31,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.practicalchristian.app.core.domain.models.Book
@@ -67,10 +44,21 @@ import com.practicalchristian.app.core.ui.helpers.ItemState
 import com.practicalchristian.app.core.ui.helpers.asFullDayString
 import com.practicalchristian.app.core.ui.helpers.asLocalDateTime
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
+import com.practicalchristian.app.feature.schedules.ScheduleScreenUiState
+import com.practicalchristian.app.feature.schedules.ScheduleViewModel
+import com.sacrament.ui.components.action.SacramentButton
+import com.sacrament.ui.components.action.SacramentButtonVariant
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.feedback.SacramentProgressIndicator
+import com.sacrament.ui.components.feedback.SacramentProgressVariant
+import com.sacrament.ui.components.navigation.SacramentTopAppBar
+import com.sacrament.ui.components.surface.SacramentCard
 import com.sacrament.ui.foundation.Bar
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
@@ -79,6 +67,7 @@ import kotlinx.datetime.minus
 import kotlinx.datetime.plus
 import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 /**
  * Schedule details screen.
@@ -309,14 +298,14 @@ fun TimePickerDialog(
     content: @Composable () -> Unit
 ) {
     val spacing = SacramentTheme.spacing
-    androidx.compose.ui.window.Dialog(
+    Dialog(
         onDismissRequest = onDismissRequest
     ) {
         SacramentCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(spacing.padding16),
-            contentPadding = androidx.compose.foundation.layout.PaddingValues(spacing.padding24)
+            contentPadding = PaddingValues(spacing.padding24)
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -351,8 +340,8 @@ private fun ScheduleScreenLoadingPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         ScheduleScreenContent(
             state = ScheduleScreenUiState(
-            scheduleState = ItemState.Loading
-        ), onNavigateBackClicked = {}, onValueChangeCompletedAt = {}, onClickToggleDatePicker = {})
+                scheduleState = ItemState.Loading
+            ), onNavigateBackClicked = {}, onValueChangeCompletedAt = {}, onClickToggleDatePicker = {})
     }
 }
 
@@ -371,8 +360,8 @@ private fun ScheduleScreenCompletedPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         ScheduleScreenContent(
             state = ScheduleScreenUiState(
-            scheduleState = ItemState.Success(completedSchedule)
-        ), onNavigateBackClicked = {}, onValueChangeCompletedAt = {}, onClickToggleDatePicker = {})
+                scheduleState = ItemState.Success(completedSchedule)
+            ), onNavigateBackClicked = {}, onValueChangeCompletedAt = {}, onClickToggleDatePicker = {})
     }
 }
 
@@ -391,8 +380,8 @@ private fun ScheduleScreenPendingPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         ScheduleScreenContent(
             state = ScheduleScreenUiState(
-            scheduleState = ItemState.Success(pendingSchedule)
-        ), onNavigateBackClicked = {}, onValueChangeCompletedAt = {}, onClickToggleDatePicker = {})
+                scheduleState = ItemState.Success(pendingSchedule)
+            ), onNavigateBackClicked = {}, onValueChangeCompletedAt = {}, onClickToggleDatePicker = {})
     }
 }
 
@@ -411,8 +400,8 @@ private fun ScheduleScreenFuturePreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         ScheduleScreenContent(
             state = ScheduleScreenUiState(
-            scheduleState = ItemState.Success(futureSchedule)
-        ), onNavigateBackClicked = {}, onValueChangeCompletedAt = {}, onClickToggleDatePicker = {})
+                scheduleState = ItemState.Success(futureSchedule)
+            ), onNavigateBackClicked = {}, onValueChangeCompletedAt = {}, onClickToggleDatePicker = {})
     }
 }
 
@@ -431,8 +420,8 @@ private fun ScheduleScreenWithDatePickerPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         ScheduleScreenContent(
             state = ScheduleScreenUiState(
-            scheduleState = ItemState.Success(pendingSchedule), isDatePickerOpen = true
-        ), onNavigateBackClicked = {}, onValueChangeCompletedAt = {}, onClickToggleDatePicker = {})
+                scheduleState = ItemState.Success(pendingSchedule), isDatePickerOpen = true
+            ), onNavigateBackClicked = {}, onValueChangeCompletedAt = {}, onClickToggleDatePicker = {})
     }
 }
 
@@ -442,8 +431,8 @@ private fun ScheduleScreenErrorPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         ScheduleScreenContent(
             state = ScheduleScreenUiState(
-            scheduleState = ItemState.Error("Unable to load schedule data")
-        ),
+                scheduleState = ItemState.Error("Unable to load schedule data")
+            ),
             onNavigateBackClicked = {},
             onValueChangeCompletedAt = {},
             onClickToggleDatePicker = {})
