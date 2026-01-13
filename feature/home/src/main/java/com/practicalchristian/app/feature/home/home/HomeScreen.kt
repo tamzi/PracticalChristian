@@ -359,11 +359,12 @@ private fun DayItem(
         SacramentTheme.colors.text.muted
     }
 
+    val radii = SacramentTheme.radii
     Box(
         modifier = Modifier
             .width(64.dp)
             .height(90.dp)
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(radii.lg))
             .background(backgroundColor)
             .clickable { onDaySelected() }
             .padding(vertical = spacing.padding12),
@@ -792,24 +793,21 @@ private fun PlanCard(
 ) {
     val colors = SacramentTheme.colors
     val spacing = SacramentTheme.spacing
-    Card(
+    val radii = SacramentTheme.radii
+    SacramentCard(
+        onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
-            .height(140.dp)
-            .clickable { onClick() },
-        shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = colors.surfaces.sunlightSoft
+            .height(140.dp),
+        colors = SacramentCardColors(
+            container = colors.surfaces.sunlightSoft,
+            border = colors.text.muted.copy(alpha = 0.15f)
         ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp,
-            pressedElevation = 2.dp
-        )
+        contentPadding = PaddingValues(spacing.padding16)
     ) {
         Row(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(spacing.padding16),
+                .fillMaxSize(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -821,11 +819,11 @@ private fun PlanCard(
                     modifier = Modifier
                         .background(
                             color = colors.surfaces.peachSoft,
-                            shape = RoundedCornerShape(8.dp)
+                            shape = RoundedCornerShape(radii.sm)
                         )
                         .padding(horizontal = spacing.padding12, vertical = spacing.padding6)
                 ) {
-                    Text(
+                    SacramentText(
                         text = "${plan.daysCount} days plan",
                         style = SacramentTheme.typography.labelMedium,
                         color = colors.brand.tertiary,
@@ -835,7 +833,7 @@ private fun PlanCard(
 
                 Spacer(modifier = Modifier.height(spacing.padding8))
 
-                Text(
+                SacramentText(
                     text = plan.title,
                     style = SacramentTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
@@ -845,7 +843,7 @@ private fun PlanCard(
 
                 Spacer(modifier = Modifier.height(spacing.padding8))
 
-                Text(
+                SacramentText(
                     text = "Start this Plan",
                     style = SacramentTheme.typography.bodyMedium,
                     color = colors.brand.primary,
@@ -857,13 +855,13 @@ private fun PlanCard(
             Box(
                 modifier = Modifier
                     .size(100.dp)
-                    .clip(RoundedCornerShape(16.dp))
+                    .clip(RoundedCornerShape(radii.lg))
                     .background(colors.surfaces.roseTint),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
+                SacramentText(
                     text = "📚",
-                    fontSize = 48.sp
+                    style = SacramentTheme.typography.displayLarge
                 )
             }
         }
