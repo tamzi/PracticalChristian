@@ -52,7 +52,6 @@ import com.sacrament.ui.components.surface.SacramentCard
 import com.sacrament.ui.components.surface.SacramentCardColors
 import com.sacrament.ui.components.surface.SacramentCardDefaults
 import com.sacrament.ui.components.surface.SacramentModalBottomSheet
-import com.sacrament.ui.components.surface.rememberSacramentModalBottomSheetState
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.foundation.icon.SacramentIcons
@@ -442,9 +441,9 @@ fun TagsBottomSheet(
                                                         item
                                                     )
                                                 ) Pair(
-                                                    Color(item.color.toColorInt()), Color.Black
+                                                    Color(item.color.toColorInt()), SacramentTheme.colors.text.strong
                                                 )
-                                                else Pair(Color.Gray, Color.White)
+                                                else Pair(SacramentTheme.colors.surfaces.surface, SacramentTheme.colors.text.muted)
                                                 SacramentCard(
                                                     onClick = { onTagClicked.invoke(item) },
                                                     colors = SacramentCardColors(
