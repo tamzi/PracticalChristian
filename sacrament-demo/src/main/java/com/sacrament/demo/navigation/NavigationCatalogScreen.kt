@@ -1,4 +1,4 @@
-package com.sacrament.demo.catalog.navigation
+package com.sacrament.demo.navigation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,12 +8,28 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.sacrament.demo.catalog.CatalogSection
-import com.sacrament.demo.catalog.CatalogTopAppBar
+import com.sacrament.demo.CatalogSection
+import com.sacrament.demo.CatalogTopAppBar
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.patterns.SacramentScreenScaffold
 import com.sacrament.ui.primitives.SacramentText
 
+/**
+ * Navigation Components catalog screen.
+ *
+ * Displays information about navigation components that help users move through
+ * the app, including top app bars, bottom bars, tabs, and navigation rails.
+ *
+ * Navigation path: Home → Navigation Components (this screen)
+ *
+ * Components referenced:
+ * - **Top App Bar**: Demonstrated at the top of this screen
+ * - **Bottom Bar**: Bottom navigation for primary destinations (not shown)
+ * - **Tab Row**: Tab-based navigation within a section (not shown)
+ * - **Navigation Rail**: Side navigation for tablet layouts (not shown)
+ *
+ * @param onNavigateBack Callback to navigate back to the catalog home screen
+ */
 @Composable
 fun NavigationCatalogScreen(onNavigateBack: () -> Unit) {
     SacramentScreenScaffold(
