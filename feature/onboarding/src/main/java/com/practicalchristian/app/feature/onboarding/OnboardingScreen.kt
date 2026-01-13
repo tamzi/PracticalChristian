@@ -168,7 +168,7 @@ fun OnboardingScreenContent(
                             text = "Skip",
                             onClick = onCreateAccount,
                             enabled = !isLoading,
-                            variant = SacramentButtonVariant.Text
+                            variant = SacramentButtonVariant.Ghost
                         )
                     }
                     Spacer(modifier = Modifier.weight(1f))
