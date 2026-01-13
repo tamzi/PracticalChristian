@@ -2,6 +2,7 @@ package com.practicalchristian.app.feature.notifications.hub
 
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.viewModelScope
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import com.practicalchristian.app.core.ui.helpers.UiListState
 import com.practicalchristian.app.core.ui.helpers.UiSuccessState
