@@ -9,9 +9,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material.icons.rounded.ArrowForward
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
+import com.sacrament.demo.catalog.CatalogTopAppBar
 import com.sacrament.ui.components.action.SacramentButton
 import com.sacrament.ui.components.action.SacramentButtonSize
 import com.sacrament.ui.components.action.SacramentButtonTone
@@ -20,10 +20,10 @@ import com.sacrament.ui.components.action.SacramentFab
 import com.sacrament.ui.components.action.SacramentFabSize
 import com.sacrament.ui.components.action.SacramentIconButton
 import com.sacrament.ui.components.action.SacramentIconButtonSize
-import com.sacrament.demo.catalog.CatalogTopAppBar
+import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
 import com.sacrament.ui.primitives.SacramentText
-import com.sacrament.ui.foundation.SacramentTheme
 
 @Composable
 fun ActionCatalogScreen(onNavigateBack: () -> Unit) {
@@ -40,8 +40,8 @@ fun ActionCatalogScreen(onNavigateBack: () -> Unit) {
                 .fillMaxSize()
                 .padding(paddingValues)
                 .verticalScroll(rememberScrollState())
-                .padding(SacramentTheme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xl)
+                .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
+            verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xxl)
         ) {
             // Buttons - Variants
             CatalogSection("Button Variants") {
@@ -145,14 +145,14 @@ fun ActionCatalogScreen(onNavigateBack: () -> Unit) {
                     SacramentButton(
                         text = "Add Item",
                         onClick = {},
-                        leadingIcon = Icons.Rounded.Add
+                        leadingIcon = SacramentIcons.Add
                     )
                 }
                 CatalogRow("Trailing Icon") {
                     SacramentButton(
                         text = "Continue",
                         onClick = {},
-                        trailingIcon = Icons.Rounded.ArrowForward
+                        trailingIcon = SacramentIcons.ArrowForward
                     )
                 }
                 CatalogRow("Disabled") {
@@ -168,7 +168,7 @@ fun ActionCatalogScreen(onNavigateBack: () -> Unit) {
             CatalogSection("Icon Buttons") {
                 CatalogRow("Small") {
                     SacramentIconButton(
-                        imageVector = Icons.Rounded.Add,
+                        imageVector = SacramentIcons.Add,
                         contentDescription = "Add",
                         onClick = {},
                         size = SacramentIconButtonSize.Small
@@ -176,7 +176,7 @@ fun ActionCatalogScreen(onNavigateBack: () -> Unit) {
                 }
                 CatalogRow("Medium") {
                     SacramentIconButton(
-                        imageVector = Icons.Rounded.Add,
+                        imageVector = SacramentIcons.Add,
                         contentDescription = "Add",
                         onClick = {},
                         size = SacramentIconButtonSize.Medium
@@ -184,7 +184,7 @@ fun ActionCatalogScreen(onNavigateBack: () -> Unit) {
                 }
                 CatalogRow("Large") {
                     SacramentIconButton(
-                        imageVector = Icons.Rounded.Add,
+                        imageVector = SacramentIcons.Add,
                         contentDescription = "Add",
                         onClick = {},
                         size = SacramentIconButtonSize.Large
@@ -196,7 +196,7 @@ fun ActionCatalogScreen(onNavigateBack: () -> Unit) {
             CatalogSection("Floating Action Buttons") {
                 CatalogRow("Small") {
                     SacramentFab(
-                        imageVector = Icons.Rounded.Add,
+                        imageVector = SacramentIcons.Add,
                         contentDescription = "Add",
                         onClick = {},
                         size = SacramentFabSize.Small
@@ -204,7 +204,7 @@ fun ActionCatalogScreen(onNavigateBack: () -> Unit) {
                 }
                 CatalogRow("Medium") {
                     SacramentFab(
-                        imageVector = Icons.Rounded.Add,
+                        imageVector = SacramentIcons.Add,
                         contentDescription = "Add",
                         onClick = {},
                         size = SacramentFabSize.Medium
@@ -212,7 +212,7 @@ fun ActionCatalogScreen(onNavigateBack: () -> Unit) {
                 }
                 CatalogRow("Large") {
                     SacramentFab(
-                        imageVector = Icons.Rounded.Add,
+                        imageVector = SacramentIcons.Add,
                         contentDescription = "Add",
                         onClick = {},
                         size = SacramentFabSize.Large
@@ -229,12 +229,16 @@ private fun CatalogSection(
     content: @Composable () -> Unit
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
+        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.lg)
     ) {
         SacramentText(
             text = title,
-            style = SacramentTheme.typography.titleLarge,
-            modifier = Modifier.padding(bottom = SacramentTheme.spacing.xs)
+            style = SacramentTheme.typography.headlineMedium.copy(
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 1.sp
+            ),
+            color = SacramentTheme.colors.text.strong,
+            modifier = Modifier.padding(bottom = SacramentTheme.spacing.sm)
         )
         content()
     }
@@ -247,12 +251,12 @@ private fun CatalogRow(
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xs)
+        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)
     ) {
         SacramentText(
             text = label,
-            style = SacramentTheme.typography.labelMedium,
-            modifier = Modifier.padding(start = SacramentTheme.spacing.xs)
+            style = SacramentTheme.typography.bodyMedium,
+            color = SacramentTheme.colors.text.muted
         )
         content()
     }
