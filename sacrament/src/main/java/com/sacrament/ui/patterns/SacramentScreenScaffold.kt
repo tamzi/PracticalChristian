@@ -89,8 +89,13 @@ fun SacramentScreenScaffold(
                 modifier = Modifier
                     .weight(1f)
                     .imePadding()
+            // Bottom bar
+            Box(
+                modifier = Modifier
+                    .windowInsetsPadding(WindowInsets.navigationBars)
             ) {
-                // Pass PaddingValues for API compatibility with Scaffold-like patterns.
+                bottomBar()
+            }
                 // The Column layout manages top/bottom bars, so no padding offset is needed.
                 // Content receives zero padding since bars don't overlay the content area.
                 content(PaddingValues(top = 0.dp, bottom = 0.dp))
