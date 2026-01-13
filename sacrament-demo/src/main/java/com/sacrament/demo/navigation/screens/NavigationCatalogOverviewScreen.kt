@@ -27,21 +27,27 @@ import com.sacrament.ui.primitives.SacramentText
  * help users move through the app and understand their current location.
  *
  * Navigation hierarchy:
- * - Home → Navigation Components (this screen) → TopAppBar
+ * - Home → Navigation Components (this screen) → TopAppBar/BottomBar/TabRow/NavigationRail
  *
  * Subcategories:
  * - **Top App Bar**: Screen header with title and actions
- *
- * Note: Bottom Bar, Tabs, and Navigation Rail are demonstrated in-context
- * throughout the app rather than as standalone catalog items.
+ * - **Bottom Bar**: Primary navigation for mobile
+ * - **Tab Row**: Section navigation with tabs
+ * - **Navigation Rail**: Side navigation for larger screens
  *
  * @param onNavigateBack Callback to navigate back to the catalog home screen
  * @param onNavigateToTopAppBar Callback to navigate to Top App Bar screen
+ * @param onNavigateToBottomBar Callback to navigate to Bottom Bar screen
+ * @param onNavigateToTabRow Callback to navigate to Tab Row screen
+ * @param onNavigateToNavigationRail Callback to navigate to Navigation Rail screen
  */
 @Composable
 fun NavigationCatalogOverviewScreen(
     onNavigateBack: () -> Unit,
-    onNavigateToTopAppBar: () -> Unit
+    onNavigateToTopAppBar: () -> Unit,
+    onNavigateToBottomBar: () -> Unit = {},
+    onNavigateToTabRow: () -> Unit = {},
+    onNavigateToNavigationRail: () -> Unit = {}
 ) {
     SacramentScreenScaffold(
         topBar = {
@@ -72,20 +78,20 @@ fun NavigationCatalogOverviewScreen(
                 
                 NavigationCatalogListItem(
                     title = "BOTTOM BAR",
-                    description = "Primary navigation (demonstrated in-context)",
-                    onClick = { /* Could add later if needed */ }
+                    description = "Primary navigation for mobile",
+                    onClick = onNavigateToBottomBar
                 )
                 
                 NavigationCatalogListItem(
                     title = "TAB ROW",
-                    description = "Section navigation (demonstrated in-context)",
-                    onClick = { /* Could add later if needed */ }
+                    description = "Section navigation with tabs",
+                    onClick = onNavigateToTabRow
                 )
                 
                 NavigationCatalogListItem(
                     title = "NAVIGATION RAIL",
-                    description = "Side navigation for tablets (demonstrated in-context)",
-                    onClick = { /* Could add later if needed */ }
+                    description = "Side navigation for larger screens",
+                    onClick = onNavigateToNavigationRail
                 )
             }
         }
