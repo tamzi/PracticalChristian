@@ -81,6 +81,7 @@ Single source of truth for project tasks, priorities, and status.
   - [x] TASK: Remove Material3 dependency from feature convention plugin and module build files once migrations are complete.
     - [x] TASK: Remove Material3 from `buildLogic/convention/src/main/kotlin/com/practicalchristian/app/convention/feature/AndroidFeatureConventionPlugin.kt`.
   - [x] TASK: Add CI check to enforce design system rules.
+  - [ ] TASK: enforce using theme colours from the design system.
   - [ ] TASK: Do a thorough deep code review of this epic to ensure it is complete and correct. Fix any issues found and commit the changes.
 
 </details>
