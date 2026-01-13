@@ -11,15 +11,16 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import com.sacrament.ui.foundation.color.DarkSacramentColors
-import com.sacrament.ui.foundation.color.SacramentColorTokens
 import com.sacrament.ui.foundation.color.LightSacramentColors
+import com.sacrament.ui.foundation.color.SacramentColorTokens
 import com.sacrament.ui.foundation.elevation.SacramentElevation
 import com.sacrament.ui.foundation.icon.SacramentIconSizes
 import com.sacrament.ui.foundation.layout.SacramentSpacing
 import com.sacrament.ui.foundation.motion.SacramentMotion
 import com.sacrament.ui.foundation.shape.SacramentRadii
-import com.sacrament.ui.foundation.typography.SacramentTypography
 import com.sacrament.ui.foundation.typography.DefaultSacramentTypography
+import com.sacrament.ui.foundation.typography.SacramentLetterSpacing
+import com.sacrament.ui.foundation.typography.SacramentTypography
 
 enum class Bar {
     SURFACE,
@@ -38,6 +39,7 @@ val LocalElevation = staticCompositionLocalOf { SacramentElevation() }
 val LocalIconSizes = staticCompositionLocalOf { SacramentIconSizes() }
 val LocalTypography = staticCompositionLocalOf { DefaultSacramentTypography }
 val LocalMotion = staticCompositionLocalOf { SacramentMotion() }
+val LocalLetterSpacing = staticCompositionLocalOf { SacramentLetterSpacing() }
 
 /**
  * Design system tokens provided by SacramentTheme.
@@ -63,6 +65,9 @@ object SacramentTheme {
 
     val motion: SacramentMotion
         @Composable get() = LocalMotion.current
+
+    val letterSpacing: SacramentLetterSpacing
+        @Composable get() = LocalLetterSpacing.current
 }
 
 /**
@@ -85,6 +90,7 @@ fun SacramentTheme(
     val iconSizes = SacramentIconSizes()
     val typography = DefaultSacramentTypography
     val motion = SacramentMotion()
+    val letterSpacing = SacramentLetterSpacing()
     val view = LocalView.current
 
     if (!view.isInEditMode) {
@@ -109,6 +115,7 @@ fun SacramentTheme(
         LocalIconSizes provides iconSizes,
         LocalTypography provides typography,
         LocalMotion provides motion,
+        LocalLetterSpacing provides letterSpacing,
         content = content,
     )
 }
