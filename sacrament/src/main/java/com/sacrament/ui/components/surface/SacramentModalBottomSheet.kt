@@ -6,10 +6,6 @@ import androidx.compose.material3.SheetState
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.sacrament.ui.foundation.Bar
-import com.sacrament.ui.foundation.SacramentTheme
-import com.sacrament.ui.primitives.SacramentText
 
 /**
  * Modal bottom sheet using Compose foundation with Sacrament styling.
@@ -41,22 +37,3 @@ fun SacramentModalBottomSheet(
     }
 }
 
-/**
- * Helper to create a modal bottom sheet state.
- */
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun rememberSacramentModalBottomSheetState(
-    skipPartiallyExpanded: Boolean = true,
-): SheetState {
-    return rememberModalBottomSheetState(skipPartiallyExpanded = skipPartiallyExpanded)
-}
-
-@Preview
-@Composable
-private fun SacramentModalBottomSheetPreview() {
-    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        // Preview is simplified - actual usage requires state management
-        SacramentText(text = "ModalBottomSheet preview")
-    }
-}

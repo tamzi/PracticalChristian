@@ -26,7 +26,7 @@ import kotlin.time.Instant
 
 /**
  * Bridge component for date and time picking using Material3 DatePicker/TimePicker.
- * 
+ *
  * This is a temporary bridge until we can implement Material-free pickers.
  * Wraps Material3 DatePicker and TimePicker with Sacrament styling.
  */
@@ -46,84 +46,125 @@ fun PracticalChristianDatePicker(
 
     // Step 1: Date Selection Dialog
     if (isDialogOpen && !showTimePickerDialog) {
-        DatePickerDialog(
-            onDismissRequest = {
-                onValueChangeCompletedAt.invoke(null)
-            },
-            confirmButton = {
-                SacramentButton(
-                    text = "Next: Select Time",
-                    onClick = {
-                        val dateMillis = dateState.selectedDateMillis
-                        if (dateMillis != null) {
-                            selectedDateMillis = dateMillis
-                            showTimePickerDialog = true
-                        } else {
-                            onValueChangeCompletedAt.invoke(null)
-                        }
-                    }
-                )
-            },
-            dismissButton = {
-                SacramentButton(
-                    text = "Cancel",
-                    onClick = { onValueChangeCompletedAt.invoke(null) },
-                    variant = SacramentButtonVariant.Outlined
-                )
+        DateSelectionDialog(
+            dateState = dateState,
+            onDismiss = { onValueChangeCompletedAt.invoke(null) },
+            onConfirm = { dateMillis ->
+                selectedDateMillis = dateMillis
+                showTimePickerDialog = true
             }
-        ) {
-            DatePicker(state = dateState)
-        }
+        )
     }
 
     // Step 2: Time Selection Dialog
     if (showTimePickerDialog) {
-        TimePickerDialog(
-            onDismissRequest = {
-                showTimePickerDialog = false
+        TimeSelectionDialog(
+            timeState = timeState,
+            selectedDateMillis = selectedDateMillis,
+            onDismiss = {
                 onValueChangeCompletedAt.invoke(null)
             },
-            confirmButton = {
-                SacramentButton(
-                    text = "Complete",
-                    onClick = {
-                        val dateMillis = selectedDateMillis
-                        if (dateMillis != null) {
-                            // Convert epoch milliseconds to LocalDate with proper timezone handling
-                            // Material3 DatePicker always returns UTC midnight (00:00:00) for the selected date
-                            // We interpret this as a calendar date (not a specific moment in time)
-                            val instant = Instant.fromEpochMilliseconds(dateMillis)
-                            val selectedDate = instant.toLocalDateTime(TimeZone.UTC).date
-                            
-                            // Combine the calendar date with user-selected time to create LocalDateTime
-                            // This represents a timezone-agnostic date and time (e.g., "2024-01-13 14:30")
-                            val selectedDateTime = selectedDate.atTime(
-                                hour = timeState.hour,
-                                minute = timeState.minute
-                            )
-                            onValueChangeCompletedAt.invoke(selectedDateTime)
-                        } else {
-                            onValueChangeCompletedAt.invoke(null)
-                        }
-                        showTimePickerDialog = false
-                    }
-                )
-            },
-            dismissButton = {
-                SacramentButton(
-                    text = "Cancel",
-                    onClick = {
-                        showTimePickerDialog = false
-                        onValueChangeCompletedAt.invoke(null)
-                    },
-                    variant = SacramentButtonVariant.Outlined
-                )
-            },
-            title = "Select Completion Time"
-        ) {
-            TimePicker(state = timeState)
-        }
+            onConfirm = { dateTime ->
+                onValueChangeCompletedAt.invoke(dateTime)
+            }
+        )
     }
+}
+
+/**
+ * Date selection dialog component.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun DateSelectionDialog(
+    dateState: androidx.compose.material3.DatePickerState,
+    onDismiss: () -> Unit,
+    onConfirm: (Long) -> Unit,
+) {
+    DatePickerDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = {
+            SacramentButton(
+                text = "Next: Select Time",
+                onClick = {
+                    val dateMillis = dateState.selectedDateMillis
+                    if (dateMillis != null) {
+                        onConfirm(dateMillis)
+                    } else {
+                        onDismiss()
+                    }
+                }
+            )
+        },
+        dismissButton = {
+            SacramentButton(
+                text = "Cancel",
+                onClick = onDismiss,
+                variant = SacramentButtonVariant.Outlined
+            )
+        }
+    ) {
+        DatePicker(state = dateState)
+    }
+}
+
+/**
+ * Time selection dialog component.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun TimeSelectionDialog(
+    timeState: androidx.compose.material3.TimePickerState,
+    selectedDateMillis: Long?,
+    onDismiss: () -> Unit,
+    onConfirm: (LocalDateTime?) -> Unit,
+) {
+    TimePickerDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = {
+            SacramentButton(
+                text = "Complete",
+                onClick = {
+                    val dateTime = createLocalDateTime(selectedDateMillis, timeState)
+                    onConfirm(dateTime)
+                }
+            )
+        },
+        dismissButton = {
+            SacramentButton(
+                text = "Cancel",
+                onClick = onDismiss,
+                variant = SacramentButtonVariant.Outlined
+            )
+        },
+        title = "Select Completion Time"
+    ) {
+        TimePicker(state = timeState)
+    }
+}
+
+/**
+ * Converts date and time selections into LocalDateTime.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+private fun createLocalDateTime(
+    dateMillis: Long?,
+    timeState: androidx.compose.material3.TimePickerState,
+): LocalDateTime? {
+    if (dateMillis == null) return null
+
+    // Convert epoch milliseconds to LocalDate with proper timezone handling
+    // Material3 DatePicker always returns UTC midnight (00:00:00) for the selected date
+    // We interpret this as a calendar date (not a specific moment in time)
+    val instant = Instant.fromEpochMilliseconds(dateMillis)
+    val selectedDate = instant.toLocalDateTime(TimeZone.UTC).date
+
+    // Combine the calendar date with user-selected time to create LocalDateTime
+    // This represents a timezone-agnostic date and time (e.g., "2024-01-13 14:30")
+    return selectedDate.atTime(
+        hour = timeState.hour,
+        minute = timeState.minute
+    )
 }
 
 /**
@@ -140,7 +181,7 @@ fun TimePickerDialog(
     content: @Composable () -> Unit,
 ) {
     Dialog(onDismissRequest = onDismissRequest) {
-        androidx.compose.material3.DatePickerDialog(
+        DatePickerDialog(
             onDismissRequest = onDismissRequest,
             confirmButton = confirmButton,
             dismissButton = dismissButton
