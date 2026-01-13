@@ -10,8 +10,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Star
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
+import com.sacrament.demo.catalog.CatalogTopAppBar
 import com.sacrament.ui.components.content.SacramentAvatar
 import com.sacrament.ui.components.content.SacramentAvatarSize
 import com.sacrament.ui.components.content.SacramentBadge
@@ -19,10 +20,10 @@ import com.sacrament.ui.components.content.SacramentBadgeTone
 import com.sacrament.ui.components.content.SacramentChip
 import com.sacrament.ui.components.content.SacramentTag
 import com.sacrament.ui.components.content.SacramentTagTone
-import com.sacrament.demo.catalog.CatalogTopAppBar
+import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
 import com.sacrament.ui.primitives.SacramentText
-import com.sacrament.ui.foundation.SacramentTheme
 
 @Composable
 fun ContentCatalogScreen(onNavigateBack: () -> Unit) {
@@ -39,8 +40,8 @@ fun ContentCatalogScreen(onNavigateBack: () -> Unit) {
                 .fillMaxSize()
                 .padding(paddingValues)
                 .verticalScroll(rememberScrollState())
-                .padding(SacramentTheme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xl)
+                .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
+            verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xxl)
         ) {
             // Avatars
             CatalogSection("Avatars - Sizes") {
@@ -101,7 +102,7 @@ fun ContentCatalogScreen(onNavigateBack: () -> Unit) {
                     SacramentChip(
                         label = "Favorite",
                         selected = true,
-                        leadingIcon = Icons.Rounded.Star,
+                        leadingIcon = SacramentIcons.Star,
                         onClick = {}
                     )
                 }
@@ -138,12 +139,16 @@ private fun CatalogSection(
     content: @Composable () -> Unit
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
+        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.lg)
     ) {
         SacramentText(
             text = title,
-            style = SacramentTheme.typography.titleLarge,
-            modifier = Modifier.padding(bottom = SacramentTheme.spacing.xs)
+            style = SacramentTheme.typography.headlineMedium.copy(
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 1.sp
+            ),
+            color = SacramentTheme.colors.text.strong,
+            modifier = Modifier.padding(bottom = SacramentTheme.spacing.sm)
         )
         content()
     }
@@ -156,12 +161,12 @@ private fun CatalogRow(
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xs)
+        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)
     ) {
         SacramentText(
             text = label,
-            style = SacramentTheme.typography.labelMedium,
-            modifier = Modifier.padding(start = SacramentTheme.spacing.xs)
+            style = SacramentTheme.typography.bodyMedium,
+            color = SacramentTheme.colors.text.muted
         )
         content()
     }
