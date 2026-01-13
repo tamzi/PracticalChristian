@@ -31,6 +31,9 @@ dependencies {
     // Material Icons
     implementation(libs.androidx.compose.material.iconsExtended)
 
+    // Kotlinx DateTime
+    implementation(libs.kotlinx.datetime)
+
     // palette
     // implementation(libs.androidx.palette)
 
