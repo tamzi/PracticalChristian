@@ -11,12 +11,21 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.sacrament.ui.components.action.SacramentFab
+import com.sacrament.ui.components.navigation.SacramentBottomBar
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.preview.PreviewTheme
 import com.sacrament.ui.preview.SampleText
 import com.sacrament.ui.primitives.SacramentText
@@ -28,6 +37,9 @@ import com.sacrament.ui.testing.testTag
  *
  * Provides consistent structure for screens with optional top bar, bottom bar, and FAB.
  * Automatically handles window insets and applies design system colors.
+ *
+ * The FAB is positioned at the bottom-end corner with 16.dp padding, and is automatically
+ * offset above the bottom bar when both are present, preventing overlap with navigation items.
  *
  * Follows design system parameter order: required content → callbacks → modifier.
  *
@@ -51,6 +63,11 @@ fun SacramentScreenScaffold(
     content: @Composable (PaddingValues) -> Unit,
 ) {
     val colors = SacramentTheme.colors
+    val density = LocalDensity.current
+    
+    // Track bottom bar height to offset FAB
+    var bottomBarHeightPx by remember { mutableStateOf(0) }
+    val bottomBarHeightDp = with(density) { bottomBarHeightPx.toDp() }
     
     Box(
         modifier = modifier
@@ -66,7 +83,7 @@ fun SacramentScreenScaffold(
             // Top bar
             topBar()
             
-            // Content area - fills remaining space, with overlay space for FAB
+            // Content area - fills remaining space
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -76,25 +93,34 @@ fun SacramentScreenScaffold(
                 // The Column layout manages top/bottom bars, so no padding offset is needed.
                 // Content receives zero padding since bars don't overlay the content area.
                 content(PaddingValues(top = 0.dp, bottom = 0.dp))
-                
-                // FAB positioned in content area (above bottom bar when present)
-                // Uses BottomEnd alignment so it floats above content and above bottom bar
-                Box(
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .padding(16.dp)
-                ) {
-                    floatingActionButton()
-                }
             }
             
-            // Bottom bar - renders below content area, so FAB naturally floats above it
-            bottomBar()
+            // Bottom bar - measure its height to offset FAB
+            Box(
+                modifier = Modifier.onSizeChanged { size ->
+                    bottomBarHeightPx = size.height
+                }
+            ) {
+                bottomBar()
+            }
+        }
+        
+        // FAB positioned absolutely, offset above bottom bar when present
+        // Uses standard FAB positioning: 16.dp from edges + bottom bar height
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(
+                    end = 16.dp,
+                    bottom = 16.dp + bottomBarHeightDp
+                )
+        ) {
+            floatingActionButton()
         }
     }
 }
 
-@Preview
+@Preview(name = "With Top Bar")
 @Composable
 fun SacramentScreenScaffoldPreview() {
     PreviewTheme {
@@ -110,17 +136,62 @@ fun SacramentScreenScaffoldPreview() {
                 )
             },
             content = { paddingValues ->
-            androidx.compose.foundation.layout.Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues),
-            ) {
-                SacramentText(
-                    text = SampleText.MediumBody,
-                    style = SacramentTheme.typography.bodyMedium,
+                androidx.compose.foundation.layout.Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues),
+                ) {
+                    SacramentText(
+                        text = SampleText.MediumBody,
+                        style = SacramentTheme.typography.bodyMedium,
+                    )
+                }
+            },
+        )
+    }
+}
+
+@Preview(name = "With Bottom Bar and FAB")
+@Composable
+fun SacramentScreenScaffoldWithBottomBarPreview() {
+    PreviewTheme {
+        SacramentScreenScaffold(
+            topBar = {
+                SacramentTopAppBar(
+                    title = {
+                        SacramentText(
+                            text = SampleText.ShortTitle,
+                            style = SacramentTheme.typography.titleSmall,
+                        )
+                    },
                 )
-            }
-        },
+            },
+            bottomBar = {
+                SacramentBottomBar {
+                    SacramentText(text = "Home", style = SacramentTheme.typography.labelSmall)
+                    SacramentText(text = "Notes", style = SacramentTheme.typography.labelSmall)
+                    SacramentText(text = "Profile", style = SacramentTheme.typography.labelSmall)
+                }
+            },
+            floatingActionButton = {
+                SacramentFab(
+                    imageVector = SacramentIcons.Add,
+                    contentDescription = "Add",
+                    onClick = {},
+                )
+            },
+            content = { paddingValues ->
+                androidx.compose.foundation.layout.Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues),
+                ) {
+                    SacramentText(
+                        text = SampleText.MediumBody,
+                        style = SacramentTheme.typography.bodyMedium,
+                    )
+                }
+            },
         )
     }
 }
