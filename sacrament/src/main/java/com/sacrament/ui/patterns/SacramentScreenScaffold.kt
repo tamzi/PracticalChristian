@@ -7,10 +7,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
-import com.sacrament.ui.components.navigation.SacramentTopAppBarDefaults
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.preview.PreviewTheme
 import com.sacrament.ui.preview.SampleText
@@ -69,7 +66,7 @@ fun SacramentScreenScaffold(
             // Top bar
             topBar()
             
-            // Content area - fills remaining space
+            // Content area - fills remaining space, with overlay space for FAB
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -86,20 +83,20 @@ fun SacramentScreenScaffold(
                         bottom = 0.dp
                     )
                 )
+                
+                // FAB positioned in content area (above bottom bar when present)
+                // Uses BottomEnd alignment so it floats above content and above bottom bar
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(16.dp)
+                ) {
+                    floatingActionButton()
+                }
             }
             
-            // Bottom bar
+            // Bottom bar - renders below content area, so FAB naturally floats above it
             bottomBar()
-        }
-        
-        // Floating action button (positioned absolutely, above bottom bar)
-        Box(
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(16.dp)
-                .windowInsetsPadding(WindowInsets.navigationBars)
-        ) {
-            floatingActionButton()
         }
     }
 }
