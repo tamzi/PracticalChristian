@@ -1,4 +1,4 @@
-package com.sacrament.demo.catalog
+package com.sacrament.demo
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
