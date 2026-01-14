@@ -1,4 +1,4 @@
-package com.sacrament.demo.action.button.screens
+package com.sacrament.demo.action.button
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
