@@ -23,7 +23,8 @@ import com.sacrament.ui.primitives.SacramentText
 
 @Composable
 fun SwitchesCatalogScreen(onNavigateBack: () -> Unit) {
-    var switchChecked by remember { mutableStateOf(false) }
+    var switchCheckedSmall by remember { mutableStateOf(false) }
+    var switchCheckedMedium by remember { mutableStateOf(false) }
     
     SacramentScreenScaffold(
         topBar = { CatalogTopAppBar(title = "Switches", onNavigateBack = onNavigateBack) }
@@ -37,15 +38,15 @@ fun SwitchesCatalogScreen(onNavigateBack: () -> Unit) {
             CatalogSection("Switch Sizes") {
                 CatalogRow("Small") {
                     SacramentSwitch(
-                        checked = switchChecked,
-                        onCheckedChange = { switchChecked = it },
+                        checked = switchCheckedSmall,
+                        onCheckedChange = { switchCheckedSmall = it },
                         size = SacramentSwitchSize.Small
                     )
                 }
                 CatalogRow("Medium") {
                     SacramentSwitch(
-                        checked = switchChecked,
-                        onCheckedChange = { switchChecked = it },
+                        checked = switchCheckedMedium,
+                        onCheckedChange = { switchCheckedMedium = it },
                         size = SacramentSwitchSize.Medium
                     )
                 }

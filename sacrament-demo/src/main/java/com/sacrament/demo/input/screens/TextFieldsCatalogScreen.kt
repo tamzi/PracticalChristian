@@ -28,7 +28,8 @@ import com.sacrament.ui.primitives.SacramentText
  */
 @Composable
 fun TextFieldsCatalogScreen(onNavigateBack: () -> Unit) {
-    var textFieldValue by remember { mutableStateOf("") }
+    var textFieldValueSizes by remember { mutableStateOf("") }
+    var textFieldValueStates by remember { mutableStateOf("") }
     
     SacramentScreenScaffold(
         topBar = {
@@ -49,16 +50,16 @@ fun TextFieldsCatalogScreen(onNavigateBack: () -> Unit) {
             CatalogSection("Sizes") {
                 CatalogRow("Small") {
                     SacramentTextField(
-                        value = textFieldValue,
-                        onValueChange = { textFieldValue = it },
+                        value = textFieldValueSizes,
+                        onValueChange = { textFieldValueSizes = it },
                         size = SacramentTextFieldSize.Small,
                         placeholder = "Enter text"
                     )
                 }
                 CatalogRow("Medium") {
                     SacramentTextField(
-                        value = textFieldValue,
-                        onValueChange = { textFieldValue = it },
+                        value = textFieldValueSizes,
+                        onValueChange = { textFieldValueSizes = it },
                         size = SacramentTextFieldSize.Medium,
                         placeholder = "Enter text"
                     )
@@ -68,15 +69,15 @@ fun TextFieldsCatalogScreen(onNavigateBack: () -> Unit) {
             CatalogSection("States") {
                 CatalogRow("With Label") {
                     SacramentTextField(
-                        value = textFieldValue,
-                        onValueChange = { textFieldValue = it },
+                        value = textFieldValueStates,
+                        onValueChange = { textFieldValueStates = it },
                         label = "Email"
                     )
                 }
                 CatalogRow("Error State") {
                     SacramentTextField(
-                        value = textFieldValue,
-                        onValueChange = { textFieldValue = it },
+                        value = textFieldValueStates,
+                        onValueChange = { textFieldValueStates = it },
                         isError = true,
                         label = "Email",
                         placeholder = "Invalid email"

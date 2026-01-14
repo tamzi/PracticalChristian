@@ -23,7 +23,8 @@ import com.sacrament.ui.primitives.SacramentText
 
 @Composable
 fun CheckboxesCatalogScreen(onNavigateBack: () -> Unit) {
-    var checkboxChecked by remember { mutableStateOf(false) }
+    var checkboxCheckedSmall by remember { mutableStateOf(false) }
+    var checkboxCheckedMedium by remember { mutableStateOf(false) }
     
     SacramentScreenScaffold(
         topBar = { CatalogTopAppBar(title = "Checkboxes", onNavigateBack = onNavigateBack) }
@@ -37,15 +38,15 @@ fun CheckboxesCatalogScreen(onNavigateBack: () -> Unit) {
             CatalogSection("Checkbox Sizes") {
                 CatalogRow("Small") {
                     SacramentCheckbox(
-                        checked = checkboxChecked,
-                        onCheckedChange = { checkboxChecked = it },
+                        checked = checkboxCheckedSmall,
+                        onCheckedChange = { checkboxCheckedSmall = it },
                         size = SacramentCheckboxSize.Small
                     )
                 }
                 CatalogRow("Medium") {
                     SacramentCheckbox(
-                        checked = checkboxChecked,
-                        onCheckedChange = { checkboxChecked = it },
+                        checked = checkboxCheckedMedium,
+                        onCheckedChange = { checkboxCheckedMedium = it },
                         size = SacramentCheckboxSize.Medium
                     )
                 }
