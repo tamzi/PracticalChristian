@@ -23,7 +23,8 @@ import com.sacrament.ui.primitives.SacramentText
 
 @Composable
 fun RadiosCatalogScreen(onNavigateBack: () -> Unit) {
-    var radioSelected by remember { mutableStateOf(false) }
+    var radioSelectedSmall by remember { mutableStateOf(false) }
+    var radioSelectedMedium by remember { mutableStateOf(false) }
     
     SacramentScreenScaffold(
         topBar = { CatalogTopAppBar(title = "Radio Buttons", onNavigateBack = onNavigateBack) }
@@ -37,15 +38,15 @@ fun RadiosCatalogScreen(onNavigateBack: () -> Unit) {
             CatalogSection("Radio Button Sizes") {
                 CatalogRow("Small") {
                     SacramentRadio(
-                        selected = radioSelected,
-                        onClick = { radioSelected = !radioSelected },
+                        selected = radioSelectedSmall,
+                        onClick = { radioSelectedSmall = !radioSelectedSmall },
                         size = SacramentRadioSize.Small
                     )
                 }
                 CatalogRow("Medium") {
                     SacramentRadio(
-                        selected = radioSelected,
-                        onClick = { radioSelected = !radioSelected },
+                        selected = radioSelectedMedium,
+                        onClick = { radioSelectedMedium = !radioSelectedMedium },
                         size = SacramentRadioSize.Medium
                     )
                 }
