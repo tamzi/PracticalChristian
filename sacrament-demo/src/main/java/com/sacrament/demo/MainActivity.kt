@@ -16,7 +16,11 @@ import com.sacrament.demo.action.button.screens.ButtonSizesCatalogScreen
 import com.sacrament.demo.action.button.screens.ButtonTonesCatalogScreen
 import com.sacrament.demo.action.button.screens.ButtonVariantsCatalogScreen
 import com.sacrament.demo.action.fab.screens.FloatingActionButtonsCatalogScreen
-import com.sacrament.demo.action.iconbutton.screens.IconButtonsCatalogScreen
+import com.sacrament.demo.action.iconbutton.IconButtonCatalogScreen
+import com.sacrament.demo.action.iconbutton.screens.IconButtonSizesCatalogScreen
+import com.sacrament.demo.action.iconbutton.screens.IconButtonStatesCatalogScreen
+import com.sacrament.demo.action.iconbutton.screens.IconButtonTonesCatalogScreen
+import com.sacrament.demo.action.iconbutton.screens.IconButtonVariantsCatalogScreen
 import com.sacrament.demo.content.screens.AvatarsCatalogScreen
 import com.sacrament.demo.content.screens.BadgesCatalogScreen
 import com.sacrament.demo.content.screens.ChipsCatalogScreen
@@ -119,8 +123,33 @@ fun CatalogApp() {
                     onNavigateBack = { navController.popBackStack() })
             }
             composable("action/iconbuttons") {
-                IconButtonsCatalogScreen(
-                    onNavigateBack = { navController.popBackStack() })
+                IconButtonCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() },
+                    onNavigateToVariants = { navController.navigate("action/iconbuttons/variants") },
+                    onNavigateToSizes = { navController.navigate("action/iconbuttons/sizes") },
+                    onNavigateToTones = { navController.navigate("action/iconbuttons/tones") },
+                    onNavigateToStates = { navController.navigate("action/iconbuttons/states") }
+                )
+            }
+            composable("action/iconbuttons/variants") {
+                IconButtonVariantsCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() }
+                )
+            }
+            composable("action/iconbuttons/sizes") {
+                IconButtonSizesCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() }
+                )
+            }
+            composable("action/iconbuttons/tones") {
+                IconButtonTonesCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() }
+                )
+            }
+            composable("action/iconbuttons/states") {
+                IconButtonStatesCatalogScreen(
+                    onNavigateBack = { navController.popBackStack() }
+                )
             }
             composable("action/fabs") {
                 FloatingActionButtonsCatalogScreen(
