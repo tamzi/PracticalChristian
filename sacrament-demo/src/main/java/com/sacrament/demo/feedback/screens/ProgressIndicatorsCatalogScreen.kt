@@ -20,12 +20,18 @@ import com.sacrament.ui.primitives.SacramentText
 @Composable
 fun ProgressIndicatorsCatalogScreen(onNavigateBack: () -> Unit) {
     SacramentScreenScaffold(
-        topBar = { CatalogTopAppBar(title = "Progress Indicators", onNavigateBack = onNavigateBack) }
+        topBar = {
+            CatalogTopAppBar(
+                title = "Progress Indicators",
+            onNavigateBack = onNavigateBack
+            )
+        }
     ) { paddingValues ->
         Column(
             modifier = Modifier.fillMaxSize().padding(paddingValues)
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
+                .padding(horizontal = SacramentTheme.spacing.xl,
+                    vertical = SacramentTheme.spacing.xxl),
             verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xxl)
         ) {
             CatalogSection("Progress Indicators") {
@@ -49,8 +55,12 @@ fun ProgressIndicatorsCatalogScreen(onNavigateBack: () -> Unit) {
 
 @Composable
 private fun CatalogRow(label: String, content: @Composable () -> Unit) {
-    Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)) {
-        SacramentText(text = label, style = SacramentTheme.typography.bodyMedium, color = SacramentTheme.colors.text.muted)
+    Column(modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)) {
+        SacramentText(
+            text = label,
+            style = SacramentTheme.typography.bodyMedium,
+            color = SacramentTheme.colors.text.muted)
         content()
     }
 }
