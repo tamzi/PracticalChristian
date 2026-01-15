@@ -1,4 +1,4 @@
-package com.sacrament.demo.surface.screens
+package com.sacrament.demo.surface
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
