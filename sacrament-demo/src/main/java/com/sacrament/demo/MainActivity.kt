@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sacrament.demo.action.ActionCatalogScreen
 import com.sacrament.demo.action.button.ButtonCatalogScreen
 import com.sacrament.demo.action.button.screens.ButtonIconsCatalogScreen
 import com.sacrament.demo.action.button.screens.ButtonSizesCatalogScreen
@@ -90,7 +91,7 @@ fun CatalogApp() {
                 )
             }
             composable("action") {
-                _root_ide_package_.com.sacrament.demo.action.ActionCatalogScreen(
+                ActionCatalogScreen(
                     onNavigateBack = { navController.popBackStack() },
                     onNavigateToButtons = { navController.navigate("action/buttons") },
                     onNavigateToIconButtons = { navController.navigate("action/iconbuttons") },
