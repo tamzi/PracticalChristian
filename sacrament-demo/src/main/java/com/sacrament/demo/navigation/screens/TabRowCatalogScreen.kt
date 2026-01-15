@@ -10,7 +10,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -64,7 +64,7 @@ fun TabRowCatalogScreen(
             ) {
                 // Basic tab row with icons
                 CatalogSection("Tab Row with Icons") {
-                    var selectedIndex by remember { mutableStateOf(0) }
+                    var selectedIndex by remember { mutableIntStateOf(0) }
                     
                     SacramentText(
                         text = "Tabs with icons and labels. Tap to switch between tabs.",
@@ -86,7 +86,7 @@ fun TabRowCatalogScreen(
 
                 // Text-only tab row
                 CatalogSection("Text-Only Tab Row") {
-                    var selectedIndex by remember { mutableStateOf(0) }
+                    var selectedIndex by remember { mutableIntStateOf(0) }
                     
                     SacramentText(
                         text = "Tabs with labels only, no icons.",
