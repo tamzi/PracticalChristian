@@ -1,4 +1,4 @@
-package com.sacrament.demo.navigation.screens
+package com.sacrament.demo.navigation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
