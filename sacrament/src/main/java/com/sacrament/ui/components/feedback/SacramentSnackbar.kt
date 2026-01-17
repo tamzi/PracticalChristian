@@ -10,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.primitives.SacramentText
@@ -50,7 +50,10 @@ fun SacramentSnackbar(
                 text = actionLabel,
                 style = SacramentTheme.typography.labelMedium,
                 color = colors.content,
-                modifier = Modifier.clickable(onClick = onAction),
+                modifier = Modifier.clickable(
+                    role = Role.Button,
+                    onClick = onAction
+                ),
             )
         }
     }
