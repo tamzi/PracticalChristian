@@ -13,9 +13,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.semantics.Role
+import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.foundation.shape.SacramentRadiusSize
 import com.sacrament.ui.foundation.shape.SacramentShapeDefaults
-import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.primitives.SacramentText
 
 /**
@@ -26,11 +27,11 @@ import com.sacrament.ui.primitives.SacramentText
  */
 @Composable
 fun SacramentChip(
+    modifier: Modifier = Modifier,
     label: String,
     onClick: (() -> Unit)? = null,
     selected: Boolean = false,
     leadingIcon: ImageVector? = null,
-    modifier: Modifier = Modifier,
 ) {
     val colors = SacramentTheme.colors
     val spacing = SacramentTheme.spacing
@@ -49,7 +50,10 @@ fun SacramentChip(
         modifier
             .clip(shape)
             .background(background)
-            .clickable(onClick = onClick)
+            .clickable(
+                role = Role.Button,
+                onClick = onClick
+            )
             .padding(horizontal = spacing.md, vertical = spacing.xs)
     } else {
         modifier
