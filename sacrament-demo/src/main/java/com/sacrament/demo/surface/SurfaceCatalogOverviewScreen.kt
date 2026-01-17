@@ -14,6 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.Role
 import com.sacrament.demo.CatalogSectionTitle
 import com.sacrament.demo.CatalogTopAppBar
 import com.sacrament.ui.foundation.SacramentTheme
@@ -101,7 +102,10 @@ private fun SurfaceCatalogListItem(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick)
+            .clickable(
+                role = Role.Button,
+                onClick = onClick
+            )
             .padding(vertical = SacramentTheme.spacing.md)
     ) {
         CatalogSectionTitle(text = title)
