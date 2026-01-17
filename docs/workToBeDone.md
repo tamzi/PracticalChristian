@@ -202,3 +202,116 @@ Single source of truth for project tasks, priorities, and status.
   - [ ] TASK: Add error handling guidance for API-level behavior in `docs/tech/errorHandling.md`.
 
 </details>
+
+<details>
+<summary>EPIC: Accessibility compliance and inclusive design</summary>
+
+- [ ] STORY: Accessibility audit and baseline
+  - [ ] TASK: Run accessibility scanner on all screens and document current state.
+  - [ ] TASK: Test with TalkBack and Switch Access to identify navigation issues.
+  - [ ] TASK: Audit color contrast ratios across all design system tokens against WCAG AA standards.
+  - [ ] TASK: Create accessibility compliance checklist and document in `docs/tech/accessibility.md`.
+- [ ] STORY: Semantic content descriptions
+  - [ ] TASK: Add meaningful contentDescription to all icons, images, and interactive elements.
+  - [ ] TASK: Ensure decorative elements have null contentDescription to avoid screen reader clutter.
+  - [ ] TASK: Review and improve semantic roles for custom components (buttons, lists, headers).
+  - [ ] TASK: Add state descriptions for toggles, checkboxes, and progress indicators.
+- [ ] STORY: Keyboard and focus navigation
+  - [ ] TASK: Ensure all interactive elements are keyboard/D-pad navigable.
+  - [ ] TASK: Verify logical focus order across all screens.
+  - [ ] TASK: Add visual focus indicators for keyboard navigation.
+  - [ ] TASK: Test and fix focus traps in modals and bottom sheets.
+- [ ] STORY: Touch target sizing
+  - [ ] TASK: Audit all interactive elements to ensure minimum 48dp touch targets.
+  - [ ] TASK: Add spacing tokens to design system for accessible touch targets.
+  - [ ] TASK: Fix small touch targets in list items, icon buttons, and chips.
+- [ ] STORY: Text accessibility
+  - [ ] TASK: Ensure all text scales properly with system font size settings.
+  - [ ] TASK: Test layouts with 200% font scaling and fix overflow/truncation issues.
+  - [ ] TASK: Add proper heading semantics using Modifier.semantics for screen reader navigation.
+  - [ ] TASK: Ensure minimum 16sp font size for body text across all features.
+- [ ] STORY: Dynamic content and live regions
+  - [ ] TASK: Add live region announcements for dynamic content updates (notifications, loading states).
+  - [ ] TASK: Ensure error messages are announced to screen readers.
+  - [ ] TASK: Add progress announcements for long-running operations.
+  - [ ] TASK: Test and improve announcements for navigation changes.
+- [ ] STORY: Accessibility testing infrastructure
+  - [ ] TASK: Add automated accessibility tests using Compose testing semantics.
+  - [ ] TASK: Create accessibility test suite for critical user flows.
+  - [ ] TASK: Add CI check for common accessibility issues (missing contentDescription, small touch targets).
+  - [ ] TASK: Document accessibility testing guidelines for feature development.
+- [ ] STORY: Alternative input methods
+  - [ ] TASK: Test and optimize for Switch Access navigation.
+  - [ ] TASK: Ensure voice input works properly in all text fields.
+  - [ ] TASK: Add support for external keyboard shortcuts for common actions.
+- [ ] STORY: Accessibility documentation
+  - [ ] TASK: Create accessibility guidelines for component development in `sacrament` module.
+  - [ ] TASK: Document accessibility requirements in feature development rules.
+  - [ ] TASK: Add accessibility section to component documentation with examples.
+  - [ ] TASK: Create accessibility checklist for PR reviews.
+
+</details>
+
+<details>
+<summary>EPIC: Internationalization and localization</summary>
+
+- [ ] STORY: i18n infrastructure setup
+  - [ ] TASK: Audit current string usage and identify hardcoded strings across all features.
+  - [ ] TASK: Set up string resources architecture using Android strings.xml.
+  - [ ] TASK: Define naming conventions and organization structure for string resources.
+  - [ ] TASK: Document i18n architecture and guidelines in `docs/tech/internationalization.md`.
+- [ ] STORY: String extraction and migration
+  - [ ] TASK: Extract all hardcoded UI strings in `feature/auth` to string resources.
+  - [ ] TASK: Extract all hardcoded UI strings in `feature/home` to string resources.
+  - [ ] TASK: Extract all hardcoded UI strings in `feature/notes` to string resources.
+  - [ ] TASK: Extract all hardcoded UI strings in `feature/books` to string resources.
+  - [ ] TASK: Extract all hardcoded UI strings in `feature/schedules` to string resources.
+  - [ ] TASK: Extract all hardcoded UI strings in `feature/tags` to string resources.
+  - [ ] TASK: Extract all hardcoded UI strings in `feature/settings` to string resources.
+  - [ ] TASK: Extract all hardcoded UI strings in `feature/profile` to string resources.
+  - [ ] TASK: Extract all hardcoded UI strings in `feature/onboarding` to string resources.
+  - [ ] TASK: Extract all hardcoded UI strings in `sacrament` design system components.
+- [ ] STORY: Pluralization and formatting
+  - [ ] TASK: Identify and implement proper plural handling using quantity strings.
+  - [ ] TASK: Add support for formatted strings with parameters (dates, numbers, names).
+  - [ ] TASK: Implement proper date and time formatting with locale support.
+  - [ ] TASK: Add currency and number formatting where applicable.
+- [ ] STORY: RTL (Right-to-Left) support
+  - [ ] TASK: Enable RTL layout support in manifest and test with Arabic/Hebrew locales.
+  - [ ] TASK: Audit and fix layout issues in RTL mode across all screens.
+  - [ ] TASK: Ensure proper text alignment and icon mirroring in RTL layouts.
+  - [ ] TASK: Test navigation and gestures in RTL mode.
+  - [ ] TASK: Document RTL considerations in component development guidelines.
+- [ ] STORY: Locale-specific content
+  - [ ] TASK: Define strategy for locale-specific images and assets.
+  - [ ] TASK: Implement locale-aware content delivery for devotionals and biblical texts.
+  - [ ] TASK: Add support for locale-specific date formats and calendar systems.
+  - [ ] TASK: Handle locale-specific sorting and collation for lists.
+- [ ] STORY: Translation workflow and tooling
+  - [ ] TASK: Set up translation management system or workflow (e.g., Crowdin, Lokalise).
+  - [ ] TASK: Create translation guidelines and context documentation for translators.
+  - [ ] TASK: Define string context and comments for ambiguous translations.
+  - [ ] TASK: Add translation validation checks to catch missing or outdated strings.
+  - [ ] TASK: Create process for translation updates and review cycles.
+- [ ] STORY: Initial language support
+  - [ ] TASK: Prioritize and select initial set of target languages for MVP.
+  - [ ] TASK: Complete translations for selected languages.
+  - [ ] TASK: Add language selector in settings with proper locale switching.
+  - [ ] TASK: Test all features in each supported language.
+- [ ] STORY: Testing and quality assurance
+  - [ ] TASK: Add automated tests for string resource completeness across locales.
+  - [ ] TASK: Test with pseudo-localization to identify layout and truncation issues.
+  - [ ] TASK: Add CI check to prevent new hardcoded strings from being merged.
+  - [ ] TASK: Create manual testing checklist for each new language.
+- [ ] STORY: Dynamic language switching
+  - [ ] TASK: Implement in-app language switching without app restart.
+  - [ ] TASK: Persist user's language preference across sessions.
+  - [ ] TASK: Handle language changes for cached and offline content.
+  - [ ] TASK: Test language switching across all app states.
+- [ ] STORY: Documentation and maintenance
+  - [ ] TASK: Document string resource conventions in feature development rules.
+  - [ ] TASK: Create guidelines for adding new strings and handling edge cases.
+  - [ ] TASK: Add i18n checklist to PR review template.
+  - [ ] TASK: Document translation maintenance process and ownership.
+
+</details>
