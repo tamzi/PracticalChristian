@@ -1,7 +1,11 @@
 package com.sacrament.ui.preview
 
 import android.content.res.Configuration
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
@@ -9,7 +13,7 @@ import com.sacrament.ui.foundation.SacramentTheme
 /**
  * Preview theme wrapper for design system component previews.
  *
- * Provides consistent theme setup for @Preview composables.
+ * Provides consistent theme setup with white background for @Preview composables.
  *
  * Usage:
  * ```
@@ -31,8 +35,13 @@ fun PreviewTheme(
         darkTheme = darkTheme,
         navigationBar = Bar.SURFACE,
         statusBar = Bar.BACKGROUND,
-        content = content,
-    )
+    ) {
+        Box(
+            modifier = Modifier.background(Color.White)
+        ) {
+            content()
+        }
+    }
 }
 
 /**
