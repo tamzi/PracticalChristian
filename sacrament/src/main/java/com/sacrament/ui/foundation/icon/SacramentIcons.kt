@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.ArrowForward
 import androidx.compose.material.icons.automirrored.rounded.ArrowForwardIos
+import androidx.compose.material.icons.automirrored.rounded.Help
 import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.automirrored.rounded.Logout
 import androidx.compose.material.icons.automirrored.rounded.Note
@@ -26,7 +27,6 @@ import androidx.compose.material.icons.rounded.Event
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.GridOn
 import androidx.compose.material.icons.rounded.GridView
-import androidx.compose.material.icons.rounded.Help
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Language
@@ -71,75 +71,75 @@ import androidx.compose.ui.graphics.vector.ImageVector
  *
  * Usage:
  * ```
- * SacramentIcon(imageVector = SacramentIcons.ArrowBack, ...)
- * SacramentIconButton(imageVector = SacramentIcons.Settings, ...)
+ * SacramentIcon(imageVector = SacramentIcons.SacramentIconArrowBack, ...)
+ * SacramentIconButton(imageVector = SacramentIcons.SacramentIconSettings, ...)
  * ```
  */
 object SacramentIcons {
     // Navigation
-    val ArrowBack: ImageVector = Icons.AutoMirrored.Rounded.ArrowBack
-    val ArrowForward: ImageVector = Icons.AutoMirrored.Rounded.ArrowForward
-    val ArrowForwardIos: ImageVector = Icons.AutoMirrored.Rounded.ArrowForwardIos
-    val ChevronRight: ImageVector = Icons.Rounded.ChevronRight
+    val SacramentIconArrowBack: ImageVector = Icons.AutoMirrored.Rounded.ArrowBack
+    val SacramentIconArrowForward: ImageVector = Icons.AutoMirrored.Rounded.ArrowForward
+    val SacramentIconArrowForwardIos: ImageVector = Icons.AutoMirrored.Rounded.ArrowForwardIos
+    val SacramentIconChevronRight: ImageVector = Icons.Rounded.ChevronRight
 
     // Actions
-    val Add: ImageVector = Icons.Rounded.Add
-    val Close: ImageVector = Icons.Rounded.Close
-    val Edit: ImageVector = Icons.Rounded.Edit
-    val Save: ImageVector = Icons.Rounded.Save
-    val Refresh: ImageVector = Icons.Rounded.Refresh
-    val DoneAll: ImageVector = Icons.Rounded.DoneAll
-    val Delete: ImageVector = Icons.Rounded.Delete
-    val Check: ImageVector = Icons.Rounded.Check
-    val Share: ImageVector = Icons.Rounded.Share
-    val Search: ImageVector = Icons.Rounded.Search
-    val MoreVert: ImageVector = Icons.Rounded.MoreVert
+    val SacramentIconAdd: ImageVector = Icons.Rounded.Add
+    val SacramentIconClose: ImageVector = Icons.Rounded.Close
+    val SacramentIconEdit: ImageVector = Icons.Rounded.Edit
+    val SacramentIconSave: ImageVector = Icons.Rounded.Save
+    val SacramentIconRefresh: ImageVector = Icons.Rounded.Refresh
+    val SacramentIconDoneAll: ImageVector = Icons.Rounded.DoneAll
+    val SacramentIconDelete: ImageVector = Icons.Rounded.Delete
+    val SacramentIconCheck: ImageVector = Icons.Rounded.Check
+    val SacramentIconShare: ImageVector = Icons.Rounded.Share
+    val SacramentIconSearch: ImageVector = Icons.Rounded.Search
+    val SacramentIconMoreVert: ImageVector = Icons.Rounded.MoreVert
 
     // Content
-    val Book: ImageVector = Icons.Rounded.Book
-    val Bookmark: ImageVector = Icons.Rounded.Bookmark
-    val Note: ImageVector = Icons.AutoMirrored.Rounded.Note
-    val Tag: ImageVector = Icons.Rounded.Tag
-    val List: ImageVector = Icons.AutoMirrored.Rounded.List
-    val GridOn: ImageVector = Icons.Rounded.GridOn
-    val GridView: ImageVector = Icons.Rounded.GridView
+    val SacramentIconBook: ImageVector = Icons.Rounded.Book
+    val SacramentIconBookmark: ImageVector = Icons.Rounded.Bookmark
+    val SacramentIconNote: ImageVector = Icons.AutoMirrored.Rounded.Note
+    val SacramentIconTag: ImageVector = Icons.Rounded.Tag
+    val SacramentIconList: ImageVector = Icons.AutoMirrored.Rounded.List
+    val SacramentIconGridOn: ImageVector = Icons.Rounded.GridOn
+    val SacramentIconGridView: ImageVector = Icons.Rounded.GridView
 
     // Navigation destinations
-    val Home: ImageVector = Icons.Rounded.Home
-    val LocalLibrary: ImageVector = Icons.Rounded.LocalLibrary
+    val SacramentIconHome: ImageVector = Icons.Rounded.Home
+    val SacramentIconLocalLibrary: ImageVector = Icons.Rounded.LocalLibrary
 
     // UI elements
-    val Menu: ImageVector = Icons.Filled.Menu
-    val Notifications: ImageVector = Icons.Rounded.Notifications
-    val Settings: ImageVector = Icons.Rounded.Settings
-    val AccessTime: ImageVector = Icons.Rounded.AccessTime
+    val SacramentIconMenu: ImageVector = Icons.Filled.Menu
+    val SacramentIconNotifications: ImageVector = Icons.Rounded.Notifications
+    val SacramentIconSettings: ImageVector = Icons.Rounded.Settings
+    val SacramentIconAccessTime: ImageVector = Icons.Rounded.AccessTime
 
     // User & Profile
-    val Person: ImageVector = Icons.Rounded.Person
-    val AccountCircle: ImageVector = Icons.Rounded.AccountCircle
-    val Email: ImageVector = Icons.Rounded.Email
-    val Logout: ImageVector = Icons.AutoMirrored.Rounded.Logout
+    val SacramentIconPerson: ImageVector = Icons.Rounded.Person
+    val SacramentIconAccountCircle: ImageVector = Icons.Rounded.AccountCircle
+    val SacramentIconEmail: ImageVector = Icons.Rounded.Email
+    val SacramentIconLogout: ImageVector = Icons.AutoMirrored.Rounded.Logout
 
     // Security & Privacy
-    val Lock: ImageVector = Icons.Rounded.Lock
-    val Security: ImageVector = Icons.Rounded.Security
-    val Visibility: ImageVector = Icons.Rounded.Visibility
-    val VisibilityOff: ImageVector = Icons.Rounded.VisibilityOff
+    val SacramentIconLock: ImageVector = Icons.Rounded.Lock
+    val SacramentIconSecurity: ImageVector = Icons.Rounded.Security
+    val SacramentIconVisibility: ImageVector = Icons.Rounded.Visibility
+    val SacramentIconVisibilityOff: ImageVector = Icons.Rounded.VisibilityOff
 
     // Calendar & Events
-    val Event: ImageVector = Icons.Rounded.Event
-    val CalendarMonth: ImageVector = Icons.Rounded.CalendarMonth
+    val SacramentIconEvent: ImageVector = Icons.Rounded.Event
+    val SacramentIconCalendarMonth: ImageVector = Icons.Rounded.CalendarMonth
 
     // Status
-    val Warning: ImageVector = Icons.Rounded.Warning
-    val Favorite: ImageVector = Icons.Rounded.Favorite
-    val Verified: ImageVector = Icons.Rounded.Verified
-    val Info: ImageVector = Icons.Rounded.Info
-    val Star: ImageVector = Icons.Rounded.Star
+    val SacramentIconWarning: ImageVector = Icons.Rounded.Warning
+    val SacramentIconFavorite: ImageVector = Icons.Rounded.Favorite
+    val SacramentIconVerified: ImageVector = Icons.Rounded.Verified
+    val SacramentIconInfo: ImageVector = Icons.Rounded.Info
+    val SacramentIconStar: ImageVector = Icons.Rounded.Star
 
     // Theme & Settings
-    val LightMode: ImageVector = Icons.Rounded.LightMode
-    val DarkMode: ImageVector = Icons.Rounded.DarkMode
-    val Language: ImageVector = Icons.Rounded.Language
-    val Help: ImageVector = Icons.Rounded.Help
+    val SacramentIconLightMode: ImageVector = Icons.Rounded.LightMode
+    val SacramentIconDarkMode: ImageVector = Icons.Rounded.DarkMode
+    val SacramentIconLanguage: ImageVector = Icons.Rounded.Language
+    val SacramentIconHelp: ImageVector = Icons.AutoMirrored.Rounded.Help
 }
