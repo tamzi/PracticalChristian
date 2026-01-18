@@ -72,7 +72,7 @@ fun BookScreenContent(
                 title = { SacramentText(text = state.name.ifBlank { "book" }.sentence, style = SacramentTheme.typography.titleSmall) },
                 navigationIcon = {
                     SacramentIconButton(
-                        imageVector = SacramentIcons.ArrowBack,
+                        imageVector = SacramentIcons.SacramentIconArrowBack,
                         contentDescription = "navigate back",
                         onClick = onNavigateBackClicked
                     )
@@ -95,7 +95,7 @@ fun BookScreenContent(
                         verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
                     ) {
                         SacramentIcon(
-                            imageVector = SacramentIcons.Warning,
+                            imageVector = SacramentIcons.SacramentIconWarning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
                             modifier = Modifier
@@ -212,7 +212,8 @@ private fun BookScreenContentSuccessSmallPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         BookScreenContent(
             state = BookUiState(
-                name = "Obadiah", result = ItemState.Success(
+                name = "Obadiah",
+                result = ItemState.Success(
                     Book(id = 31, name = "Obadiah", chapters = 1)
                 )
             ), onNavigateBackClicked = { })
@@ -225,7 +226,8 @@ private fun BookScreenContentErrorPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         BookScreenContent(
             state = BookUiState(
-                name = "", result = ItemState.Error("Unable to load book data")
+                name = "",
+                result = ItemState.Error("Unable to load book data")
             ), onNavigateBackClicked = { })
     }
 }
