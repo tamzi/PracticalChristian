@@ -1,25 +1,19 @@
 package com.sacrament.demo.surface
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.Role
-import com.sacrament.demo.CatalogSectionTitle
 import com.sacrament.demo.CatalogTopAppBar
+import com.sacrament.ui.components.content.SacramentListItem
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.primitives.SacramentText
 
 /**
  * Surface Components catalog overview screen.
@@ -68,52 +62,24 @@ fun SurfaceCatalogOverviewScreen(
                     .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
                 verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.lg)
             ) {
-                SurfaceCatalogListItem(
-                    title = "CARDS",
-                    description = "Container for grouped content",
+                SacramentListItem(
+                    headline = "CARDS",
+                    supporting = "Container for grouped content",
                     onClick = onNavigateToCards
                 )
                 
-                SurfaceCatalogListItem(
-                    title = "DIALOGS",
-                    description = "Modal overlays for critical decisions",
+                SacramentListItem(
+                    headline = "DIALOGS",
+                    supporting = "Modal overlays for critical decisions",
                     onClick = onNavigateToDialogs
                 )
                 
-                SurfaceCatalogListItem(
-                    title = "SHEETS",
-                    description = "Elevated surfaces and bottom sheets",
+                SacramentListItem(
+                    headline = "SHEETS",
+                    supporting = "Elevated surfaces and bottom sheets",
                     onClick = onNavigateToSheets
                 )
             }
         }
-    }
-}
-
-/**
- * List item component for displaying surface component categories.
- */
-@Composable
-private fun SurfaceCatalogListItem(
-    title: String,
-    description: String,
-    onClick: () -> Unit,
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(
-                role = Role.Button,
-                onClick = onClick
-            )
-            .padding(vertical = SacramentTheme.spacing.md)
-    ) {
-        CatalogSectionTitle(text = title)
-        Spacer(modifier = Modifier.height(SacramentTheme.spacing.xs))
-        SacramentText(
-            text = description,
-            style = SacramentTheme.typography.bodyMedium,
-            color = SacramentTheme.colors.text.muted
-        )
     }
 }

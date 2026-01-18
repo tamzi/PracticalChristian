@@ -1,25 +1,19 @@
 package com.sacrament.demo.patterns
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.Role
-import com.sacrament.demo.CatalogSectionTitle
 import com.sacrament.demo.CatalogTopAppBar
+import com.sacrament.ui.components.content.SacramentListItem
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.primitives.SacramentText
 
 /**
  * Patterns catalog overview screen.
@@ -71,58 +65,30 @@ fun PatternsCatalogOverviewScreen(
                     .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
                 verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.lg)
             ) {
-                PatternsCatalogListItem(
-                    title = "SCREEN SCAFFOLD",
-                    description = "Consistent screen structure with top bar and FAB",
+                SacramentListItem(
+                    headline = "SCREEN SCAFFOLD",
+                    supporting = "Consistent screen structure with top bar and FAB",
                     onClick = onNavigateToScaffold
                 )
                 
-                PatternsCatalogListItem(
-                    title = "EMPTY STATE",
-                    description = "Display when no content is available",
+                SacramentListItem(
+                    headline = "EMPTY STATE",
+                    supporting = "Display when no content is available",
                     onClick = onNavigateToEmptyState
                 )
                 
-                PatternsCatalogListItem(
-                    title = "ERROR STATE",
-                    description = "Display when an operation fails",
+                SacramentListItem(
+                    headline = "ERROR STATE",
+                    supporting = "Display when an operation fails",
                     onClick = onNavigateToErrorState
                 )
                 
-                PatternsCatalogListItem(
-                    title = "LOADING STATE",
-                    description = "Indicate content is being loaded",
+                SacramentListItem(
+                    headline = "LOADING STATE",
+                    supporting = "Indicate content is being loaded",
                     onClick = onNavigateToLoadingState
                 )
             }
         }
-    }
-}
-
-/**
- * List item component for displaying pattern categories.
- */
-@Composable
-private fun PatternsCatalogListItem(
-    title: String,
-    description: String,
-    onClick: () -> Unit,
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(
-                role = Role.Button,
-                onClick = onClick
-            )
-            .padding(vertical = SacramentTheme.spacing.md)
-    ) {
-        CatalogSectionTitle(text = title)
-        Spacer(modifier = Modifier.height(SacramentTheme.spacing.xs))
-        SacramentText(
-            text = description,
-            style = SacramentTheme.typography.bodyMedium,
-            color = SacramentTheme.colors.text.muted
-        )
     }
 }
