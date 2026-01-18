@@ -115,7 +115,7 @@ fun ScheduleScreenContent(
         SacramentTopAppBar(
             navigationIcon = {
                 SacramentIconButton(
-                    imageVector = SacramentIcons.Menu,
+                    imageVector = SacramentIcons.SacramentIconMenu,
                     contentDescription = "menu",
                     onClick = onNavigateToSettings,
                     modifier = Modifier
@@ -166,7 +166,7 @@ fun ScheduleScreenContent(
                         verticalArrangement = Arrangement.Center
                     ) {
                         SacramentIcon(
-                            imageVector = SacramentIcons.Warning,
+                            imageVector = SacramentIcons.SacramentIconWarning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
                             modifier = Modifier
@@ -197,7 +197,7 @@ fun ScheduleScreenContent(
 
                 UiListState.Idle -> {
                     SacramentEmptyState(
-                        icon = SacramentIcons.List,
+                        icon = SacramentIcons.SacramentIconList,
                         title = "Welcome",
                         contentDescription = "error fetching results",
                         description = "Please wait while we're setting things up"
@@ -214,7 +214,7 @@ fun ScheduleScreenContent(
                     when (val success = result.data) {
                         UiSuccessState.Empty -> {
                             SacramentEmptyState(
-                                icon = SacramentIcons.List,
+                                icon = SacramentIcons.SacramentIconList,
                                 title = "Empty",
                                 contentDescription = "empty icon",
                                 description = "You don't have a schedule.\nSetup to continue",
@@ -270,7 +270,7 @@ private fun ScheduleItem(
     val action = SwipeAction(
         icon = {
             SacramentIconButton(
-                imageVector = SacramentIcons.DoneAll,
+                imageVector = SacramentIcons.SacramentIconDoneAll,
                 contentDescription = "",
                 onClick = { /*TODO*/ },
                 modifier = Modifier.padding(horizontal = spacing.padding16)

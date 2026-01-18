@@ -92,7 +92,7 @@ fun ScheduleScreenContent(
             SacramentTopAppBar(
                 navigationIcon = {
                     SacramentIconButton(
-                        imageVector = SacramentIcons.ArrowBack,
+                        imageVector = SacramentIcons.SacramentIconArrowBack,
                         contentDescription = "",
                         onClick = onNavigateBackClicked
                     )
@@ -125,7 +125,7 @@ fun ScheduleScreenContent(
                         verticalArrangement = Arrangement.Center
                     ) {
                         SacramentIcon(
-                            imageVector = SacramentIcons.Warning,
+                            imageVector = SacramentIcons.SacramentIconWarning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
                             modifier = Modifier

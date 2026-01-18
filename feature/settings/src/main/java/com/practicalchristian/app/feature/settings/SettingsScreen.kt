@@ -3,18 +3,18 @@ package com.practicalchristian.app.feature.settings
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.components.action.SacramentIconButton
-import com.sacrament.ui.components.navigation.SacramentTopAppBar
-import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.primitives.SacramentText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.practicalchristian.app.core.ui.navigation.AppNavigator
-import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.components.action.SacramentIconButton
+import com.sacrament.ui.components.navigation.SacramentTopAppBar
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentCenteredColumn
+import com.sacrament.ui.primitives.SacramentText
 
 /**
  * Settings screen.
@@ -36,7 +36,7 @@ fun SettingsScreenContent(onNavigateBackClicked: () -> Unit) {
             title = { SacramentText(text = "Settings", style = SacramentTheme.typography.titleLarge) },
             navigationIcon = {
                 SacramentIconButton(
-                    imageVector = SacramentIcons.ArrowBack,
+                    imageVector = SacramentIcons.SacramentIconArrowBack,
                     contentDescription = "navigate back",
                     onClick = onNavigateBackClicked
                 )
