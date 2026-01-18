@@ -32,7 +32,7 @@ fun EmptyStateCatalogScreen(onNavigateBack: () -> Unit) {
                 CatalogRow("Example") {
                     SacramentEmptyState(
                         modifier = Modifier.fillMaxWidth(),
-                        icon = SacramentIcons.Info,
+                        icon = SacramentIcons.SacramentIconInfo,
                         title = "No items found",
                         contentDescription = "Empty state example",
                         description = "This is an example empty state pattern used when no content is available."
