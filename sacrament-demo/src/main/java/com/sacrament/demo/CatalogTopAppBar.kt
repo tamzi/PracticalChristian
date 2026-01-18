@@ -22,7 +22,7 @@ fun CatalogTopAppBar(
         navigationIcon = if (onNavigateBack != null) {
             {
                 SacramentIconButton(
-                    imageVector = SacramentIcons.ArrowBack,
+                    imageVector = SacramentIcons.SacramentIconArrowBack,
                     contentDescription = "Back",
                     onClick = onNavigateBack
                 )

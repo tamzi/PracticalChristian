@@ -101,7 +101,11 @@ private fun CatalogListItem(
             )
             .padding(vertical = SacramentTheme.spacing.md)
     ) {
-        CatalogSectionTitle(text = title)
+        SacramentText(
+            text = title,
+            style = SacramentTheme.typography.headlineSmall,
+            color = SacramentTheme.colors.text.strong
+        )
         
         Spacer(modifier = Modifier.height(SacramentTheme.spacing.xs))
         
