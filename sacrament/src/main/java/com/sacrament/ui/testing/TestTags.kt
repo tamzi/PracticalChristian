@@ -1,10 +1,9 @@
 package com.sacrament.ui.testing
 
-import androidx.compose.ui.semantics.SemanticsProperties
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
-import androidx.compose.ui.Modifier
 
 /**
  * Test tags for UI testing and accessibility.

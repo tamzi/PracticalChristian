@@ -9,8 +9,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -18,8 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,13 +29,13 @@ import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.primitives.SacramentIcon
 import com.sacrament.ui.primitives.SacramentText
-import androidx.compose.foundation.text.BasicTextField
 
 /**
  * Text input field backed by Sacrament tokens.
  */
 @Composable
 fun SacramentTextField(
+    modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,
     size: SacramentTextFieldSize = SacramentTextFieldSize.Medium,
@@ -51,7 +52,6 @@ fun SacramentTextField(
     supportingText: String? = null,
     leadingIcon: ImageVector? = null,
     trailingIcon: ImageVector? = null,
-    modifier: Modifier = Modifier,
 ) {
     val colors = SacramentTextFieldDefaults.colors()
     val focused by interactionSource.collectIsFocusedAsState()
