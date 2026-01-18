@@ -111,7 +111,7 @@ fun TagsScreenContent(
                         style = SacramentTheme.typography.titleMedium
                     )
                     SacramentIconButton(
-                        imageVector = SacramentIcons.Close,
+                        imageVector = SacramentIcons.SacramentIconClose,
                         contentDescription = "close",
                         onClick = { onClickToggleBottomSheetState.invoke(false) }
                     )
@@ -123,7 +123,7 @@ fun TagsScreenContent(
                     value = state.tag?.name ?: "",
                     onValueChange = onChangeTagName,
                     placeholder = "Name",
-                    leadingIcon = SacramentIcons.Tag,
+                    leadingIcon = SacramentIcons.SacramentIconTag,
                     singleLine = true
                 )
                     LazyVerticalGrid(
@@ -166,7 +166,7 @@ fun TagsScreenContent(
                             ) {
                                 SacramentIconButton(
                                     modifier = Modifier.padding(top = spacing.padding8),
-                                    imageVector = SacramentIcons.Refresh,
+                                    imageVector = SacramentIcons.SacramentIconRefresh,
                                     contentDescription = "",
                                     onClick = onClickGenerateColors
                                 )
@@ -208,7 +208,7 @@ fun TagsScreenContent(
                 title = { SacramentText(text = "Tags", style = SacramentTheme.typography.titleSmall) },
                 navigationIcon = {
                     SacramentIconButton(
-                        imageVector = SacramentIcons.ArrowBack,
+                        imageVector = SacramentIcons.SacramentIconArrowBack,
                         contentDescription = "",
                         onClick = onClickBack
                     )
@@ -218,7 +218,7 @@ fun TagsScreenContent(
         floatingActionButton = {
             AnimatedVisibility(visible = state.listState.hasData) {
                 SacramentFab(
-                    imageVector = SacramentIcons.Add,
+                    imageVector = SacramentIcons.SacramentIconAdd,
                     contentDescription = "",
                     onClick = { onClickToggleBottomSheetState.invoke(true) }
                 )
@@ -238,7 +238,7 @@ fun TagsScreenContent(
                         verticalArrangement = Arrangement.Center
                     ) {
                         SacramentIcon(
-                            imageVector = SacramentIcons.Warning,
+                            imageVector = SacramentIcons.SacramentIconWarning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
                             modifier = Modifier
@@ -269,7 +269,7 @@ fun TagsScreenContent(
 
                 UiListState.Idle -> {
                     SacramentEmptyState(
-                        icon = SacramentIcons.List,
+                        icon = SacramentIcons.SacramentIconList,
                         title = "Welcome",
                         contentDescription = "idle fetching results",
                         description = "Please wait while we're fetching your tags"
@@ -286,7 +286,7 @@ fun TagsScreenContent(
                     when (val success = result.data) {
                         UiSuccessState.Empty -> {
                             SacramentEmptyState(
-                                icon = SacramentIcons.Tag,
+                                icon = SacramentIcons.SacramentIconTag,
                                 title = "Empty",
                                 contentDescription = "empty icon",
                                 description = "You don't have any tags.\nClick on the button below to create",
@@ -451,7 +451,7 @@ fun TagsScreenBottomSheetPreview() {
         TagsScreenContent(
             state = TagsScreenUiState(
             listState = UiListState.Success(UiSuccessState.Data(emptyList())),
-            tag = TagDomain(id = -1, name = "Sample Tag", color = "#FF5722"),
+            tag = TagDomain(id = -1, name = "Sample SacramentIconTag", color = "#FF5722"),
             colors = sampleColors,
             isLoading = false
         ),
@@ -485,7 +485,7 @@ fun TagsScreenUpdateModePreview() {
         TagsScreenContent(
             state = TagsScreenUiState(
             listState = UiListState.Success(UiSuccessState.Data(emptyList())),
-            tag = TagDomain(id = 1, name = "Existing Tag", color = "#2196F3"),
+            tag = TagDomain(id = 1, name = "Existing SacramentIconTag", color = "#2196F3"),
             colors = sampleColors,
             isLoading = false
         ),
