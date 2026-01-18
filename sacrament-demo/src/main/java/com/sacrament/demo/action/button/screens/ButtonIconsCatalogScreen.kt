@@ -60,14 +60,14 @@ fun ButtonIconsCatalogScreen(onNavigateBack: () -> Unit) {
                     SacramentButton(
                         text = "Add Item",
                         onClick = {},
-                        leadingIcon = SacramentIcons.Add
+                        leadingIcon = SacramentIcons.SacramentIconAdd
                     )
                 }
                 CatalogRow("Save Icon") {
                     SacramentButton(
                         text = "Save",
                         onClick = {},
-                        leadingIcon = SacramentIcons.Save
+                        leadingIcon = SacramentIcons.SacramentIconSave
                     )
                 }
             }
@@ -77,14 +77,14 @@ fun ButtonIconsCatalogScreen(onNavigateBack: () -> Unit) {
                     SacramentButton(
                         text = "Continue",
                         onClick = {},
-                        trailingIcon = SacramentIcons.ArrowForward
+                        trailingIcon = SacramentIcons.SacramentIconArrowForward
                     )
                 }
                 CatalogRow("Settings Icon") {
                     SacramentButton(
                         text = "Settings",
                         onClick = {},
-                        trailingIcon = SacramentIcons.Settings
+                        trailingIcon = SacramentIcons.SacramentIconSettings
                     )
                 }
             }
@@ -94,7 +94,7 @@ fun ButtonIconsCatalogScreen(onNavigateBack: () -> Unit) {
                     SacramentButton(
                         text = "Disabled",
                         onClick = {},
-                        leadingIcon = SacramentIcons.Add,
+                        leadingIcon = SacramentIcons.SacramentIconAdd,
                         enabled = false
                     )
                 }
@@ -102,7 +102,7 @@ fun ButtonIconsCatalogScreen(onNavigateBack: () -> Unit) {
                     SacramentButton(
                         text = "Disabled",
                         onClick = {},
-                        trailingIcon = SacramentIcons.ArrowForward,
+                        trailingIcon = SacramentIcons.SacramentIconArrowForward,
                         enabled = false
                     )
                 }

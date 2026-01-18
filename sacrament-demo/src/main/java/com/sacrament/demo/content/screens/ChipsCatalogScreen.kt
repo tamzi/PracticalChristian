@@ -61,7 +61,7 @@ fun ChipsCatalogScreen(onNavigateBack: () -> Unit) {
                     SacramentChip(
                         label = "Favorite",
                         selected = true,
-                        leadingIcon = SacramentIcons.Star,
+                        leadingIcon = SacramentIcons.SacramentIconStar,
                         onClick = {}
                     )
                 }
