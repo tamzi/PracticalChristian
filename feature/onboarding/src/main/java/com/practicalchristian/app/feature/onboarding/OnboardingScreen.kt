@@ -296,7 +296,7 @@ private fun ProgressRingNextButton(
             )
         }
         SacramentIconButton(
-            imageVector = SacramentIcons.ArrowForward,
+            imageVector = SacramentIcons.SacramentIconArrowForward,
             contentDescription = "Next",
             onClick = onClick,
             enabled = enabled,

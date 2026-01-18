@@ -95,7 +95,7 @@ private fun NotificationsHubScreenContent(
                 },
                 navigationIcon = {
                     SacramentIconButton(
-                        imageVector = SacramentIcons.ArrowBack,
+                        imageVector = SacramentIcons.SacramentIconArrowBack,
                         contentDescription = "Back",
                         onClick = onNavigateBack,
                     )
@@ -116,7 +116,7 @@ private fun NotificationsHubScreenContent(
 
             is UiListState.Error -> {
                 SacramentEmptyState(
-                    icon = SacramentIcons.Notifications,
+                    icon = SacramentIcons.SacramentIconNotifications,
                     title = "Error",
                     contentDescription = "error loading notifications",
                     description = listState.message,
@@ -127,7 +127,7 @@ private fun NotificationsHubScreenContent(
                 when (val success = listState.data) {
                     is UiSuccessState.Empty -> {
                         SacramentEmptyState(
-                            icon = SacramentIcons.Notifications,
+                            icon = SacramentIcons.SacramentIconNotifications,
                             title = "No notifications",
                             contentDescription = "empty notifications",
                             description = "You're all caught up!",
@@ -286,7 +286,7 @@ private fun NotificationsHubScreenPreview() {
                             NotificationItem(
                                 id = "1",
                                 iconData = NotificationIconData(
-                                        iconVector = SacramentIcons.Favorite,
+                                        iconVector = SacramentIcons.SacramentIconFavorite,
                                         tone = NotificationIconTone.Accent,
                                     ),
                                     text = "Time for your morning prayer. Start your day with " +
@@ -306,7 +306,7 @@ private fun NotificationsHubScreenPreview() {
                                     NotificationItem(
                                         id = "1",
                                         iconData = NotificationIconData(
-                                        iconVector = SacramentIcons.Favorite,
+                                        iconVector = SacramentIcons.SacramentIconFavorite,
                                         tone = NotificationIconTone.Accent,
                                     ),
                                     text = "Time for your morning prayer. Start your day with " +
