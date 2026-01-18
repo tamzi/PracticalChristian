@@ -178,7 +178,7 @@ fun SacramentScreenScaffoldWithBottomBarPreview() {
             },
             floatingActionButton = {
                 SacramentFab(
-                    imageVector = SacramentIcons.Add,
+                    imageVector = SacramentIcons.SacramentIconAdd,
                     contentDescription = "Add",
                     onClick = {},
                 )

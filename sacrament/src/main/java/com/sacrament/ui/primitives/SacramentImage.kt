@@ -41,7 +41,7 @@ fun SacramentImage(
     size: Dp = SacramentTheme.iconSizes.xl,
     shape: Shape = CircleShape,
     contentScale: ContentScale = ContentScale.Crop,
-    placeholderIcon: ImageVector = SacramentIcons.Person,
+    placeholderIcon: ImageVector = SacramentIcons.SacramentIconPerson,
 ) {
     if (imageUrl != null) {
         AsyncImage(
@@ -77,7 +77,7 @@ fun SacramentImagePlaceholder(
     modifier: Modifier = Modifier,
     size: Dp = SacramentTheme.iconSizes.xl,
     shape: Shape = CircleShape,
-    icon: ImageVector = SacramentIcons.Person,
+    icon: ImageVector = SacramentIcons.SacramentIconPerson,
 ) {
     Box(
         modifier = modifier

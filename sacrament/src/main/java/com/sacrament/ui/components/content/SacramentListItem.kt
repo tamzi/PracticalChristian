@@ -126,7 +126,7 @@ fun SacramentListItemWithTrailingIcon(
         },
         trailing = trailing ?: {
             Icon(
-                imageVector = SacramentIcons.ChevronRight,
+                imageVector = SacramentIcons.SacramentIconChevronRight,
                 contentDescription = null,
                 modifier = Modifier.size(SacramentTheme.iconSizes.md),
                 tint = SacramentTheme.colors.text.muted
@@ -260,7 +260,7 @@ fun SacramentListItemLeadingImageAndTrailingIcon(
         },
         trailing = trailing ?: {
             Icon(
-                imageVector = SacramentIcons.ChevronRight,
+                imageVector = SacramentIcons.SacramentIconChevronRight,
                 contentDescription = null,
                 modifier = Modifier.size(SacramentTheme.iconSizes.md),
                 tint = SacramentTheme.colors.text.muted
@@ -405,7 +405,7 @@ fun SacramentListItemLeadingRectangularImage(
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        imageVector = SacramentIcons.Person,
+                        imageVector = SacramentIcons.SacramentIconPerson,
                         contentDescription = null,
                         modifier = Modifier.size(imageHeight * 0.5f),
                         tint = SacramentTheme.colors.text.muted
