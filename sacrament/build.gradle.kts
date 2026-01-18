@@ -35,6 +35,9 @@ dependencies {
     // Kotlinx DateTime
     implementation(libs.kotlinx.datetime)
 
+    // Coil for image loading
+    implementation(libs.coil.kt.compose)
+
     // palette
     // implementation(libs.androidx.palette)
 
