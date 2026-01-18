@@ -82,19 +82,19 @@ fun BottomBarCatalogScreen(
                     SacramentBottomBar {
                         BottomBarItem(
                             label = "Home",
-                            icon = SacramentIcons.Home,
+                            icon = SacramentIcons.SacramentIconHome,
                             selected = selectedIndex == 0,
                             onClick = { selectedIndex = 0 }
                         )
                         BottomBarItem(
                             label = "Notes",
-                            icon = SacramentIcons.Edit,
+                            icon = SacramentIcons.SacramentIconEdit,
                             selected = selectedIndex == 1,
                             onClick = { selectedIndex = 1 }
                         )
                         BottomBarItem(
                             label = "Profile",
-                            icon = SacramentIcons.Book,
+                            icon = SacramentIcons.SacramentIconBook,
                             selected = selectedIndex == 2,
                             onClick = { selectedIndex = 2 }
                         )

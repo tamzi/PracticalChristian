@@ -85,10 +85,10 @@ fun NavigationRailCatalogScreen(
                     ) {
                         SacramentNavigationRail(
                             items = listOf(
-                                SacramentNavigationRailItem("Home", SacramentIcons.Home),
-                                SacramentNavigationRailItem("Notes", SacramentIcons.Edit),
-                                SacramentNavigationRailItem("Profile", SacramentIcons.Book),
-                                SacramentNavigationRailItem("Settings", SacramentIcons.Settings)
+                                SacramentNavigationRailItem("Home", SacramentIcons.SacramentIconHome),
+                                SacramentNavigationRailItem("Notes", SacramentIcons.SacramentIconEdit),
+                                SacramentNavigationRailItem("Profile", SacramentIcons.SacramentIconBook),
+                                SacramentNavigationRailItem("Settings", SacramentIcons.SacramentIconSettings)
                             ),
                             selectedIndex = selectedIndex,
                             onItemSelected = { selectedIndex = it },
