@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import com.sacrament.ui.foundation.icon.SacramentIcons
-import com.sacrament.ui.patterns.SacramentScreenScaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -46,13 +44,15 @@ import com.sacrament.ui.components.feedback.SacramentProgressIndicator
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
 import com.sacrament.ui.components.surface.SacramentCard
 import com.sacrament.ui.components.surface.SacramentCardColors
+import com.sacrament.ui.foundation.Bar
+import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.patterns.SacramentEmptyState
+import com.sacrament.ui.patterns.SacramentScreenScaffold
 import com.sacrament.ui.primitives.SacramentCenteredColumn
 import com.sacrament.ui.primitives.SacramentDivider
 import com.sacrament.ui.primitives.SacramentIcon
 import com.sacrament.ui.primitives.SacramentText
-import com.sacrament.ui.patterns.SacramentEmptyState
-import com.sacrament.ui.foundation.Bar
-import com.sacrament.ui.foundation.SacramentTheme
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Clock
@@ -104,7 +104,7 @@ fun NotesScreenContent(
         floatingActionButton = {
             AnimatedVisibility(visible = state.listState.hasData) {
                 SacramentFab(
-                    imageVector = SacramentIcons.Add,
+                    imageVector = SacramentIcons.SacramentIconAdd,
                     contentDescription = "Create note",
                     onClick = onNavigateToNewNote,
                 )
@@ -133,7 +133,7 @@ fun NotesScreenContent(
                         verticalArrangement = Arrangement.Center
                     ) {
                         SacramentIcon(
-                            imageVector = SacramentIcons.Warning,
+                            imageVector = SacramentIcons.SacramentIconWarning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
                             modifier = Modifier.padding(bottom = spacing.padding12),
@@ -159,7 +159,7 @@ fun NotesScreenContent(
 
                 UiListState.Idle -> {
                     SacramentEmptyState(
-                        icon = SacramentIcons.List,
+                        icon = SacramentIcons.SacramentIconList,
                         title = "Welcome",
                         contentDescription = "error fetching results",
                         description = "Please wait while we're setting things up"
@@ -176,7 +176,7 @@ fun NotesScreenContent(
                     when (val success = result.data) {
                         UiSuccessState.Empty -> {
                             SacramentEmptyState(
-                                icon = SacramentIcons.Note,
+                                icon = SacramentIcons.SacramentIconNote,
                                 title = "Empty",
                                 contentDescription = "empty icon",
                                 description = "You don't have any Notes.\nClick on the button below to create",

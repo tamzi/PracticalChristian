@@ -144,7 +144,7 @@ fun EditNoteScreenContent(
             title = { SacramentText(text = "", style = SacramentTheme.typography.titleSmall) },
             navigationIcon = {
                 SacramentIconButton(
-                    imageVector = SacramentIcons.ArrowBack,
+                    imageVector = SacramentIcons.SacramentIconArrowBack,
                     contentDescription = "back",
                     onClick = onClickNavigateBack
                 )
@@ -207,12 +207,12 @@ fun EditNoteScreenContent(
             Row(modifier = Modifier.fillMaxWidth()) {
                 Row {
                     SacramentIconButton(
-                        imageVector = SacramentIcons.Book,
+                        imageVector = SacramentIcons.SacramentIconBook,
                         contentDescription = "book",
                         onClick = { /*TODO*/ }
                     )
                     SacramentIconButton(
-                        imageVector = SacramentIcons.Tag,
+                        imageVector = SacramentIcons.SacramentIconTag,
                         contentDescription = "tag",
                         onClick = onToggleBottomSheetTags
                     )
@@ -220,7 +220,7 @@ fun EditNoteScreenContent(
                 Spacer(modifier = Modifier.weight(1f))
                 Row {
                     SacramentIconButton(
-                        imageVector = SacramentIcons.Save,
+                        imageVector = SacramentIcons.SacramentIconSave,
                         contentDescription = "save",
                         onClick = { onClickNoteSave.invoke(richTextState.toMarkdown()) }
                     )
@@ -301,7 +301,7 @@ fun TagsBottomSheet(
                         style = SacramentTheme.typography.titleSmall
                     )
                     SacramentIconButton(
-                        imageVector = if (isCreatingTag) SacramentIcons.Close else SacramentIcons.Add,
+                        imageVector = if (isCreatingTag) SacramentIcons.SacramentIconClose else SacramentIcons.SacramentIconAdd,
                         contentDescription = "",
                         onClick = onTagCreateToggle
                     )
@@ -320,7 +320,7 @@ fun TagsBottomSheet(
                                 value = name,
                                 onValueChange = onChangeTagName,
                                 placeholder = "Name",
-                                leadingIcon = SacramentIcons.Tag,
+                                leadingIcon = SacramentIcons.SacramentIconTag,
                                 singleLine = true
                             )
                             LazyVerticalGrid(
@@ -362,7 +362,7 @@ fun TagsBottomSheet(
                                         horizontalArrangement = Arrangement.Center
                                     ) {
                                         SacramentIconButton(
-                                            imageVector = SacramentIcons.Refresh,
+                                            imageVector = SacramentIcons.SacramentIconRefresh,
                                             contentDescription = "",
                                             onClick = onClickTagGenerateColors,
                                             modifier = Modifier.padding(top = spacing.padding8)
@@ -388,7 +388,7 @@ fun TagsBottomSheet(
                         when (tagsState) {
                             is UiListState.Error -> {
                                 SacramentEmptyState(
-                                    icon = SacramentIcons.List,
+                                    icon = SacramentIcons.SacramentIconList,
                                     title = "Error",
                                     contentDescription = "error fetching results",
                                     description = tagsState.message
@@ -397,7 +397,7 @@ fun TagsBottomSheet(
 
                             UiListState.Idle -> {
                                 SacramentEmptyState(
-                                    icon = SacramentIcons.List,
+                                    icon = SacramentIcons.SacramentIconList,
                                     title = "Welcome",
                                     contentDescription = "idle fetching results",
                                     description = "Please wait while we're fetching your tags"
@@ -414,7 +414,7 @@ fun TagsBottomSheet(
                                 when (val result = tagsState.data) {
                                     UiSuccessState.Empty -> {
                                         SacramentEmptyState(
-                                            icon = SacramentIcons.Tag,
+                                            icon = SacramentIcons.SacramentIconTag,
                                             title = "Empty",
                                             contentDescription = "empty icon",
                                             description = "You don't have any tags.\nClick on the button below to create",
@@ -478,7 +478,7 @@ fun TagsBottomSheet(
 fun TagsBottomSheetPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         TagsBottomSheet(
-            name = "New Tag",
+            name = "New SacramentIconTag",
             color = "#FFFFFF",
             isEnabled = true,
             isBottomSheetVisible = true,
