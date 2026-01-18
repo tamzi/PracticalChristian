@@ -1,6 +1,5 @@
 package com.practicalchristian.app.core.ui.components
 
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,9 +11,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
-import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.components.navigation.SacramentBottomBar
 import com.sacrament.ui.components.navigation.SacramentBottomBarDefaults
+import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentIcon
 import com.sacrament.ui.primitives.SacramentText
 
@@ -22,9 +22,9 @@ import com.sacrament.ui.primitives.SacramentText
  * Enum representing the bottom navigation screens.
  */
 enum class BottomNavScreen(val title: String, val icon: ImageVector) {
-    HOME("Home", SacramentIcons.Home),
-    BOOKS("Books", SacramentIcons.Book),
-    NOTES("Notes", SacramentIcons.Note)
+    HOME("Home", SacramentIcons.SacramentIconHome),
+    BOOKS("Books", SacramentIcons.SacramentIconBook),
+    NOTES("Notes", SacramentIcons.SacramentIconNote)
 }
 
 /**
