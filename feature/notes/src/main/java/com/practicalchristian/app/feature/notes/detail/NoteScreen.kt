@@ -66,7 +66,7 @@ fun NoteScreenContent(
                 title = { },
                 navigationIcon = {
                     SacramentIconButton(
-                        imageVector = SacramentIcons.ArrowBack,
+                        imageVector = SacramentIcons.SacramentIconArrowBack,
                         contentDescription = "",
                         onClick = onPressedBack
                     )

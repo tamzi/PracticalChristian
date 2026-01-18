@@ -83,14 +83,14 @@ fun ProfileScreenContent(
                 title = { SacramentText(text = "Profile", style = SacramentTheme.typography.titleLarge) },
                 navigationIcon = {
                     SacramentIconButton(
-                        imageVector = SacramentIcons.ArrowBack,
+                        imageVector = SacramentIcons.SacramentIconArrowBack,
                         contentDescription = "navigate back",
                         onClick = onNavigateBackClicked
                     )
                 },
                 actions = {
                     SacramentIconButton(
-                        imageVector = if (state.isDarkThemeEnabled) SacramentIcons.LightMode else SacramentIcons.DarkMode,
+                        imageVector = if (state.isDarkThemeEnabled) SacramentIcons.SacramentIconLightMode else SacramentIcons.SacramentIconDarkMode,
                         contentDescription = "dark mode icon toggle",
                         onClick = onToggleDarkModeClicked
                     )
@@ -139,7 +139,7 @@ fun ProfileScreenContent(
                         }
 
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Edit,
+                            imageVector = SacramentIcons.SacramentIconEdit,
                             contentDescription = "edit profile picture",
                             onClick = { imagePickerLauncher.launch("image/*") },
                             modifier = Modifier
@@ -173,7 +173,7 @@ fun ProfileScreenContent(
                 ) {
                     SacramentText(text = "Tags", style = SacramentTheme.typography.bodyLarge)
                     SacramentIcon(
-                        imageVector = SacramentIcons.ArrowForwardIos,
+                        imageVector = SacramentIcons.SacramentIconArrowForwardIos,
                         contentDescription = ""
                     )
                 }
