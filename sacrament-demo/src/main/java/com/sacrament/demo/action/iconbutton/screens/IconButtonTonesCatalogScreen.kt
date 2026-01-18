@@ -61,13 +61,13 @@ fun IconButtonTonesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Star,
+                            imageVector = SacramentIcons.SacramentIconStar,
                             contentDescription = "Brand",
                             onClick = {},
                             tone = SacramentButtonTone.Brand
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Favorite,
+                            imageVector = SacramentIcons.SacramentIconFavorite,
                             contentDescription = "Brand",
                             onClick = {},
                             tone = SacramentButtonTone.Brand
@@ -80,13 +80,13 @@ fun IconButtonTonesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Settings,
+                            imageVector = SacramentIcons.SacramentIconSettings,
                             contentDescription = "Neutral",
                             onClick = {},
                             tone = SacramentButtonTone.Neutral
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Menu,
+                            imageVector = SacramentIcons.SacramentIconMenu,
                             contentDescription = "Neutral",
                             onClick = {},
                             tone = SacramentButtonTone.Neutral
@@ -99,13 +99,13 @@ fun IconButtonTonesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Verified,
+                            imageVector = SacramentIcons.SacramentIconVerified,
                             contentDescription = "Success",
                             onClick = {},
                             tone = SacramentButtonTone.Success
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Save,
+                            imageVector = SacramentIcons.SacramentIconSave,
                             contentDescription = "Success",
                             onClick = {},
                             tone = SacramentButtonTone.Success
@@ -118,13 +118,13 @@ fun IconButtonTonesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Warning,
+                            imageVector = SacramentIcons.SacramentIconWarning,
                             contentDescription = "Warning",
                             onClick = {},
                             tone = SacramentButtonTone.Warning
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Info,
+                            imageVector = SacramentIcons.SacramentIconInfo,
                             contentDescription = "Warning",
                             onClick = {},
                             tone = SacramentButtonTone.Warning
@@ -137,13 +137,13 @@ fun IconButtonTonesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Close,
+                            imageVector = SacramentIcons.SacramentIconClose,
                             contentDescription = "Error",
                             onClick = {},
                             tone = SacramentButtonTone.Error
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Warning,
+                            imageVector = SacramentIcons.SacramentIconWarning,
                             contentDescription = "Error",
                             onClick = {},
                             tone = SacramentButtonTone.Error
@@ -151,18 +151,18 @@ fun IconButtonTonesCatalogScreen(onNavigateBack: () -> Unit) {
                     }
                 }
 
-                CatalogRow("Info") {
+                CatalogRow("SacramentIconInfo") {
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Info,
+                            imageVector = SacramentIcons.SacramentIconInfo,
                             contentDescription = "Info",
                             onClick = {},
                             tone = SacramentButtonTone.Info
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Book,
+                            imageVector = SacramentIcons.SacramentIconBook,
                             contentDescription = "Info",
                             onClick = {},
                             tone = SacramentButtonTone.Info

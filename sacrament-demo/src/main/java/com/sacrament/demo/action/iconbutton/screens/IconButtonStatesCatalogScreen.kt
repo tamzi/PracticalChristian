@@ -57,20 +57,20 @@ fun IconButtonStatesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Add,
+                            imageVector = SacramentIcons.SacramentIconAdd,
                             contentDescription = "Add",
                             onClick = {},
                             enabled = true
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Edit,
+                            imageVector = SacramentIcons.SacramentIconEdit,
                             contentDescription = "Edit",
                             onClick = {},
                             variant = SacramentButtonVariant.Outlined,
                             enabled = true
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Favorite,
+                            imageVector = SacramentIcons.SacramentIconFavorite,
                             contentDescription = "Favorite",
                             onClick = {},
                             variant = SacramentButtonVariant.Ghost,
@@ -86,19 +86,19 @@ fun IconButtonStatesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Add,
+                            imageVector = SacramentIcons.SacramentIconAdd,
                             contentDescription = "Add",
                             onClick = {},
                             enabled = false
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Edit,
+                            imageVector = SacramentIcons.SacramentIconEdit,
                             contentDescription = "Edit",
                             onClick = {},
                             enabled = false
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Close,
+                            imageVector = SacramentIcons.SacramentIconClose,
                             contentDescription = "Remove",
                             onClick = {},
                             enabled = false
@@ -111,21 +111,21 @@ fun IconButtonStatesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Bookmark,
+                            imageVector = SacramentIcons.SacramentIconBookmark,
                             contentDescription = "Bookmark",
                             onClick = {},
                             variant = SacramentButtonVariant.Outlined,
                             enabled = false
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Settings,
+                            imageVector = SacramentIcons.SacramentIconSettings,
                             contentDescription = "Settings",
                             onClick = {},
                             variant = SacramentButtonVariant.Outlined,
                             enabled = false
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Save,
+                            imageVector = SacramentIcons.SacramentIconSave,
                             contentDescription = "Save",
                             onClick = {},
                             variant = SacramentButtonVariant.Outlined,
@@ -139,21 +139,21 @@ fun IconButtonStatesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Close,
+                            imageVector = SacramentIcons.SacramentIconClose,
                             contentDescription = "Close",
                             onClick = {},
                             variant = SacramentButtonVariant.Ghost,
                             enabled = false
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Star,
+                            imageVector = SacramentIcons.SacramentIconStar,
                             contentDescription = "Star",
                             onClick = {},
                             variant = SacramentButtonVariant.Ghost,
                             enabled = false
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Menu,
+                            imageVector = SacramentIcons.SacramentIconMenu,
                             contentDescription = "Menu",
                             onClick = {},
                             variant = SacramentButtonVariant.Ghost,
