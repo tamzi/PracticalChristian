@@ -1,25 +1,19 @@
 package com.sacrament.demo.content
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.Role
-import com.sacrament.demo.CatalogSectionTitle
 import com.sacrament.demo.CatalogTopAppBar
+import com.sacrament.ui.components.content.SacramentListItem
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.primitives.SacramentText
 
 /**
  * Content Components catalog overview screen.
@@ -71,67 +65,30 @@ fun ContentCatalogOverviewScreen(
                     .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
                 verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.lg)
             ) {
-                ContentCatalogListItem(
-                    title = "AVATARS",
-                    description = "Small, Medium, Large sizes",
+                SacramentListItem(
+                    headline = "AVATARS",
+                    supporting = "Small, Medium, Large sizes",
                     onClick = onNavigateToAvatars
                 )
 
-                ContentCatalogListItem(
-                    title = "BADGES",
-                    description = "Brand, Neutral, Success, Warning, Error tones",
+                SacramentListItem(
+                    headline = "BADGES",
+                    supporting = "Brand, Neutral, Success, Warning, Error tones",
                     onClick = onNavigateToBadges
                 )
 
-                ContentCatalogListItem(
-                    title = "CHIPS",
-                    description = "Selected, Unselected, With icons",
+                SacramentListItem(
+                    headline = "CHIPS",
+                    supporting = "Selected, Unselected, With icons",
                     onClick = onNavigateToChips
                 )
 
-                ContentCatalogListItem(
-                    title = "TAGS",
-                    description = "Neutral, Brand, Success, Warning, Error, Info tones",
+                SacramentListItem(
+                    headline = "TAGS",
+                    supporting = "Neutral, Brand, Success, Warning, Error, Info tones",
                     onClick = onNavigateToTags
                 )
             }
         }
-    }
-}
-
-/**
- * List item component for displaying content component categories.
- *
- * Used exclusively in ContentCatalogOverviewScreen to present clickable items that
- * navigate to specific content component detail screens.
- *
- * @param title The category name (e.g., "AVATARS")
- * @param description Brief summary of what's included in the category
- * @param onClick Callback invoked when the item is tapped
- */
-@Composable
-private fun ContentCatalogListItem(
-    title: String,
-    description: String,
-    onClick: () -> Unit,
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(
-                role = Role.Button,
-                onClick = onClick
-            )
-            .padding(vertical = SacramentTheme.spacing.md)
-    ) {
-        CatalogSectionTitle(text = title)
-        
-        Spacer(modifier = Modifier.height(SacramentTheme.spacing.xs))
-        
-        SacramentText(
-            text = description,
-            style = SacramentTheme.typography.bodyMedium,
-            color = SacramentTheme.colors.text.muted
-        )
     }
 }

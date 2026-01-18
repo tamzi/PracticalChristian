@@ -1,25 +1,19 @@
 package com.sacrament.demo.input
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.Role
-import com.sacrament.demo.CatalogSectionTitle
 import com.sacrament.demo.CatalogTopAppBar
+import com.sacrament.ui.components.content.SacramentListItem
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.primitives.SacramentText
 
 /**
  * Input Components catalog overview screen.
@@ -71,60 +65,30 @@ fun InputCatalogOverviewScreen(
                     .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
                 verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.lg)
             ) {
-                InputCatalogListItem(
-                    title = "TEXT FIELDS",
-                    description = "Sizes, Label, Error state, Disabled",
+                SacramentListItem(
+                    headline = "TEXT FIELDS",
+                    supporting = "Sizes, Label, Error state, Disabled",
                     onClick = onNavigateToTextFields
                 )
 
-                InputCatalogListItem(
-                    title = "CHECKBOXES",
-                    description = "Small, Medium sizes",
+                SacramentListItem(
+                    headline = "CHECKBOXES",
+                    supporting = "Small, Medium sizes",
                     onClick = onNavigateToCheckboxes
                 )
 
-                InputCatalogListItem(
-                    title = "RADIO BUTTONS",
-                    description = "Small, Medium sizes",
+                SacramentListItem(
+                    headline = "RADIO BUTTONS",
+                    supporting = "Small, Medium sizes",
                     onClick = onNavigateToRadios
                 )
 
-                InputCatalogListItem(
-                    title = "SWITCHES",
-                    description = "Small, Medium sizes",
+                SacramentListItem(
+                    headline = "SWITCHES",
+                    supporting = "Small, Medium sizes",
                     onClick = onNavigateToSwitches
                 )
             }
         }
-    }
-}
-
-/**
- * List item component for displaying input component categories.
- */
-@Composable
-private fun InputCatalogListItem(
-    title: String,
-    description: String,
-    onClick: () -> Unit,
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(
-                role = Role.Button,
-                onClick = onClick
-            )
-            .padding(vertical = SacramentTheme.spacing.md)
-    ) {
-        CatalogSectionTitle(text = title)
-        
-        Spacer(modifier = Modifier.height(SacramentTheme.spacing.xs))
-        
-        SacramentText(
-            text = description,
-            style = SacramentTheme.typography.bodyMedium,
-            color = SacramentTheme.colors.text.muted
-        )
     }
 }
