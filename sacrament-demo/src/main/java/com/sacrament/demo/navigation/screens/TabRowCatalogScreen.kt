@@ -75,9 +75,9 @@ fun TabRowCatalogScreen(
                     
                     SacramentTabRow(
                         tabs = listOf(
-                            SacramentTabItem("Home", SacramentIcons.Home),
-                            SacramentTabItem("Notes", SacramentIcons.Edit),
-                            SacramentTabItem("Profile", SacramentIcons.Book)
+                            SacramentTabItem("Home", SacramentIcons.SacramentIconHome),
+                            SacramentTabItem("Notes", SacramentIcons.SacramentIconEdit),
+                            SacramentTabItem("Profile", SacramentIcons.SacramentIconBook)
                         ),
                         selectedIndex = selectedIndex,
                         onTabSelected = { selectedIndex = it }
