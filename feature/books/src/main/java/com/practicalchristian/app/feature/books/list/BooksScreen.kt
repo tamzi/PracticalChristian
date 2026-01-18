@@ -82,8 +82,8 @@ fun BooksScreenContent(
                 actions = {
                     SacramentIconButton(
                         imageVector = when (state.view) {
-                            ViewType.GRID -> SacramentIcons.List
-                            ViewType.LIST -> SacramentIcons.GridOn
+                            ViewType.GRID -> SacramentIcons.SacramentIconList
+                            ViewType.LIST -> SacramentIcons.SacramentIconGridOn
                         },
                         contentDescription = "grid",
                         onClick = onChangeViewTypeClicked
@@ -111,7 +111,7 @@ fun BooksScreenContent(
                         verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
                     ) {
                         SacramentIcon(
-                            imageVector = SacramentIcons.Warning,
+                            imageVector = SacramentIcons.SacramentIconWarning,
                             contentDescription = "error",
                             tint = SacramentTheme.colors.semantic.error,
                             modifier = Modifier
@@ -142,7 +142,7 @@ fun BooksScreenContent(
 
                 UiListState.Idle -> {
                     SacramentEmptyState(
-                        icon = SacramentIcons.List,
+                        icon = SacramentIcons.SacramentIconList,
                         title = "Welcome",
                         contentDescription = "error fetching results",
                         description = "Please wait while we're setting things up"
@@ -159,7 +159,7 @@ fun BooksScreenContent(
                     when (val success = result.data) {
                         UiSuccessState.Empty -> {
                             SacramentEmptyState(
-                                icon = SacramentIcons.List,
+                                icon = SacramentIcons.SacramentIconList,
                                 title = "Empty",
                                 contentDescription = "empty icon",
                                 description = "No Books found."
@@ -291,7 +291,7 @@ private fun BooksScreenErrorPreview() {
     }
 }
 
-@Preview(showBackground = true, name = "BooksScreen - List View with Books")
+@Preview(showBackground = true, name = "BooksScreen - SacramentIconList View with Books")
 @Composable
 private fun BooksScreenListViewPreview() {
     val sampleBooks = listOf(
@@ -333,7 +333,7 @@ private fun BooksScreenGridViewPreview() {
     }
 }
 
-@Preview(showBackground = true, name = "BooksScreen - Single Book")
+@Preview(showBackground = true, name = "BooksScreen - Single SacramentIconBook")
 @Composable
 private fun BooksScreenSingleBookPreview() {
     val singleBook = listOf(
@@ -373,7 +373,7 @@ private fun BookItemGridPreview() {
     }
 }
 
-@Preview(showBackground = true, name = "BookItem - List View")
+@Preview(showBackground = true, name = "BookItem - SacramentIconList View")
 @Composable
 private fun BookItemListPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {

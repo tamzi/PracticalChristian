@@ -318,13 +318,13 @@ private fun HeaderSection(
 
         Row(horizontalArrangement = Arrangement.spacedBy(spacing.padding8)) {
             SacramentIconButton(
-                imageVector = SacramentIcons.Notifications,
+                imageVector = SacramentIcons.SacramentIconNotifications,
                 contentDescription = "Notifications",
                 onClick = onNotificationClick,
                 modifier = Modifier.size(40.dp)
             )
             SacramentIconButton(
-                imageVector = SacramentIcons.Settings,
+                imageVector = SacramentIcons.SacramentIconSettings,
                 contentDescription = "Settings",
                 onClick = onSettingsClick,
                 modifier = Modifier.size(40.dp)
@@ -568,7 +568,7 @@ private fun GoalItem(
                 )
             }
             SacramentIcon(
-                imageVector = SacramentIcons.ChevronRight,
+                imageVector = SacramentIcons.SacramentIconChevronRight,
                 contentDescription = "Go",
                 tint = SacramentTheme.colors.text.muted
             )
@@ -892,7 +892,7 @@ private fun PlanCard(
 }
 
 // Preview
-@Preview(showBackground = true, name = "Home Screen - Full")
+@Preview(showBackground = true, name = "SacramentIconHome Screen - Full")
 @Composable
 fun HomeScreenPreview() {
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {

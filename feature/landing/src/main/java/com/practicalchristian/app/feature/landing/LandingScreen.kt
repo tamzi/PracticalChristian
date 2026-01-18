@@ -136,7 +136,7 @@ private fun LandingScreenIdlePreview() {
             shape = RectangleShape,
         ) {
             SacramentEmptyState(
-                icon = SacramentIcons.List,
+                icon = SacramentIcons.SacramentIconList,
                 title = "Welcome",
                 contentDescription = "setting up",
                 description = "Please wait while we're setting things up"
@@ -161,7 +161,7 @@ private fun LandingScreenErrorPreview() {
                 verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
             ) {
                 SacramentIcon(
-                    imageVector = SacramentIcons.Warning,
+                    imageVector = SacramentIcons.SacramentIconWarning,
                     contentDescription = "error",
                     tint = SacramentTheme.colors.semantic.error,
                     modifier = Modifier
