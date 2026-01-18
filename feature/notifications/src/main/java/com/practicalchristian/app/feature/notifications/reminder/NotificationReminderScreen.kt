@@ -192,7 +192,7 @@ private fun PhoneNotificationIllustration(
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
                             SacramentIcon(
-                                imageVector = SacramentIcons.AccessTime,
+                                imageVector = SacramentIcons.SacramentIconAccessTime,
                                 contentDescription = null,
                                 tint = colors.text.strong,
                                 size = SacramentTheme.iconSizes.sm,

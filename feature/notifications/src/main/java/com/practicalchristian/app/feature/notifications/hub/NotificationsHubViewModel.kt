@@ -2,10 +2,10 @@ package com.practicalchristian.app.feature.notifications.hub
 
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.viewModelScope
-import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.practicalchristian.app.core.ui.helpers.StatefulViewModel
 import com.practicalchristian.app.core.ui.helpers.UiListState
 import com.practicalchristian.app.core.ui.helpers.UiSuccessState
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -138,7 +138,7 @@ class NotificationsHubViewModel @Inject constructor(
         notifications = listOf(
             sampleNotificationItem(
                 id = "1",
-                iconVector = SacramentIcons.Favorite,
+                iconVector = SacramentIcons.SacramentIconFavorite,
                 tone = NotificationIconTone.Accent,
                 text = "Time for your morning prayer. Start your day with " +
                     "gratitude and reflection",
@@ -146,7 +146,7 @@ class NotificationsHubViewModel @Inject constructor(
             ),
             sampleNotificationItem(
                 id = "2",
-                iconVector = SacramentIcons.GridView,
+                iconVector = SacramentIcons.SacramentIconGridView,
                 tone = NotificationIconTone.Success,
                 text = "Your daily reading plan is ready. Continue your journey " +
                     "through Scripture",
@@ -154,7 +154,7 @@ class NotificationsHubViewModel @Inject constructor(
             ),
             sampleNotificationItem(
                 id = "3",
-                iconVector = SacramentIcons.Verified,
+                iconVector = SacramentIcons.SacramentIconVerified,
                 tone = NotificationIconTone.Info,
                 text = "New meditation available: Finding peace in difficult times",
                 isUnread = true,
@@ -168,7 +168,7 @@ class NotificationsHubViewModel @Inject constructor(
         notifications = listOf(
             sampleNotificationItem(
                 id = "4",
-                iconVector = SacramentIcons.GridView,
+                iconVector = SacramentIcons.SacramentIconGridView,
                 tone = NotificationIconTone.Success,
                 text = "You've completed 5 days of your reading plan. Keep up " +
                     "the great work!",
@@ -176,21 +176,21 @@ class NotificationsHubViewModel @Inject constructor(
             ),
             sampleNotificationItem(
                 id = "5",
-                iconVector = SacramentIcons.Favorite,
+                iconVector = SacramentIcons.SacramentIconFavorite,
                 tone = NotificationIconTone.Accent,
                 text = "Don't forget to review your bookmarked verses from this week",
                 isUnread = false,
             ),
             sampleNotificationItem(
                 id = "6",
-                iconVector = SacramentIcons.Notifications,
+                iconVector = SacramentIcons.SacramentIconNotifications,
                 tone = NotificationIconTone.Success,
                 text = "Your evening prayer reminder is set for 8:00 PM",
                 isUnread = false,
             ),
             sampleNotificationItem(
                 id = "7",
-                iconVector = SacramentIcons.Favorite,
+                iconVector = SacramentIcons.SacramentIconFavorite,
                 tone = NotificationIconTone.Accent,
                 text = "New devotional book added to your library: Daily Wisdom",
                 isUnread = false,
