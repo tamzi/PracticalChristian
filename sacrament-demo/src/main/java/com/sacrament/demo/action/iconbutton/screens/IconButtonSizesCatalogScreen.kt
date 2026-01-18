@@ -59,20 +59,20 @@ fun IconButtonSizesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Add,
+                            imageVector = SacramentIcons.SacramentIconAdd,
                             contentDescription = "Add",
                             onClick = {},
                             size = SacramentIconButtonSize.Small
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Edit,
+                            imageVector = SacramentIcons.SacramentIconEdit,
                             contentDescription = "Edit",
                             onClick = {},
                             size = SacramentIconButtonSize.Small,
                             variant = SacramentButtonVariant.Outlined
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Favorite,
+                            imageVector = SacramentIcons.SacramentIconFavorite,
                             contentDescription = "Favorite",
                             onClick = {},
                             size = SacramentIconButtonSize.Small,
@@ -86,20 +86,20 @@ fun IconButtonSizesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Add,
+                            imageVector = SacramentIcons.SacramentIconAdd,
                             contentDescription = "Add",
                             onClick = {},
                             size = SacramentIconButtonSize.Medium
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Edit,
+                            imageVector = SacramentIcons.SacramentIconEdit,
                             contentDescription = "Edit",
                             onClick = {},
                             size = SacramentIconButtonSize.Medium,
                             variant = SacramentButtonVariant.Outlined
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Favorite,
+                            imageVector = SacramentIcons.SacramentIconFavorite,
                             contentDescription = "Favorite",
                             onClick = {},
                             size = SacramentIconButtonSize.Medium,
@@ -113,20 +113,20 @@ fun IconButtonSizesCatalogScreen(onNavigateBack: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.md)
                     ) {
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Add,
+                            imageVector = SacramentIcons.SacramentIconAdd,
                             contentDescription = "Add",
                             onClick = {},
                             size = SacramentIconButtonSize.Large
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Edit,
+                            imageVector = SacramentIcons.SacramentIconEdit,
                             contentDescription = "Edit",
                             onClick = {},
                             size = SacramentIconButtonSize.Large,
                             variant = SacramentButtonVariant.Outlined
                         )
                         SacramentIconButton(
-                            imageVector = SacramentIcons.Favorite,
+                            imageVector = SacramentIcons.SacramentIconFavorite,
                             contentDescription = "Favorite",
                             onClick = {},
                             size = SacramentIconButtonSize.Large,
