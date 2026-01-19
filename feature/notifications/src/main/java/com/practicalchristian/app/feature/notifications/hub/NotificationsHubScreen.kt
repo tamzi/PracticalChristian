@@ -27,7 +27,7 @@ import com.practicalchristian.app.core.ui.navigation.AppNavigator
 import com.sacrament.ui.components.action.SacramentIconButton
 import com.sacrament.ui.components.content.SacramentBadge
 import com.sacrament.ui.components.content.SacramentBadgeTone
-import com.sacrament.ui.components.content.SacramentListItem
+import com.sacrament.ui.components.content.list.SacramentListItem
 import com.sacrament.ui.components.feedback.SacramentProgressIndicator
 import com.sacrament.ui.components.navigation.SacramentTopAppBar
 import com.sacrament.ui.foundation.Bar
