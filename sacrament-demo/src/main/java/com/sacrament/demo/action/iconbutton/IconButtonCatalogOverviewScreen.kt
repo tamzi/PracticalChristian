@@ -11,7 +11,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.sacrament.demo.CatalogTopAppBar
-import com.sacrament.ui.components.content.SacramentListItem
+import com.sacrament.ui.components.content.list.SacramentListItem
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.patterns.SacramentScreenScaffold
 
