@@ -70,6 +70,19 @@ object SemanticColors {
     val infoDark = InfoBlueDark
 }
 
+// Additional colors for tags and categorization
+val Amber = Color(0xFFFF5722)
+val Yellow = Color(0xFFFFC107)
+val Lime = Color(0xFFCDDC39)
+val Teal = Color(0xFF009688)
+val Cyan = Color(0xFF00BCD4)
+val Indigo = Color(0xFF3F51B5)
+val Purple = Color(0xFF9C27B0)
+val DeepPurple = Color(0xFF673AB7)
+val Pink = Color(0xFFE91E63)
+val Brown = Color(0xFF795548)
+val Gray = Color(0xFF9E9E9E)
+
 /**
  * Legacy palette values. Prefer `SacramentTheme` tokens for new work.
  */

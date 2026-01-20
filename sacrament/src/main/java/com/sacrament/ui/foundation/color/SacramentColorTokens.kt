@@ -104,6 +104,54 @@ data class SacramentOnboardingColors(
 )
 
 /**
+ * Curated tag colors for user categorization.
+ *
+ * Usage:
+ * `val palette = SacramentTheme.colors.tags.palette`
+ * `val hexValues = SacramentTheme.colors.tags.hexValues`
+ */
+@Immutable
+data class SacramentTagColors(
+    val red: Color,
+    val orange: Color,
+    val amber: Color,
+    val yellow: Color,
+    val lime: Color,
+    val green: Color,
+    val teal: Color,
+    val cyan: Color,
+    val blue: Color,
+    val indigo: Color,
+    val purple: Color,
+    val deepPurple: Color,
+    val pink: Color,
+    val brown: Color,
+    val gray: Color,
+) {
+    /**
+     * All tag colors as a list for iteration.
+     */
+    val palette: List<Color> = listOf(
+        red, orange, amber, yellow, lime,
+        green, teal, cyan, blue, indigo,
+        purple, deepPurple, pink, brown, gray
+    )
+
+    /**
+     * Hex string values for database storage.
+     * Generated dynamically from the palette colors.
+     */
+    val hexValues: List<String>
+        get() = palette.map { color ->
+            // Compose Color stores as ARGB in ULong, need to extract RGB components
+            val red = (color.red * 255).toInt()
+            val green = (color.green * 255).toInt()
+            val blue = (color.blue * 255).toInt()
+            "#%02X%02X%02X".format(red, green, blue)
+        }
+}
+
+/**
  * Aggregated color tokens for the design system.
  *
  * Usage:
@@ -117,4 +165,5 @@ data class SacramentColorTokens(
     val semantic: SacramentSemanticColors,
     val utilities: SacramentUtilityColors,
     val onboarding: SacramentOnboardingColors,
+    val tags: SacramentTagColors,
 )
