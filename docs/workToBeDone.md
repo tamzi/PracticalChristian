@@ -9,80 +9,102 @@ Single source of truth for project tasks, priorities, and status.
 - Move items as they progress (Current -> Next -> Backlog -> Done).
 - Prefer checkboxes for clarity.
 - Use `<details>` with a `<summary>` for each epic so it can collapse; nest `STORY:` and `TASK:` lists under the epic.
+- Follow the rules laid out in the agentRules folder.
 
 ## Current Focus
 
 <details>
-<summary>EPIC: Design system setup + enforcement</summary>
+<summary>EPIC: Theme foundations</summary>
 
-- [x] STORY: Inventory + baseline
-  - [x] TASK: Audit remaining Material3 usage and hardcoded colors outside `sacrament`.
-  - [x] TASK: Run and validate `scripts/check-design-system-usage.sh` output.
-- [x] STORY: Feature migrations - tags
-  - [x] TASK: Replace Material3 components in `feature/tags` (heavy usage: Button, Card, Scaffold, TextField, etc.).
-  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/tags`.
-  - [x] TASK: Update previews in `feature/tags` to use `SacramentTheme`.
-- [x] STORY: Feature migrations - schedules
-  - [x] TASK: Replace Material3 components in `feature/schedules` (Button, Card, Scaffold, TopAppBar, etc.).
-  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/schedules`.
-  - [x] TASK: Update previews in `feature/schedules` to use `SacramentTheme`.
-- [x] STORY: Feature migrations - notes
-  - [x] TASK: Replace Material3 components in `feature/notes` (Scaffold, TextField, TopAppBar, etc.).
-  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/notes`.
-  - [x] TASK: Update previews in `feature/notes` to use `SacramentTheme`.
-- [x] STORY: Feature migrations - books
-  - [x] TASK: Replace Material3 components in `feature/books` (Card, Scaffold, TopAppBar, etc.).
-  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/books`.
-  - [x] TASK: Update previews in `feature/books` to use `SacramentTheme`.
-- [x] STORY: Feature migrations - auth
-  - [x] TASK: Replace Material3 components in `feature/auth`.
-  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/auth`.
-  - [x] TASK: Update previews in `feature/auth` to use `SacramentTheme`.
-- [x] STORY: Feature migrations - home
-  - [x] TASK: Replace Material3 components in `feature/home`.
-  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/home`.
-  - [x] TASK: Update previews in `feature/home` to use `SacramentTheme`.
-- [x] STORY: Feature migrations - settings
-  - [x] TASK: Replace Material3 components in `feature/settings`.
-  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/settings`.
-  - [x] TASK: Update previews in `feature/settings` to use `SacramentTheme`.
-- [x] STORY: Feature migrations - setup
-  - [x] TASK: Replace Material3 components in `feature/setup`.
-  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/setup`.
-  - [x] TASK: Update previews in `feature/setup` to use `SacramentTheme`.
-- [x] STORY: Feature migrations - profile
-  - [x] TASK: Replace Material3 components in `feature/profile`.
-  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/profile`.
-  - [x] TASK: Update previews in `feature/profile` to use `SacramentTheme`.
-- [x] STORY: Feature migrations - onboarding
-  - [x] TASK: Replace Material3 components in `feature/onboarding`.
-  - [x] TASK: Replace hardcoded styles with design system tokens in `feature/onboarding`.
-  - [x] TASK: Update previews in `feature/onboarding` to use `SacramentTheme`.
-- [x] STORY: Core + app migration
-  - [x] TASK: Replace Material3 UI components in `app` and `core` with design system primitives/components.
-  - [x] TASK: Replace remaining hardcoded styles with design system tokens across `app` and `core`.
-  - [x] TASK: Remove Material3 dependency from `app/build.gradle.kts`.
-  - [x] TASK: Remove Material3 dependency from `core/ui/build.gradle.kts`.
-- [x] STORY: Sacrament internal cleanup
-  - [x] TASK: Replace Material3 Scaffold in `sacrament` (used by `SacramentScreenScaffold`).
-  - [x] TASK: Verify `sacrament-demo` renders correctly after removal.
-- [x] STORY: Icon centralization
-  - [x] TASK: Create centralized `SacramentIcons` registry in `sacrament` module.
-  - [x] TASK: Update all feature modules to use `SacramentIcons` instead of Material icons directly.
-  - [x] TASK: Update `core/ui` to use `SacramentIcons`.
-  - [x] TASK: Update enforcement script to allow Material icons only in `sacrament` module.
-  - [x] TASK: Update documentation to clarify icon usage rules.
-- [x] STORY: Previews + theme consistency
-  - [x] TASK: Verify all feature previews use `SacramentTheme` (landing, home, notes, profile already migrated).
-- [x] STORY: Documentation
-  - [x] TASK: Document usage in `docs/tech/technicalArchitecture.md` and `docs/agentRules/featureDevelopmentRules.md`.
-- [x] STORY: Enforcement (last)
-  - [x] TASK: Add lint/detekt guardrails to block `androidx.compose.material3.*` and `Color(0x...)` outside `sacrament`.
-  - [x] TASK: Remove Material3 dependency from feature convention plugin and module build files once migrations are complete.
-    - [x] TASK: Remove Material3 from `buildLogic/convention/src/main/kotlin/com/practicalchristian/app/convention/feature/AndroidFeatureConventionPlugin.kt`.
-  - [x] TASK: Add CI check to enforce design system rules.
+- Plan: `docs/darkLightThemePlan.md`
+
+- [ ] STORY: Audit and align theme tokens
+  - [ ] TASK: Review theme entry points in `sacrament/src/main/java/com/sacrament/ui/foundation/Theme.kt`.
+  - [ ] TASK: Review color token files in `sacrament/src/main/java/com/sacrament/ui/foundation/color/`.
+  - [ ] TASK: Document gaps between current tokens and the dark/light target visuals.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+- [ ] STORY: Define light/dark token mappings for navigation and switcher
+  - [ ] TASK: Identify required surface/foreground/accent/shadow tokens for the bottom bar.
+  - [ ] TASK: Identify required track/thumb/icon tokens for the switcher.
+  - [ ] TASK: Verify token naming aligns with Sacrament patterns.
+ - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+</details>
+
+<details>
+<summary>EPIC: Bottom navigation dark mode</summary>
+
+- Plan: `docs/darkLightThemePlan.md`
+
+- [ ] STORY: Bottom bar visual alignment
+  - [ ] TASK: Review `sacrament/src/main/java/com/sacrament/ui/components/navigation/` for bottom bar styling points.
+  - [ ] TASK: Map spotlight effect and bar shape to theme tokens.
+  - [ ] TASK: Validate icon colors remain unchanged between light and dark.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
+- [ ] STORY: App integration check
+  - [ ] TASK: Identify screens using bottom navigation in `feature/*/` and `app/src/main/java/...`.
+  - [ ] TASK: Confirm light mode behavior remains intact.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
+
+</details>
+
+<details>
+<summary>EPIC: Theme switcher and settings integration</summary>
+
+- Plan: `docs/darkLightThemePlan.md`
+
+- [ ] STORY: Switcher component readiness
+  - [ ] TASK: Review `sacrament/src/main/java/com/sacrament/ui/components/input/` switcher defaults.
+  - [ ] TASK: Ensure light/dark (off/on) states map to theme tokens.
+  - [ ] TASK: Confirm sizing, padding, and icon placement match the reference.
+- [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
+- [ ] STORY: Settings screen integration
+  - [ ] TASK: Add the switcher in `feature/settings/src/main/java/com/practicalchristian/app/feature/settings/SettingsScreen.kt`.
+  - [ ] TASK: Ensure switcher uses Sacrament component and icons from the reference.
+  - [ ] TASK: Confirm accessibility labels and touch targets.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
+
+</details>
+
+<details>
+<summary>EPIC: Theme preference and persistence</summary>
+
+- Plan: `docs/darkLightThemePlan.md`
+
+- [ ] STORY: User preference storage
+  - [ ] TASK: Review preference storage in `core/datasource/local/src/main/java/com/practicalchristian/app/core/localdatasource/preferences/user/`.
+  - [ ] TASK: Confirm preference is light/dark only and persists across launches.
+- [ ] STORY: App theme application
+  - [ ] TASK: Confirm theme selection in `app/src/main/java/...` uses stored preference.
+  - [ ] TASK: Validate runtime theme changes from the switcher.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
+</details>
+
+<details>
+<summary>EPIC: Demo, previews, and QA</summary>
+
+- Plan: `docs/darkLightThemePlan.md`
+
+- [ ] STORY: Sacrament demo coverage
+  - [ ] TASK: Add the updated switcher to the Sacrament demo app.
+  - [ ] TASK: Verify the demo showcases light and dark variants.
+- [ ] STORY: Previews and visual QA
+  - [ ] TASK: Add/verify previews for light and dark variants where needed.
+  - [ ] TASK: Validate bottom bar spotlight alignment in dark mode.
+  - [ ] TASK: Check contrast and system bar appearance in both themes.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
+</details>
+
+<details>
+<summary>EPIC: Design system setup + enforcement</summary>
+- [ ] STORY: Enforcement (last)
   - [ ] TASK: enforce using theme colours from the design system.
-  - [ ] TASK: Do a thorough deep code review of this epic to ensure it is complete and correct. Fix any issues found and commit the changes.
+  - [ ] TASK: Do a thorough deep code review of this epic to ensure it is complete and correct. Fix any issues found and commit the changes. Remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -95,6 +117,7 @@ Single source of truth for project tasks, priorities, and status.
   - [ ] TASK: Decide MVP translations + licensing budget (confirm offline rights requirements).
 - [ ] STORY: Onboarding preferences
   - [ ] TASK: Define required onboarding preferences (time, session length, Sabbath, tradition profile).
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -105,6 +128,7 @@ Single source of truth for project tasks, priorities, and status.
 
 - [ ] STORY: Define MVP scope
   - [ ] TASK: Specify 5/10/20 min variants, citations, offline cache, gentle notifications.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -113,6 +137,7 @@ Single source of truth for project tasks, priorities, and status.
 
 - [ ] STORY: Define MVP scope
   - [ ] TASK: Scope invite/search and general channel experiences.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -121,6 +146,7 @@ Single source of truth for project tasks, priorities, and status.
 
 - [ ] STORY: Define MVP scope
   - [ ] TASK: Define private plans, prayer updates, weekly check-ins.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -129,6 +155,7 @@ Single source of truth for project tasks, priorities, and status.
 
 - [ ] STORY: Define MVP scope
   - [ ] TASK: Plan encrypted journal export + biometric lock.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -137,6 +164,7 @@ Single source of truth for project tasks, priorities, and status.
 
 - [ ] STORY: Define MVP scope
   - [ ] TASK: Plan Leitner queue + tie to highlights.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -145,6 +173,7 @@ Single source of truth for project tasks, priorities, and status.
 
 - [ ] STORY: Translation shortlist + cost/rights matrix
   - [ ] TASK: Build licensing track (translation shortlist + cost/rights matrix).
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -153,6 +182,7 @@ Single source of truth for project tasks, priorities, and status.
 
 - [ ] STORY: Define options
   - [ ] TASK: Decide audio strategy and roadmap (TTS vs licensed).
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -161,6 +191,7 @@ Single source of truth for project tasks, priorities, and status.
 
 - [ ] STORY: Discovery research
   - [ ] TASK: Run research on pastoral content formats, multi-church behavior, privacy language, and opt-in signals for MTS/W.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -180,6 +211,7 @@ Single source of truth for project tasks, priorities, and status.
   - [ ] TASK: Add a stub backend interface and ingestion contract.
 - [ ] STORY: Compliance access
   - [ ] TASK: Define backend export format and access flow.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -200,6 +232,7 @@ Single source of truth for project tasks, priorities, and status.
   - [ ] TASK: Gate POST_NOTIFICATIONS permission requests to Android 13+ in `feature/notifications/src/main/java/com/practicalchristian/app/feature/notifications/reminder/NotificationReminderScreen.kt`.
   - [ ] TASK: Define handling for permission denial and "don't ask again" states in notifications onboarding.
   - [ ] TASK: Add error handling guidance for API-level behavior in `docs/tech/errorHandling.md`.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -211,44 +244,61 @@ Single source of truth for project tasks, priorities, and status.
   - [ ] TASK: Test with TalkBack and Switch Access to identify navigation issues.
   - [ ] TASK: Audit color contrast ratios across all design system tokens against WCAG AA standards.
   - [ ] TASK: Create accessibility compliance checklist and document in `docs/tech/accessibility.md`.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Semantic content descriptions
   - [ ] TASK: Add meaningful contentDescription to all icons, images, and interactive elements.
   - [ ] TASK: Ensure decorative elements have null contentDescription to avoid screen reader clutter.
   - [ ] TASK: Review and improve semantic roles for custom components (buttons, lists, headers).
   - [ ] TASK: Add state descriptions for toggles, checkboxes, and progress indicators.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Keyboard and focus navigation
   - [ ] TASK: Ensure all interactive elements are keyboard/D-pad navigable.
   - [ ] TASK: Verify logical focus order across all screens.
   - [ ] TASK: Add visual focus indicators for keyboard navigation.
   - [ ] TASK: Test and fix focus traps in modals and bottom sheets.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Touch target sizing
   - [ ] TASK: Audit all interactive elements to ensure minimum 48dp touch targets.
   - [ ] TASK: Add spacing tokens to design system for accessible touch targets.
   - [ ] TASK: Fix small touch targets in list items, icon buttons, and chips.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Text accessibility
   - [ ] TASK: Ensure all text scales properly with system font size settings.
   - [ ] TASK: Test layouts with 200% font scaling and fix overflow/truncation issues.
   - [ ] TASK: Add proper heading semantics using Modifier.semantics for screen reader navigation.
   - [ ] TASK: Ensure minimum 16sp font size for body text across all features.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Dynamic content and live regions
   - [ ] TASK: Add live region announcements for dynamic content updates (notifications, loading states).
   - [ ] TASK: Ensure error messages are announced to screen readers.
   - [ ] TASK: Add progress announcements for long-running operations.
   - [ ] TASK: Test and improve announcements for navigation changes.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Accessibility testing infrastructure
   - [ ] TASK: Add automated accessibility tests using Compose testing semantics.
   - [ ] TASK: Create accessibility test suite for critical user flows.
   - [ ] TASK: Add CI check for common accessibility issues (missing contentDescription, small touch targets).
   - [ ] TASK: Document accessibility testing guidelines for feature development.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Alternative input methods
   - [ ] TASK: Test and optimize for Switch Access navigation.
   - [ ] TASK: Ensure voice input works properly in all text fields.
   - [ ] TASK: Add support for external keyboard shortcuts for common actions.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Accessibility documentation
   - [ ] TASK: Create accessibility guidelines for component development in `sacrament` module.
   - [ ] TASK: Document accessibility requirements in feature development rules.
   - [ ] TASK: Add accessibility section to component documentation with examples.
   - [ ] TASK: Create accessibility checklist for PR reviews.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -287,31 +337,42 @@ Single source of truth for project tasks, priorities, and status.
   - [ ] TASK: Implement locale-aware content delivery for devotionals and biblical texts.
   - [ ] TASK: Add support for locale-specific date formats and calendar systems.
   - [ ] TASK: Handle locale-specific sorting and collation for lists.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Translation workflow and tooling
   - [ ] TASK: Set up translation management system or workflow (e.g., Crowdin, Lokalise).
   - [ ] TASK: Create translation guidelines and context documentation for translators.
   - [ ] TASK: Define string context and comments for ambiguous translations.
   - [ ] TASK: Add translation validation checks to catch missing or outdated strings.
   - [ ] TASK: Create process for translation updates and review cycles.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Initial language support
   - [ ] TASK: Prioritize and select initial set of target languages for MVP.
   - [ ] TASK: Complete translations for selected languages.
   - [ ] TASK: Add language selector in settings with proper locale switching.
   - [ ] TASK: Test all features in each supported language.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Testing and quality assurance
   - [ ] TASK: Add automated tests for string resource completeness across locales.
   - [ ] TASK: Test with pseudo-localization to identify layout and truncation issues.
   - [ ] TASK: Add CI check to prevent new hardcoded strings from being merged.
   - [ ] TASK: Create manual testing checklist for each new language.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Dynamic language switching
   - [ ] TASK: Implement in-app language switching without app restart.
   - [ ] TASK: Persist user's language preference across sessions.
   - [ ] TASK: Handle language changes for cached and offline content.
   - [ ] TASK: Test language switching across all app states.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
 - [ ] STORY: Documentation and maintenance
   - [ ] TASK: Document string resource conventions in feature development rules.
   - [ ] TASK: Create guidelines for adding new strings and handling edge cases.
   - [ ] TASK: Add i18n checklist to PR review template.
   - [ ] TASK: Document translation maintenance process and ownership.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
