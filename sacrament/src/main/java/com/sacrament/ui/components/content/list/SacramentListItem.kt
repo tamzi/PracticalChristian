@@ -94,10 +94,10 @@ fun SacramentListItem(
             .fillMaxWidth()
             .then(
                 if (onClick != null) Modifier.clickable(
-                role = Role.Button,
-                onClick = onClick
-            ) else
-                Modifier
+                    role = Role.Button,
+                    onClick = onClick
+                ) else
+                    Modifier
             )
             .padding(vertical = spacing.sm, horizontal = spacing.lg),
         verticalAlignment = Alignment.CenterVertically,
