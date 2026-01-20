@@ -405,20 +405,21 @@ fun TagsScreenEmptyPreview() {
 @Preview(showBackground = true)
 @Composable
 fun TagsScreenSuccessPreview() {
-    val sampleTags = listOf(
-        TagDomain(id = 1, name = "Work", color = "#FF5722"),
-        TagDomain(id = 2, name = "Personal", color = "#2196F3"),
-        TagDomain(id = 3, name = "Health", color = "#4CAF50"),
-        TagDomain(id = 4, name = "Learning", color = "#FF9800"),
-        TagDomain(id = 5, name = "Shopping", color = "#9C27B0")
-    )
-
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        val tagColors = SacramentTheme.colors.tags.hexValues
+        val sampleTags = listOf(
+            TagDomain(id = 1, name = "Work", color = tagColors[2]),
+            TagDomain(id = 2, name = "Personal", color = tagColors[8]),
+            TagDomain(id = 3, name = "Health", color = tagColors[5]),
+            TagDomain(id = 4, name = "Learning", color = tagColors[1]),
+            TagDomain(id = 5, name = "Shopping", color = tagColors[10])
+        )
+
         TagsScreenContent(
             state = TagsScreenUiState(
             listState = UiListState.Success(UiSuccessState.Data(sampleTags)),
             tag = null,
-            colors = listOf("#FF5722", "#2196F3", "#4CAF50", "#FF9800", "#9C27B0"),
+            colors = tagColors.take(5),
             isLoading = false
         ),
             onClickBack = {},
@@ -434,25 +435,14 @@ fun TagsScreenSuccessPreview() {
 @Preview(showBackground = true)
 @Composable
 fun TagsScreenBottomSheetPreview() {
-    val sampleColors = listOf(
-        "#FF5722",
-        "#2196F3",
-        "#4CAF50",
-        "#FF9800",
-        "#9C27B0",
-        "#F44336",
-        "#3F51B5",
-        "#009688",
-        "#CDDC39",
-        "#E91E63"
-    )
-
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        val tagColors = SacramentTheme.colors.tags.hexValues
+
         TagsScreenContent(
             state = TagsScreenUiState(
             listState = UiListState.Success(UiSuccessState.Data(emptyList())),
-            tag = TagDomain(id = -1, name = "Sample Tag", color = "#FF5722"),
-            colors = sampleColors,
+            tag = TagDomain(id = -1, name = "Sample Tag", color = tagColors[2]),
+            colors = tagColors.take(10),
             isLoading = false
         ),
             onClickBack = {},
@@ -468,25 +458,14 @@ fun TagsScreenBottomSheetPreview() {
 @Preview(showBackground = true)
 @Composable
 fun TagsScreenUpdateModePreview() {
-    val sampleColors = listOf(
-        "#FF5722",
-        "#2196F3",
-        "#4CAF50",
-        "#FF9800",
-        "#9C27B0",
-        "#F44336",
-        "#3F51B5",
-        "#009688",
-        "#CDDC39",
-        "#E91E63"
-    )
-
     SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        val tagColors = SacramentTheme.colors.tags.hexValues
+
         TagsScreenContent(
             state = TagsScreenUiState(
             listState = UiListState.Success(UiSuccessState.Data(emptyList())),
-            tag = TagDomain(id = 1, name = "Existing Tag", color = "#2196F3"),
-            colors = sampleColors,
+            tag = TagDomain(id = 1, name = "Existing Tag", color = tagColors[8]),
+            colors = tagColors.take(10),
             isLoading = false
         ),
             onClickBack = {},
