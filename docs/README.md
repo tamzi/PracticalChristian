@@ -6,6 +6,7 @@ Quick navigation for project documentation.
 
 - `docs/workToBeDone.md` - Task tracking and priorities
 - `docs/timezoneHandling.md` - Timezone storage strategy
+- `docs/darkLightThemePlan.md` - Dark/light theme implementation plan
 - `docs/agentRules/README.md` - AI agent rules and workflows
 
 ## Product
