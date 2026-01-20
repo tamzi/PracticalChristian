@@ -451,7 +451,7 @@ fun TagsScreenBottomSheetPreview() {
         TagsScreenContent(
             state = TagsScreenUiState(
             listState = UiListState.Success(UiSuccessState.Data(emptyList())),
-            tag = TagDomain(id = -1, name = "Sample SacramentIconTag", color = "#FF5722"),
+            tag = TagDomain(id = -1, name = "Sample Tag", color = "#FF5722"),
             colors = sampleColors,
             isLoading = false
         ),
@@ -485,7 +485,7 @@ fun TagsScreenUpdateModePreview() {
         TagsScreenContent(
             state = TagsScreenUiState(
             listState = UiListState.Success(UiSuccessState.Data(emptyList())),
-            tag = TagDomain(id = 1, name = "Existing SacramentIconTag", color = "#2196F3"),
+            tag = TagDomain(id = 1, name = "Existing Tag", color = "#2196F3"),
             colors = sampleColors,
             isLoading = false
         ),
