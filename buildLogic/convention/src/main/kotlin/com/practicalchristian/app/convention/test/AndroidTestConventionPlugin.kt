@@ -1,6 +1,6 @@
 package com.practicalchristian.app.convention.test
 
-import com.android.build.gradle.TestExtension
+import com.android.build.api.dsl.TestExtension
 import com.practicalchristian.app.convention.android.AndroidSdk
 import com.practicalchristian.app.convention.android.configureKotlinAndroid
 import org.gradle.api.Plugin
