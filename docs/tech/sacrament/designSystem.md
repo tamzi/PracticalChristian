@@ -4,6 +4,8 @@ This guide defines how we build and organize a Compose-first design system. It i
 the source of truth for tokens, primitives, components, patterns, and rules for
 keeping feature UI out of the design system.
 
+Related plan: `docs/darkLightThemePlan.md`.
+
 ## 1) What this is
 
 A Compose-first design system that enforces consistency through
