@@ -12,19 +12,16 @@ import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.provideDelegate
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 
 
-internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, *, *, *, *, *>) {
+internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension) {
     commonExtension.apply {
         compileSdk = AndroidSdk.COMPILE_SDK
 
-        defaultConfig {
-            minSdk = AndroidSdk.MIN_SDK
-        }
-
-        compileOptions {
+        defaultConfig.minSdk = AndroidSdk.MIN_SDK
+        compileOptions.apply {
             // Up to Java 21 APIs are available through desugaring
             // https://developer.android.com/studio/write/java11-minimal-support-table
             sourceCompatibility = JavaVersion.valueOf("VERSION_${AndroidSdk.JAVA_VERSION}")
