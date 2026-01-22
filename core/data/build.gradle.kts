@@ -16,4 +16,8 @@ dependencies {
     implementation(libs.kotlinx.datetime)
     implementation(libs.timber)
 
+    // Testing
+    testImplementation(libs.junit6)
+    testRuntimeOnly(libs.junit.platform.launcher)
+
 }
