@@ -11,4 +11,8 @@ android {
 dependencies {
     // kotlinx datetime
     implementation(libs.kotlinx.datetime)
+
+    // Testing
+    testImplementation(libs.junit6)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }

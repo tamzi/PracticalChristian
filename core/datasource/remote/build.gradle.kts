@@ -10,4 +10,8 @@ android {
 
 dependencies {
     implementation(libs.okhttp)
+
+    // Testing
+    testImplementation(libs.junit6)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
