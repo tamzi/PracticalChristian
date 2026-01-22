@@ -1,6 +1,6 @@
 package com.practicalchristian.app.convention.feature
 
-import com.android.build.gradle.LibraryExtension
+import com.android.build.api.dsl.LibraryExtension
 import com.practicalchristian.app.convention.android.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -31,7 +31,6 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx.tracing.ktx").get())
                 add("implementation", libs.findLibrary("androidx.compose.foundation").get())
                 add("implementation", libs.findLibrary("androidx.ui").get())
-                add("implementation", libs.findLibrary("androidx.compose.material.iconsExtended").get())
                 add("implementation", libs.findLibrary("androidx.material").get())
                 add("implementation", libs.findLibrary("androidx.activity.compose").get())
                 add("implementation", libs.findLibrary("androidx.navigation.compose").get())
