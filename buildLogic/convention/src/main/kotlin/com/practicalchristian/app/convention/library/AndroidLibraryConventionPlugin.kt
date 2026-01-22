@@ -50,6 +50,10 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 add("androidTestImplementation", kotlin("test"))
                 add("testImplementation", kotlin("test"))
 
+                // JUnit 6 (Jupiter) dependencies for unit testing
+                add("testImplementation", libs.findLibrary("junit6").get())
+                add("testRuntimeOnly", libs.findLibrary("junit.platform.launcher").get())
+
                 add("implementation", libs.findLibrary("androidx.tracing.ktx").get())
                 //add("implementation", project.findProperty("libs.androidx.tracing.ktx") as Provider<*>)
             }
