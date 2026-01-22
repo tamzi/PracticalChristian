@@ -43,4 +43,8 @@ dependencies {
     // timber logging
     implementation(libs.timber)
 
+    // Testing
+    testImplementation(libs.junit6)
+    testRuntimeOnly(libs.junit.platform.launcher)
+
 }
