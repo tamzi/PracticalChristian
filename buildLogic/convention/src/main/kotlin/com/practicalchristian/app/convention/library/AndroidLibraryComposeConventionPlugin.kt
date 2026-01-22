@@ -1,6 +1,6 @@
 package com.practicalchristian.app.convention.library
 
-import com.android.build.gradle.LibraryExtension
+import com.android.build.api.dsl.LibraryExtension
 import com.practicalchristian.app.convention.android.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
