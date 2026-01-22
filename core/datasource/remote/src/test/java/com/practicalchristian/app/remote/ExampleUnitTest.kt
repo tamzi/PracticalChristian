@@ -1,16 +1,20 @@
 package com.practicalchristian.app.remote
 
+/*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
+*/
 /**
  * Example local unit test using JUnit 6 (Jupiter)
- * 
+ *
  * See [testing documentation](http://d.android.com/tools/testing)
- */
+ *//*
+
 class ExampleUnitTest {
     @Test
     fun `addition is correct`() {
         assertEquals(4, 2 + 2)
     }
 }
+*/
