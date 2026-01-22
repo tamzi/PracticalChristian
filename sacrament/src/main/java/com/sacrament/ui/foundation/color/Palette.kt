@@ -71,8 +71,9 @@ object SemanticColors {
 }
 
 // Additional colors for tags and categorization
-val Amber = Color(0xFFFF5722)
-val Yellow = Color(0xFFFFC107)
+val Amber = Color(0xFFFFC107) // True amber: yellow-orange
+val DeepOrange = Color(0xFFFF5722)
+val Yellow = Color(0xFFFFEB3B)
 val Lime = Color(0xFFCDDC39)
 val Teal = Color(0xFF009688)
 val Cyan = Color(0xFF00BCD4)
