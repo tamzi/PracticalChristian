@@ -2,6 +2,7 @@ package com.sacrament.ui.foundation.color
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
+import kotlin.math.roundToInt
 
 /**
  * Brand accents.
@@ -144,9 +145,9 @@ data class SacramentTagColors(
     val hexValues: List<String>
         get() = palette.map { color ->
             // Compose Color stores as ARGB in ULong, need to extract RGB components
-            val red = (color.red * 255).toInt()
-            val green = (color.green * 255).toInt()
-            val blue = (color.blue * 255).toInt()
+            val red = (color.red * 255).roundToInt()
+            val green = (color.green * 255).roundToInt()
+            val blue = (color.blue * 255).roundToInt()
             "#%02X%02X%02X".format(red, green, blue)
         }
 }
