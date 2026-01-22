@@ -14,4 +14,5 @@ internal val DarkSacramentColors = LightSacramentColors.copy(
         surface = SurfaceDark,
         surfaceVariant = Neutral800,
     ),
+    // Tags inherit from light theme (same vibrant colors work well on dark backgrounds)
 )
