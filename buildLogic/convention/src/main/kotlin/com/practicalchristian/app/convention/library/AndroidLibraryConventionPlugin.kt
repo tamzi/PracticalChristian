@@ -1,8 +1,7 @@
 package com.practicalchristian.app.convention.library
 
+import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
-import com.android.build.gradle.LibraryExtension
-import com.practicalchristian.app.convention.android.AndroidSdk
 import com.practicalchristian.app.convention.android.configureKotlinAndroid
 import com.practicalchristian.app.convention.android.libs
 import com.practicalchristian.app.convention.test.disableUnnecessaryAndroidTests
@@ -23,9 +22,12 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
 
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
-                defaultConfig.targetSdk = AndroidSdk.TARGET_SDK
-                defaultConfig.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-                testOptions.animationsDisabled = true
+                defaultConfig {
+                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                }
+                testOptions {
+                    animationsDisabled = true
+                }
                 // The resource prefix is derived from the module name,
                 // so resources inside ":core:module1" must be prefixed with "core_module1_"
                 resourcePrefix = path
