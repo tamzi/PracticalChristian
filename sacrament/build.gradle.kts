@@ -41,4 +41,7 @@ dependencies {
     // palette
     // implementation(libs.androidx.palette)
 
+    // Testing
+    testImplementation(libs.junit6)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
