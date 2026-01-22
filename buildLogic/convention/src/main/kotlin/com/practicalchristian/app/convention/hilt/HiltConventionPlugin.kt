@@ -6,6 +6,12 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
+private fun Project.configureHiltAndroid() {
+    pluginManager.apply("dagger.hilt.android.plugin")
+    dependencies {
+        add("implementation", libs.findLibrary("hilt.android").get())
+    }
+}
 
 class HiltConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -19,17 +25,11 @@ class HiltConventionPlugin : Plugin<Project> {
             /** Add support for Android modules, based on [AndroidBasePlugin] */
             // Use plugins.withId to properly wait for the Android plugin to be applied
             plugins.withId("com.android.application") {
-                pluginManager.apply("dagger.hilt.android.plugin")
-                dependencies {
-                    add("implementation", libs.findLibrary("hilt.android").get())
-                }
+                configureHiltAndroid()
             }
             
             plugins.withId("com.android.library") {
-                pluginManager.apply("dagger.hilt.android.plugin")
-                dependencies {
-                    add("implementation", libs.findLibrary("hilt.android").get())
-                }
+                configureHiltAndroid()
             }
         }
     }
