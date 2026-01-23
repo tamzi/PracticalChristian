@@ -26,7 +26,7 @@ internal val DarkSacramentColors = LightSacramentColors.copy(
         switchTrackOff = SacramentPalette.switchTrackOffDark,
         switchThumbOn = SacramentPalette.switchThumbOnDark,
         switchThumbOff = SacramentPalette.switchThumbOffDark,
-        switchIconOn = SacramentPalette.switchIconDark,
+        switchIconOn = SacramentPalette.switchThumbOffDark,
         switchIconOff = SacramentPalette.switchIconDark,
     ),
     // Tags inherit from light theme (same vibrant colors work well on dark backgrounds)
