@@ -68,7 +68,7 @@ internal val LightSacramentColors = SacramentColorTokens(
         switchThumbOn = SacramentPalette.switchThumbOnLight,
         switchThumbOff = SacramentPalette.switchThumbOffLight,
         switchIconOn = SacramentPalette.switchIconLight,
-        switchIconOff = SacramentPalette.switchIconLight,
+        switchIconOff = SacramentPalette.navigationUnselectedLight,
     ),
     tags = SacramentTagColors(
         red = ErrorRed,
