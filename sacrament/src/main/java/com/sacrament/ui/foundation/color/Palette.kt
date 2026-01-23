@@ -122,28 +122,28 @@ object SacramentPalette {
     val onboardingAccentQuaternary = Color(0xFF5879DB)
 
     // Navigation colors - Light theme
-    val navigationBarLight = Color(0xFFFFFFFF)
-    val navigationSelectedLight = Color(0xFF6B4FE8) // Brand purple
-    val navigationUnselectedLight = Color(0xFF666666)
-    val navigationSpotlightLight = Color(0x1A6B4FE8) // 10% brand purple for subtle indicator
+    val navigationBarLight = SurfaceLight
+    val navigationSelectedLight = brandPurple
+    val navigationUnselectedLight = textMuted
+    val navigationSpotlightLight = brandPurple.copy(alpha = 0.1f) // 10% brand purple for subtle indicator
 
     // Navigation colors - Dark theme
-    val navigationBarDark = Color(0xFF202020)
+    val navigationBarDark = SurfaceDark
     val navigationSelectedDark = Color(0xFF8B7AFF) // Lighter purple for dark mode
-    val navigationUnselectedDark = Color(0xFFBDBDBD)
-    val navigationSpotlightDark = Color(0x4D8B7AFF) // 30% lighter purple for spotlight glow
+    val navigationUnselectedDark = Neutral400
+    val navigationSpotlightDark = navigationSelectedDark.copy(alpha = 0.3f) // 30% lighter purple for spotlight glow
 
     // Interactive colors - Light theme
-    val switchTrackOnLight = Color(0x4D6B4FE8) // 30% brand purple
-    val switchTrackOffLight = Color(0x33666666) // 20% muted gray
-    val switchThumbOnLight = Color(0xFF6B4FE8) // Brand purple
-    val switchThumbOffLight = Color(0xFFFFFFFF) // White
-    val switchIconLight = Color(0xFFFFFFFF) // White for icons
+    val switchTrackOnLight = brandPurple.copy(alpha = 0.3f) // 30% brand purple
+    val switchTrackOffLight = textMuted.copy(alpha = 0.2f) // 20% muted gray
+    val switchThumbOnLight = brandPurple
+    val switchThumbOffLight = Color.White
+    val switchIconLight = Color.White
 
     // Interactive colors - Dark theme
-    val switchTrackOnDark = Color(0x4D8B7AFF) // 30% lighter purple
-    val switchTrackOffDark = Color(0x33BDBDBD) // 20% lighter gray
-    val switchThumbOnDark = Color(0xFF8B7AFF) // Lighter purple
-    val switchThumbOffDark = Color(0xFF424242) // Dark gray
-    val switchIconDark = Color(0xFFFFFFFF) // White for icons
+    val switchTrackOnDark = navigationSelectedDark.copy(alpha = 0.3f) // 30% lighter purple
+    val switchTrackOffDark = Neutral400.copy(alpha = 0.2f) // 20% lighter gray
+    val switchThumbOnDark = navigationSelectedDark
+    val switchThumbOffDark = Neutral800
+    val switchIconDark = Color.White
 }
