@@ -14,7 +14,7 @@ Single source of truth for project tasks, priorities, and status.
 ## Current Focus
 
 <details>
-<summary>EPIC: Theme foundations</summary>
+<summary>EPIC: Enabling Dark mode</summary>
 
 - Plan: `docs/darkLightThemePlan.md`
 
