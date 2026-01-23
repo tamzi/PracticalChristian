@@ -105,6 +105,37 @@ data class SacramentOnboardingColors(
 )
 
 /**
+ * Navigation component colors for bottom bars, rails, and tabs.
+ *
+ * Usage:
+ * `backgroundColor = SacramentTheme.colors.navigation.barBackground`
+ */
+@Immutable
+data class SacramentNavigationColors(
+    val barBackground: Color,
+    val selectedIndicator: Color,
+    val selectedIcon: Color,
+    val unselectedIcon: Color,
+    val spotlightGlow: Color,
+)
+
+/**
+ * Interactive component colors for switches, toggles, and controls.
+ *
+ * Usage:
+ * `trackColor = SacramentTheme.colors.interactive.switchTrackOn`
+ */
+@Immutable
+data class SacramentInteractiveColors(
+    val switchTrackOn: Color,
+    val switchTrackOff: Color,
+    val switchThumbOn: Color,
+    val switchThumbOff: Color,
+    val switchIconOn: Color,
+    val switchIconOff: Color,
+)
+
+/**
  * Curated tag colors for user categorization.
  *
  * Usage:
@@ -166,5 +197,7 @@ data class SacramentColorTokens(
     val semantic: SacramentSemanticColors,
     val utilities: SacramentUtilityColors,
     val onboarding: SacramentOnboardingColors,
+    val navigation: SacramentNavigationColors,
+    val interactive: SacramentInteractiveColors,
     val tags: SacramentTagColors,
 )
