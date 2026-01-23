@@ -18,16 +18,26 @@ Single source of truth for project tasks, priorities, and status.
 
 - Plan: `docs/darkLightThemePlan.md`
 
-- [ ] STORY: Audit and align theme tokens
-  - [ ] TASK: Review theme entry points in `sacrament/src/main/java/com/sacrament/ui/foundation/Theme.kt`.
-  - [ ] TASK: Review color token files in `sacrament/src/main/java/com/sacrament/ui/foundation/color/`.
-  - [ ] TASK: Document gaps between current tokens and the dark/light target visuals.
-  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+- [x] STORY: Audit and align theme tokens
+  - [x] TASK: Review theme entry points in `sacrament/src/main/java/com/sacrament/ui/foundation/Theme.kt`.
+  - [x] TASK: Review color token files in `sacrament/src/main/java/com/sacrament/ui/foundation/color/`.
+  - [x] TASK: Document gaps between current tokens and the dark/light target visuals. (See `docs/themeAudit.md`)
+  - [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 - [ ] STORY: Define light/dark token mappings for navigation and switcher
-  - [ ] TASK: Identify required surface/foreground/accent/shadow tokens for the bottom bar.
-  - [ ] TASK: Identify required track/thumb/icon tokens for the switcher.
-  - [ ] TASK: Verify token naming aligns with Sacrament patterns.
- - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+  - [ ] TASK: Add `SacramentNavigationColors` data class to `SacramentColorTokens.kt` (see `docs/themeAudit.md` section "Recommended Token Additions").
+  - [ ] TASK: Define navigation tokens for bottom bar: barBackground, selectedIndicator, selectedIcon, unselectedIcon, spotlightGlow.
+  - [ ] TASK: Add switcher tokens (track/thumb/icon colors for on/off states) - either extend `SacramentInteractiveColors` or add to utilities.
+  - [ ] TASK: Implement light and dark variants for all new navigation and switcher tokens.
+  - [ ] TASK: Update `LightSacramentColors` and `DarkSacramentColors` to include new token mappings.
+  - [ ] TASK: Verify token naming follows Sacrament patterns (check against existing tokens like `SacramentTextColors`, `SacramentSurfaceColors`).
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+- [ ] STORY: Complete dark theme color mappings (addresses Critical Gap #1 from `docs/themeAudit.md`)
+  - [ ] TASK: Create dark variants for tinted surfaces (sunlight, lavender, rose, sky, mint, peach) in `Palette.kt`.
+  - [ ] TASK: Update `DarkSacramentColors` to use dark-appropriate tinted surface values.
+  - [ ] TASK: Validate semantic colors (success, warning, error, info) have proper contrast on dark backgrounds.
+  - [ ] TASK: Audit utility colors (progressTrack, authProviderSurface, etc.) for dark mode visibility.
+  - [ ] TASK: Test brand colors on dark backgrounds and adjust if needed for contrast/vibrancy.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 </details>
 
 <details>
