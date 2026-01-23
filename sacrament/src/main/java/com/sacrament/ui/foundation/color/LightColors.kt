@@ -55,6 +55,21 @@ internal val LightSacramentColors = SacramentColorTokens(
         accentTertiary = SacramentPalette.onboardingAccentTertiary,
         accentQuaternary = SacramentPalette.onboardingAccentQuaternary,
     ),
+    navigation = SacramentNavigationColors(
+        barBackground = SacramentPalette.navigationBarLight,
+        selectedIndicator = SacramentPalette.navigationSelectedLight,
+        selectedIcon = SacramentPalette.navigationSelectedLight,
+        unselectedIcon = SacramentPalette.navigationUnselectedLight,
+        spotlightGlow = SacramentPalette.navigationSpotlightLight,
+    ),
+    interactive = SacramentInteractiveColors(
+        switchTrackOn = SacramentPalette.switchTrackOnLight,
+        switchTrackOff = SacramentPalette.switchTrackOffLight,
+        switchThumbOn = SacramentPalette.switchThumbOnLight,
+        switchThumbOff = SacramentPalette.switchThumbOffLight,
+        switchIconOn = SacramentPalette.switchIconLight,
+        switchIconOff = SacramentPalette.switchIconLight,
+    ),
     tags = SacramentTagColors(
         red = ErrorRed,
         orange = WarningOrange,
