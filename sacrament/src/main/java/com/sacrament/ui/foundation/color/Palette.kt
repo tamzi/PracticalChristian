@@ -97,7 +97,7 @@ object SacramentPalette {
     val textStrong = Color(0xFF1A1A1A)
     val textMuted = Color(0xFF666666)
 
-    // Surface tints
+    // Surface tints - Light theme
     val surfaceSunlight = Color(0xFFFFF9E6)
     val surfaceSunlightSoft = Color(0xFFFFF9F0)
     val surfaceLavender = Color(0xFFE8E6FF)
@@ -108,6 +108,18 @@ object SacramentPalette {
     val surfaceMint = Color(0xFFE8F5E9)
     val surfacePeach = Color(0xFFFFF4E6)
     val surfacePeachSoft = Color(0xFFFFE8D6)
+
+    // Surface tints - Dark theme
+    val surfaceSunlightDark = Color(0xFF3A3420) // Warm dark brown with golden tint
+    val surfaceSunlightSoftDark = Color(0xFF2E2A1C)
+    val surfaceLavenderDark = Color(0xFF2D2A3D) // Deep purple tint
+    val surfaceLavenderSoftDark = Color(0xFF252230)
+    val surfaceRoseDark = Color(0xFF3D2A32) // Deep pink/mauve tint
+    val surfaceRoseTintDark = Color(0xFF332228)
+    val surfaceSkyDark = Color(0xFF1E2F3D) // Deep blue tint
+    val surfaceMintDark = Color(0xFF243329) // Deep green tint
+    val surfacePeachDark = Color(0xFF3D2E20) // Deep orange tint
+    val surfacePeachSoftDark = Color(0xFF33261B)
 
     // UI utility colors
     val progressTrack = Color(0xFFE0E0E0)
