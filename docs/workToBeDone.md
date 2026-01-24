@@ -18,19 +18,6 @@ Single source of truth for project tasks, priorities, and status.
 
 - Plan: `docs/darkLightThemePlan.md`
 
-- [x] STORY: Audit and align theme tokens
-  - [x] TASK: Review theme entry points in `sacrament/src/main/java/com/sacrament/ui/foundation/Theme.kt`.
-  - [x] TASK: Review color token files in `sacrament/src/main/java/com/sacrament/ui/foundation/color/`.
-  - [x] TASK: Document gaps between current tokens and the dark/light target visuals. (See `docs/themeAudit.md`)
-  - [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
-- [x] STORY: Define light/dark token mappings for navigation and switcher
-  - [x] TASK: Add `SacramentNavigationColors` data class to `SacramentColorTokens.kt` (see `docs/themeAudit.md` section "Recommended Token Additions").
-  - [x] TASK: Define navigation tokens for bottom bar: barBackground, selectedIndicator, selectedIcon, unselectedIcon, spotlightGlow.
-  - [x] TASK: Add switcher tokens (track/thumb/icon colors for on/off states) - created `SacramentInteractiveColors` with all required tokens.
-  - [x] TASK: Implement light and dark variants for all new navigation and switcher tokens in `Palette.kt`.
-  - [x] TASK: Update `LightSacramentColors` and `DarkSacramentColors` to include new token mappings.
-  - [x] TASK: Verify token naming follows Sacrament patterns (check against existing tokens like `SacramentTextColors`, `SacramentSurfaceColors`).
-  - [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 - [ ] STORY: Complete dark theme color mappings (addresses Critical Gap #1 from `docs/themeAudit.md`)
   - [ ] TASK: Create dark variants for tinted surfaces (sunlight, lavender, rose, sky, mint, peach) in `Palette.kt`.
   - [ ] TASK: Update `DarkSacramentColors` to use dark-appropriate tinted surface values.
