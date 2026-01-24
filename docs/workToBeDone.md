@@ -32,10 +32,10 @@ Single source of truth for project tasks, priorities, and status.
 
 - Plan: `docs/darkLightThemePlan.md`
 
-- [ ] STORY: Bottom bar visual alignment
-  - [ ] TASK: Review `sacrament/src/main/java/com/sacrament/ui/components/navigation/` for bottom bar styling points.
-  - [ ] TASK: Map spotlight effect and bar shape to theme tokens.
-  - [ ] TASK: Validate icon colors remain unchanged between light and dark.
+- [x] STORY: Bottom bar visual alignment
+  - [x] TASK: Review `sacrament/src/main/java/com/sacrament/ui/components/navigation/` for bottom bar styling points.
+  - [x] TASK: Map spotlight effect and bar shape to theme tokens.
+  - [x] TASK: Validate icon colors remain unchanged between light and dark.
   - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 - [ ] STORY: App integration check
