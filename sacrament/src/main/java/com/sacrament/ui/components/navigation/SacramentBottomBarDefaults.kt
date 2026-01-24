@@ -24,8 +24,8 @@ object SacramentBottomBarDefaults {
     fun colors(): SacramentBottomBarColors {
         val colors = SacramentTheme.colors
         return SacramentBottomBarColors(
-            container = colors.surfaces.surface,
-            content = colors.text.muted,
+            container = colors.navigation.barBackground,
+            content = colors.navigation.unselectedIcon,
         )
     }
 
