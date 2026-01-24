@@ -9,10 +9,40 @@ internal val DarkSacramentColors = LightSacramentColors.copy(
         inverse = Color.Black,
         onBrand = Color.White,
     ),
-    surfaces = LightSacramentColors.surfaces.copy(
+    surfaces = SacramentSurfaceColors(
         background = BackgroundDark,
         surface = SurfaceDark,
         surfaceVariant = Neutral800,
+        sunlight = SacramentPalette.surfaceSunlightDark,
+        sunlightSoft = SacramentPalette.surfaceSunlightSoftDark,
+        lavender = SacramentPalette.surfaceLavenderDark,
+        lavenderSoft = SacramentPalette.surfaceLavenderSoftDark,
+        rose = SacramentPalette.surfaceRoseDark,
+        roseTint = SacramentPalette.surfaceRoseTintDark,
+        sky = SacramentPalette.surfaceSkyDark,
+        mint = SacramentPalette.surfaceMintDark,
+        peach = SacramentPalette.surfacePeachDark,
+        peachSoft = SacramentPalette.surfacePeachSoftDark,
+    ),
+    semantic = SacramentSemanticColors(
+        success = SuccessGreenLight, // Lighter variant for better visibility on dark backgrounds
+        successLight = SuccessGreen,
+        successDark = SuccessGreenDark,
+        warning = WarningOrangeLight, // Lighter variant for better visibility on dark backgrounds
+        warningLight = WarningOrange,
+        warningDark = WarningOrangeDark,
+        error = ErrorRedLight, // Lighter variant for better visibility on dark backgrounds
+        errorLight = ErrorRed,
+        errorDark = ErrorRedDark,
+        info = InfoBlueLight, // Lighter variant for better visibility on dark backgrounds
+        infoLight = InfoBlue,
+        infoDark = InfoBlueDark,
+    ),
+    utilities = SacramentUtilityColors(
+        progressTrack = Neutral700, // Darker for dark mode visibility
+        authProviderSurface = Neutral800, // Darker surface for dark mode
+        successAction = SuccessGreenLight, // Lighter for visibility
+        onSuccessAction = Color.Black,
     ),
     navigation = SacramentNavigationColors(
         barBackground = SacramentPalette.navigationBarDark,
