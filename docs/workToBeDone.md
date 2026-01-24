@@ -36,7 +36,7 @@ Single source of truth for project tasks, priorities, and status.
   - [x] TASK: Review `sacrament/src/main/java/com/sacrament/ui/components/navigation/` for bottom bar styling points.
   - [x] TASK: Map spotlight effect and bar shape to theme tokens.
   - [x] TASK: Validate icon colors remain unchanged between light and dark.
-  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+  - [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 - [ ] STORY: App integration check
   - [ ] TASK: Identify screens using bottom navigation in `feature/*/` and `app/src/main/java/...`.
