@@ -95,7 +95,7 @@ private fun RowScope.BottomNavItem(
 ) {
     val spacing = SacramentTheme.spacing
     val colors = SacramentTheme.colors
-    val contentColor = if (selected) colors.brand.primary else colors.text.muted
+    val contentColor = if (selected) colors.navigation.selectedIcon else colors.navigation.unselectedIcon
     Column(
         modifier = modifier
             .weight(1f)
