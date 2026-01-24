@@ -18,12 +18,12 @@ Single source of truth for project tasks, priorities, and status.
 
 - Plan: `docs/darkLightThemePlan.md`
 
-- [ ] STORY: Complete dark theme color mappings (addresses Critical Gap #1 from `docs/themeAudit.md`)
-  - [ ] TASK: Create dark variants for tinted surfaces (sunlight, lavender, rose, sky, mint, peach) in `Palette.kt`.
-  - [ ] TASK: Update `DarkSacramentColors` to use dark-appropriate tinted surface values.
-  - [ ] TASK: Validate semantic colors (success, warning, error, info) have proper contrast on dark backgrounds.
-  - [ ] TASK: Audit utility colors (progressTrack, authProviderSurface, etc.) for dark mode visibility.
-  - [ ] TASK: Test brand colors on dark backgrounds and adjust if needed for contrast/vibrancy.
+- [x] STORY: Complete dark theme color mappings (addresses Critical Gap #1 from `docs/themeAudit.md`)
+  - [x] TASK: Create dark variants for tinted surfaces (sunlight, lavender, rose, sky, mint, peach) in `Palette.kt`.
+  - [x] TASK: Update `DarkSacramentColors` to use dark-appropriate tinted surface values.
+  - [x] TASK: Validate semantic colors (success, warning, error, info) have proper contrast on dark backgrounds.
+  - [x] TASK: Audit utility colors (progressTrack, authProviderSurface, etc.) for dark mode visibility.
+  - [x] TASK: Test brand colors on dark backgrounds and adjust if needed for contrast/vibrancy.
   - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 </details>
 
