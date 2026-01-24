@@ -24,7 +24,7 @@ Single source of truth for project tasks, priorities, and status.
   - [x] TASK: Validate semantic colors (success, warning, error, info) have proper contrast on dark backgrounds.
   - [x] TASK: Audit utility colors (progressTrack, authProviderSurface, etc.) for dark mode visibility.
   - [x] TASK: Test brand colors on dark backgrounds and adjust if needed for contrast/vibrancy.
-  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+  - [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 </details>
 
 <details>
