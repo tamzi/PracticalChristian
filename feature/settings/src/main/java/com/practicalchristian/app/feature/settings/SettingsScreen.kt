@@ -24,7 +24,6 @@ import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
-import com.sacrament.ui.primitives.SacramentIcon
 import com.sacrament.ui.primitives.SacramentText
 
 /**
@@ -79,42 +78,20 @@ fun SettingsScreenContent(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)
-                ) {
-                    // Light mode icon
-                    SacramentIcon(
-                        imageVector = SacramentIcons.SacramentIconLightMode,
-                        contentDescription = null,
-                        tint = SacramentTheme.colors.text.strong
-                    )
-                    
-                    SacramentText(
-                        text = "Dark Mode",
-                        style = SacramentTheme.typography.bodyLarge,
-                        color = SacramentTheme.colors.text.strong
-                    )
-                }
+                SacramentText(
+                    text = "Dark Mode",
+                    style = SacramentTheme.typography.bodyLarge,
+                    color = SacramentTheme.colors.text.strong
+                )
                 
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.sm)
-                ) {
-                    // Theme switcher
-                    SacramentSwitch(
-                        checked = isDarkThemeEnabled,
-                        onCheckedChange = { onToggleDarkMode() },
-                        size = SacramentSwitchSize.Medium
-                    )
-                    
-                    // Dark mode icon
-                    SacramentIcon(
-                        imageVector = SacramentIcons.SacramentIconDarkMode,
-                        contentDescription = null,
-                        tint = SacramentTheme.colors.text.strong
-                    )
-                }
+                // Theme switcher with icons inside
+                SacramentSwitch(
+                    checked = isDarkThemeEnabled,
+                    onCheckedChange = { onToggleDarkMode() },
+                    size = SacramentSwitchSize.Medium,
+                    checkedIcon = SacramentIcons.SacramentIconDarkMode,
+                    uncheckedIcon = SacramentIcons.SacramentIconLightMode
+                )
             }
         }
     }
