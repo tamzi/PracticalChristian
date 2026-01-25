@@ -18,15 +18,21 @@ Single source of truth for project tasks, priorities, and status.
 
 - Plan: `docs/darkLightThemePlan.md`
 
-- [ ] STORY: Sacrament demo coverage
-  - [ ] TASK: Add the updated switcher to the Sacrament demo app.
-  - [ ] TASK: Verify the demo showcases light and dark variants.
-- [ ] STORY: Previews and visual QA
-  - [ ] TASK: Validate bottom bar spotlight alignment in dark mode.
-  - [ ] TASK: Check contrast and system bar appearance in both themes.
-  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+- [x] STORY: Sacrament demo coverage
+  - [x] TASK: Add the updated switcher to the Sacrament demo app.
+  - [x] TASK: Verify the demo showcases light and dark variants.
+- [x] STORY: Previews and visual QA
+  - [x] TASK: Validate bottom bar spotlight alignment in dark mode.
+  - [x] TASK: Check contrast and system bar appearance in both themes.
+  - [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
-</details>
+</details></thinking>
+
+Perfect! Let me now check the commit rules and create a summary of all changes:
+
+<function_calls>
+<invoke name="todo_write">
+<parameter name="todos">[{"content": "Add theme switcher showcase to the demo app main screen", "status": "completed", "activeForm": "Adding theme switcher showcase to the demo app main screen"}, {"content": "Verify bottom bar catalog showcases both light and dark themes", "status": "completed", "activeForm": "Verifying bottom bar catalog showcases both light and dark themes"}, {"content": "Validate bottom bar spotlight alignment in dark mode using previews", "status": "completed", "activeForm": "Validating bottom bar spotlight alignment in dark mode using previews"}, {"content": "Check contrast and system bar appearance in both themes", "status": "completed", "activeForm": "Checking contrast and system bar appearance in both themes"}, {"content": "Perform code review of all dark/light theme changes", "status": "completed", "activeForm": "Performing code review of all dark/light theme changes"}, {"content": "Update workToBeDone.md to mark tasks as complete", "status": "completed", "activeForm": "Updating workToBeDone.md to mark tasks as complete"}]
 
 <details>
 <summary>EPIC: Design system setup + enforcement</summary>
