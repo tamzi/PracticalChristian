@@ -155,7 +155,7 @@ object SacramentPalette {
     // Interactive colors - Dark theme
     val switchTrackOnDark = navigationSelectedDark.copy(alpha = 0.3f) // 30% lighter purple
     val switchTrackOffDark = Neutral400.copy(alpha = 0.2f) // 20% lighter gray
-    val switchThumbOnDark = navigationSelectedDark
+    val switchThumbOnDark = Color.White // White thumb in dark mode
     val switchThumbOffDark = Neutral800
     val switchIconDark = Color.White
 }
