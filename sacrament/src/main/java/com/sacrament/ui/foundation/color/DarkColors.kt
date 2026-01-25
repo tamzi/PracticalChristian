@@ -46,7 +46,7 @@ internal val DarkSacramentColors = LightSacramentColors.copy(
     ),
     navigation = SacramentNavigationColors(
         barBackground = SacramentPalette.navigationBarDark,
-        selectedIndicator = SacramentPalette.navigationSelectedDark,
+        selectedIndicator = SacramentPalette.navigationIndicatorDark,
         selectedIcon = SacramentPalette.navigationSelectedDark,
         unselectedIcon = SacramentPalette.navigationUnselectedDark,
         spotlightGlow = SacramentPalette.navigationSpotlightDark,
