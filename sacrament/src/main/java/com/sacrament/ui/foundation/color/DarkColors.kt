@@ -25,23 +25,23 @@ internal val DarkSacramentColors = LightSacramentColors.copy(
         peachSoft = SacramentPalette.surfacePeachSoftDark,
     ),
     semantic = SacramentSemanticColors(
-        success = SuccessGreenLight, // Lighter variant for better visibility on dark backgrounds
-        successLight = SuccessGreen,
+        success = SuccessGreen, // Base success color; use successLight for brighter option on dark backgrounds
+        successLight = SuccessGreenLight,
         successDark = SuccessGreenDark,
-        warning = WarningOrangeLight, // Lighter variant for better visibility on dark backgrounds
-        warningLight = WarningOrange,
+        warning = WarningOrange, // Base warning color; use warningLight for brighter option on dark backgrounds
+        warningLight = WarningOrangeLight,
         warningDark = WarningOrangeDark,
-        error = ErrorRedLight, // Lighter variant for better visibility on dark backgrounds
-        errorLight = ErrorRed,
+        error = ErrorRed, // Base error color; use errorLight for brighter option on dark backgrounds
+        errorLight = ErrorRedLight,
         errorDark = ErrorRedDark,
-        info = InfoBlueLight, // Lighter variant for better visibility on dark backgrounds
-        infoLight = InfoBlue,
+        info = InfoBlue, // Base info color; use infoLight for brighter option on dark backgrounds
+        infoLight = InfoBlueLight,
         infoDark = InfoBlueDark,
     ),
     utilities = SacramentUtilityColors(
         progressTrack = Neutral700, // Darker for dark mode visibility
         authProviderSurface = Neutral800, // Darker surface for dark mode
-        successAction = SuccessGreenLight, // Lighter for visibility
+        successAction = SuccessGreen, // Base success for action buttons
         onSuccessAction = Color.Black,
     ),
     navigation = SacramentNavigationColors(
