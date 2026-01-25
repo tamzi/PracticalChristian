@@ -76,10 +76,34 @@ fun SacramentSwitch(
     }
 }
 
-@Preview
+@Preview(name = "Light Theme - Checked")
 @Composable
-private fun SacramentSwitchPreview() {
-    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+private fun SacramentSwitchLightCheckedPreview() {
+    SacramentTheme(darkTheme = false, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         SacramentSwitch(checked = true, onCheckedChange = {})
+    }
+}
+
+@Preview(name = "Light Theme - Unchecked")
+@Composable
+private fun SacramentSwitchLightUncheckedPreview() {
+    SacramentTheme(darkTheme = false, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        SacramentSwitch(checked = false, onCheckedChange = {})
+    }
+}
+
+@Preview(name = "Dark Theme - Checked")
+@Composable
+private fun SacramentSwitchDarkCheckedPreview() {
+    SacramentTheme(darkTheme = true, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        SacramentSwitch(checked = true, onCheckedChange = {})
+    }
+}
+
+@Preview(name = "Dark Theme - Unchecked")
+@Composable
+private fun SacramentSwitchDarkUncheckedPreview() {
+    SacramentTheme(darkTheme = true, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        SacramentSwitch(checked = false, onCheckedChange = {})
     }
 }
