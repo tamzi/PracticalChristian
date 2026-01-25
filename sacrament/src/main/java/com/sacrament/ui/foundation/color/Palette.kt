@@ -148,17 +148,27 @@ object SacramentPalette {
     val navigationIndicatorDark = Color(0xFFEEEEEE) // Light gray/white pill for selected item in dark mode
     val navigationSpotlightDark = navigationSelectedDark.copy(alpha = 0.3f) // 30% lighter purple for spotlight glow
 
+    // Interactive component base colors - Light theme
+    val interactiveThumbOnLight = brandPurple // Active thumb color
+    val interactiveThumbOffLight = White // Inactive thumb color
+    val interactiveIconLight = White // Icon color on interactive elements
+
+    // Interactive component base colors - Dark theme
+    val interactiveThumbOnDark = White // Active thumb color for dark mode
+    val interactiveThumbOffDark = Neutral800 // Inactive thumb color for dark mode
+    val interactiveIconDark = White // Icon color on interactive elements for dark mode
+
     // Interactive colors - Light theme
     val switchTrackOnLight = brandPurple.copy(alpha = 0.3f) // 30% brand purple
     val switchTrackOffLight = textMuted.copy(alpha = 0.2f) // 20% muted gray
-    val switchThumbOnLight = brandPurple
-    val switchThumbOffLight = White
-    val switchIconLight = White
+    val switchThumbOnLight = interactiveThumbOnLight
+    val switchThumbOffLight = interactiveThumbOffLight
+    val switchIconLight = interactiveIconLight
 
     // Interactive colors - Dark theme
     val switchTrackOnDark = navigationSelectedDark.copy(alpha = 0.3f) // 30% lighter purple
     val switchTrackOffDark = Neutral400.copy(alpha = 0.2f) // 20% lighter gray
-    val switchThumbOnDark = White
-    val switchThumbOffDark = Neutral800
-    val switchIconDark = White
+    val switchThumbOnDark = interactiveThumbOnDark
+    val switchThumbOffDark = interactiveThumbOffDark
+    val switchIconDark = interactiveIconDark
 }
