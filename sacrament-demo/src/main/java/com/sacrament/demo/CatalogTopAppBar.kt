@@ -16,7 +16,8 @@ fun CatalogTopAppBar(
         title = {
             SacramentText(
                 text = title,
-                style = SacramentTheme.typography.titleSmall
+                style = SacramentTheme.typography.titleSmall,
+                color = SacramentTheme.colors.text.strong
             )
         },
         navigationIcon = if (onNavigateBack != null) {
