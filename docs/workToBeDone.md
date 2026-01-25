@@ -14,39 +14,6 @@ Single source of truth for project tasks, priorities, and status.
 ## Current Focus
 
 <details>
-<summary>EPIC: Enabling Dark mode</summary>
-
-- Plan: `docs/darkLightThemePlan.md`
-
-- [x] STORY: Complete dark theme color mappings (addresses Critical Gap #1 from `docs/themeAudit.md`)
-  - [x] TASK: Create dark variants for tinted surfaces (sunlight, lavender, rose, sky, mint, peach) in `Palette.kt`.
-  - [x] TASK: Update `DarkSacramentColors` to use dark-appropriate tinted surface values.
-  - [x] TASK: Validate semantic colors (success, warning, error, info) have proper contrast on dark backgrounds.
-  - [x] TASK: Audit utility colors (progressTrack, authProviderSurface, etc.) for dark mode visibility.
-  - [x] TASK: Test brand colors on dark backgrounds and adjust if needed for contrast/vibrancy.
-  - [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
-</details>
-
-<details>
-<summary>EPIC: Bottom navigation dark mode</summary>
-
-- Plan: `docs/darkLightThemePlan.md`
-
-- [x] STORY: Bottom bar visual alignment
-  - [x] TASK: Review `sacrament/src/main/java/com/sacrament/ui/components/navigation/` for bottom bar styling points.
-  - [x] TASK: Map spotlight effect and bar shape to theme tokens.
-  - [x] TASK: Validate icon colors remain unchanged between light and dark.
-  - [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
-
-- [ ] STORY: App integration check
-  - [ ] TASK: Identify screens using bottom navigation in `feature/*/` and `app/src/main/java/...`.
-  - [ ] TASK: Confirm light mode behavior remains intact.
-  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
-
-
-</details>
-
-<details>
 <summary>EPIC: Theme switcher and settings integration</summary>
 
 - Plan: `docs/darkLightThemePlan.md`
