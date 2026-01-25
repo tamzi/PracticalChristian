@@ -14,6 +14,48 @@ Single source of truth for project tasks, priorities, and status.
 ## Current Focus
 
 <details>
+<summary>EPIC: Bottom Navigation Spotlight Indicator</summary>
+
+- [ ] STORY: Color system setup
+  - [ ] TASK: Verify spotlight colors exist in `Palette.kt` (navigationSelectedLight, navigationIndicatorDark, navigationSpotlightDark).
+  - [ ] TASK: Verify dark theme color wiring in `DarkColors.kt` for navigation colors (selectedIndicator, spotlightGlow).
+  - [ ] TASK: Ensure `SacramentNavigationColors` has all required properties for spotlight feature.
+
+- [ ] STORY: Core spotlight components
+  - [ ] TASK: Create `IndicatorPill` composable in `SacramentBottomBar.kt` with theme-aware coloring (purple for light, white for dark).
+  - [ ] TASK: Create `SpotlightGlow` composable in `SacramentBottomBar.kt` with vertical gradient effect.
+  - [ ] TASK: Add position animation using `animateDpAsState` with 300ms timing and FastOutSlowInEasing.
+
+- [ ] STORY: SacramentBottomBar refactor
+  - [ ] TASK: Add `selectedIndex` parameter to `SacramentBottomBar` composable.
+  - [ ] TASK: Add rounded corners to bottom bar container using `RoundedCornerShape`.
+  - [ ] TASK: Refactor layout to use `Box` for layering (background → glow → indicator → icons).
+  - [ ] TASK: Calculate item width for dynamic indicator positioning.
+  - [ ] TASK: Implement conditional spotlight glow rendering (dark mode only).
+
+- [ ] STORY: Navigation item updates
+  - [ ] TASK: Update `BottomNavItem` in `BottomNavigationBar.kt` with theme-aware icon colors (white selected in dark, purple selected in light).
+  - [ ] TASK: Update `BottomBarItem` in `BottomBarCatalogScreen.kt` with same icon color logic.
+  - [ ] TASK: Add icon color transition animation using `animateColorAsState`.
+
+- [ ] STORY: Integration and state management
+  - [ ] TASK: Update `SharedBottomNavigationBar` to pass selected screen index to `SacramentBottomBar`.
+  - [ ] TASK: Update `BottomNavigationBar` to track and pass selection index.
+  - [ ] TASK: Update demo in `BottomBarCatalogScreen.kt` to pass selectedIndex state.
+  - [ ] TASK: Add functional bottom bar with spotlight indicator to the sacrament demo app navigation structure.
+
+- [ ] STORY: Testing and polish
+  - [ ] TASK: Create Compose previews for both light and dark themes showing spotlight effect.
+  - [ ] TASK: Test indicator positioning with 3 items (Home, Books, Notes).
+  - [ ] TASK: Verify spotlight glow only appears in dark mode and hides in light mode.
+  - [ ] TASK: Validate touch targets remain adequate (48dp minimum).
+  - [ ] TASK: Test theme switching behavior (light ↔ dark transitions).
+  - [ ] TASK: Test animation smoothness when switching between tabs.
+  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+
+</details>
+
+<details>
 <summary>EPIC: Design system setup + enforcement</summary>
 - [ ] STORY: Enforcement (last)
   - [ ] TASK: enforce using theme colours from the design system.
