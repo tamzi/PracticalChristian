@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.androidx.work.runtime)
 
     implementation(projects.core.data)
+    implementation(projects.core.domain)
     implementation(projects.core.ui)
     implementation(projects.sacrament)
     implementation(projects.feature.auth)
