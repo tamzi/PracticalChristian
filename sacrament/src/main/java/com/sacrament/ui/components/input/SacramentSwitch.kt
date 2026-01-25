@@ -14,13 +14,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
+import com.sacrament.ui.primitives.SacramentIcon
 
 /**
- * Switch input control.
+ * Switch input control with optional icons.
  */
 @Composable
 fun SacramentSwitch(
@@ -28,6 +32,8 @@ fun SacramentSwitch(
     onCheckedChange: (Boolean) -> Unit,
     size: SacramentSwitchSize = SacramentSwitchSize.Medium,
     enabled: Boolean = true,
+    checkedIcon: ImageVector? = null,
+    uncheckedIcon: ImageVector? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     modifier: Modifier = Modifier,
 ) {
@@ -36,6 +42,7 @@ fun SacramentSwitch(
     val height = SacramentSwitchDefaults.height(size)
     val thumbSize = SacramentSwitchDefaults.thumbSize(size)
     val padding = SacramentSwitchDefaults.trackPadding()
+    val iconSize = SacramentSwitchDefaults.iconSize(size)
 
     val trackColor = when {
         !enabled -> colors.disabledTrack
@@ -46,6 +53,11 @@ fun SacramentSwitch(
         !enabled -> colors.disabledThumb
         checked -> colors.checkedThumb
         else -> colors.uncheckedThumb
+    }
+    val iconColor = when {
+        !enabled -> colors.disabledIcon
+        checked -> colors.checkedIcon
+        else -> colors.uncheckedIcon
     }
     val thumbOffset by animateDpAsState(
         targetValue = if (checked) width - thumbSize - padding else padding,
@@ -66,6 +78,38 @@ fun SacramentSwitch(
             ),
         contentAlignment = Alignment.CenterStart,
     ) {
+        // Icon on the opposite side of the thumb
+        if (checked && checkedIcon != null) {
+            Box(
+                modifier = Modifier
+                    .offset(x = padding)
+                    .size(thumbSize),
+                contentAlignment = Alignment.Center
+            ) {
+                SacramentIcon(
+                    imageVector = checkedIcon,
+                    contentDescription = "Checked",
+                    tint = iconColor,
+                    size = iconSize
+                )
+            }
+        } else if (!checked && uncheckedIcon != null) {
+            Box(
+                modifier = Modifier
+                    .offset(x = width - thumbSize - padding)
+                    .size(thumbSize),
+                contentAlignment = Alignment.Center
+            ) {
+                SacramentIcon(
+                    imageVector = uncheckedIcon,
+                    contentDescription = "Unchecked",
+                    tint = iconColor,
+                    size = iconSize
+                )
+            }
+        }
+        
+        // Thumb
         Box(
             modifier = Modifier
                 .offset(x = thumbOffset)
@@ -80,7 +124,12 @@ fun SacramentSwitch(
 @Composable
 private fun SacramentSwitchLightCheckedPreview() {
     SacramentTheme(darkTheme = false, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        SacramentSwitch(checked = true, onCheckedChange = {})
+        SacramentSwitch(
+            checked = true,
+            onCheckedChange = {},
+            checkedIcon = SacramentIcons.SacramentIconDarkMode,
+            uncheckedIcon = SacramentIcons.SacramentIconLightMode
+        )
     }
 }
 
@@ -88,7 +137,12 @@ private fun SacramentSwitchLightCheckedPreview() {
 @Composable
 private fun SacramentSwitchLightUncheckedPreview() {
     SacramentTheme(darkTheme = false, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        SacramentSwitch(checked = false, onCheckedChange = {})
+        SacramentSwitch(
+            checked = false,
+            onCheckedChange = {},
+            checkedIcon = SacramentIcons.SacramentIconDarkMode,
+            uncheckedIcon = SacramentIcons.SacramentIconLightMode
+        )
     }
 }
 
@@ -96,7 +150,12 @@ private fun SacramentSwitchLightUncheckedPreview() {
 @Composable
 private fun SacramentSwitchDarkCheckedPreview() {
     SacramentTheme(darkTheme = true, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        SacramentSwitch(checked = true, onCheckedChange = {})
+        SacramentSwitch(
+            checked = true,
+            onCheckedChange = {},
+            checkedIcon = SacramentIcons.SacramentIconDarkMode,
+            uncheckedIcon = SacramentIcons.SacramentIconLightMode
+        )
     }
 }
 
@@ -104,6 +163,11 @@ private fun SacramentSwitchDarkCheckedPreview() {
 @Composable
 private fun SacramentSwitchDarkUncheckedPreview() {
     SacramentTheme(darkTheme = true, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
-        SacramentSwitch(checked = false, onCheckedChange = {})
+        SacramentSwitch(
+            checked = false,
+            onCheckedChange = {},
+            checkedIcon = SacramentIcons.SacramentIconDarkMode,
+            uncheckedIcon = SacramentIcons.SacramentIconLightMode
+        )
     }
 }
