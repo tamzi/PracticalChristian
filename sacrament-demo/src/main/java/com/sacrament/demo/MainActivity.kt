@@ -6,6 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -57,18 +61,28 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            // Theme state managed at the top level to persist across navigation
+            var isDarkTheme by rememberSaveable { mutableStateOf(false) }
+            
             SacramentTheme(
+                darkTheme = isDarkTheme,
                 navigationBar = Bar.SURFACE,
                 statusBar = Bar.BACKGROUND
             ) {
-                CatalogApp()
+                CatalogApp(
+                    isDarkTheme = isDarkTheme,
+                    onThemeToggle = { isDarkTheme = !isDarkTheme }
+                )
             }
         }
     }
 }
 
 @Composable
-fun CatalogApp() {
+fun CatalogApp(
+    isDarkTheme: Boolean,
+    onThemeToggle: () -> Unit
+) {
     val navController = rememberNavController()
     
     SacramentScreenScaffold(
@@ -81,6 +95,8 @@ fun CatalogApp() {
         ) {
             composable("home") {
                 CatalogHomeScreen(
+                    isDarkTheme = isDarkTheme,
+                    onThemeToggle = onThemeToggle,
                     onNavigateToAction = { navController.navigate("action") },
                     onNavigateToInput = { navController.navigate("input") },
                     onNavigateToNavigation = { navController.navigate("navigation") },
