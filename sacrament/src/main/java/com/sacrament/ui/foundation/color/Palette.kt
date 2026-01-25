@@ -41,6 +41,8 @@ val InfoBlueLight = Color(0xFF64B5F6)
 val InfoBlueDark = Color(0xFF1976D2)
 
 // Neutral Colors
+val White = Color(0xFFFFFFFF)
+val Black = Color(0xFF000000)
 val Neutral50 = Color(0xFFFAFAFA)
 val Neutral100 = Color(0xFFF5F5F5)
 val Neutral200 = Color(0xFFEEEEEE)
@@ -149,13 +151,13 @@ object SacramentPalette {
     val switchTrackOnLight = brandPurple.copy(alpha = 0.3f) // 30% brand purple
     val switchTrackOffLight = textMuted.copy(alpha = 0.2f) // 20% muted gray
     val switchThumbOnLight = brandPurple
-    val switchThumbOffLight = Color.White
-    val switchIconLight = Color.White
+    val switchThumbOffLight = White
+    val switchIconLight = White
 
     // Interactive colors - Dark theme
     val switchTrackOnDark = navigationSelectedDark.copy(alpha = 0.3f) // 30% lighter purple
     val switchTrackOffDark = Neutral400.copy(alpha = 0.2f) // 20% lighter gray
-    val switchThumbOnDark = Color.White // White thumb in dark mode
+    val switchThumbOnDark = White
     val switchThumbOffDark = Neutral800
-    val switchIconDark = Color.White
+    val switchIconDark = White
 }
