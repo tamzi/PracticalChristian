@@ -26,6 +26,9 @@ data class SacramentSwitchColors(
     val uncheckedThumb: Color,
     val disabledTrack: Color,
     val disabledThumb: Color,
+    val checkedIcon: Color,
+    val uncheckedIcon: Color,
+    val disabledIcon: Color,
 )
 
 /**
@@ -42,6 +45,9 @@ object SacramentSwitchDefaults {
             uncheckedThumb = colors.interactive.switchThumbOff,
             disabledTrack = colors.text.muted.copy(alpha = 0.15f),
             disabledThumb = colors.text.muted.copy(alpha = 0.4f),
+            checkedIcon = colors.interactive.switchIconOn,
+            uncheckedIcon = colors.interactive.switchIconOff,
+            disabledIcon = colors.text.muted.copy(alpha = 0.3f),
         )
     }
 
@@ -64,4 +70,10 @@ object SacramentSwitchDefaults {
     }
 
     fun trackPadding(): Dp = 3.dp
+
+    @Composable
+    fun iconSize(size: SacramentSwitchSize): Dp = when (size) {
+        SacramentSwitchSize.Small -> 10.dp
+        SacramentSwitchSize.Medium -> 12.dp
+    }
 }
