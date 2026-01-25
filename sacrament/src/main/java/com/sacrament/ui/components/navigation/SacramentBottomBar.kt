@@ -39,10 +39,22 @@ fun SacramentBottomBar(
     )
 }
 
-@Preview
+@Preview(name = "Light Theme")
 @Composable
-private fun SacramentBottomBarPreview() {
-    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+private fun SacramentBottomBarLightPreview() {
+    SacramentTheme(darkTheme = false, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        SacramentBottomBar {
+            SacramentText(text = "Home", style = SacramentTheme.typography.labelSmall)
+            SacramentText(text = "Notes", style = SacramentTheme.typography.labelSmall)
+            SacramentText(text = "Profile", style = SacramentTheme.typography.labelSmall)
+        }
+    }
+}
+
+@Preview(name = "Dark Theme")
+@Composable
+private fun SacramentBottomBarDarkPreview() {
+    SacramentTheme(darkTheme = true, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         SacramentBottomBar {
             SacramentText(text = "Home", style = SacramentTheme.typography.labelSmall)
             SacramentText(text = "Notes", style = SacramentTheme.typography.labelSmall)

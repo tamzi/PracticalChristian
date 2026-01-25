@@ -55,10 +55,20 @@ fun SacramentTopAppBar(
     }
 }
 
-@Preview
+@Preview(name = "Light Theme")
 @Composable
-private fun SacramentTopAppBarPreview() {
-    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+private fun SacramentTopAppBarLightPreview() {
+    SacramentTheme(darkTheme = false, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        SacramentTopAppBar(
+            title = { SacramentText(text = "Title", style = SacramentTheme.typography.titleSmall) },
+        )
+    }
+}
+
+@Preview(name = "Dark Theme")
+@Composable
+private fun SacramentTopAppBarDarkPreview() {
+    SacramentTheme(darkTheme = true, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         SacramentTopAppBar(
             title = { SacramentText(text = "Title", style = SacramentTheme.typography.titleSmall) },
         )
