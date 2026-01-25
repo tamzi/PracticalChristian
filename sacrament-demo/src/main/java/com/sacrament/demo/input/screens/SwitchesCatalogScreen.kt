@@ -18,6 +18,7 @@ import com.sacrament.demo.CatalogTopAppBar
 import com.sacrament.ui.components.input.SacramentSwitch
 import com.sacrament.ui.components.input.SacramentSwitchSize
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
 import com.sacrament.ui.primitives.SacramentText
 
@@ -40,14 +41,18 @@ fun SwitchesCatalogScreen(onNavigateBack: () -> Unit) {
                     SacramentSwitch(
                         checked = switchCheckedSmall,
                         onCheckedChange = { switchCheckedSmall = it },
-                        size = SacramentSwitchSize.Small
+                        size = SacramentSwitchSize.Small,
+                        checkedIcon = SacramentIcons.SacramentIconDarkMode,
+                        uncheckedIcon = SacramentIcons.SacramentIconLightMode
                     )
                 }
                 CatalogRow("Medium") {
                     SacramentSwitch(
                         checked = switchCheckedMedium,
                         onCheckedChange = { switchCheckedMedium = it },
-                        size = SacramentSwitchSize.Medium
+                        size = SacramentSwitchSize.Medium,
+                        checkedIcon = SacramentIcons.SacramentIconDarkMode,
+                        uncheckedIcon = SacramentIcons.SacramentIconLightMode
                     )
                 }
             }
