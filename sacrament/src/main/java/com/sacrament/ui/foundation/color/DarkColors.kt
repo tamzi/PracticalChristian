@@ -6,8 +6,8 @@ internal val DarkSacramentColors = LightSacramentColors.copy(
     text = SacramentTextColors(
         strong = Neutral50,
         muted = Neutral400,
-        inverse = Color.Black,
-        onBrand = Color.White,
+        inverse = Black,
+        onBrand = White,
     ),
     surfaces = SacramentSurfaceColors(
         background = BackgroundDark,
@@ -42,7 +42,7 @@ internal val DarkSacramentColors = LightSacramentColors.copy(
         progressTrack = Neutral700, // Darker for dark mode visibility
         authProviderSurface = Neutral800, // Darker surface for dark mode
         successAction = SuccessGreen, // Base success for action buttons
-        onSuccessAction = Color.Black,
+        onSuccessAction = Black,
     ),
     navigation = SacramentNavigationColors(
         barBackground = SacramentPalette.navigationBarDark,
