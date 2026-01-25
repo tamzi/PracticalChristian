@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,13 +14,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
+import com.sacrament.ui.components.input.SacramentSwitch
+import com.sacrament.ui.components.input.SacramentSwitchSize
 import com.sacrament.ui.foundation.SacramentTheme
 import com.sacrament.ui.primitives.SacramentText
 
 @Composable
 fun CatalogHomeScreen(
+    isDarkTheme: Boolean,
+    onThemeToggle: () -> Unit,
     onNavigateToAction: () -> Unit,
     onNavigateToInput: () -> Unit,
     onNavigateToNavigation: () -> Unit,
@@ -40,6 +46,36 @@ fun CatalogHomeScreen(
                 .padding(horizontal = SacramentTheme.spacing.xl, vertical = SacramentTheme.spacing.xxl),
             verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.lg)
         ) {
+            // Theme switcher section
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = SacramentTheme.spacing.md),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    SacramentText(
+                        text = "Dark Mode",
+                        style = SacramentTheme.typography.headlineSmall,
+                        color = SacramentTheme.colors.text.strong
+                    )
+                    Spacer(modifier = Modifier.height(SacramentTheme.spacing.xs))
+                    SacramentText(
+                        text = if (isDarkTheme) "Currently in dark theme" else "Currently in light theme",
+                        style = SacramentTheme.typography.bodyMedium,
+                        color = SacramentTheme.colors.text.muted
+                    )
+                }
+                SacramentSwitch(
+                    checked = isDarkTheme,
+                    onCheckedChange = { onThemeToggle() },
+                    size = SacramentSwitchSize.Medium
+                )
+            }
+            
+            Spacer(modifier = Modifier.height(SacramentTheme.spacing.md))
+            
             // Catalog items
             CatalogListItem(
                 title = "ACTION COMPONENTS",
