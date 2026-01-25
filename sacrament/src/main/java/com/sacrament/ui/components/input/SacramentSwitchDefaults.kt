@@ -36,10 +36,10 @@ object SacramentSwitchDefaults {
     fun colors(): SacramentSwitchColors {
         val colors = SacramentTheme.colors
         return SacramentSwitchColors(
-            checkedTrack = colors.brand.primary.copy(alpha = 0.3f),
-            uncheckedTrack = colors.text.muted.copy(alpha = 0.2f),
-            checkedThumb = colors.brand.primary,
-            uncheckedThumb = colors.surfaces.surface,
+            checkedTrack = colors.interactive.switchTrackOn,
+            uncheckedTrack = colors.interactive.switchTrackOff,
+            checkedThumb = colors.interactive.switchThumbOn,
+            uncheckedThumb = colors.interactive.switchThumbOff,
             disabledTrack = colors.text.muted.copy(alpha = 0.15f),
             disabledThumb = colors.text.muted.copy(alpha = 0.4f),
         )

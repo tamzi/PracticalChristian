@@ -299,27 +299,30 @@ class DarkColorsTest {
     inner class SemanticConsistencyTest {
 
         @Test
-        @DisplayName("successLight should match light theme naming pattern")
-        fun successLight_shouldFollowNamingPattern() {
-            // Verify that *Light is lighter than base in both themes
+        @DisplayName("successLight should be consistent across light and dark themes")
+        fun successLight_shouldBeConsistentAcrossThemes() {
+            // Verify that successLight semantic token uses the same value in both themes
             assertEquals(LightSacramentColors.semantic.successLight, darkColors.semantic.successLight)
         }
 
         @Test
-        @DisplayName("warningLight should match light theme naming pattern")
-        fun warningLight_shouldFollowNamingPattern() {
+        @DisplayName("warningLight should be consistent across light and dark themes")
+        fun warningLight_shouldBeConsistentAcrossThemes() {
+            // Verify that warningLight semantic token uses the same value in both themes
             assertEquals(LightSacramentColors.semantic.warningLight, darkColors.semantic.warningLight)
         }
 
         @Test
-        @DisplayName("errorLight should match light theme naming pattern")
-        fun errorLight_shouldFollowNamingPattern() {
+        @DisplayName("errorLight should be consistent across light and dark themes")
+        fun errorLight_shouldBeConsistentAcrossThemes() {
+            // Verify that errorLight semantic token uses the same value in both themes
             assertEquals(LightSacramentColors.semantic.errorLight, darkColors.semantic.errorLight)
         }
 
         @Test
-        @DisplayName("infoLight should match light theme naming pattern")
-        fun infoLight_shouldFollowNamingPattern() {
+        @DisplayName("infoLight should be consistent across light and dark themes")
+        fun infoLight_shouldBeConsistentAcrossThemes() {
+            // Verify that infoLight semantic token uses the same value in both themes
             assertEquals(LightSacramentColors.semantic.infoLight, darkColors.semantic.infoLight)
         }
     }
