@@ -20,6 +20,7 @@ import androidx.compose.ui.semantics.Role
 import com.sacrament.ui.components.input.SacramentSwitch
 import com.sacrament.ui.components.input.SacramentSwitchSize
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.primitives.SacramentText
 
 @Composable
@@ -70,7 +71,9 @@ fun CatalogHomeScreen(
                 SacramentSwitch(
                     checked = isDarkTheme,
                     onCheckedChange = { onThemeToggle() },
-                    size = SacramentSwitchSize.Medium
+                    size = SacramentSwitchSize.Medium,
+                    checkedIcon = SacramentIcons.SacramentIconDarkMode,
+                    uncheckedIcon = SacramentIcons.SacramentIconLightMode
                 )
             }
             
