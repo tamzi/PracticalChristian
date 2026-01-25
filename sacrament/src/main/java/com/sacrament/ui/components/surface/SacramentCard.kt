@@ -50,10 +50,20 @@ fun SacramentCard(
     }
 }
 
-@Preview
+@Preview(name = "Light Theme")
 @Composable
-private fun SacramentCardPreview() {
-    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+private fun SacramentCardLightPreview() {
+    SacramentTheme(darkTheme = false, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        SacramentCard(modifier = Modifier.padding(16.dp), contentPadding = PaddingValues(16.dp)) {
+            SacramentText(text = "Card content")
+        }
+    }
+}
+
+@Preview(name = "Dark Theme")
+@Composable
+private fun SacramentCardDarkPreview() {
+    SacramentTheme(darkTheme = true, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         SacramentCard(modifier = Modifier.padding(16.dp), contentPadding = PaddingValues(16.dp)) {
             SacramentText(text = "Card content")
         }

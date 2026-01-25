@@ -112,10 +112,33 @@ fun SacramentButton(
     }
 }
 
-@Preview
+@Preview(name = "Light Theme")
 @Composable
-private fun SacramentButtonPreview() {
-    SacramentTheme(navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+private fun SacramentButtonLightPreview() {
+    SacramentTheme(darkTheme = false, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            SacramentButton(text = "Primary", onClick = {})
+            SacramentButton(
+                text = "Outlined",
+                onClick = {},
+                variant = SacramentButtonVariant.Outlined,
+            )
+            SacramentButton(
+                text = "Ghost",
+                onClick = {},
+                variant = SacramentButtonVariant.Ghost,
+            )
+        }
+    }
+}
+
+@Preview(name = "Dark Theme")
+@Composable
+private fun SacramentButtonDarkPreview() {
+    SacramentTheme(darkTheme = true, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         Column(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
