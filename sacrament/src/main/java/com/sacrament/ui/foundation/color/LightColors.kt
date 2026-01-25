@@ -11,8 +11,8 @@ internal val LightSacramentColors = SacramentColorTokens(
     text = SacramentTextColors(
         strong = SacramentPalette.textStrong,
         muted = SacramentPalette.textMuted,
-        inverse = Color.White,
-        onBrand = Color.White,
+        inverse = White,
+        onBrand = White,
     ),
     surfaces = SacramentSurfaceColors(
         background = BackgroundLight,
