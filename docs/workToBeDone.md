@@ -18,17 +18,17 @@ Single source of truth for project tasks, priorities, and status.
 
 - Plan: `docs/darkLightThemePlan.md`
 
-- [ ] STORY: Switcher component readiness
-  - [ ] TASK: Review `sacrament/src/main/java/com/sacrament/ui/components/input/` switcher defaults.
-  - [ ] TASK: Ensure light/dark (off/on) states map to theme tokens.
-  - [ ] TASK: Confirm sizing, padding, and icon placement match the reference.
-- [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+- [x] STORY: Switcher component readiness
+  - [x] TASK: Review `sacrament/src/main/java/com/sacrament/ui/components/input/` switcher defaults.
+  - [x] TASK: Ensure light/dark (off/on) states map to theme tokens.
+  - [x] TASK: Confirm sizing, padding, and icon placement match the reference.
+- [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
-- [ ] STORY: Settings screen integration
-  - [ ] TASK: Add the switcher in `feature/settings/src/main/java/com/practicalchristian/app/feature/settings/SettingsScreen.kt`.
-  - [ ] TASK: Ensure switcher uses Sacrament component and icons from the reference.
-  - [ ] TASK: Confirm accessibility labels and touch targets.
-  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+- [x] STORY: Settings screen integration
+  - [x] TASK: Add the switcher in `feature/settings/src/main/java/com/practicalchristian/app/feature/settings/SettingsScreen.kt`.
+  - [x] TASK: Ensure switcher uses Sacrament component and icons from the reference.
+  - [x] TASK: Confirm accessibility labels and touch targets.
+  - [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 
 </details>
@@ -38,13 +38,13 @@ Single source of truth for project tasks, priorities, and status.
 
 - Plan: `docs/darkLightThemePlan.md`
 
-- [ ] STORY: User preference storage
-  - [ ] TASK: Review preference storage in `core/datasource/local/src/main/java/com/practicalchristian/app/core/localdatasource/preferences/user/`.
-  - [ ] TASK: Confirm preference is light/dark only and persists across launches.
-- [ ] STORY: App theme application
-  - [ ] TASK: Confirm theme selection in `app/src/main/java/...` uses stored preference.
-  - [ ] TASK: Validate runtime theme changes from the switcher.
-  - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
+- [x] STORY: User preference storage
+  - [x] TASK: Review preference storage in `core/datasource/local/src/main/java/com/practicalchristian/app/core/localdatasource/preferences/user/`.
+  - [x] TASK: Confirm preference is light/dark only and persists across launches.
+- [x] STORY: App theme application
+  - [x] TASK: Confirm theme selection in `app/src/main/java/...` uses stored preference.
+  - [x] TASK: Validate runtime theme changes from the switcher.
+  - [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
 
@@ -57,7 +57,7 @@ Single source of truth for project tasks, priorities, and status.
   - [ ] TASK: Add the updated switcher to the Sacrament demo app.
   - [ ] TASK: Verify the demo showcases light and dark variants.
 - [ ] STORY: Previews and visual QA
-  - [ ] TASK: Add/verify previews for light and dark variants where needed.
+  - [x] TASK: Add/verify previews for light and dark variants where needed.
   - [ ] TASK: Validate bottom bar spotlight alignment in dark mode.
   - [ ] TASK: Check contrast and system bar appearance in both themes.
   - [ ] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
