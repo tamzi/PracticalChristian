@@ -87,7 +87,7 @@ fun SacramentSwitch(
             ) {
                 SacramentIcon(
                     imageVector = checkedIcon,
-                    contentDescription = "Checked",
+                    contentDescription = null,
                     tint = iconColor,
                     size = iconSize
                 )
@@ -101,7 +101,7 @@ fun SacramentSwitch(
             ) {
                 SacramentIcon(
                     imageVector = uncheckedIcon,
-                    contentDescription = "Unchecked",
+                    contentDescription = null,
                     tint = iconColor,
                     size = iconSize
                 )
