@@ -143,8 +143,9 @@ object SacramentPalette {
 
     // Navigation colors - Dark theme
     val navigationBarDark = SurfaceDark
-    val navigationSelectedDark = Color(0xFF8B7AFF) // Lighter purple for dark mode
+    val navigationSelectedDark = Color(0xFF8B7AFF) // Lighter purple for dark mode icons
     val navigationUnselectedDark = Neutral400
+    val navigationIndicatorDark = Color(0xFFEEEEEE) // Light gray/white pill for selected item in dark mode
     val navigationSpotlightDark = navigationSelectedDark.copy(alpha = 0.3f) // 30% lighter purple for spotlight glow
 
     // Interactive colors - Light theme
