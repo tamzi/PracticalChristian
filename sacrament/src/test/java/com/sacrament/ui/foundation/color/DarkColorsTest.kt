@@ -214,7 +214,7 @@ class DarkColorsTest {
         @Test
         @DisplayName("selectedIndicator should map to dark variant")
         fun selectedIndicator_shouldMapToDarkVariant() {
-            assertEquals(SacramentPalette.navigationSelectedDark, darkColors.navigation.selectedIndicator)
+            assertEquals(SacramentPalette.navigationIndicatorDark, darkColors.navigation.selectedIndicator)
         }
 
         @Test
