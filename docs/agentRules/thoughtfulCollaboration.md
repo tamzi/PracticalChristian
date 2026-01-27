@@ -256,12 +256,12 @@ Agent: [Internally reasons using frameworks]
 - What: Need to handle errors in this specific function
 - How: Searches codebase for existing error handling patterns
 - Finds: Outcome<T> pattern used in core/domain
-- Analysis: This function returns DataResult, should align with project pattern
+- Analysis: This function should use Outcome<T> to align with project pattern
 - Decision: Propose using Outcome<T> to match project conventions
 
 Agent: "I found the project uses Outcome<T> for error handling (core/domain). 
-This function currently returns DataResult. I recommend converting to Outcome<T> 
-to match the project pattern. Should I proceed with that approach?"
+This function should use Outcome<T> to match the project pattern. 
+Should I proceed with that approach?"
 ```
 
 **Why this is good:**
