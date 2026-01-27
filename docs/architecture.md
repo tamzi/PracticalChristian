@@ -1,25 +1,11 @@
 # Clean Architecture: Domain Result Types
 
-## The Problem (Before)
+## Overview
 
-The original `DataResult` type mixed UI lifecycle concerns (Loading, Idle, Empty) with business
-outcomes:
+The application uses distinct result types per architectural layer to maintain separation of 
+concerns and enable clean boundaries between domain logic, data infrastructure, and UI presentation.
 
-**❌ WRONG pattern** - This mixed UI lifecycle concerns with business outcomes.
-
-**Why this violates Clean Architecture:**
-
-1. **Loading/Idle are presentation states** - they describe when to show spinners, not business
-   facts
-2. **Forces all consumers to handle UI timing** - CLI tools, background workers, tests must all deal
-   with view lifecycle
-3. **Empty is ambiguous** - does it mean `Success(emptyList())` or a business error like "KYC not
-   found"?
-4. **Violates Single Responsibility** - domain models business logic, not UI state
-
-## The Solution (Clean Architecture)
-
-### Layer Diagram
+## Layer Diagram
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -53,107 +39,67 @@ outcomes:
 
 ### Domain Layer (core/domain)
 
-**Business-level result types:**
+**Location:** `core/domain/src/.../models/`
 
-- Outcome type: `core/domain/src/.../Outcome.kt`
-- DomainError: `core/domain/src/.../DomainError.kt`
-- Repository interfaces: `core/domain/src/.../repository/`
+**Components:**
+- **Outcome<T>**: Sealed interface with `Success<T>` and `Failure(DomainError)` cases
+- **DomainError**: Sealed interface for business-meaningful errors (Network, NotFound, Validation, Unauthorized, Unknown)
+- **Repository interfaces**: Define data contracts using `Outcome<T>` return types
 
-**Key principle:** Returns ONLY Success or Failure. Empty list = Success(emptyList()), NOT a separate Empty state.
+**Constraint:** Returns ONLY Success or Failure. Empty collections are `Success(emptyList())`, not a separate state.
 
 ### Data Layer (core/data)
 
-**Maps infrastructure results to domain results:**
+**Location:** `core/data/src/.../`
 
-- Result mappers: `core/data/src/.../mappers/ResultMappers.kt`
-- Error mappers: `core/data/src/.../mappers/ErrorMapper.kt`
-- Safe execution wrappers: `core/data/src/.../mappers/SafeOutcome.kt`
-- Repository implementations: `core/data/src/.../repository/*RepositoryImpl.kt`
+**Components:**
+- **Result mappers** (`mappers/ResultMappers.kt`): Transform infrastructure results to domain `Outcome<T>`
+- **Error mappers** (`mappers/ErrorMapper.kt`): Convert low-level exceptions to `DomainError`
+- **Safe execution wrappers** (`mappers/SafeOutcome.kt`): Eliminate try-catch boilerplate
+- **Repository implementations** (`repository/*RepositoryImpl.kt`): Coordinate data sources and map to domain types
 
-**Key patterns:**
+**Responsibilities:**
 - LocalResult → Outcome mapping
 - Exception → DomainError mapping
-- Safe execution helpers eliminate try-catch boilerplate
+- DTO → Domain entity mapping
 
-### Presentation Layer (feature/presentation)
+### Presentation Layer (core/ui, feature/*)
 
-**UI lifecycle states - where Loading/Idle/Empty BELONG:**
+**Location:** `core/ui/src/.../helpers/ItemState.kt`
 
-- ItemState: `feature/presentation/src/.../ItemState.kt`
-- Error mapping: `feature/presentation/src/.../mappers/ErrorMessageMapper.kt`
-- ViewModel examples: `feature/presentation/src/.../*ViewModel.kt`
+**Components:**
+- **ItemState<T>**: Sealed interface with Loading, Error, Success states for UI lifecycle
+- **ViewModels**: Consume `Outcome<T>` from domain, expose `ItemState<T>` to UI
+- **Error presentation**: Map `DomainError` to user-friendly messages
 
-**Key pattern:**
-1. UI sets Loading BEFORE repository call
+**Flow:**
+1. UI sets Loading before repository call
 2. Repository returns Outcome (Success | Failure)
-3. Map DomainError to user message in presentation
+3. ViewModel maps DomainError to user message
 4. UI determines Empty state from business data
 
-## Migration Strategy
+## Architectural Principles
 
-### Phase 1: Domain & Data Layers ✅ DONE
+### 1. Domain is Pure
+- Only business outcomes: Success or Failure
+- Errors are business-meaningful (NotFound, Validation, etc.)
+- NO infrastructure types (no Retrofit/Room exceptions)
+- NO UI states (no Loading/Idle)
 
-- [x] Create `Outcome<T>` and `DomainError` in domain
-- [x] Add `@Deprecated` typealias `DataResult = Outcome` for compatibility
-- [x] Update repositories to return `Outcome<T>`
-- [x] Create `.toOutcome()` and `.toDomainError()` mappers in data layer
+### 2. Data Maps Everything
+- Infrastructure errors → Domain errors
+- DTOs → Domain entities
+- LocalResult → Outcome
+- Keeps infrastructure concerns isolated
 
-### Phase 2: Presentation Layer (TODO)
+### 3. Presentation Derives UI State
+- Maps Outcome → ItemState
+- Sets Loading before calling repository
+- Determines Empty from business data
+- Maps DomainError → user messages
+- Handles all UI lifecycle (Idle/Loading/Empty)
 
-- [ ] Add `Idle` and `Empty` to `ItemState` ✅ DONE
-- [ ] Create `.toUserMessage()` extension for `DomainError` ✅ DONE
-- [ ] Update ScreenModels to:
-    - Replace `is DataResult.Error` → `is Outcome.Failure`
-    - Replace `is DataResult.Success` → `is Outcome.Success`
-    - Replace `result.message` → `result.error.toUserMessage()`
-    - Replace `result.data` → `result.value`
-    - Set `ItemState.Loading` BEFORE repository calls
-    - Handle `null` results as `ItemState.Empty`
-- [ ] Update UI Screens to handle `ItemState.Idle` and `ItemState.Empty`
-- [ ] Remove all `DataResult.Loading/Idle/Empty` references
-
-### Phase 3: Cleanup
-
-- [ ] Remove `@Deprecated` typealias
-- [ ] Update documentation
-- [ ] Add lint rules to prevent UI states in domain
-
-## Key Principles
-
-1. **Domain is Pure**
-    - Only business outcomes: Success or Failure
-    - Errors are business-meaningful (NotFound, Validation, etc.)
-    - NO infrastructure types (no Retrofit/Room exceptions)
-    - NO UI states (no Loading/Idle)
-
-2. **Data Maps Everything**
-    - Infrastructure errors → Domain errors
-    - DTOs → Domain entities
-    - LocalResult → Outcome
-    - Keeps infrastructure concerns isolated
-
-3. **Presentation Derives UI State**
-    - Maps Outcome → ItemState
-    - Sets Loading before calling repository
-    - Determines Empty from business data
-    - Maps DomainError → user messages
-    - Handles all UI lifecycle (Idle/Loading/Empty)
-
-4. **Separation of Concerns**
-    - Domain: "What happened?" (Success/Failure)
-    - Presentation: "What to show?" (Loading/Empty/Error UI)
-    - Data: "How to get it?" (API/DB/Cache)
-
-## Benefits
-
-✅ **Testability** - Domain tests don't need UI mocks
-✅ **Reusability** - CLI tools don't handle Loading states  
-✅ **Clarity** - Empty = `Success(emptyList())`, not ambiguous
-✅ **Clean** - Each layer has single responsibility
-✅ **Type Safety** - Compiler enforces proper error handling
-
-## References
-
-- Original Review Comment: Lines 12-16 of `DataResult.kt`
-- Clean Architecture by Robert C. Martin
-- Domain-Driven Design principles
+### 4. Separation of Concerns
+- **Domain**: "What happened?" (Success/Failure)
+- **Presentation**: "What to show?" (Loading/Empty/Error UI)
+- **Data**: "How to get it?" (API/DB/Cache)
