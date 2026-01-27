@@ -9,8 +9,8 @@
 ## ADR-002: Repository Pattern
 - **Status**: Accepted  
 - **Context**: Need to abstract data sources
-- **Decision**: Use Repository pattern with DataResult for error handling
-- **Consequences**: Consistent error handling across data layer
+- **Decision**: Use Repository pattern with Outcome<T> for error handling
+- **Consequences**: Consistent error handling across data layer with type-safe success/failure semantics
 
 ## ADR-003: Jetpack Compose UI
 - **Status**: Accepted
