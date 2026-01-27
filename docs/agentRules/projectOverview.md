@@ -27,7 +27,7 @@ PracticalChristian is a modern Android application for daily Bible meditations a
 
 ### Clean Architecture with MVVM
 
-- **UI:** Built entirely with Jetpack Compose with Material 3 components
+- **UI:** Built entirely with Jetpack Compose with Sacrament design system (Material-free)
 - **State Management:** Unidirectional Data Flow (UDF) using Coroutines and `Flow`s
 - **ViewModel Pattern:** Standard Hilt ViewModels with `StateFlow`
 - **Dependency Injection:** Hilt throughout the app
