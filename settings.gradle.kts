@@ -87,8 +87,6 @@ include(":content:prayers")
 include(":content:themes")
 include(":content:audio")
 
-// Legacy modules (to migrate)
-
 // Feature modules (new)
 include(":feature:auth")
 include(":feature:landing")
