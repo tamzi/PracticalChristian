@@ -1,9 +1,11 @@
+import com.android.build.api.dsl.ApplicationExtension
+
 plugins {
     alias(libs.plugins.practicalchristian.android.application)
     alias(libs.plugins.practicalchristian.android.application.compose)
 }
 
-android {
+configure<ApplicationExtension> {
     namespace = "com.sacrament.demo"
 
     defaultConfig {
