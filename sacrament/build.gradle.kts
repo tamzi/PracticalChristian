@@ -1,10 +1,12 @@
+import com.android.build.api.dsl.LibraryExtension
+
 plugins {
     alias(libs.plugins.practicalchristian.android.library)
     alias(libs.plugins.practicalchristian.hilt)
     alias(libs.plugins.practicalchristian.android.library.compose)
 }
 
-android {
+configure<LibraryExtension> {
     namespace = "com.sacrament.ui"
 }
 
