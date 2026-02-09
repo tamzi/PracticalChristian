@@ -76,6 +76,16 @@ See `docs/agentRules/commitRules.md` for the policy on bypassing hooks.
 | `pre-push.sh`             | Validates commit history and runs tests         |
 | `pre-receive.sh`          | Server-side validation (admin only)             |
 | `setup-git-aliases.sh`    | Sets up convenient git aliases                  |
+| `extract_unresolved_comments.js` | Extracts unresolved PR comments, analyzes codebase relevance |
+
+## Unresolved Comments Extraction
+
+Extracts unresolved PR review comments and analyzes codebase relevance. See
+[docs/tech/unresolvedComments.md](../docs/tech/unresolvedComments.md) for full documentation.
+
+```bash
+GITHUB_TOKEN=$(gh auth token) node scripts/extract_unresolved_comments.js
+```
 
 ### Troubleshooting
 
