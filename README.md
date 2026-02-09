@@ -92,7 +92,7 @@ sacrament/             # Shared UI components and themes
 
 ## ✅ Work Tracking
 
-- [Work To Be Done](docs/workToBeDone.md)
+- [Work To Be Done](docs/tasks/workToBeDone.md)
 
 ## 📄 License
 
