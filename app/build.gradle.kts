@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.ApplicationExtension
 import java.text.SimpleDateFormat
 
 plugins {
@@ -9,7 +10,7 @@ plugins {
     alias(libs.plugins.firebase.perf)
 }
 
-android {
+configure<ApplicationExtension> {
 
     namespace = "com.practicalchristian.app"
 

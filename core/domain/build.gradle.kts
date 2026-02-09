@@ -1,10 +1,11 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
+import com.android.build.api.dsl.LibraryExtension
+
 plugins {
     alias(libs.plugins.practicalchristian.android.library)
     alias(libs.plugins.practicalchristian.hilt)
 }
 
-android {
+configure<LibraryExtension> {
     namespace = "com.practicalchristian.app.core.domain"
 }
 
