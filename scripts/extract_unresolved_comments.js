@@ -100,6 +100,44 @@ query($owner: String!, $repo: String!, $cursor: String) {
 }
 `;
 
+// --- Structured logging ---
+// Outputs JSON lines (NDJSON) in CI / piped contexts for machine parsing,
+// and clean human-readable text in interactive terminals.
+
+const IS_TTY = process.stdout.isTTY === true;
+
+/**
+ * Emit a structured log entry.
+ *
+ * In TTY mode the human-readable `text` is printed to the appropriate stream.
+ * In non-TTY mode a single JSON line is written to stdout (info/debug) or
+ * stderr (warn/error) so automated tooling can ingest it.
+ *
+ * @param {'info'|'warn'|'error'|'debug'} level - Log severity
+ * @param {string} event - Machine-friendly event name (e.g. 'fetch_prs')
+ * @param {string} text  - Human-readable message (TTY output)
+ * @param {Object} [data] - Optional structured payload for the JSON line
+ */
+function log(level, event, text, data = {}) {
+  const stream = (level === 'error' || level === 'warn')
+    ? process.stderr
+    : process.stdout;
+
+  if (IS_TTY) {
+    stream.write(text + '\n');
+    return;
+  }
+
+  const entry = {
+    timestamp: new Date().toISOString(),
+    level,
+    event,
+    message: text.replace(/[\u2700-\u27BF\u{1F300}-\u{1F9FF}]/gu, '').trim(),
+    ...data,
+  };
+  stream.write(JSON.stringify(entry) + '\n');
+}
+
 // --- Error sanitization ---
 // Prevents leaking sensitive data (tokens, absolute paths) in error output.
 
@@ -164,9 +202,10 @@ function sanitizeStack(stack, frameCount = 3) {
 function getToken() {
   const token = process.env.GITHUB_TOKEN;
   if (!token) {
-    console.error('Error: GITHUB_TOKEN environment variable is required.');
-    console.error('Set it with: export GITHUB_TOKEN=ghp_xxx');
-    console.error('Or use:      GITHUB_TOKEN=$(gh auth token) node extract_unresolved_comments.js');
+    log('error', 'missing_token',
+      'Error: GITHUB_TOKEN environment variable is required.\n' +
+      'Set it with: export GITHUB_TOKEN=ghp_xxx\n' +
+      'Or use:      GITHUB_TOKEN=$(gh auth token) node extract_unresolved_comments.js');
     process.exit(1);
   }
   return token;
@@ -211,14 +250,14 @@ async function fetchAllClosedPRs() {
   let cursor = null;
   let page = 1;
 
-  console.log(`Fetching closed PRs from ${OWNER}/${REPO}...`);
+  log('info', 'fetch_prs_start', `Fetching closed PRs from ${OWNER}/${REPO}...`, { owner: OWNER, repo: REPO });
 
   while (true) {
     const data = await graphql(PR_QUERY, { owner: OWNER, repo: REPO, cursor });
     const prs = data.repository.pullRequests;
 
     allPRs.push(...prs.nodes);
-    console.log(`  Page ${page}: fetched ${prs.nodes.length} PRs (total: ${allPRs.length})`);
+    log('info', 'fetch_prs_page', `  Page ${page}: fetched ${prs.nodes.length} PRs (total: ${allPRs.length})`, { page, pageFetched: prs.nodes.length, totalFetched: allPRs.length });
 
     if (!prs.pageInfo.hasNextPage) break;
     cursor = prs.pageInfo.endCursor;
@@ -626,7 +665,7 @@ function classifySeverity(comment) {
 // --- Phase 4: Post-process all comments ---
 
 function postProcess(unresolvedByPR) {
-  console.log('\nAnalyzing relevance against current codebase...');
+  log('info', 'analysis_start', 'Analyzing relevance against current codebase...');
   let analyzed = 0;
 
   for (const [prKey, prData] of Object.entries(unresolvedByPR)) {
@@ -640,19 +679,29 @@ function postProcess(unresolvedByPR) {
     }
   }
 
-  // Print analysis summary
+  // Emit analysis summary
   const allComments = Object.values(unresolvedByPR).flatMap(pr => pr.comments);
   const bySeverity = { high: 0, medium: 0, low: 0 };
   const byRelevance = {};
 
   for (const c of allComments) {
-    bySeverity[c.severity] = (bySeverity[c.severity] || 0) + 1;
+    switch (c.severity) {
+      case 'high':   bySeverity.high++;   break;
+      case 'medium': bySeverity.medium++; break;
+      case 'low':    bySeverity.low++;    break;
+      default:
+        log('warn', 'unknown_severity',
+          `Unknown severity "${c.severity}" on comment "${c.title}". This issue will not be categorized.`,
+          { severity: c.severity, title: c.title, url: c.url });
+    }
     byRelevance[c.relevance] = (byRelevance[c.relevance] || 0) + 1;
   }
 
-  console.log(`  Analyzed ${analyzed} comments.`);
-  console.log(`  Severity:  ${bySeverity.high} high, ${bySeverity.medium} medium, ${bySeverity.low} low`);
-  console.log(`  Relevance: ${Object.entries(byRelevance).map(([k, v]) => `${v} ${k}`).join(', ')}`);
+  log('info', 'analysis_complete',
+    `  Analyzed ${analyzed} comments.\n` +
+    `  Severity:  ${bySeverity.high} high, ${bySeverity.medium} medium, ${bySeverity.low} low\n` +
+    `  Relevance: ${Object.entries(byRelevance).map(([k, v]) => `${v} ${k}`).join(', ')}`,
+    { analyzed, severity: bySeverity, relevance: byRelevance });
 }
 
 // --- Report generation ---
@@ -698,7 +747,12 @@ function generateMarkdownReport(unresolvedByPR) {
   const byRelevance = {};
 
   for (const c of allComments) {
-    bySeverity[c.severity] = (bySeverity[c.severity] || 0) + 1;
+    switch (c.severity) {
+      case 'high':   bySeverity.high++;   break;
+      case 'medium': bySeverity.medium++; break;
+      case 'low':    bySeverity.low++;    break;
+      default: break; // Already warned during postProcess
+    }
     byRelevance[c.relevance] = (byRelevance[c.relevance] || 0) + 1;
   }
 
@@ -877,16 +931,17 @@ function generateMarkdownReport(unresolvedByPR) {
 async function main() {
   try {
     const prs = await fetchAllClosedPRs();
-    console.log(`\nFound ${prs.length} closed/merged PRs total.`);
+    log('info', 'fetch_prs_done', `Found ${prs.length} closed/merged PRs total.`, { prCount: prs.length });
 
     const unresolvedByPR = extractUnresolvedComments(prs);
     const totalUnresolved = Object.values(unresolvedByPR)
       .reduce((sum, pr) => sum + pr.comments.length, 0);
+    const prWithComments = Object.keys(unresolvedByPR).length;
 
-    console.log(`Found ${totalUnresolved} unresolved comment threads across ${Object.keys(unresolvedByPR).length} PRs.`);
+    log('info', 'extract_done', `Found ${totalUnresolved} unresolved comment threads across ${prWithComments} PRs.`, { totalUnresolved, prsWithComments: prWithComments });
 
     if (totalUnresolved === 0) {
-      console.log('No unresolved comments found. No report generated.');
+      log('info', 'no_comments', 'No unresolved comments found. No report generated.');
       return;
     }
 
@@ -900,38 +955,42 @@ async function main() {
     try {
       fs.mkdirSync(outputDir, { recursive: true });
     } catch (mkdirErr) {
-      console.error(`\n❌ Failed to create output directory.`);
-      console.error(`   Reason: ${sanitizeError(mkdirErr.message)}`);
-      if (mkdirErr.code === 'EACCES' || mkdirErr.code === 'EPERM') {
-        console.error(`   Fix: Check write permissions on the output directory.`);
-      }
+      const reason = sanitizeError(mkdirErr.message);
+      const fix = (mkdirErr.code === 'EACCES' || mkdirErr.code === 'EPERM')
+        ? 'Check write permissions on the output directory.'
+        : undefined;
+      log('error', 'mkdir_failed',
+        `Failed to create output directory.\n   Reason: ${reason}` +
+        (fix ? `\n   Fix: ${fix}` : ''),
+        { code: mkdirErr.code || 'unknown', reason, fix });
       process.exit(1);
     }
 
     try {
       fs.writeFileSync(OUTPUT_FILE, report);
     } catch (writeErr) {
-      console.error(`\n❌ Failed to write report file.`);
-      console.error(`   Reason: ${sanitizeError(writeErr.message)}`);
-
+      const reason = sanitizeError(writeErr.message);
+      let fix;
       if (writeErr.code === 'EACCES' || writeErr.code === 'EPERM') {
-        console.error(`   Fix: Check file/directory permissions for the output location.`);
+        fix = 'Check file/directory permissions for the output location.';
       } else if (writeErr.code === 'ENOSPC') {
-        console.error(`   Fix: Disk is full. Free up space and try again.`);
+        fix = 'Disk is full. Free up space and try again.';
       } else if (writeErr.code === 'EROFS') {
-        console.error(`   Fix: Filesystem is read-only. Remount with write access or choose a different output path.`);
-      } else {
-        console.error(`   Error code: ${writeErr.code || 'unknown'}`);
+        fix = 'Filesystem is read-only. Remount with write access or choose a different output path.';
       }
+      log('error', 'write_failed',
+        `Failed to write report file.\n   Reason: ${reason}` +
+        (fix ? `\n   Fix: ${fix}` : `\n   Error code: ${writeErr.code || 'unknown'}`),
+        { code: writeErr.code || 'unknown', reason, fix });
       process.exit(1);
     }
 
-    console.log(`\n✅ Report written to: ${OUTPUT_FILE}`);
+    log('info', 'report_written', `Report written to: ${OUTPUT_FILE}`, { outputFile: OUTPUT_FILE });
   } catch (err) {
-    console.error('\n❌ Fatal error:', sanitizeError(err.message));
-    if (err.stack) {
-      console.error('   Stack trace:', sanitizeStack(err.stack));
-    }
+    log('error', 'fatal',
+      `Fatal error: ${sanitizeError(err.message)}` +
+      (err.stack ? `\n   Stack trace: ${sanitizeStack(err.stack)}` : ''),
+      { error: sanitizeError(err.message) });
     process.exit(1);
   }
 }
