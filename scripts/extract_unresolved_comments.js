@@ -829,10 +829,45 @@ async function main() {
     postProcess(unresolvedByPR);
 
     const report = generateMarkdownReport(unresolvedByPR);
-    fs.writeFileSync(OUTPUT_FILE, report);
-    console.log(`\nReport written to: ${OUTPUT_FILE}`);
+
+    // Ensure the output directory exists before writing
+    const outputDir = path.dirname(OUTPUT_FILE);
+    try {
+      fs.mkdirSync(outputDir, { recursive: true });
+    } catch (mkdirErr) {
+      console.error(`\n❌ Failed to create output directory: ${outputDir}`);
+      console.error(`   Reason: ${mkdirErr.message}`);
+      if (mkdirErr.code === 'EACCES' || mkdirErr.code === 'EPERM') {
+        console.error(`   Fix: Check write permissions on the parent directory.`);
+      }
+      process.exit(1);
+    }
+
+    try {
+      fs.writeFileSync(OUTPUT_FILE, report);
+    } catch (writeErr) {
+      console.error(`\n❌ Failed to write report to: ${OUTPUT_FILE}`);
+      console.error(`   Reason: ${writeErr.message}`);
+
+      if (writeErr.code === 'EACCES' || writeErr.code === 'EPERM') {
+        console.error(`   Fix: Check file/directory permissions. You may need write access to:`);
+        console.error(`         ${outputDir}`);
+      } else if (writeErr.code === 'ENOSPC') {
+        console.error(`   Fix: Disk is full. Free up space and try again.`);
+      } else if (writeErr.code === 'EROFS') {
+        console.error(`   Fix: Filesystem is read-only. Remount with write access or choose a different output path.`);
+      } else {
+        console.error(`   Error code: ${writeErr.code || 'unknown'}`);
+      }
+      process.exit(1);
+    }
+
+    console.log(`\n✅ Report written to: ${OUTPUT_FILE}`);
   } catch (err) {
-    console.error('Fatal error:', err.message);
+    console.error('\n❌ Fatal error:', err.message);
+    if (err.stack) {
+      console.error('   Stack trace:', err.stack.split('\n').slice(1, 4).join('\n   '));
+    }
     process.exit(1);
   }
 }
