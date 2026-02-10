@@ -100,6 +100,65 @@ query($owner: String!, $repo: String!, $cursor: String) {
 }
 `;
 
+// --- Error sanitization ---
+// Prevents leaking sensitive data (tokens, absolute paths) in error output.
+
+/**
+ * Sanitize an error message for safe console output.
+ *
+ * Strips:
+ *   - GITHUB_TOKEN value if it appears in the text
+ *   - Absolute filesystem paths (replaced with repo-relative paths)
+ *   - Overly long messages (truncated to a safe length)
+ *
+ * @param {string} message - Raw error message
+ * @param {number} [maxLength=400] - Maximum output length
+ * @returns {string} Sanitized message safe for stderr
+ */
+function sanitizeError(message, maxLength = 400) {
+  if (typeof message !== 'string') return 'Unknown error';
+
+  let safe = message;
+
+  // Redact the GitHub token if it leaked into an error message
+  const token = process.env.GITHUB_TOKEN;
+  if (token && token.length > 4) {
+    safe = safe.replaceAll(token, '[REDACTED]');
+  }
+
+  // Replace absolute repo paths with relative ones
+  if (REPO_ROOT) {
+    safe = safe.replaceAll(REPO_ROOT + '/', '');
+    safe = safe.replaceAll(REPO_ROOT, '<repo>');
+  }
+
+  // Replace home directory references
+  const home = process.env.HOME || process.env.USERPROFILE;
+  if (home) {
+    safe = safe.replaceAll(home, '~');
+  }
+
+  // Truncate overly verbose messages
+  if (safe.length > maxLength) {
+    safe = safe.substring(0, maxLength) + '... [truncated]';
+  }
+
+  return safe;
+}
+
+/**
+ * Sanitize a stack trace, keeping only the first few frames and redacting paths.
+ *
+ * @param {string} stack - Raw Error.stack string
+ * @param {number} [frameCount=3] - Number of stack frames to keep
+ * @returns {string} Sanitized stack excerpt
+ */
+function sanitizeStack(stack, frameCount = 3) {
+  if (typeof stack !== 'string') return '';
+  const frames = stack.split('\n').slice(1, frameCount + 1);
+  return sanitizeError(frames.join('\n'), 600);
+}
+
 // --- API helpers ---
 
 function getToken() {
@@ -128,12 +187,18 @@ async function graphql(query, variables) {
 
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(`GitHub API error (${response.status}): ${text}`);
+    throw new Error(
+      `GitHub API error (${response.status}): ${sanitizeError(text)}`
+    );
   }
 
   const json = await response.json();
   if (json.errors) {
-    throw new Error(`GraphQL errors: ${JSON.stringify(json.errors, null, 2)}`);
+    // Only surface error messages, not full server details
+    const messages = json.errors
+      .map(e => e.message || 'unknown error')
+      .join('; ');
+    throw new Error(`GraphQL errors: ${sanitizeError(messages)}`);
   }
 
   return json.data;
@@ -835,10 +900,10 @@ async function main() {
     try {
       fs.mkdirSync(outputDir, { recursive: true });
     } catch (mkdirErr) {
-      console.error(`\n❌ Failed to create output directory: ${outputDir}`);
-      console.error(`   Reason: ${mkdirErr.message}`);
+      console.error(`\n❌ Failed to create output directory.`);
+      console.error(`   Reason: ${sanitizeError(mkdirErr.message)}`);
       if (mkdirErr.code === 'EACCES' || mkdirErr.code === 'EPERM') {
-        console.error(`   Fix: Check write permissions on the parent directory.`);
+        console.error(`   Fix: Check write permissions on the output directory.`);
       }
       process.exit(1);
     }
@@ -846,12 +911,11 @@ async function main() {
     try {
       fs.writeFileSync(OUTPUT_FILE, report);
     } catch (writeErr) {
-      console.error(`\n❌ Failed to write report to: ${OUTPUT_FILE}`);
-      console.error(`   Reason: ${writeErr.message}`);
+      console.error(`\n❌ Failed to write report file.`);
+      console.error(`   Reason: ${sanitizeError(writeErr.message)}`);
 
       if (writeErr.code === 'EACCES' || writeErr.code === 'EPERM') {
-        console.error(`   Fix: Check file/directory permissions. You may need write access to:`);
-        console.error(`         ${outputDir}`);
+        console.error(`   Fix: Check file/directory permissions for the output location.`);
       } else if (writeErr.code === 'ENOSPC') {
         console.error(`   Fix: Disk is full. Free up space and try again.`);
       } else if (writeErr.code === 'EROFS') {
@@ -864,9 +928,9 @@ async function main() {
 
     console.log(`\n✅ Report written to: ${OUTPUT_FILE}`);
   } catch (err) {
-    console.error('\n❌ Fatal error:', err.message);
+    console.error('\n❌ Fatal error:', sanitizeError(err.message));
     if (err.stack) {
-      console.error('   Stack trace:', err.stack.split('\n').slice(1, 4).join('\n   '));
+      console.error('   Stack trace:', sanitizeStack(err.stack));
     }
     process.exit(1);
   }
