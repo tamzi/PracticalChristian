@@ -1,7 +1,5 @@
 package com.sacrament.ui.foundation.color
 
-import androidx.compose.ui.graphics.Color
-
 internal val LightSacramentColors = SacramentColorTokens(
     brand = SacramentBrandColors(
         primary = SacramentPalette.brandPurple,
@@ -60,7 +58,7 @@ internal val LightSacramentColors = SacramentColorTokens(
         selectedIndicator = SacramentPalette.navigationSelectedLight,
         selectedIcon = SacramentPalette.navigationSelectedLight,
         unselectedIcon = SacramentPalette.navigationUnselectedLight,
-        spotlightGlow = SacramentPalette.navigationSpotlightLight,
+        spotlightGlow = SacramentPalette.navigationSpotlightLight.copy(alpha = 0f),
     ),
     interactive = SacramentInteractiveColors(
         switchTrackOn = SacramentPalette.switchTrackOnLight,
