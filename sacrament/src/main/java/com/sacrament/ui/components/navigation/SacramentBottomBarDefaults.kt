@@ -14,6 +14,8 @@ import com.sacrament.ui.foundation.SacramentTheme
 data class SacramentBottomBarColors(
     val container: Color,
     val content: Color,
+    val selectedIndicator: Color,
+    val spotlightGlow: Color,
 )
 
 /**
@@ -26,8 +28,16 @@ object SacramentBottomBarDefaults {
         return SacramentBottomBarColors(
             container = colors.navigation.barBackground,
             content = colors.navigation.unselectedIcon,
+            selectedIndicator = colors.navigation.selectedIndicator,
+            spotlightGlow = colors.navigation.spotlightGlow,
         )
     }
 
     fun height(): Dp = 64.dp
+
+    fun itemCount(): Int = 3
+
+    fun indicatorHeight(): Dp = 40.dp
+
+    fun spotlightHeight(): Dp = 56.dp
 }
