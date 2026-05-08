@@ -1,5 +1,6 @@
 package com.practicalchristian.app.core.ui.components
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -38,7 +40,13 @@ fun SharedBottomNavigationBar(
     onBooksClick: () -> Unit,
     onNotesClick: () -> Unit
 ) {
-    SacramentBottomBar(colors = SacramentBottomBarDefaults.colors()) {
+    val selectedIndex = BottomNavScreen.entries.indexOf(selectedScreen)
+
+    SacramentBottomBar(
+        selectedIndex = selectedIndex,
+        itemCount = BottomNavScreen.entries.size,
+        colors = SacramentBottomBarDefaults.colors(),
+    ) {
         BottomNavItem(
             screen = BottomNavScreen.HOME,
             selected = selectedScreen == BottomNavScreen.HOME,
@@ -67,7 +75,11 @@ fun BottomNavigationBar(
     onBooksClick: () -> Unit,
     onNotesClick: () -> Unit
 ) {
-    SacramentBottomBar(colors = SacramentBottomBarDefaults.colors()) {
+    SacramentBottomBar(
+        selectedIndex = BottomNavScreen.entries.indexOf(BottomNavScreen.HOME),
+        itemCount = BottomNavScreen.entries.size,
+        colors = SacramentBottomBarDefaults.colors(),
+    ) {
         BottomNavItem(
             screen = BottomNavScreen.HOME,
             selected = true,
@@ -95,7 +107,12 @@ private fun RowScope.BottomNavItem(
 ) {
     val spacing = SacramentTheme.spacing
     val colors = SacramentTheme.colors
-    val contentColor = if (selected) colors.navigation.selectedIcon else colors.navigation.unselectedIcon
+    val targetContentColor = if (selected) colors.navigation.selectedIcon else colors.navigation.unselectedIcon
+    val contentColor by animateColorAsState(
+        targetValue = targetContentColor,
+        label = "BottomNavItemContentColor",
+    )
+
     Column(
         modifier = modifier
             .weight(1f)
