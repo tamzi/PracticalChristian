@@ -1,5 +1,6 @@
 package com.sacrament.demo.navigation.screens
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -68,18 +69,19 @@ fun BottomBarCatalogScreen(
                     ),
                 verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xxl)
             ) {
-                // Basic bottom bar example
                 CatalogSection("Basic Bottom Bar") {
                     var selectedIndex by remember { mutableIntStateOf(0) }
-                    
+
                     SacramentText(
                         text = "A bottom bar with three navigation items. Tap items to see selection states.",
                         style = SacramentTheme.typography.bodyMedium,
                         color = SacramentTheme.colors.text.muted,
                         modifier = Modifier.padding(bottom = SacramentTheme.spacing.md)
                     )
-                    
-                    SacramentBottomBar {
+
+                    SacramentBottomBar(
+                        selectedIndex = selectedIndex,
+                    ) {
                         BottomBarItem(
                             label = "Home",
                             icon = SacramentIcons.SacramentIconHome,
@@ -101,19 +103,18 @@ fun BottomBarCatalogScreen(
                     }
                 }
 
-                // Description section
                 CatalogSection("Usage") {
                     SacramentText(
                         text = "Bottom bars are used for primary navigation between top-level destinations in an app.",
                         style = SacramentTheme.typography.bodyMedium
                     )
-                    
+
                     SacramentText(
                         text = "Best practices:",
                         style = SacramentTheme.typography.labelMedium,
                         modifier = Modifier.padding(top = SacramentTheme.spacing.md)
                     )
-                    
+
                     Column(
                         modifier = Modifier.padding(start = SacramentTheme.spacing.md),
                         verticalArrangement = Arrangement.spacedBy(SacramentTheme.spacing.xs)
@@ -160,8 +161,12 @@ fun RowScope.BottomBarItem(
 ) {
     val spacing = SacramentTheme.spacing
     val colors = SacramentTheme.colors
-    val contentColor = if (selected) colors.navigation.selectedIcon else colors.navigation.unselectedIcon
-    
+    val targetContentColor = if (selected) colors.navigation.selectedIcon else colors.navigation.unselectedIcon
+    val contentColor by animateColorAsState(
+        targetValue = targetContentColor,
+        label = "BottomBarItemContentColor",
+    )
+
     Column(
         modifier = modifier
             .weight(1f)
