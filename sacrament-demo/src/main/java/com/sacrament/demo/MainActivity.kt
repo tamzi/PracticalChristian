@@ -3,6 +3,12 @@ package com.sacrament.demo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -10,9 +16,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.semantics.Role
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.sacrament.demo.action.ActionCatalogScreen
 import com.sacrament.demo.action.button.ButtonCatalogScreen
@@ -53,9 +63,23 @@ import com.sacrament.demo.surface.SurfaceCatalogOverviewScreen
 import com.sacrament.demo.surface.screens.CardsCatalogScreen
 import com.sacrament.demo.surface.screens.DialogsCatalogScreen
 import com.sacrament.demo.surface.screens.SheetsCatalogScreen
+import com.sacrament.ui.components.navigation.SacramentBottomBar
 import com.sacrament.ui.foundation.Bar
 import com.sacrament.ui.foundation.SacramentTheme
+import com.sacrament.ui.foundation.icon.SacramentIcons
 import com.sacrament.ui.patterns.SacramentScreenScaffold
+import com.sacrament.ui.primitives.SacramentIcon
+import com.sacrament.ui.primitives.SacramentText
+
+private enum class DemoBottomDestination(
+    val route: String,
+    val label: String,
+    val icon: ImageVector,
+) {
+    HOME("home", "Home", SacramentIcons.SacramentIconHome),
+    NAVIGATION("navigation", "Nav", SacramentIcons.SacramentIconList),
+    PATTERNS("patterns", "Patterns", SacramentIcons.SacramentIconGridView),
+}
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,9 +108,36 @@ fun CatalogApp(
     onThemeToggle: () -> Unit
 ) {
     val navController = rememberNavController()
-    
+    val currentBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = currentBackStackEntry?.destination?.route
+    val selectedDestination = DemoBottomDestination.entries.firstOrNull { destination ->
+        currentRoute == destination.route || currentRoute?.startsWith("${destination.route}/") == true
+    } ?: DemoBottomDestination.HOME
+
     SacramentScreenScaffold(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        bottomBar = {
+            SacramentBottomBar(
+                selectedIndex = DemoBottomDestination.entries.indexOf(selectedDestination),
+                itemCount = DemoBottomDestination.entries.size,
+            ) {
+                DemoBottomDestination.entries.forEach { destination ->
+                    DemoBottomBarItem(
+                        destination = destination,
+                        selected = selectedDestination == destination,
+                        onClick = {
+                            if (selectedDestination != destination) {
+                                navController.navigate(destination.route) {
+                                    popUpTo("home") { saveState = true }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            }
+                        },
+                    )
+                }
+            }
+        },
     ) { paddingValues ->
         NavHost(
             navController = navController,
@@ -284,22 +335,55 @@ fun CatalogApp(
                 )
             }
             composable("patterns/scaffold") {
-                ScreenScaffoldCatalogScreen(
-                    onNavigateBack = { navController.popBackStack() })
+                ScreenScaffoldCatalogScreen(onNavigateBack = { navController.popBackStack() })
             }
             composable("patterns/empty") {
-                EmptyStateCatalogScreen(
-                    onNavigateBack = { navController.popBackStack() })
+                EmptyStateCatalogScreen(onNavigateBack = { navController.popBackStack() })
             }
             composable("patterns/error") {
-                ErrorStateCatalogScreen(
-                    onNavigateBack = { navController.popBackStack() })
+                ErrorStateCatalogScreen(onNavigateBack = { navController.popBackStack() })
             }
             composable("patterns/loading") {
-                LoadingStateCatalogScreen(
-                    onNavigateBack = { navController.popBackStack() })
+                LoadingStateCatalogScreen(onNavigateBack = { navController.popBackStack() })
             }
         }
     }
 }
 
+@Composable
+private fun RowScope.DemoBottomBarItem(
+    destination: DemoBottomDestination,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val spacing = SacramentTheme.spacing
+    val colors = SacramentTheme.colors
+    val targetContentColor = if (selected) colors.navigation.selectedIcon else colors.navigation.unselectedIcon
+    val contentColor by animateColorAsState(
+        targetValue = targetContentColor,
+        label = "DemoBottomBarItemContentColor",
+    )
+
+    Column(
+        modifier = modifier
+            .weight(1f)
+            .fillMaxHeight()
+            .clickable(role = Role.Tab, onClick = onClick)
+            .padding(vertical = spacing.xs),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(spacing.xs, Alignment.CenterVertically),
+    ) {
+        SacramentIcon(
+            imageVector = destination.icon,
+            contentDescription = destination.label,
+            tint = contentColor,
+            size = SacramentTheme.iconSizes.md,
+        )
+        SacramentText(
+            text = destination.label,
+            style = SacramentTheme.typography.labelSmall,
+            color = contentColor,
+        )
+    }
+}
