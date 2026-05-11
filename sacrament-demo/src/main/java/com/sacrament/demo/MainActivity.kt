@@ -126,7 +126,7 @@ fun CatalogApp(
                         destination = destination,
                         selected = selectedDestination == destination,
                         onClick = {
-                            if (selectedDestination != destination) {
+                            if (currentRoute != destination.route) {
                                 navController.navigate(destination.route) {
                                     popUpTo("home") { saveState = true }
                                     launchSingleTop = true
