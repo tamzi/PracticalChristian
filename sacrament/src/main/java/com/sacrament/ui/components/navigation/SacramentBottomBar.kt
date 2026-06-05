@@ -149,8 +149,8 @@ private fun SacramentBottomBarLightPreview() {
     SacramentTheme(darkTheme = false, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         SacramentBottomBar(selectedIndex = 1) {
             SacramentText(text = "Home", style = SacramentTheme.typography.labelSmall)
+            SacramentText(text = "Books", style = SacramentTheme.typography.labelSmall)
             SacramentText(text = "Notes", style = SacramentTheme.typography.labelSmall)
-            SacramentText(text = "Profile", style = SacramentTheme.typography.labelSmall)
         }
     }
 }
@@ -161,8 +161,8 @@ private fun SacramentBottomBarDarkPreview() {
     SacramentTheme(darkTheme = true, navigationBar = Bar.SURFACE, statusBar = Bar.BACKGROUND) {
         SacramentBottomBar(selectedIndex = 1) {
             SacramentText(text = "Home", style = SacramentTheme.typography.labelSmall)
+            SacramentText(text = "Books", style = SacramentTheme.typography.labelSmall)
             SacramentText(text = "Notes", style = SacramentTheme.typography.labelSmall)
-            SacramentText(text = "Profile", style = SacramentTheme.typography.labelSmall)
         }
     }
 }
