@@ -44,13 +44,14 @@ Single source of truth for project tasks, priorities, and status.
   - [x] TASK: Update demo in `BottomBarCatalogScreen.kt` to pass selectedIndex state.
   - [x] TASK: Add functional bottom bar with spotlight indicator to the sacrament demo app navigation structure.
 
-- [x] STORY: Testing and polish
+- [ ] STORY: Testing and polish
   - [x] TASK: Create Compose previews for both light and dark themes showing spotlight effect.
   - [x] TASK: Test indicator positioning with 3 items (Home, Books, Notes).
   - [x] TASK: Verify spotlight glow only appears in dark mode and hides in light mode.
   - [x] TASK: Validate touch targets remain adequate (48dp minimum).
-  - [x] TASK: Test theme switching behavior (light ↔ dark transitions).
-  - [x] TASK: Test animation smoothness when switching between tabs.
+  - [ ] TASK: Test theme switching behavior (light ↔ dark transitions).
+  - [ ] TASK: Test animation smoothness when switching between tabs.
+  - [ ] NOTE: Live theme switching and tab animation smoothness still require interactive/device verification.
   - [x] TASK: DO a code review and ensure that changes made make sense and are correct. If not, fix the issues and commit the changes, remember to follow the commit rules as laid out in the commitRules.md file.
 
 </details>
