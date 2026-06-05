@@ -8,9 +8,23 @@
 
 **This document is a QUICK REFERENCE ONLY.**
 
+## AI Setup Structure
+
+Use this stable split for project AI guidance:
+
+- **`Agents.md`**: Quick project-wide AI entry point.
+- **`.ai/skills/`**: Tool-agnostic, task-triggerable skill wrappers.
+- **`.ai/agents/`**: Tool-agnostic specialist agent and subagent personas.
+- **`.firebender/skills/`**: Firebender team-skill adapters that point to `.ai/skills/`.
+- **`firebender.json`**: Firebender agent registration for `.ai/agents/`.
+- **`docs/agentRules/`**: Canonical long-form rulebook and rationale.
+
+Do **not** delete or move `docs/agentRules/` unless doing a deliberate migration that updates all
+references in `.ai/`, project docs, and git hook scripts.
+
 For comprehensive, enforceable rules that you **MUST** follow, see:
 
-📁 **[docs/agentRules/](docs/agentRules/)** - Detailed agent rules directory
+**[`docs/agentRules/`](docs/agentRules/README.md)** - Detailed agent rules directory
 
 **Start here:**
 
