@@ -14,6 +14,31 @@ Single source of truth for project tasks, priorities, and status.
 ## Current Focus
 
 <details>
+<summary>EPIC: AI agent and skills setup</summary>
+
+- [x] STORY: Setup analysis
+  - [x] TASK: Confirm Firebender supports agents, subagents, and skills.
+  - [x] TASK: Define a tool-agnostic strategy for Codex, Firebender, Cursor, and Claude Code.
+- [x] STORY: Shared skills
+  - [x] TASK: Create reusable workflow, commit, documentation, testing, design-system, and quality-review skills under `.ai/skills`.
+  - [x] TASK: Convert remaining `docs/agentRules/` areas into rule-backed skills.
+  - [x] TASK: Wire Firebender to load the shared skills without duplicating their content.
+- [x] STORY: Shared agents
+  - [x] TASK: Create planner, Android implementer, Sacrament reviewer, test writer, verifier, security/privacy reviewer, and product researcher agents under `.ai/agents`.
+  - [x] TASK: Register Firebender agents with callable subagent support.
+- [ ] STORY: Validation
+  - [x] TASK: Review generated files for consistency with `Agents.md` and `docs/agentRules/`.
+  - [ ] TASK: Decide whether Cursor, Codex, and Claude Code need project-local adapters or user-level installation.
+  - [ ] TASK: Test Firebender skill discovery and agent registration from `.ai` and `.firebender`.
+  - [ ] TASK: Verify symlink handling is safe for GitHub, local clones, and each AI tool.
+- [ ] STORY: Cross-tool adapters
+  - [ ] TASK: Map Cursor, Codex, and Claude Code project-level support for skills, agents, and instructions.
+  - [ ] TASK: Add tool-specific adapter files only where required, keeping `.ai` as the source of truth.
+  - [ ] TASK: Document how each tool should load the shared `.ai` setup without duplicating rule content.
+
+</details>
+
+<details>
 <summary>EPIC: Bottom Navigation Spotlight Indicator</summary>
 
 - [x] STORY: Color system setup
