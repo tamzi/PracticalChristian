@@ -1,325 +1,429 @@
-# Bible Meditation App — Revised Discovery (v2)
+# PracticalChristian product discovery and strategy
 
-> A comprehensive, privacy‑first, offline‑capable devotional platform that fosters unhurried, theologically grounded engagement with Scripture and community.
+> The canonical strategy for the PracticalChristian product.
 
----
+## Document authority
 
-## 1) Executive Summary
+This document owns:
 
-This revision consolidates the original feature list and extends it with critical pillars required for a resilient, faithful product: (a) Scripture licensing and text integrity, (b) editorial/theological governance, (c) humane habit design, (d) safety and moderation for prayer/community, (e) privacy, data ownership and portability, (f) structured content operations, and (g) an offline‑first architecture. The app’s North Star is **Meaningful Time with Scripture per Week (MTS/W)**—quality of engagement over raw frequency.
+- Product vision and differentiation.
+- Build sequencing.
+- Gating decisions.
+- Product risks.
+- Market-ready launch criteria.
 
----
+`docs/product/prd.md` translates this strategy into requirements.
+`docs/product/featureList.md` provides traceability. Neither document overrides
+this strategy.
 
-## 2) Product Vision & North Star
+Architecture belongs in `docs/tech/technicalArchitecture.md` and
+`docs/tech/adr.md`.
 
-**Vision:** Enable Christians worldwide to cultivate a sustainable rhythm of Scripture reading, meditation, prayer, and reflection—personally and with trusted small groups—rooted in sound doctrine and gentle guidance.
+## Product vision
 
-**North Star Metric:** **MTS/W — Meaningful Time with Scripture per Week**, defined as sessions ≥ 5 minutes with at least one reflective action (journal/prayer/highlight).
+PracticalChristian helps people build a sustainable rhythm of Scripture
+reading, meditation, prayer, reflection, and trusted community.
 
-**Guiding Principles:**
+The product should feel calm, grounded, and useful on an ordinary day. It should
+work when the user has five minutes, limited connectivity, or no interest in a
+public social experience.
 
-* Sacred experience over growth hacks
-* Privacy and agency over extractive engagement
-* Clarity and charity in theology
-* Offline‑first reliability
+## North Star
 
----
+The North Star is **Meaningful Time with Scripture per Week (MTS/W)**.
 
-## 3) User Segments & Primary Use Cases
+A meaningful session lasts at least five minutes and includes direct engagement
+with Scripture plus one reflective action, such as prayer, journaling,
+highlighting, memorization, or a plan response.
 
-* **Daily Devotional Seekers** — want simple, guided meditations and reminders.
-* **Plan‑Driven Readers** — want structured plans (Bible-in-a-year, thematic, seasonal).
-* **Reflective Journalers** — want a private, searchable, exportable journal.
-* **Small Group Members** — want shared plans, prayer lists, and weekly check‑ins.
-* **Church Leaders** *(B2B)* — want to distribute sermon‑aligned plans and see aggregate engagement (privacy‑preserving).
+MTS/W is not a spiritual score. It is a product measure used to test whether the
+app helps users spend more intentional time with Scripture.
 
----
+## Audience
 
-## 4) Theology & Editorial Governance
+### Daily devotional seekers
 
-* **Positioning:** Ecumenical baseline with **Tradition Profiles** (e.g., broadly evangelical, catholic, orthodox, mainline protestant) to tune commentary tone and suggested resources.
-* **Editorial Board:** Human editorial approval for all devotional content; style and sensitivity guidelines (grief, trauma, doubt).
-* **Seasonal Calendars:** Advent/Lent/Easter and regional observances; pre‑scheduled, localized content.
+They want a simple, guided session and a reminder that does not create guilt.
 
----
+### Plan-driven readers
 
-## 5) Scripture & Licensing Strategy
+They want structured plans, visible progress, and room to pause or catch up.
 
-* **Translations:** Launch with at least one permissive translation (e.g., public‑domain) for offline; roadmap for licensed modern translations (rights determine offline caching, quotation limits, and audio).
-* **Canonical IDs:** Adopt a standard (e.g., OSIS) for cross‑translation highlights, bookmarks, search and references.
-* **Numbering Differences:** UI accommodates verse numbering differences (e.g., Psalms, Deuterocanon), clearly indicated.
-* **Cross‑Reference Graph:** Curate or license a cross‑reference dataset to power related‑verse insights.
+### Reflective journalers
 
----
+They want a private, searchable, exportable place for prayers and notes.
 
-## 6) Core Experience (Session Archetypes)
+### Small groups
 
-* **Lectio Divina:** Read → Meditate → Pray → Contemplate; time‑boxed templates (5/10/20 mins).
-* **Breath Prayer & Silence:** Short guidance, ambient timer, gentle close.
-* **Gratitude Examen:** Prompted reflection on the day; optional journal and verse tie‑ins.
-* **Verse Memorization (SRS):** Spaced repetition of saved verses.
+They want shared plans, prayer updates, and weekly discussion in a trusted
+space.
 
----
+### Church leaders
 
-## 7) Feature Set (Reframed & Expanded)
+They want to distribute sermon-linked content and understand aggregate
+participation without seeing private spiritual activity.
 
-### 7.1 Daily Meditations
+## Product wedge
 
-* Curated, theologically reviewed meditations with citations.
-* **Theme/Thematic Collections** (forgiveness, hope, gratitude, lament, justice).
-* Seasonal series (Advent/Lent) and local observances.
+The product combines five strengths that competitors usually separate:
 
-### 7.2 Personalization
+1. An offline-first Scripture and devotional experience.
+2. Private formation history through journaling, prayer, and memorization.
+3. Humane habit support with Sabbath Mode, catch-up, and quiet hours.
+4. Local church content that connects Sunday teaching to weekday practice.
+5. Source-cited, tradition-aware guidance with human editorial authority.
 
-* **Rule‑of‑Life Onboarding:** preferred time(s), Sabbath/rest day, desired session length, tradition profile, spiritual goals.
-* Behavioral tuning of recommendations; **Sabbath Mode** to quiet notifications on chosen days.
+The local church layer is the main distribution advantage. It should deepen the
+personal devotional experience, not turn the app into church-management
+software.
 
-### 7.3 Daily Quotes & Notifications
+## Product principles
 
-* Short Bible verses or vetted quotes with share sheets.
-* **Humane delivery:** batch or digest options; avoid guilt‑inducing copy.
+- Scripture before engagement mechanics.
+- Privacy and user agency before data collection.
+- Human editorial authority before automated publishing.
+- Graceful habit support before streak pressure.
+- Small, trusted communities before public feeds.
+- Offline reliability before feature breadth.
+- Android-first delivery with KMP-ready domain boundaries.
+- Clear sources and perspectives before claims of theological neutrality.
 
-### 7.4 Bible Reading Plans
+## Product system
 
-* Bible‑in‑a‑year, canonical/gospels/psalms, thematic, and challenge‑based plans.
-* **Custom Plan Builder** with templates; import from church leaders.
-* **Graceful Catch‑Up:** auto‑reschedule after missed days; freeze/skip options.
+### Scripture and devotional practice
 
-### 7.5 Progress Tracking & Habit Design
+- Offline Bible reader with licensed translation controls.
+- Source-cited daily devotionals.
+- Guided 5, 10, and 20 minute sessions.
+- Reading plans with pause, catch-up, skip, and rest days.
+- Search, highlights, bookmarks, and Scripture-linked notes.
+- Text-to-speech and licensed audio where rights allow.
 
-* Dashboard showing plan progress, streaks with **freeze windows**, and MTS/W.
-* WakaTime‑inspired daily/weekly time charts.
+### Personal formation
 
-### 7.6 Customization & Schedule Flexibility
+- Encrypted journal.
+- Personal prayer tracking and reminders.
+- Verse memorization with spaced repetition.
+- Rule-of-Life onboarding.
+- Quiet Hours and Sabbath Mode.
+- Progress views centered on MTS/W rather than public comparison.
 
-* Pause plans, adjust cadence, choose preferred translation per plan.
-* **Sabbath/Rest Day** and **Quiet Hours**.
+### Trusted community
 
-### 7.7 Prayer Requests & Journaling
+- Private circles.
+- Shared plans and prayer updates.
+- Steward and moderator roles.
+- Reporting, blocking, muting, and removal controls.
+- Explicit audience selection for every shared prayer or reflection.
 
-* Personal requests with statuses and reminders; private by default.
-* **Journal (encrypted):** freeform notes, tags, verse links, mood logging (opt‑in).
-* **Data Ownership:** export to Markdown/PDF; selective deletion.
+### Church platform
 
-### 7.8 Community Engagement (Safety‑First)
+- Verified church and campus directory.
+- Multiple memberships with one optional primary church.
+- Sermon and devotional feed.
+- Sermon-linked plans and reflection prompts.
+- Events and bulletin content.
+- Aggregate pastoral analytics.
+- Rights, moderation, and takedown workflows.
 
-* **Small Groups / Circles:** private spaces to share plans and prayer updates.
-* Privacy levels for requests: private → circle → church → public (opt‑in).
-* **Moderation & Steward Roles:** reporting, escalation, and community guidelines. Stewards are trusted community members who facilitate healthy discussion, model positive engagement, and help resolve conflicts, whereas moderators focus on enforcing rules and handling violations.
-* Sensitive‑content protocols (surface helplines/resources; do not store raw risk signals).
+### Guidance and personalization
 
-### 7.9 Reminders
+- Optional tradition profiles.
+- Passage-aware related content.
+- Source-cited Scripture Q&A.
+- Human review for published AI-assisted content.
+- Opt-in, privacy-preserving personal insights.
 
-* Time‑zone‑aware reminders, calendar‑aware nudge windows, catch‑up summaries.
+## Theology and editorial governance
 
-### 7.10 In‑Built Bible (Multi‑Translation)
+The product uses an ecumenical baseline for global content. Tradition profiles
+may tune commentary, calendars, reading order, and suggested resources.
 
-* Highlight, bookmark, copy/share with proper attribution; offline packs.
+Profiles must be:
 
-### 7.11 Search & Navigation
+- Optional.
+- Transparent.
+- Easy to change.
+- Clear about source and perspective.
 
-* Offline full‑text search (FTS), cross‑translation hopping, topical tags and indexes.
-* Saved searches and collections (e.g., “Sermon Prep: Hope”).
+Official devotional content follows this workflow:
 
-### 7.12 Offline Access
+1. Author.
+2. Editor.
+3. Theological reviewer.
+4. Localization.
+5. Quality and sensitivity review.
+6. Publish.
 
-* Downloadable language/translation packs; fully functional reading, journaling, and plan tracking offline.
+Content records its author, reviewers, Scripture references, translation,
+rights, locale, and version.
 
-### 7.13 Reflection Prompts & Insights
+The review process needs dedicated guidance for grief, trauma, abuse,
+self-harm, doubt, and denominational disagreement.
 
-* Contextual prompts aligned to readings; journaling templates.
+## Scripture and licensing
 
-### 7.14 Gamification & Challenges (Gentle)
+Launch translations depend on explicit rights for:
 
-* Challenges engine for 7/14/30‑day themes; reflective, not performative badges.
+- Offline storage.
+- Quotation and sharing.
+- Search indexing.
+- Audio.
+- Export.
+- Geographic distribution.
 
-### 7.15 AI‑Driven Guidance (Guardrailed)
+The product uses canonical verse identifiers so highlights, notes, plans, and
+sermon references survive translation changes. The reader must handle canon and
+verse-numbering differences without hiding them from users.
 
-* **RAG with Citations:** answers include explicit references (translation, commentary).
-* **Tradition‑Aware:** interpretive variants presented neutrally, aligned to chosen profile.
-* On‑device or privacy‑preserving NLP for journal insights (opt‑in).
+At least one permitted translation must remain available offline without a
+subscription.
 
-### 7.16 Multilingual Support
+## Privacy and safety
 
-* RTL languages, regional notes, downloadable packs, locale‑aware holidays.
+Personal journals and prayers are private by default. The encryption and
+recovery boundary must be decided before cloud sync or search is built around
+it.
 
-### 7.17 Local Church & Community Integration (B2B)
+The product must provide:
 
-#### 7.17.1 Church Membership Linking (Online)
-Users can **search and select** their church from a verified directory or join via **invite code/QR**. Membership scopes content (sermons, bulletins, reading plans). Users may belong to multiple churches/campuses; one set as **Primary**.
+- Data minimization.
+- Encryption at rest and in transit.
+- Explicit sharing choices.
+- Export and selective deletion.
+- Full account deletion.
+- Consent withdrawal.
+- Youth protections where applicable.
+- Sensitive-content response guidance.
 
-#### 7.17.2 Pastor “Preachings” Distribution
-Churches upload sermons/messages (audio/video/text) with metadata (series, scripture references, tags). Members receive **pastor-specific preachings** via a dedicated feed with optional push notifications (e.g., “New Sunday message available”).
+Analytics must not contain journal text, prayer text, group-message content, or
+precise private reading history without specific consent.
 
-#### 7.17.3 Fallback for Non‑Members
-Users without a church receive a **general preaching channel** (curated, multi‑tradition aware). They may opt into suggested nearby churches (opt‑in location) or global partner channels.
+Church leaders cannot access private journals, private prayers, or individual
+reading details.
 
-#### 7.17.4 Sermon‑Synced Plans
-Leaders attach weekly or seasonal reading plans + reflection prompts tied to the sermon; members can auto‑enroll.
+## Accessibility and internationalization
 
-#### 7.17.5 Local Event Locator & Bulletin
-Moderated events, service times, group meetings; RSVP and private follow‑ups with reflective prompts.
+Accessibility is a launch requirement, not a later polish phase.
 
-#### 7.17.6 Pastoral Dashboard (Aggregate Only)
-Plan participation and completion rates; engagement trends. **No access** to journals or personal prayer content.
+The product supports:
 
-#### 7.17.7 Rights & Moderation
-Clear IP/license grant from churches; takedown & DMCA process; steward moderation for comments/prayer threads within church spaces.
-### 7.18 Daily Bread–Style Online Devotionals
+- Screen readers and predictable focus order.
+- Scalable typography and large touch targets.
+- High contrast and reduced motion.
+- Alternatives to gesture-only actions.
+- Text alternatives for audio and video.
+- Right-to-left layouts.
+- Locale-aware punctuation and calendars.
 
-* **Daily Devotional Feed:** An always‑fresh, **cloud‑delivered** devotional (scripture + short reflection + prayer) available to all users. Content may be in‑house or from licensed partners; cached for offline.
-* **Personalization:** The feed respects **Tradition Profile**, time of day, and spiritual goals from onboarding. Offers longer/shorter variants (5/10/20 minutes).
-* **Citations & Sources:** Each devotional cites translation and commentary sources; seasonal variants (Advent/Lent).
-* **Notifications & Digest:** Optional “Daily Bread” reminder or a morning/evening digest; respects Quiet Hours and Sabbath Mode.
+## Metrics and research
 
----
+### Core measures
 
-## 8) Accessibility & Inclusivity
+- MTS/W.
+- Activation within 48 hours.
+- Weekly and monthly retention.
+- Session completion by selected duration.
+- Plan continuation and completion.
+- Journal, prayer, and memorization adoption.
+- Circle and church participation.
+- Reliability, accessibility, safety, and trust signals.
 
-* Scalable typography, adjustable line length, dyslexia‑friendly settings, high‑contrast themes.
-* Full screen‑reader coverage; focus order validated; haptics and audio captions.
-* RTL layout, proper punctuation/diacritics handling.
+### Activation
 
----
+An activated user completes onboarding, opens Scripture, and takes one
+reflective action within 48 hours.
 
-## 9) Privacy, Security & Compliance
+### Research program
 
-* GDPR‑grade consent, minimization, and clear purposes per data category.
-* **Encrypted at rest**; optional biometric gate for journals/prayers.
-* Data lifecycle: export (JSON/Markdown/PDF), selective or full deletion.
-* Youth mode where applicable (parental consent; restricted sharing).
+- Short in-app surveys.
+- Opt-in interviews.
+- Tagged content feedback.
+- Usability tests with assistive technology.
+- Pilot studies with churches and small groups.
+- Cohort analysis for reminders, session lengths, and Sabbath settings.
 
----
+Private text and inferred spiritual condition are not product metrics.
 
-## 10) Content Operations & CMS Workflow
+## Monetization boundaries
 
-* Headless CMS with roles: Author → Editor → Theological Reviewer → L10n → QA → Publish.
-* Versioning, scheduled release windows, translation management, Scripture‑reference validator.
+The free product includes basic Scripture reading, one permitted offline
+translation, and core personal reflection without ads.
 
----
+Paid offerings may include:
 
-## 11) Technical Architecture (High Level)
+- Licensed translations.
+- Premium audio.
+- Partner devotional series.
+- Advanced sync or search.
+- Church administration and aggregate analytics.
 
-* **Offline‑First Core:** Local SQLite for Scripture, plans, progress, journals, prayer, groups; background sync with conflict resolution.
-* **Canonical IDs:** OSIS‑like scheme across translations; cross‑reference and topical indices.
-* **Search:** SQLite FTS5 (offline), server‑side indexing for global search suggestions; transliteration and fuzzy matching.
-* **Sync & Identity:** Email/pass + federated sign‑in; per‑entity versioning; resumable, idempotent sync; encrypted in transit; optional E2E for journals/prayers.
-* **Notifications:** Time‑zone aware, quiet hours, digest and catch‑up; server‑side scheduler.
-* **Church Directory Service (Online):** Verified registry of churches/campuses; membership linking via invite codes, domain verification, or admin approval.
-* **Content Ingestion Pipeline:** Sermon upload (audio/video/PDF/notes) → media storage (S3/GCS) → CDN delivery → optional **ASR transcription** → **summary & tagging** (AI assist, human review) → publish; scripture references auto‑linked.
-* **Preaching/Devotional Delivery:** Topic channels (pastor, series, general) with subscription graph; server‑driven configuration of feed; offline caching.
-* **AI Layer (Guardrailed):** RAG over licensed texts/commentaries with explicit citations; tradition‑aware variants; on‑device NLP for private insights where feasible.
-* **Analytics & Experiments:** MTS/W, activation/retention cohorts; feature flags; server‑configured experiments.
-* **Cross‑Platform:** Native iOS/Android with shared domain (KMP) or equivalent; web reader later.
+Payment never weakens privacy protections. Product copy should explain what a
+payment funds without implying that spiritual growth is a paid benefit.
 
----
+## Build plan
 
-## 12) Core Data Entities (ER Outline)
+The first market-ready client is Android. Development is sequenced by
+dependency, not by separate public releases. A later phase cannot ship ahead of
+the foundation it depends on.
 
-* **User, Profile, TraditionProfile**
-* **Church, Campus, Pastor, Membership** (role, status, primary flag)
-* **Translation, License, Book, Chapter, Verse** (canonical IDs)
-* **Sermon/Preaching, SermonSeries, SermonMedia, SermonTranscript, SermonOutline, Channel, Subscription**
-* **Plan, PlanItem, Progress, Streak**
-* **Highlight, Bookmark, Note, JournalEntry** (encrypted)
-* **PrayerRequest, PrayerUpdate, Reaction**
-* **Group (Circle/Church), MembershipRole (steward/moderator)**
-* **NotificationPreference, Reminder**
-* **TopicTag, CrossReference**
-* **ConsentRecord, AuditLog, RightsGrant**
+### Phase 0: Gating decisions
 
----
+Resolve the decisions in the Gating decisions section before dependent work
+starts.
 
-## 13) Metrics & Research Program
+### Phase 1: Foundations
 
-* **North Star:** MTS/W
-* **Activation:** Onboarded + first reading + one reflective action within 48h.
-* **HEART/AARRR:** Happiness (NPS), Engagement (weekly active, session depth), Adoption (plan starts), Retention (W1/W4/W12), Task Success (plan completion).
-* In‑app micro‑surveys; opt‑in interviews; tagged feedback on meditations.
-* Experiment levers: notification timing, session lengths, SRS cadence, tradition profiles in recommendations.
+- Canonical Scripture identifiers.
+- Backend, identity, and offline-sync contracts.
+- Encryption and recovery model.
+- Content pipeline and editorial workflow.
+- Analytics event schema.
+- Sacrament design-system and accessibility baseline.
+- Android implementation with KMP-ready domain boundaries where practical.
 
----
+### Phase 2: Core devotional experience
 
-## 14) Monetization & Pricing (Principled)
+- Bible reader and offline translation packs.
+- Daily devotional sessions.
+- Reading plans and flexible scheduling.
+- Journal and personal prayer tracking.
+- Verse memorization.
+- Offline search.
+- Notifications, Quiet Hours, and Sabbath Mode.
+- MTS/W and private progress views.
 
-* **Freemium:** Scripture reading, one offline public‑domain translation, basics of journaling and plans.
-* **Plus Subscription:** licensed translations, advanced search, SRS memorization, seasonal series, multi‑device sync, small groups.
-* **Church Plan (B2B):** sermon‑synced plans, private groups, aggregate analytics, prioritized support.
-* **No ads** within Scripture/prayer flows; if ever used, limited to peripheral surfaces.
+### Phase 3: Guidance and personalization
 
----
+- Tradition profiles.
+- Cross-reference graph.
+- Passage-aware recommendations.
+- Source-cited Scripture Q&A.
+- Opt-in, privacy-preserving journal insights.
 
-## 15) Roadmap
+### Phase 4: Community
 
-**MVP (3–4 months)**
+- Private circles.
+- Shared plans and prayer updates.
+- Steward and moderator roles.
+- Reporting, blocking, muting, and escalation.
+- Sensitive-content response flows.
 
-* Rule‑of‑Life onboarding; Daily meditations (in‑house) + **Daily Devotional Feed (online)**
-* One offline public‑domain translation; reader with highlight/bookmark/share
-* Reading plans (Bible‑in‑a‑year + 2 thematic), catch‑up & freeze
-* Journal (encrypted), personal prayer requests, reminders
-* Offline FTS search; seed cross‑refs
-* Humane streaks; Sabbath Mode; export & GDPR controls
-* Accessibility baseline; analytics (MTS/W, activation & retention)
-* **Basic Church Membership & Preaching Feed:** join a church via invite/search; receive pastor preachings (audio/text) with push; **general preaching channel** for non‑members
+### Phase 5: Church platform
 
-**v1.1**
+- Verified church directory.
+- Membership by search, invitation, or QR code.
+- Sermon and devotional ingestion.
+- Sermon-linked plans.
+- Church events and bulletin.
+- Aggregate pastoral analytics.
+- Rights, moderation, and takedown controls.
 
-* Verse memorization (SRS), saved collections
-* Small Groups (private circles) with shared plans and sermon discussion prompts
-* Tradition profiles (lightweight), seasonal calendars
-* AI Q&A with RAG + citations; on‑device insights (opt‑in)
-* **Church Admin Console:** sermon uploads, rights grant, scheduling; basic aggregate analytics
+### Phase 6: Reach and richness
 
-**v2**
+- Licensed or text-to-speech audio.
+- Launch-language packs and right-to-left support.
+- Partner devotional series.
+- Web reader after Android market readiness.
 
-* Audio Bibles (licensed/TTS) with verse‑synced captions
-* Church Plan (B2B): bulletin, event management, richer aggregate analytics
-* Marketplace for vetted devotional series and partner devotionals
-* Advanced search (fuzzy/phonetic), multilingual packs, web reader
+iOS follows the proven Android product. It is not a condition for the first
+market-ready release.
 
----
+## Risks
 
-## 16) Risks & Mitigations
+### Licensing delay
 
-* **Licensing constraints:** Engage early; stage translations; clear budget.
-* **Theological drift via AI:** RAG‑only answers with citations; human editorial authority.
-* **Community harm:** Private‑by‑default, small groups, moderation tools, sensitive‑content protocols.
-* **Privacy breach:** Encryption, minimal scopes, fine‑grained consent, regular audits.
-* **Engagement guilt:** Grace windows, streak freezes, Sabbath Mode, compassionate copy.
+Translation, audio, and commentary rights can block reader, search, sharing,
+and monetization work. Rights must be settled before dependent implementation.
 
----
+### Content supply
 
-## 17) Open Decisions
+A daily product needs a reliable editorial cadence. The content pipeline and
+staffing model must exist before launch.
 
-1. Initial translation(s) and licensing budget; offline rights needed at MVP?
-2. Tradition profiles: which to include at launch and how deep?
-3. Editorial board composition and service‑level for content throughput.
-4. Church Plan scope for pilot churches; pricing bands.
-5. Audio strategy (licensed vs. TTS) and timing.
+### Foundation rework
 
----
+Canonical identifiers, sync, and encryption are expensive to retrofit. They
+belong in Phase 1.
 
-## 18) MVP Acceptance Criteria (Condensed)
+### Theological drift
 
-* **Onboarding:** Users set time, session length, Sabbath day, tradition; preferences inform recommendations.
-* **Daily Devotional Feed (Online):** A cloud‑delivered devotional of the day is visible, cites sources, and is cached for offline; users can enable/disable reminders.
-* **Reader:** Smooth navigation; accurate verse rendering; highlights/bookmarks persist offline.
-* **Plans:** Start, pause, resume, catch‑up; progress shown; streak freeze available.
-* **Journal & Prayer:** Encrypted local storage; create/edit/delete; reminders; export works.
-* **Search:** Offline FTS across Scripture, highlights, and notes; results open correct verse.
-* **Notifications:** Time‑zone aware; digest and catch‑up; respect quiet hours/Sabbath.
-* **Church Membership & Preachings:** Users can find or join a church (invite/search). Members receive new pastor preachings as a feed + push. Non‑members see a general preaching channel. Rights metadata present; playback/reading works; content can be cached for offline.
-* **Privacy:** Consent surfaces; data export and account deletion succeed.
-* **Accessibility:** Screen‑reader usable; adjustable typography; high contrast.
-* **Analytics:** MTS/W captured; activation/retention cohorts visible.
+Automated guidance can flatten or invent interpretations. Approved sources,
+visible citations, and human editorial authority are mandatory.
 
----
+### Community harm
 
-## 19) Appendix: Example Tradition Profile Effects (Illustrative)
+Prayer and faith discussions can expose vulnerable users. Private defaults,
+moderation tools, and response protocols are required before community launch.
 
-* **Evangelical:** commentary sources A/B; default reading order emphasizes Gospels & Pauline epistles.
-* **Catholic:** includes deuterocanonical options; references to Catechism; liturgical calendar prompts.
-* **Orthodox:** Septuagint numbering considerations; liturgical readings emphasis.
-* **Mainline Protestant:** balanced OT/NT rotation; inclusive language guidance.
+### Privacy breach
 
-> Profiles are opt‑in, transparent, and always cite sources; users may switch at any time.
+Journals, prayers, church membership, and location are sensitive. Minimize
+collection and test access controls as product behavior, not policy text.
+
+### Two-product load
+
+The personal devotional app and church platform have different users and
+operational needs. Resource them separately so the church platform does not
+block the personal experience.
+
+### Cost at scale
+
+Media delivery, transcription, AI inference, sync, and storage have marginal
+cost. Model cost per active user and paid tier before broad rollout.
+
+### Engagement guilt
+
+Streaks and reminders can turn spiritual practice into pressure. Grace windows,
+Sabbath Mode, pause, and compassionate copy are required.
+
+## Gating decisions
+
+These decisions block later work:
+
+1. Which translations launch, and what offline, quotation, search, export, and
+   audio rights are secured?
+2. Which tradition profiles launch, and how much do they affect content?
+3. Which managed or self-hosted backend supports sync, church content, and AI?
+4. Is launch audio text-to-speech, licensed narration, or both?
+5. Who owns editorial approval, and what content throughput can they sustain?
+6. What is the church-plan scope, pilot model, and pricing boundary?
+
+Record resolved product decisions here and implementation consequences in
+`docs/tech/adr.md`.
+
+## Market-ready launch criteria
+
+The Android product is market-ready when all of the following are true:
+
+- Onboarding choices affect the experience and remain editable.
+- Supported translations render accurately and work offline.
+- Highlights and bookmarks persist offline and sync without data loss.
+- Daily sessions support the promised duration, sources, and offline cache.
+- Plans support start, pause, resume, catch-up, skip, and rest days.
+- Journal and prayer data can be created, edited, exported, and deleted.
+- Search opens the correct Scripture or personal-content result.
+- Notifications respect time zone, Quiet Hours, and Sabbath Mode.
+- Audio has playback controls and a text equivalent.
+- Tradition profiles are transparent and source-cited.
+- AI answers include citations and remain inside approved guardrails.
+- Circles enforce privacy, membership, reporting, and moderation.
+- Church content carries verification, rights, and publication metadata.
+- Pastoral analytics remain aggregate.
+- Consent, export, deletion, and youth protections work end to end.
+- Screen-reader, scalable-text, high-contrast, reduced-motion, and
+  right-to-left checks pass for launch locales.
+- MTS/W and activation events match the approved analytics schema.
+- Core reading, planning, journaling, and prayer work offline.
+- Sync conflicts resolve without silent data loss.
+
+## Post-launch expansion
+
+- iOS client.
+- Additional translations and languages.
+- More licensed audio.
+- Web reader improvements.
+- Vetted partner marketplace.
+- Wearable and voice-assistant experiences.
+
+Post-launch work must not weaken the product principles or privacy boundaries.
