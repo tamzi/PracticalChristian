@@ -1,0 +1,11 @@
+{
+  "agents": [
+    ".ai/agents/planner.md",
+    ".ai/agents/android-implementer.md",
+    ".ai/agents/sacrament-reviewer.md",
+    ".ai/agents/test-writer.md",
+    ".ai/agents/verifier.md",
+    ".ai/agents/security-privacy-reviewer.md",
+    ".ai/agents/product-researcher.md"
+  ]
+}

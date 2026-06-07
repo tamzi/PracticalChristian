@@ -1,220 +1,287 @@
-# Bible Meditation App — Competitor Analysis Canvas (v1)
+# PracticalChristian competitor analysis
 
-**Date:** 11 Oct 2025
-**Purpose:** Provide an actionable competitive intelligence artifact for product strategy, licensing decisions, MVP scope, and GTM.
+## Purpose
 
----
+This document identifies market patterns, product opportunities, and research
+questions. It informs strategy but does not define product scope.
 
-## 1) Executive Summary
+Competitor features, prices, privacy terms, and licensing arrangements change.
+Verify them against official product pages before making a decision.
 
-**Landscape:** The market clusters into (A) broad Bible platforms, (B) deep study suites, (C) prayer/meditation apps, (D) audio specialists, and (E) devotional publishers/education.
-**Our wedge:** *Local‑church–first distribution (pastor preachings → weekday devotionals), cited/guardrailed AI, encrypted formation history, humane habit design, and offline‑first multilingual experience.*
-**North Star:** **Meaningful Time with Scripture per Week (MTS/W).**
+## Evidence standard
 
----
+For each material claim:
 
-## 2) Archetypes (with exemplars)
+- Prefer the competitor's official product, pricing, privacy, and support pages.
+- Record the source in the relevant research ticket or decision record.
+- Separate confirmed behavior from inference.
+- Do not infer encryption, moderation, or AI safeguards from marketing copy.
+- Recheck pricing and licensing before using them in a forecast.
 
-* **A. Broad Bible Platforms:** YouVersion; Bible Gateway; Tecarta/Life Bible; ESV Bible; Blue Letter Bible (BLB)
-* **B. Study Suites:** Logos; Olive Tree
-* **C. Prayer/Meditation:** Hallow; Abide; Glorify; Lectio 365; Pray.com
-* **D. Audio Specialists:** Dwell
-* **E. Devotional/Education:** Our Daily Bread (ODB); Bible in One Year (BIOY); BibleProject
+The observations below are directional research hypotheses.
 
----
+## Market groups
 
-## 3) Comparative Matrix (condensed)
+### Broad Bible platforms
 
-| Product                     | Archetype           | Core Proposition                                  | Key Strengths                                                                 | Notable Gaps                                                                                          | Monetization                   | Church/Community Angle                         |
-| --------------------------- | ------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------- |
-| **YouVersion**              | Broad Bible         | Mass‑market Bible app with reading plans & social | Scale, translations, “Plans with Friends”, Church Profiles & church discovery | Personalization can feel generic; journals not E2E; limited pastor‑to‑member push beyond Events/Plans | Free/donation; ecosystem tools | Strong: Church Profiles, events, friends plans |
-| **Bible Gateway**           | Broad Bible         | Reader with many translations, plans, audio       | Translation breadth; web reach                                                | Formation/habit depth light; small‑group tooling minimal                                              | Plus subscription + ads        | Light                                          |
-| **Tecarta / Life Bible**    | Broad Bible         | Reader + store for study titles, devotionals      | Polished UX; robust catalog                                                   | Less community; pastor feeds absent                                                                   | Subs + IAP                     | Light                                          |
-| **ESV Bible**               | Broad Bible         | Translation‑first with curated tools              | Editorial quality; playlists                                                  | Narrow translation scope; limited community                                                           | Free + premium                 | Minimal                                        |
-| **BLB (Blue Letter Bible)** | Broad Bible / Study | Free study tools (interlinear, lexicon)           | Depth for word studies; free                                                  | Utilitarian UX; habit/community light                                                                 | Donation                       | Minimal                                        |
-| **Logos**                   | Study Suite         | Pro‑grade study workflows & libraries             | Datasets, language tools, sermons                                             | Overkill for daily formation; costly                                                                  | Subs + libraries               | Used by pastors; not social                    |
-| **Olive Tree**              | Study Suite         | Study app with Resource Guide                     | Split‑screen, strong linking, video partners                                  | Community light; store‑centric                                                                        | Store + subs                   | Minimal                                        |
-| **Hallow**                  | Prayer/Meditation   | Catholic prayer & sleep content                   | Audio polish; celebrity voices; habit loops                                   | Ecumenical breadth limited; citations rare                                                            | Subscription                   | Parish/school tie‑ins                          |
-| **Abide**                   | Prayer/Meditation   | Christian meditation & sleep                      | Large audio catalog; clear pricing                                            | Study depth limited; church links light                                                               | Subscription                   | Light                                          |
-| **Glorify**                 | Prayer/Meditation   | Daily devotionals + mindfulness + music           | Mobile‑first, approachable                                                    | Study depth limited                                                                                   | Subscription                   | Light                                          |
-| **Lectio 365**              | Prayer/Meditation   | Guided daily prayer rhythm                        | Simple, pastoral cadence; free                                                | Limited personalization; light tooling                                                                | Free/donation                  | Movement community                             |
-| **Pray.com**                | Prayer/Meditation   | Prayer communities + audio + AI                   | Scale of audio; AI assistant                                                  | Guardrails/citations unclear; privacy questions                                                       | Free + premium                 | Social groups                                  |
-| **Dwell**                   | Audio Specialist    | Best‑in‑class audio Bible                         | Voices, pacing, music, read‑along                                             | Church layer light; broader formation thin                                                            | Subscription                   | Some church resources                          |
-| **Our Daily Bread**         | Devotional          | Trusted daily devotionals (global)                | Brand trust; multi‑language                                                   | Personalization limited                                                                               | Donation/print/app             | Comment threads                                |
-| **Bible in One Year**       | Devotional          | 365‑day pastoral commentary                       | Simple, warm, popular                                                         | Single track; limited personalization                                                                 | Free                           | Church‑adjacent                                |
-| **BibleProject**            | Education           | How‑to‑read pedagogy (videos/podcasts/app)        | Outstanding pedagogy                                                          | Not a daily formation coach                                                                           | Donation + courses             | Wide community ethos                           |
+Examples include YouVersion, Bible Gateway, Life Bible, ESV Bible, and Blue
+Letter Bible.
 
-> Note: The table is directional for strategy, not exhaustive.
+Research focus:
 
----
+- Translation breadth and licensing.
+- Reader, search, notes, and highlights.
+- Reading plans and friend participation.
+- Church discovery and profiles.
+- Offline behavior.
 
-## 4) Deep‑Dive Snapshots (action‑oriented)
+### Study suites
+
+Examples include Logos and Olive Tree.
+
+Research focus:
+
+- Passage-linked resources.
+- Original-language tools.
+- Library and marketplace models.
+- Complexity for users who want a daily practice.
+
+### Prayer and meditation apps
+
+Examples include Hallow, Abide, Glorify, Lectio 365, and Pray.com.
+
+Research focus:
+
+- Audio quality and session design.
+- Habit and reminder patterns.
+- Denominational positioning.
+- Subscription packaging.
+- AI, privacy, and citation behavior.
+
+### Audio Bible products
+
+Dwell is the main specialist reference.
+
+Research focus:
+
+- Voice choice and pacing.
+- Read-along behavior.
+- Download management.
+- Background audio.
+- Subscription value.
+
+### Devotional and education products
+
+Examples include Our Daily Bread, Bible in One Year, and BibleProject.
+
+Research focus:
+
+- Editorial trust.
+- Daily content cadence.
+- Teaching quality.
+- Localization.
+- Donation and partnership models.
+
+## Differentiation thesis
+
+PracticalChristian should not compete on Bible text volume alone. Its advantage
+comes from combining:
+
+- Local church distribution.
+- Sermon-linked weekday practice.
+- Private journaling and prayer history.
+- Humane habit support.
+- Offline-first use.
+- Source-cited, tradition-aware guidance.
+
+The product loses this advantage if the church layer becomes a generic bulletin
+board or the AI layer becomes an uncited chatbot.
+
+## Competitor research lenses
 
 ### YouVersion
 
-* **What they do best:** Scale, translation catalog, frictionless “Plans with Friends”, Church Profiles & events, discovery of nearby churches.
-* **Strategic gap:** Limited pastor→member push of weekday practice; privacy not centered on E2E journals.
-* **What we can borrow:** Church discovery + “Set My Church”; light accountability via private plan cohorts.
-* **How we beat:** Pastor “preachings” distribution (push), auto‑devotionals from sermon text, **encrypted** journaling, tradition‑aware personalization, and humane streaks.
+What to study:
 
-### Bible Gateway
+- Church discovery and church-profile onboarding.
+- Plans with friends.
+- Translation and offline-pack behavior.
+- Reader speed and navigation.
 
-* **Best:** Breadth; familiar web presence; audio & plans.
-* **Gap:** Habit formation is thin; little small‑group scaffolding.
-* **Borrow:** Clean reader + plan reminders.
-* **Beat:** Rule‑of‑Life onboarding; Sabbath Mode; SRS memorization.
+Opportunity to test:
 
-### Tecarta / Life Bible
+- Whether sermon-linked weekday content offers clearer church value.
+- Whether private formation tools can build trust without social pressure.
 
-* **Best:** Polished reader; strong marketplace.
-* **Gap:** Community/church layers.
-* **Borrow:** Reader quality; notes/highlights.
-* **Beat:** Sermon‑synced plans; pastor feeds; cited AI answers.
+### Bible Gateway and Life Bible
 
-### ESV Bible
+What to study:
 
-* **Best:** Coherent curation; playlists.
-* **Gap:** Ecumenical breadth; community light.
-* **Borrow:** Playlist metaphor for moods/themes.
-* **Beat:** Multi‑translation + canonical IDs + tradition profiles.
+- Search and reference lookup.
+- Translation switching.
+- Content-store and subscription packaging.
 
-### BLB
+Opportunity to test:
 
-* **Best:** Deep word‑study tools.
-* **Gap:** Daily formation UX.
-* **Borrow:** Word‑study lane for power users.
-* **Beat:** Marry depth with simple daily practices.
+- A stronger daily formation loop.
+- Better small-group and church continuity.
 
-### Logos / Olive Tree
+### Blue Letter Bible, Logos, and Olive Tree
 
-* **Best:** Pro study; cross‑resource linking.
-* **Gap:** Overkill for daily discipleship; costly.
-* **Borrow:** Passage‑aware related content surface.
-* **Beat:** Lightweight, guided formation + small circles.
+What to study:
 
-### Hallow / Abide / Glorify / Lectio 365 / Pray.com
+- Passage-aware related resources.
+- Study depth.
+- Cross-resource navigation.
 
-* **Best:** Audio craft; habit loops; approachable sessions; some AI.
-* **Gap:** Study depth/citations; local church distribution; privacy posture.
-* **Borrow:** 5/10/20‑minute guided flows; high‑quality narration.
-* **Beat:** Cited RAG AI; pastor feeds; encrypted reflections; offline‑first.
+Opportunity to test:
+
+- A simpler path from study material to prayer, reflection, and practice.
+
+### Hallow, Abide, Glorify, Lectio 365, and Pray.com
+
+What to study:
+
+- Audio session quality.
+- Five, ten, and twenty minute formats.
+- Reminder language.
+- Free and paid content boundaries.
+- Community and AI safeguards.
+
+Opportunity to test:
+
+- Scripture citations and transparent theological perspective.
+- Local church content.
+- Private journals and prayer records.
 
 ### Dwell
 
-* **Best:** Voices, pacing, read‑along; pleasant listening.
-* **Gap:** Church/community layer.
-* **Borrow:** Read‑along & pacing options.
-* **Beat:** Attach audio to pastor preachings + weekday practices.
+What to study:
 
-### ODB / BIOY / BibleProject
+- Playback controls.
+- Voice and pacing options.
+- Read-along synchronization.
+- Download management.
 
-* **Best:** Trust (ODB), pastoral warmth (BIOY), pedagogy (BP).
-* **Gap:** Personalization; integrated formation loop.
-* **Borrow:** “Daily Bread” cadence and tone.
-* **Beat:** Tradition‑aware personalization + church membership feeds.
+Opportunity to test:
 
----
+- Connecting audio Scripture to plans, sermons, and personal reflection.
 
-## 5) What We Should Take (and how to adapt)
+### Our Daily Bread, Bible in One Year, and BibleProject
 
-1. **Church discovery & membership** → add verified directory + invite/QR + multi‑campus; set a **Primary Church** and enable pastor push.
-2. **Plans with Friends (private)** → evolve into **Small Circles** (5–15 people) with sermon‑synced prompts and prayer updates.
-3. **Audio excellence** → narration options, pacing, ambient beds; start by distributing **pastor preachings** and short guided practices.
-4. **Daily devotionals cadence** → “Daily Bread” feed with 5/10/20‑minute variants, citations, and offline cache.
-5. **Passage‑aware surfacing** → show related verses, cross‑refs, trusted commentary per passage; keep it simple.
+What to study:
 
----
+- Editorial voice.
+- Teaching structure.
+- Daily cadence.
+- Localization and content operations.
 
-## 6) How We Set Ourselves Apart (Differentiation Thesis)
+Opportunity to test:
 
-* **Local‑Church‑First Content Graph:** Users choose their church; members receive pastor **preachings** and weekday **auto‑devotionals** tied to Sunday’s text. Non‑members get a curated general channel.
-* **Cited, Tradition‑Aware AI:** RAG over licensed translations/commentary; always show sources; present major interpretive views with humility.
-* **Encrypted Formation History:** Journals & prayers encrypted at rest; biometric lock; exportability by default.
-* **Humane Habit Design:** Rule‑of‑Life onboarding, Sabbath Mode, streak freezes, grace windows; SRS verse memorization; MTS/W as the surfaced metric.
-* **Offline‑First, Multilingual:** Downloadable packs; RTL; regional calendars.
+- Personalization that preserves source clarity.
+- A complete formation loop across reading, prayer, journaling, and groups.
 
----
+## Strategic criteria
 
-## 7) Weighted Scorecard (for prioritization)
+Use these weights as a discussion aid, not as measured competitor scores:
 
-> **Scale:** 1 (weak) to 5 (strong). Weights reflect our strategy. Numbers are indicative for discussion.
+- Church and local distribution: 20%.
+- Habit support: 15%.
+- Privacy and personal formation: 15%.
+- Devotional depth and personalization: 15%.
+- Audio experience: 10%.
+- Study and search: 10%.
+- AI citations and safeguards: 10%.
+- Offline and multilingual support: 5%.
 
-**Criteria & Weights**
+Before assigning a competitor score, define the evidence required for each
+criterion. Avoid false precision when evidence is incomplete.
 
-* Church/Local Distribution (0.20)
-* Habit Formation (0.15)
-* Privacy & E2E Journaling (0.15)
-* Devotional Depth & Personalization (0.15)
-* Audio Quality/UX (0.10)
-* Study Depth & Search (0.10)
-* AI Guardrails & Citations (0.10)
-* Offline & Multilingual (0.05)
+## Opportunities
 
-**Indicative Scores (selected competitors)**
+### Sermon-to-weekday pipeline
 
-| Product       | Church Dist. | Habit | Privacy | Devotional Pers. | Audio | Study/Search | AI Guardrails | Offline/Multi | **Weighted** |
-| ------------- | -----------: | ----: | ------: | ---------------: | ----: | -----------: | ------------: | ------------: | -----------: |
-| YouVersion    |            5 |     3 |       2 |                3 |     3 |            3 |             2 |             4 |          3.2 |
-| Bible Gateway |            2 |     2 |       2 |                2 |     3 |            3 |             1 |             3 |          2.2 |
-| Life Bible    |            1 |     2 |       2 |                2 |     2 |            3 |             1 |             3 |          2.0 |
-| ESV Bible     |            1 |     2 |       2 |                2 |     2 |            3 |             1 |             3 |          2.0 |
-| BLB           |            1 |     1 |       2 |                1 |     1 |            5 |             1 |             3 |          2.1 |
-| Logos         |            2 |     2 |       2 |                2 |     1 |            5 |             2 |             3 |          2.6 |
-| Olive Tree    |            1 |     2 |       2 |                2 |     1 |            4 |             1 |             3 |          2.2 |
-| Hallow        |            3 |     4 |       2 |                3 |     4 |            1 |             1 |             3 |          3.0 |
-| Abide         |            1 |     4 |       2 |                3 |     4 |            1 |             1 |             3 |          2.7 |
-| Glorify       |            1 |     3 |       2 |                3 |     3 |            1 |             1 |             3 |          2.4 |
-| Lectio 365    |            1 |     4 |       2 |                3 |     2 |            1 |             1 |             3 |          2.5 |
-| Pray.com      |            2 |     3 |       2 |                3 |     3 |            1 |             1 |             3 |          2.5 |
-| Dwell         |            1 |     3 |       2 |                2 |     5 |            1 |             1 |             3 |          2.6 |
-| ODB           |            1 |     3 |       2 |                2 |     2 |            1 |             1 |             3 |          2.2 |
-| BIOY          |            1 |     3 |       2 |                3 |     2 |            1 |             1 |             3 |          2.3 |
-| BibleProject  |            1 |     2 |       2 |                2 |     2 |            3 |             1 |             3 |          2.1 |
+Let churches publish a sermon, references, reflection prompts, and a linked
+plan. Members receive the content through a dedicated church feed.
 
-> Weights and scores are tunable; use this as a decision lens for roadmapping.
+### Private formation history
 
----
+Connect journals, prayer updates, highlights, plans, and memorized verses while
+keeping them private by default.
 
-## 8) Risks Exposed by Incumbents & Mitigations
+### Humane habit design
 
-* **Translation licensing moat:** Stage with permissive translation(s) + budget roadmap for modern versions; negotiate offline rights early.
-* **Audio production cost:** Start with **pastor preachings** + short guided practices; layer in premium narration later.
-* **Moderation burden:** Default to **Small Circles**; steward roles; clear reporting and takedown.
-* **AI trust:** Cited sources, tradition profiles, and human editorial review; never let AI be the theologian‑of‑record.
+Use Sabbath Mode, grace windows, catch-up, pause, and quiet hours instead of
+punitive streak resets.
 
----
+### Source-cited guidance
 
-## 9) Opportunities We Can Own (6–12 months)
+Show the Scripture translation, commentary source, and interpretive perspective
+behind devotional and AI-assisted material.
 
-1. **Pastor “Preachings” Pipeline:** upload → transcript → editor summary → weekday auto‑devotionals → push to members; cached offline.
-2. **Encrypted Formation History:** E2E journals & prayers with export; biometric lock.
-3. **SRS Verse Memorization** linked to plans and sermons.
-4. **Rule‑of‑Life + Sabbath Mode** as differentiating habit UX.
-5. **Tradition‑Aware, Cited AI** for Q&A and devotional prompts.
-6. **Church Admin Console:** sermon upload, rights grant, scheduling, aggregate analytics.
+### Offline church content
 
----
+Allow users to download sermon-linked plans and continue reading, listening,
+and reflecting without a network connection.
 
-## 10) Actionable Backlog from Competitor Learnings
+## Risks exposed by the market
 
-* **MVP+**: Church membership linking (search/invite/QR); preachings feed; general preaching channel for non‑members.
-* **Daily Bread Feed**: 5/10/20‑min variants; citations; offline cache; gentle notifications.
-* **Small Circles**: private plans; prayer updates; weekly check‑ins.
-* **Encrypted Journal**: export; biometric; sentiment (on‑device) opt‑in.
-* **SRS Memorization**: Leitner queue; tie to highlights.
-* **Passage‑Aware Surfacing**: cross‑refs; topical tags.
-* **Audio UX**: speed, pacing, ambient bed; sermon clips first.
-* **Licensing Track**: shortlist translations; cost/rights matrix; budget.
+### Translation licensing
 
----
+Major translations can require separate rights for storage, search, quotation,
+audio, and geography.
 
-## 11) Open Research Questions
+### Audio cost
 
-* Which 3–5 translations at launch maximize reach vs. licensing cost & offline rights?
-* Which pastoral content formats perform best for weekday retention (3–5 min clip vs. 10–12 min reflection)?
-* How many users belong to multiple churches/campuses; how should Primary vs. Secondary Church affect feeds?
-* What opt‑in signals best predict MTS/W improvement (Sabbath set, SRS enabled, Circles joined)?
-* What privacy language most increases journal adoption without drop‑off?
+Professional narration, media delivery, and offline downloads can create high
+production and infrastructure costs.
 
----
+### Content cadence
 
+A daily product needs a reliable editorial pipeline. A large feature set cannot
+compensate for irregular or weak content.
+
+### Community moderation
+
+Prayer and faith discussions can expose vulnerable users. Community features
+need reporting, blocking, steward roles, and response protocols before launch.
+
+### AI trust
+
+Uncited answers and hidden theological assumptions can damage trust quickly.
+Human editorial authority must remain visible.
+
+### Two-product complexity
+
+The personal devotional app and church platform have different buyers,
+workflows, and support needs.
+
+## Product implications
+
+- Make church membership searchable, invitational, and optional.
+- Keep a useful general devotional experience for users without a church.
+- Support private circles instead of a public follower feed.
+- Treat audio as part of the session, not a separate media catalog.
+- Keep journaling and prayer private by default.
+- Design Scripture identifiers and licensing metadata before reader expansion.
+- Require citations and review for AI-assisted content.
+- Test the church platform with a small number of pilot churches.
+
+## Open research questions
+
+- Which launch translations balance user demand, cost, and offline rights?
+- Which sermon format produces useful weekday practice?
+- How many churches can the team support during a pilot?
+- What aggregate analytics do church leaders need?
+- Which reminder patterns improve MTS/W without increasing guilt?
+- What privacy language helps users trust journaling and prayer features?
+- Which audio features change retention enough to justify their cost?
+- How should tradition profiles affect recommendations and commentary?
+
+## Decision boundary
+
+Competitor research can suggest an opportunity. It cannot settle product scope,
+privacy policy, licensing, or architecture by itself.
+
+Record product decisions in `docs/product/discoveryV2.md` and technical
+consequences in `docs/tech/adr.md`.

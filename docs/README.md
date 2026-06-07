@@ -4,15 +4,18 @@ Quick navigation for project documentation.
 
 ## Core References
 
-- `docs/workToBeDone.md` - Task tracking and priorities
+- `docs/tasks/workToBeDone.md` - Task tracking and priorities
 - `docs/timezoneHandling.md` - Timezone storage strategy
 - `docs/darkLightThemePlan.md` - Dark/light theme implementation plan
 - `docs/agentRules/README.md` - AI agent rules and workflows
 
 ## Product
 
-- `docs/product/prd.md` - Product requirements
-- `docs/product/featureList.md` - Feature inventory
+- `docs/product/README.md` - Product documentation index and source-of-truth order
+- `docs/product/discoveryV2.md` - Product strategy and launch criteria
+- `docs/product/prd.md` - Product requirements and boundaries
+- `docs/product/featureList.md` - Feature traceability matrix
+- `docs/product/competitorAnalysis.md` - Directional competitor research
 
 ## Technical
 
